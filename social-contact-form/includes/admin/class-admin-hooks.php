@@ -141,27 +141,9 @@ if ( ! class_exists( __NAMESPACE__ . '\Hooks') ) {
 			$appsero->insights()->init();
 
 			if ( function_exists( 'wppool_plugin_init' ) ) {
+				$bg_image = plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/background-image.png';
 
-				$scf_plugin = wppool_plugin_init('social_contact_form', plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/background-image.png' );
-
-				if ( $scf_plugin && is_object( $scf_plugin ) && method_exists( $scf_plugin, 'set_campaign' ) ) {
-					try {
-						$campaign_image = plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/halloween.png';
-						$to = '2023-11-05';
-						$from = '2023-10-24';
-						$scf_plugin->set_campaign( $campaign_image, $to, $from );
-
-						 // Second Campaign.
-						 $new_campaign_image = plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/blackFriday.png';
-						 $new_to = '2023-11-27';
-						 $new_from = '2023-11-16';
-						 $scf_plugin->set_campaign($new_campaign_image, $new_to, $new_from);
-
-					} catch ( \Exception $e ) {// phpcs:ignore
-						// phpcs:ignore
-						// Catch block intentionally left empty. This is because we do not need to take any action on exception.
-					}
-				}
+				$scf_plugin = wppool_plugin_init('social_contact_form', $bg_image  );
 			}
 		}
 	}

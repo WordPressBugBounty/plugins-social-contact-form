@@ -1240,7 +1240,6 @@ if ( ! class_exists( 'WPPOOL_Plugin' ) ) {
 			// Add plugin image.
 			add_filter( 'wppool_plugins', function ( $plugins ) use ( $instance, $image_url ) {
 				$plugins[ $instance->plugin_id ]['background_image'] = isset( $image_url ) ? $image_url : $instance->get_plugin_image();
-
 				return $plugins;
 			} );
 
@@ -1265,10 +1264,10 @@ if ( ! class_exists( 'WPPOOL_Plugin' ) ) {
 			}
 
 			// Set from now if it's not set.
-			$from_time = $from ? strtotime( $from . ' 00:00:01' ) : strtotime( 'now' );
+			$from_time = $from ? strtotime( $from ) : strtotime( 'now' );
 
 			// Set to 2 weeks from now if it's not set.
-			$to_time = $to ? strtotime( $to . ' 23:59:59' ) : strtotime( '+2 weeks' );
+			$to_time = $to ? strtotime( $to ) : strtotime( '+2 weeks' );
 
 			$current_time = strtotime( 'now' );
 

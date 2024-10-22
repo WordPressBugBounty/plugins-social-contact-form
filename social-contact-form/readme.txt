@@ -4,7 +4,7 @@ Tags: WhatsApp chat, WhatsApp integration, click to chat, contact form, contact 
 Requires at least: 5.0
 Tested up to: 6.6
 Requires PHP: 5.6
-Stable tag: 2.9.0
+Stable tag: 2.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -184,6 +184,9 @@ If you like FormyChat, then consider checking out our other awesome projects:
 🎦 **[Webinar and Video Conference with Jitsi Meet](https://wordpress.org/plugins/webinar-and-video-conference-with-jitsi-meet/)**  - Experience the best WordPress video conference plugin and live video chat solution. Get shortcode support with WooCommerce and BuddyPress integration.
 
 == Changelog ==
+
+= 2.9.1 - 22 OCT 2024 =
+* Improvement: Maintenance update
 
 = 2.9.0 - 01 OCT 2024 =
 
