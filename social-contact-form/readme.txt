@@ -2,9 +2,9 @@
 Contributors: wppool, azizultex, wpdarkmode, iamjafran, devsabbirahmed
 Tags: WhatsApp chat, WhatsApp integration, click to chat, contact form, contact form builder
 Requires at least: 5.0
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 2.9.1
+Stable tag: 2.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -185,11 +185,13 @@ If you like FormyChat, then consider checking out our other awesome projects:
 
 == Changelog ==
 
+= 2.9.2 - 13 NOV 2024 =
+* Improvement: Checked and added WordPress 6.7 and Twenty Twenty-Five theme compatibility.
+
 = 2.9.1 - 22 OCT 2024 =
 * Improvement: Maintenance update
 
 = 2.9.0 - 01 OCT 2024 =
-
 * **New:** Added the Multi-Agents feature, allowing multiple agents to be configured within a single widget, each with a unique WhatsApp number and profile.
 * **Enhancement:** Improved Contact Form 7 form integration flow
 * **Fixed:** Resolved an issue where "Invalid Date" was displayed on the lead page.
