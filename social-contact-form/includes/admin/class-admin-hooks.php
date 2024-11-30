@@ -28,11 +28,13 @@ if ( ! class_exists( __NAMESPACE__ . '\Hooks') ) {
 		 * @since 1.0.0
 		 */
 		public function actions() {
-			// Appsero.
-			$this->init_appsero();
+			// From.
+			// $this->init_appsero();
 
+			// To.
+			add_action('admin_init', [ $this, 'init_appsero' ], 0);
 			add_action('admin_init', [ $this, 'handle_safe_redirection' ]);
-			add_action('admin_menu', [ $this, 'register_admin_menu' ], 0);
+			add_action('admin_menu', [ $this, 'register_admin_menu' ], 10);
 			add_filter('plugin_action_links_' . plugin_basename( FORMYCHAT_FILE ), [ $this, 'plugin_action_links' ]);
 		}
 
@@ -135,7 +137,6 @@ if ( ! class_exists( __NAMESPACE__ . '\Hooks') ) {
 			add_filter('appsero_is_local', '__return_false');
 
 			$appsero = new \Appsero\Client('9b39bac1-3b27-41d1-aeec-18fbfd4a9977', 'FormyChat', FORMYCHAT_FILE);
-			$appsero->set_textdomain('social-contact-form');
 
 			// Active insights.
 			$appsero->insights()->init();
