@@ -117,8 +117,7 @@ class Insights {
      * @return void
      */
     public function init() {
-		error_log( \print_r( $this->client, true ) );
-        if ( 'plugin' === $this->client->type ?? 'plugin' ) {
+        if ( 'plugin' === ( $this->client->type || 'plugin' ) ) {
             $this->init_plugin();
         } elseif ( 'theme' === $this->client->type ) {
             $this->init_theme();

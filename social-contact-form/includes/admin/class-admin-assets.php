@@ -65,6 +65,10 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 			// Always load custom icon.
 			$this->formychat_custom_icon();
 
+			// Enqueue admin-util
+			wp_enqueue_script( 'formychat-admin-util', FORMYCHAT_PUBLIC . '/js/admin-util.js', [], FORMYCHAT_VERSION, true );
+			wp_enqueue_style( 'formychat-admin-util', FORMYCHAT_PUBLIC . '/css/admin-util.css', [], FORMYCHAT_VERSION );
+
 			// Only load for FormyChat pages.
 			if ( ! in_array($hook, [ 'toplevel_page_formychat', 'formychat_page_formychat-leads' ]) ) {
 				return false;
@@ -84,15 +88,12 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 
 					'is_premium'  => $this->is_ultimate_active(),
 
-					'cf7' => [
-						'is_installed' => file_exists(WP_PLUGIN_DIR . '/contact-form-7/wp-contact-form-7.php'),
-						'is_active' => is_plugin_active('contact-form-7/wp-contact-form-7.php'),
-					],
-
 					'total' => [
-						'formychat_leads'    => Lead::total(),
-						'cf7_leads'    => LeadCF7::total(),
 						'widgets'    => Widget::total(),
+						'formychat_leads' => Lead::total_from( 'formychat' ),
+						'cf7_leads' => Lead::total_from( 'cf7' ),
+						'gf_leads' => Lead::total_from( 'gravity' ),
+						'wpforms_leads' => Lead::total_from( 'wpforms' ),
 					],
 
 					'data' => [
@@ -105,6 +106,22 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 						'language' => get_bloginfo('language'),
 						'admin_email' => get_bloginfo('admin_email'),
 					],
+
+					'cf7' => [
+						'is_installed' => file_exists(WP_PLUGIN_DIR . '/contact-form-7/wp-contact-form-7.php'),
+						'is_active' => is_plugin_active('contact-form-7/wp-contact-form-7.php'),
+					],
+
+					// Gravity Forms.
+					'gravity' => [
+						'is_installed' => file_exists(WP_PLUGIN_DIR . '/gravityforms/gravityforms.php'),
+						'is_active' => is_plugin_active('gravityforms/gravityforms.php'),
+					],
+					'wpforms' => [
+						'is_installed' => file_exists(WP_PLUGIN_DIR . '/wpforms-lite/wpforms.php'),
+						'is_active' => is_plugin_active('wpforms-lite/wpforms.php'),
+					],
+
 				]
 			);
 

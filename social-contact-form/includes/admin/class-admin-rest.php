@@ -376,6 +376,106 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			]);
 		}
 
+		/**
+		 * Activate plugin.
+		 *
+		 * @param \WP_REST_Request $request Request object.
+		 * @return \WP_REST_Response
+		 */
+		public function action_activate_plugin( $request ) {
+			$plugin = $request->has_param( 'plugin' ) ? $request->get_param( 'plugin' ) : 'cf7';
+
+			$plugins = [
+				'cf7' => [
+					'file' => 'contact-form-7/wp-contact-form-7.php',
+					'slug' => 'contact-form-7',
+				],
+				'gravity' => [
+					'file' => 'gravityforms/gravityforms.php',
+					'slug' => 'gravityforms',
+				],
+				'wpforms' => [
+					'file' => 'wpforms-lite/wpforms.php',
+					'slug' => 'wpforms-lite',
+				],
+			];
+
+			if ( ! isset( $plugins[ $plugin ] ) ) {
+				return new \WP_REST_Response( [
+					'success' => false,
+					'message' => __( 'Plugin not found.', 'social-contact-form' ),
+				]);
+			}
+
+			$plugin = $plugins[ $plugin ];
+
+			// Include plugin.php for get_plugin_data() function.
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+			// Check if plugin is installed.
+			if ( ! file_exists( WP_PLUGIN_DIR . '/' . $plugin['file'] ) ) {
+
+				// Include necessary WordPress files for installing and activating plugins.
+				require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+				require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+				require_once ABSPATH . 'wp-admin/includes/class-plugin-upgrader.php';
+				require_once ABSPATH . 'wp-admin/includes/file.php';
+				require_once ABSPATH . 'wp-admin/includes/misc.php';
+
+				// Request filesystem credentials if necessary.
+				$creds = request_filesystem_credentials('', '', false, false, null);
+
+				// Check if we can use the filesystem, if not, throw an error.
+				if ( ! WP_Filesystem( $creds ) ) {
+					return new \WP_REST_Response( [
+						'success' => false,
+						'message' => __( 'Could not access filesystem.', 'social-contact-form' ),
+					], 500 );
+				}
+
+				$api = plugins_api( 'plugin_information', [ 'slug' => $plugin['slug'] ] );
+
+				if ( is_wp_error( $api ) ) {
+					return new \WP_REST_Response( [
+						'success' => false,
+						'message' => $api->get_error_message(),
+					], 500 );
+				}
+
+				try {
+					$upgrader = new \Plugin_Upgrader( new \WP_Upgrader_Skin() );
+					$install = $upgrader->install( $api->download_link );
+
+					if ( is_wp_error( $install ) ) {
+						return new \WP_REST_Response( [
+							'success' => false,
+							'message' => $install->get_error_message(),
+						], 500 );
+					}
+				} catch ( \Exception $e ) {
+					return new \WP_REST_Response( [
+						'success' => false,
+						'message' => $e->getMessage(),
+					], 500 );
+				}
+			}
+
+			// Activate plugin.
+			$activated = activate_plugin( $plugin['file'] );
+
+			if ( is_wp_error( $activated ) ) {
+				return new \WP_REST_Response( [
+					'success' => false,
+					'message' => $activated->get_error_message(),
+				], 500 );
+			}
+
+			return new \WP_REST_Response( [
+				'success' => true,
+				'message' => wp_sprintf( '%s plugin activated.', ucfirst( $plugin['slug'] ) ),
+			]);
+		}
+
 
 		/**
 		 * Get leads.
@@ -386,6 +486,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 		public function get_leads( $request ) {
 
 			$mode = $request->has_param( 'mode' ) ? $request->get_param( 'mode' ) : 'formychat';
+			$form_id = $request->has_param( 'form_id' ) ? $request->get_param( 'form_id' ) : '';
 
 			$after = $request->has_param( 'after' ) ? $request->get_param( 'after' ) : '';
 			$before = $request->has_param( 'before' ) ? $request->get_param( 'before' ) : '';
@@ -406,19 +507,16 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				'per_page' => $request->has_param( 'per_page' ) ? $request->get_param( 'per_page' ) : 10,
 				'page' => $request->has_param( 'page' ) ? intval( $request->get_param( 'page' ) ) : 1,
 				'order_by' => $request->has_param( 'order_by' ) ? $request->get_param( 'order_by' ) : 'created_at',
-				'cf7_id' => $request->has_param( 'cf7_id' ) ? $request->get_param( 'cf7_id' ) : '',
+				// 'cf7_id' => $request->has_param( 'cf7_id' ) ? $request->get_param( 'cf7_id' ) : '',
 				'widget_id' => $request->has_param( 'widget_id' ) ? $request->get_param( 'widget_id' ) : '',
 				'before' => $before,
 				'after' => $after,
+
+				'form' => $mode,
+				'form_id' => $form_id,
 			];
 
-			error_log( print_r( $filter, true ) );
-
-			if ( 'formychat' === $mode ) {
-				$leads = \FormyChat\Models\Lead::get( $filter );
-			} else {
-				$leads = \FormyChat\Models\LeadCF7::get( $filter );
-			}
+			$leads = \FormyChat\Models\Lead::get( $filter );
 
 			// If no leads.
 			if ( empty( $leads ) ) {
@@ -447,26 +545,13 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			// If not array.
 			$ids = is_array( $id ) ? $id : [ $id ];
 
-			$mode = $request->has_param( 'mode' ) ? $request->get_param( 'mode' ) : 'formychat';
+			$form = $request->has_param( 'form' ) ? $request->get_param( 'form' ) : 'formychat';
 
-			$deleted = false;
-
-			if ( 'formychat' === $mode ) {
-				$deleted = \FormyChat\Models\Lead::delete( $ids );
-			} else {
-				$deleted = \FormyChat\Models\LeadCF7::delete( $ids );
-			}
-
-			if ( $deleted ) {
-				return new \WP_REST_Response( [
-					'success' => true,
-					'message' => __( 'Leads deleted.', 'social-contact-form' ),
-				]);
-			}
+			\FormyChat\Models\Lead::delete( $ids, $form );
 
 			return new \WP_REST_Response( [
-				'success' => false,
-				'message' => __( 'Leads not deleted.', 'social-contact-form' ),
+				'success' => true,
+				'message' => __( 'Leads deleted.', 'social-contact-form' ),
 			]);
 		}
 
@@ -483,6 +568,8 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				'pages' => $this->get_pages(),
 				'widgets' => Widget::get_names(),
 				'cf7_forms'   => $this->get_cf7_forms(),
+				'gravity_forms' => $this->get_gravity_forms(),
+				'wpforms_forms' => $this->get_wpforms_forms(),
 			];
 
 			return new \WP_REST_Response( $contents );
@@ -540,6 +627,64 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			wp_reset_postdata();
 
 			return $forms;
+		}
+
+		/**
+		 * Get all Gravity Forms.
+		 *
+		 * @return array
+		 */
+		public function get_gravity_forms() {
+			$forms = [];
+			if ( ! class_exists('GFAPI') ) {
+				return $forms;
+			}
+
+			$forms = \GFAPI::get_forms();
+
+			if ( empty( $forms ) ) {
+				return [];
+			}
+
+			$gravity_forms = [];
+
+			foreach ( $forms as $form ) {
+				$gravity_forms[] = [
+					'value' => $form['id'],
+					'name' => $form['title'],
+					'label' => $form['title'],
+				];
+			}
+
+			return $gravity_forms;
+		}
+
+		/**
+		 * Get all WPForms.
+		 *
+		 * @return array
+		 */
+		public function get_wpforms_forms() {
+			// Use wpdb to get all forms.
+			global $wpdb;
+
+			$forms = $wpdb->get_results( "SELECT ID, post_title FROM {$wpdb->posts} WHERE post_type = 'wpforms' AND post_status = 'publish'" ); // db call ok; no-cache ok.
+
+			if ( empty( $forms ) ) {
+				return [];
+			}
+
+			$wpforms = [];
+
+			foreach ( $forms as $form ) {
+				$wpforms[] = [
+					'value' => $form->ID,
+					'name' => $form->post_title,
+					'label' => $form->post_title,
+				];
+			}
+
+			return $wpforms;
 		}
 	}
 

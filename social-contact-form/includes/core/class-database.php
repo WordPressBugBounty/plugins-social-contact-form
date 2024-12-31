@@ -42,11 +42,11 @@ class Database extends \FormyChat\Base {
         // Create Widget Table.
         $this->create_widget_table();
 
-        // Add widget_id column.
-        $this->add_widget_id();
-
         // Fix for old version.
-        $this->fix_old_version();
+        $this->migrate_to_multiwidgets();
+
+        // Merge cf7 leads to scf leads.
+        $this->merge_cf7_to_scf();
     }
 
     /**
@@ -65,6 +65,23 @@ class Database extends \FormyChat\Base {
             `note` text NOT NULL,
             PRIMARY KEY (`id`)
         ) $charset_collate;" ); // phpcs:ignore 
+
+        // Alter SCF Table, add form (string) and form_id (int) columns if not exists.
+        $column_exists = $wpdb->get_results("SHOW COLUMNS FROM {$wpdb->prefix}scf_leads LIKE 'form'"); // db call ok; no-cache ok.
+        if ( empty($column_exists) ) {
+            $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD COLUMN form text NULL DEFAULT NULL"); // db call ok; no-cache ok.
+        }
+
+        $column_exists = $wpdb->get_results("SHOW COLUMNS FROM {$wpdb->prefix}scf_leads LIKE 'form_id'"); // db call ok; no-cache ok.
+        if ( empty($column_exists) ) {
+            $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD COLUMN form_id mediumint NULL DEFAULT NULL"); // db call ok; no-cache ok.
+        }
+
+        // Alter SCF Table, add widget_id (int) column if not exists.
+        $column_exists = $wpdb->get_results("SHOW COLUMNS FROM {$wpdb->prefix}scf_leads LIKE 'widget_id'"); // db call ok; no-cache ok.
+        if ( empty($column_exists) ) {
+            $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD COLUMN widget_id mediumint NULL DEFAULT 1"); // db call ok; no-cache ok.
+        }
     }
 
 
@@ -115,23 +132,9 @@ class Database extends \FormyChat\Base {
     }
 
     /**
-     * Alter SCF Table.
-     */
-    public function add_widget_id() {
-		// Add column widget_id if not exists.
-        global $wpdb;
-
-        // For SCF Leads.
-        $column_exists = $wpdb->get_results("SHOW COLUMNS FROM {$wpdb->prefix}scf_leads LIKE 'widget_id'"); // db call ok; no-cache ok.
-        if ( empty($column_exists) ) {
-            $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD COLUMN widget_id mediumint NULL DEFAULT 1"); // db call ok; no-cache ok.
-        }
-    }
-
-    /**
      * Fix for old version.
      */
-    public function fix_old_version() {
+    public function migrate_to_multiwidgets() {
 
         // Bail if new widget is already created.
         if ( get_option('formychat_has_first_widget') ) {
@@ -360,6 +363,39 @@ class Database extends \FormyChat\Base {
         } catch ( \Exception $e ) { // phpcs:ignore
             // Do nothing.
         }
+    }
+
+    /**
+     * Merge CF7 to SCF.
+     */
+    public function merge_cf7_to_scf() {
+        global $wpdb;
+
+        // Get all CF7 leads.
+        $cf7_leads = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}cf7_leads"); // db call ok; no-cache ok.
+
+        // Bail if no leads.
+        if ( empty($cf7_leads) ) {
+            return;
+        }
+
+        // Loop through leads.
+        foreach ( $cf7_leads as $lead ) {
+            $data = [
+                'widget_id' => 1,
+                'field' => $lead->field,
+                'meta' => $lead->meta,
+                'note' => $lead->note,
+                'form' => 'cf7',
+                'form_id' => $lead->cf7_id,
+            ];
+
+            // Create lead.
+            \FormyChat\Models\Lead::create($data);
+        }
+
+        // Drop CF7 table.
+        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}cf7_leads"); // db call ok; no-cache ok.
     }
 }
 

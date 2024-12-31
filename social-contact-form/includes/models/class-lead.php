@@ -40,6 +40,8 @@ if ( ! class_exists( __NAMESPACE__ . '\Lead') ) {
 					'field' => [],
 					'meta'  => [],
 					'note'  => '',
+					'form' => 'formychat',
+					'form_id' => 0,
 				]
 			);
 
@@ -76,6 +78,8 @@ if ( ! class_exists( __NAMESPACE__ . '\Lead') ) {
 					'order' => 'DESC',
 					'orderby' => 'created_at',
 					'widget_id' => 1,
+					'form' => 'formychat',
+					'form_id' => 0,
 				]
 			);
 
@@ -108,6 +112,20 @@ if ( ! class_exists( __NAMESPACE__ . '\Lead') ) {
 				$where[] = $wpdb->prepare( 'widget_id = %d', $filter['widget_id'] );
 			}
 
+			// Form.
+			if ( ! empty( $filter['form'] ) ) {
+				if ( 'formychat' === $filter['form'] ) {
+					$where[] = $wpdb->prepare( 'form = %s OR form IS NULL', $filter['form'] );
+				} else {
+					$where[] = $wpdb->prepare( 'form = %s', $filter['form'] );
+				}
+			}
+
+			// Form ID.
+			if ( ! empty( $filter['form_id'] ) && is_numeric( $filter['form_id'] ) ) {
+				$where[] = $wpdb->prepare( 'form_id = %d', $filter['form_id'] );
+			}
+
 			$where[] = 'deleted_at IS NULL';
 
 			$where = implode( ' AND ', $where );
@@ -122,10 +140,13 @@ if ( ! class_exists( __NAMESPACE__ . '\Lead') ) {
 
 			if ( $leads ) {
 				foreach ( $leads as $lead ) {
-					$lead->id   = intval($lead->id);
+					$lead->id = intval($lead->id);
 					$lead->widget_id = empty( $lead->widget_id ) ? 1 : intval($lead->widget_id);
-					$lead->field = empty( $lead->field ) ? [] : json_decode($lead->field);
-					$lead->meta  = empty( $lead->meta ) ? [] : json_decode($lead->meta);
+					$lead->field = empty( $lead->field ) ? [] : json_decode( ( $lead->field ) );
+					$lead->meta = empty( $lead->meta ) ? [] : json_decode( ( $lead->meta ) );
+					$lead->note = empty( $lead->note ) ? '' : $lead->note;
+					$lead->form = empty( $lead->form ) ? 'formychat' : $lead->form;
+					$lead->form_id = empty( $lead->form_id ) ? 0 : intval($lead->form_id);
 				}
 			}
 
@@ -137,13 +158,15 @@ if ( ! class_exists( __NAMESPACE__ . '\Lead') ) {
 		 *
 		 * @param mixed $ids Lead IDs.
 		 */
-		public static function delete( $ids ) {
+		public static function delete( $ids, $form = 'formychat' ) {
 			global $wpdb;
 
 			$wpdb->query(
 				$wpdb->prepare(
-					"UPDATE {$wpdb->prefix}scf_leads SET `deleted_at` = %s WHERE id IN (" . implode( ',', array_fill( 0, count( $ids ), '%d' ) ) . ')',
-					array_merge( [ current_time( 'mysql' ) ], $ids )
+					"UPDATE {$wpdb->prefix}scf_leads SET deleted_at = %s WHERE form = %s AND id IN (" . implode( ',', array_fill( 0, count( $ids ), '%d' ) ) . ') ',
+					current_time( 'mysql' ),
+					$form,
+					...$ids
 				)
 			); // db call ok; no-cache ok.
 
@@ -158,6 +181,17 @@ if ( ! class_exists( __NAMESPACE__ . '\Lead') ) {
 		public static function total() {
 			global $wpdb;
 			return $wpdb->get_var( "SELECT count(*) FROM {$wpdb->prefix}scf_leads WHERE deleted_at IS NULL" ); // db call ok; no-cache ok.
+		}
+
+		/**
+		 * Get lead count from form.
+		 *
+		 * @param string $form Form.
+		 * @return mixed
+		 */
+		public static function total_from( $form ) {
+			global $wpdb;
+			return $wpdb->get_var( $wpdb->prepare( "SELECT count(*) FROM {$wpdb->prefix}scf_leads WHERE form = %s AND deleted_at IS NULL", $form ) ); // db call ok; no-cache ok.
 		}
 	}
 

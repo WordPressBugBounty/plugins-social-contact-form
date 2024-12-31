@@ -28,9 +28,6 @@ if ( ! class_exists( __NAMESPACE__ . '\Hooks') ) {
 		 * @since 1.0.0
 		 */
 		public function actions() {
-			// From.
-			// $this->init_appsero();
-
 			// To.
 			add_action('admin_init', [ $this, 'init_appsero' ], 0);
 			add_action('admin_init', [ $this, 'handle_safe_redirection' ]);

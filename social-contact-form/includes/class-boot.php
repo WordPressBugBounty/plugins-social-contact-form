@@ -70,9 +70,13 @@ if ( ! class_exists( __NAMESPACE__ . '\Boot' ) ) {
 
 			require_once FORMYCHAT_INCLUDES . '/models/class-widget.php';
 			require_once FORMYCHAT_INCLUDES . '/models/class-lead.php';
-			require_once FORMYCHAT_INCLUDES . '/models/class-lead-cf7.php';
 			// Rest.
 			require_once FORMYCHAT_INCLUDES . '/admin/class-admin-rest.php';
+			// Rest.
+			require_once FORMYCHAT_INCLUDES . '/compatibility/class-compatibility.php';
+
+			// Load deprecated class.
+			require_once FORMYCHAT_INCLUDES . '/others/functions.php';
 		}
 
 		/**
@@ -88,19 +92,32 @@ if ( ! class_exists( __NAMESPACE__ . '\Boot' ) ) {
 
 			require_once FORMYCHAT_INCLUDES . '/admin/class-admin-hooks.php';
 
-			// Contact Form 7 Settings.
-			require_once FORMYCHAT_INCLUDES . '/contact-form/class-cf7-settings.php';
+			// Contact Form 7.
+			require_once FORMYCHAT_INCLUDES . '/forms/contact-form/class-cf7-admin.php';
+
+			// WPForms.
+			require_once FORMYCHAT_INCLUDES . '/forms/wpforms/class-wpforms-admin.php';
+
+			// Gravity Forms.
+			require_once FORMYCHAT_INCLUDES . '/forms/gravity-forms/class-gf-admin.php';
 		}
 
 		/**
 		 * Include public files.
 		 */
 		private function include_public_files() {
+			require_once FORMYCHAT_INCLUDES . '/public/class-hooks.php';
 			require_once FORMYCHAT_INCLUDES . '/public/class-assets.php';
 			require_once FORMYCHAT_INCLUDES . '/public/class-rest.php';
 
-			// Contact Form 7 Email.
-			require_once FORMYCHAT_INCLUDES . '/contact-form/class-cf7-email.php';
+			// Contact Form 7.
+			require_once FORMYCHAT_INCLUDES . '/forms/contact-form/class-cf7-frontend.php';
+
+			// WPForms.
+			require_once FORMYCHAT_INCLUDES . '/forms/wpforms/class-wpforms-frontend.php';
+
+			// Gravity Forms.
+			require_once FORMYCHAT_INCLUDES . '/forms/gravity-forms/class-gf-frontend.php';
 		}
 	}
 

@@ -1422,15 +1422,16 @@ Message: {message}',
 					'background_color' => '#09816D',
 					'open_by_default' => false,
 					'close_on_submit' => true,
+
+					// Third party forms.
+					'cf7_id' => 0,
+					'gravity_id' => 0,
+					'wpforms_id' => 0,
 				],
 				'email' => [
 					'enabled' => false,
 					'address' => '',
 					'admin_email' => true,
-				],
-				'cf7' => [
-					'form_id' => '',
-					'configured' => false,
 				],
 				'target' => [
 					'exclude_pages' => [],
@@ -1491,5 +1492,36 @@ Message: {message}',
 
 			return apply_filters( 'formychat_widget_configuration', $configuration );
 		}
+
+		/**
+		 * Custom Tags.
+		 *
+		 * @since 1.0.0
+		 * @return array
+		 */
+		public static function custom_tags() {
+			$tags = [
+				'site_url' => get_site_url(),
+				'page_url' => '',
+			];
+
+			return apply_filters( 'formychat_custom_tags', $tags );
+		}
+	}
+}
+
+
+
+// If function formychat() doesn't exist, create it.
+if ( ! function_exists( '\formychat' ) ) {
+	/**
+	 * FormyChat function.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
+	function formychat() {
+		// Get the instance of the FormyChat class.
+		return new \FormyChat\App();
 	}
 }

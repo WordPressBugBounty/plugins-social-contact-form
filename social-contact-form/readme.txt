@@ -1,31 +1,36 @@
-=== Connect Form to Chat Apps with Contact Form 7 Notifications, Welcome Popup, Multi-agent Live Chat  - FormyChat ===
+=== Connect Form to Chat Apps with Contact Form 7, WPForms, Gravity Form | Welcome Popup & Multi-agent Live Chat - FormyChat ===
 Contributors: wppool, azizultex, wpdarkmode, iamjafran, devsabbirahmed
 Tags: WhatsApp chat, WhatsApp integration, click to chat, contact form, contact form builder
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 2.9.4
+Stable tag: 2.10.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WhatsApp Chat for WordPress 🚀. Connect contact forms to WhatsApp. WhatsApp notifications plugin with notifications for Contact Form 7.
+WhatsApp Chat for WordPress 🚀. Connect contact forms to WhatsApp. WhatsApp notifications plugin with notifications for Contact Form 7, WPForms, & Gravity Form.
 
 == Description ==
 
 **FormyChat (WhatsApp Contact Form)** allows you to send WordPress contact form leads directly to your WhatsApp account. A quick and easy floating chat widget to get contact form data in WhatsApp chat.🔥
 
+**Let’s grow, connect, and thrive together!**
+
+* **🤝 Join Our [Facebook Community](https://cutt.ly/ceCQgvoT)**
+* **🌐 Follow Us on [X (Twitter)](https://x.com/wppool_)**
+* **🎥 Subscribe on [YouTube](https://www.youtube.com/@WPPOOL)**
+* **👍 Like Our [Facebook Page](https://www.facebook.com/wppool.dev)**
+
 FormyChat is a revolutionary contact form plugin for WordPress that takes the data from the contact form and sends the collected information to your WhatsApp number. Where traditional WP forms send leads to your email or website, this WordPress chat plugin makes it really easy to send the WordPress contact form leads directly to your WhatsApp account. It also supports automatic redirection to WhatsApp Web for desktop users and WhatsApp Mobile for smartphone/mobile users. This click to chat app works as a WhatsApp notification plugin for WordPress and is super easy to use.
 
 [youtube https://youtu.be/bjJcWoY-8zA?rel=0]
 
-[👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get The ULTIMATE Version](https://go.wppool.dev/krvG)
+[👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
 
 == Quick and Easy Integration Between WhatsApp and WordPress ==
 FormyChat is the most convenient WordPress form plugin that does one thing exceptionally well - **sending contact form leads directly to WhatsApp**. Collect all the user's form submission data and send it to WhatsApp instantly. A simple, powerful, easy-to-use, 100% beginner-friendly WordPress form plugin that puts the WhatsApp app in the front. Sending data from the WordPress contact form to WhatsApp is no longer a headache!
 
 All contact form leads that are sent to WhatsApp chat are saved as a lead (WordPress contact) on your website as well. So, you can always trace back where the message originated from. This is the ultimate WhatsApp notification plugin for WordPress sites.
-
-[👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get The ULTIMATE Version](https://go.wppool.dev/krvG)
 
 == WHATSAPP NOTIFICATIONS FOR CONTACT FORM 7 FORMS ==
 Send your Contact Form 7 leads to WhatsApp chat. Contact Form 7 is regarded as one of the most popular contact form plugins for WordPress and once you integrate your Contact Form 7 forms with WhatsApp, it becomes a game changer. When you connect your CF7 forms with our form to chat plugin, you get CF7 form notifications on your WhatsApp number. That means no hassle to check customer queries from the WordPress dashboard. Reply to them from anywhere you want using your phone.
@@ -33,6 +38,8 @@ Send your Contact Form 7 leads to WhatsApp chat. Contact Form 7 is regarded as o
 [youtube https://youtu.be/kQO9Bbp7tgA?rel=0]
 
 Not only that, you can turn your boring Contact Form 7 forms into a gorgeous WhatsApp chat widget from the plugin settings.
+
+[👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
 
 === 🔝 FORMYCHAT FEATURES ===
 
@@ -56,16 +63,16 @@ Not only that, you can turn your boring Contact Form 7 forms into a gorgeous Wha
 
 * **Easy setup wizard:** Take our 2-minute challenge to build your first floating contact form. Our WordPress form templates provide the most beginner-friendly experience for setting up the contact form easily. You can set up the widget behavior with just a single click. 
 
-[👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get The ULTIMATE Version](https://go.wppool.dev/krvG)
+[👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get The ULTIMATE Version](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
 
 === ✨ FORMYCHAT ULTIMATE FEATURES ===
 
 **😍 Unlimited widgets & customization** 
 
-* **🔥 Multi-agent live chat:** Create multiple agents with different WhatsApp numbers in a popup dialog. Each agent can have a customized profile, including details like working hours, daily roster, avatar, and name tag (upcoming). You can even load the form when users click on an agent for seamless interaction.
+* **Multi-agent live chat:** Create multiple agents with different WhatsApp numbers in a popup dialog. Each agent can have a customized profile, including details like working hours, daily roster, avatar, and name tag (upcoming). You can even load the form when users click on an agent for seamless interaction.
 
 * **Unlimited floating widgets**: Go limitless with WhatsApp floating widgets! Create as many widgets as you want and set them on your desired page. Use multiple WhatsApp accounts for different pages and get your entire sales team involved. It doesn't get easier than this!
-* **🔥 Multi-agent live chat:** Create multiple agents with different WhatsApp numbers in a popup dialog. Each agent can have a customized profile, including details like working hours, daily roster, avatar, and name tag (upcoming). You can even load the form when users click on an agent for seamless interaction.
+* **Multi-agent live chat:** Create multiple agents with different WhatsApp numbers in a popup dialog. Each agent can have a customized profile, including details like working hours, daily roster, avatar, and name tag (upcoming). You can even load the form when users click on an agent for seamless interaction.
 * **Duplicate widgets**: Efficiently duplicate existing widgets to create a new one. It's as easy as saying 1,2,3!
 * **Exclude Contact Form Widget**: Easily exclude the contact form widget from any page of your website. This helps you stay in control and place the widget exactly where you want.
 
@@ -102,14 +109,29 @@ Not only that, you can turn your boring Contact Form 7 forms into a gorgeous Wha
 📑 **Leads (form submission data) collection:**
 
 * **Access leads**: FormyChat ULTIMATE gives you access to enter into the leads repository. It's a data collection table where you can see all the submitted form messages in one place. 
-* **Contact Form 7 form leads**: Leads from CF7 forms will be also saved in the leads section where you can find individual columns for each form field. You can also access leads from separate contact forms to distinguish them easily. 
+* **Contact Form 7 form leads**: Leads from CF7 forms will also be saved in the leads section where you can find individual columns for each form field. You can also access leads from separate contact forms to distinguish them easily. 
 * **Access Lead details**: Get every submission information in detail like date, time, name, email, contact, and messages in one place. The best thing about this feature is that everything is customizable for you. 
 * **Form data and metadata**: You can access form data by clicking on the view icon. In the user detail box, you'll find some metadata of your users. Delete specific user data anytime you want. 
 * **Filter leads based on form and floating widgets**: If you have multiple form types (FormyChat form or CF7 form), you can easily filter them based on the form type. Also, you can filter leads based on specific widget names.
 * **Sorting, filtering, searching**: Get a search box on the leads screen page. Found any user with a custom search. Sort your data anytime and filter these user data with the filtering option. Enter your start and end date and hit the enter button. You're done seeing the specific data chart of your targeted time. 
 * **Export as CSV**: Why concise into the site dashboard only? Get an export button on the top right corner of the page. Just click on it and get all the user data in one place in a CSV format. All you need to do is hit the enter button and download the CSV. That's it! The field is yours. 
 
-📨 **Email notifications**: Send contact form submissions to email alongside WhatsApp chat. Give yourself the luxury of receiving leads on multiple platforms and stay on top of your game. 
+📨 **Email notifications**: 
+
+- Send contact form submissions to email alongside WhatsApp chat. Give yourself the luxury of receiving leads on multiple platforms and stay on top of your game. 
+
+=== 🔥 More Awesome Plugins ===
+If you like FormyChat, then consider checking out our other awesome projects:
+
+* 🌓 **[WP Dark Mode](https://wordpress.org/plugins/wp-dark-mode/)**: Use WP Dark Mode plugin to create a stunning dark version for your WordPress website. WP Dark Mode works automatically without going into any complicated settings.
+
+* 🟢 **[FlexTable - Sheets To WP Table Live Sync](https://wordpress.org/plugins/sheets-to-wp-table-live-sync/)**: Google Sheets allows you to input data on your Google sheet and show the same data on WordPress as a table effortlessly. Try Flex Table now!
+
+* 🔄 **[FlexStock - Stock Sync with Google Sheet for WooCommerce](https://wordpress.org/plugins/stock-sync-with-google-sheet-for-woocommerce/)**: Auto-sync WooCommerce products from Google Sheets. Flex Stock is an easy, powerful, and simple inventory management system to handle your WooCommerce products.
+
+* 🛒 **[FlexOrder - Order Sync with Google Sheet for WooCommerce](https://wordpress.org/plugins/order-sync-with-google-sheets-for-woocommerce/)**: Manage WooCommerce orders from Google Sheets. WooCommerce order sync, e-commerce order management, and sales order management with Google Sheets. Try Flex Order now!
+
+* 🎁 **[EchoRewards](https://wordpress.org/plugins/echo-rewards/)**: With Echo Reward, you can refer a friend for WooCommerce to launch your customer referral program. Echo Rewards Referral Plugin is a WooCommerce referral plugin to boost your sales. Generate coupons, reward customers, and launch the ideal refer-a-friend program for your store.
 
 == Installation ==
 
@@ -167,23 +189,15 @@ No coding knowledge is required for using this plugin.
 = Whom do I contact for any kind of support? =
 Please post your queries on WordPress Support thread (https://wordpress.org/support/plugin/social-contact-form/).
 
-=== 🔥 More Awesome Plugins === 
-If you like FormyChat, then consider checking out our other awesome projects:
-
-
-🌓 **[WP Dark Mode](https://wordpress.org/plugins/wp-dark-mode/)**  - Use WP Dark Mode plugin to create a stunning dark version for your WordPress website. WP Dark Mode works automatically without going into any complicated settings.
-
-🔄 **[Stock Sync with Google Sheet for WooCommerce](https://wordpress.org/plugins/stock-sync-with-google-sheet-for-woocommerce/)**  - Auto-sync unlimited WooCommerce products from Google Sheets. An easy, powerful and simple solution to handle your WooCommerce products from one place.
-
-🔔 **[Back in Stock Notifier for WooCommerce – Easy in-stock Notifier with Multivendor Support](https://wordpress.org/plugins/stock-notifier-for-woocommerce/)** - Send in stock notifications to customers' WhatsApp and phone when requested products come back in stock. 
-
-🎥 **[Easy Video Reviews](https://wordpress.org/plugins/easy-video-reviews/)** - Easy Video Reviews is the best and easiest video review plugin for WordPress. Your customers can record and send video testimonials right from their browser, and you can manage and showcase them anywhere on your WordPress website.
-
-📄 **[Sheets To WP Table Live Sync](https://wordpress.org/plugins/sheets-to-wp-table-live-sync/)**  - Quick. Easy. Simple. Keep your Google Spreadsheet data always synced LIVE with the WordPress table. Responsive data tables with as many data you want to display - Sheets to WP Table Live Sync plugin got it all!
-
-🎦 **[Webinar and Video Conference with Jitsi Meet](https://wordpress.org/plugins/webinar-and-video-conference-with-jitsi-meet/)**  - Experience the best WordPress video conference plugin and live video chat solution. Get shortcode support with WooCommerce and BuddyPress integration.
 
 == Changelog ==
+
+= 2.10.0 - 31 DEC 2024 =
+* **New:** Added Gravity Form Integration.
+* **New:** Added WPForms Integration.
+* **Fix:** Resolved issues with Contact Form 7 functionality.
+* **Fix:** Addressed styling issues with the Twenty Twenty-Five theme.
+* **Fix:** Reinstated missing tags in Message Preset functionality, including `site_url` and `page_url`.
 
 = 2.9.4 - 30 NOV 2024 =
 * Improvement: Maintenance update

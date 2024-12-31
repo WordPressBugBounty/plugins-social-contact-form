@@ -30,9 +30,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets' ) ) {
 		 */
 		public function actions() {
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-			add_action( 'wp_footer', [ $this, 'print_widgets' ] );
 		}
-
 
 		/**
 		 * Enqueue scripts and styles.
@@ -41,16 +39,13 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets' ) ) {
 		 */
 		public function enqueue_scripts() {
 
-			global $wpdb;
-			$public_widgets = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}scf_widgets WHERE `is_active` IS TRUE AND `deleted_at` IS NULL" ); // db call ok; no-cache ok.
+			wp_enqueue_style( 'formychat-frontend', FORMYCHAT_PUBLIC . '/css/frontend.min.css', [], FORMYCHAT_VERSION );
 
-			// Bail if no active widgets.
-			if ( empty( $public_widgets ) ) {
+			if ( defined('FORMYCHAT_FORM_ADMIN') ) {
 				return;
 			}
 
-			wp_enqueue_style( 'formychat-frontend', FORMYCHAT_PUBLIC . '/css/frontend.min.css', [], FORMYCHAT_VERSION );
-			wp_enqueue_script( 'formychat-frontend', FORMYCHAT_PUBLIC . '/js/frontend.min.js', [], FORMYCHAT_VERSION, true );
+			wp_enqueue_script( 'formychat-frontend', FORMYCHAT_PUBLIC . '/js/frontend.min.js', [ 'jquery' ], FORMYCHAT_VERSION, true );
 
 			wp_localize_script(
 				'formychat-frontend',
@@ -82,13 +77,15 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets' ) ) {
 						'description' => get_bloginfo( 'description' ),
 					],
 					'user' => $this->get_user(),
+					'custom_tags' => \FormyChat\App::custom_tags(),
 				] )
 			);
 
 			// Embed fonts.
 			$font_css = \FormyChat\App::embed_fonts();
+			$inline_css = apply_filters( 'formychat_inline_css', $font_css );
 			if ( ! empty( $font_css ) ) {
-				wp_add_inline_style( 'formychat-frontend', $font_css );
+				wp_add_inline_style( 'formychat-frontend', $inline_css );
 			}
 		}
 
@@ -122,15 +119,6 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets' ) ) {
 			];
 
 			return $user_data;
-		}
-
-		/**
-		 * Add contact form to footer.
-		 *
-		 * @return void
-		 */
-		public function print_widgets() {
-			echo '<div id="formychat-widgets"></div>';
 		}
 	}
 
