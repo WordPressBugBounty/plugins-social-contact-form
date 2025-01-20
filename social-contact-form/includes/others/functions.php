@@ -8,7 +8,7 @@ if ( ! function_exists('formychat_phone_number_field') ) {
     function formychat_phone_number_field( $args = [] ) {
 
         $args = wp_parse_args($args, [
-            'country_code' => '44',
+            'country_code' => '',
             'number' => '',
             'country_code_name' => 'formychat_country_code',
             'number_name' => 'formychat_number',
@@ -23,7 +23,7 @@ if ( ! function_exists('formychat_phone_number_field') ) {
 
                 <!-- placeholder  -->
                 <div class="formychat-dropdown-placeholder">
-                    <span>🇬🇧 +44</span>
+                    <span data-countrycode></span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
                     </svg>
@@ -82,3 +82,4 @@ if ( ! function_exists('formychat_build_message') ) {
         return $message;
     }
 }
+

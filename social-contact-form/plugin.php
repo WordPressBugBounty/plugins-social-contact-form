@@ -3,7 +3,7 @@
  * Plugin name:      FormyChat
  * Plugin URI:       https://wppool.dev/social-contact-form-pricing/
  * Description:      Add a contact form on your website that sends form leads directly to your WhatsApp web or mobile, including WooCommerce orders, cart, etc
- * Version:          2.10.0
+ * Version:          2.10.1
  * Author:           WPPOOL
  * Author URI:       https://wppool.dev
  * License:          GPLv2 or later
@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 
 // Define constants.
 define('FORMYCHAT_FILE', __FILE__ );
-define('FORMYCHAT_VERSION', '2.10.0' );
+define('FORMYCHAT_VERSION', '2.10.1' );
 
 // Include files.
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-boot.php';

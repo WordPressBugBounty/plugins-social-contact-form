@@ -83,7 +83,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
 
 			$form_options = [
 				'status' => [ 'formy_chat_status', 'off' ],
-				'country_code' => [ 'formy_chat_country_code', '44' ],
+				'country_code' => [ 'formy_chat_country_code', '' ],
 				'number' => [ 'formy_chat_number', '' ],
 				'message' => [ 'formy_chat_message_fields', '*Name*: [your-name] ' . "\n" . '*Email*: [your-email]' . "\n" . '*Subject*: [your-subject]' . "\n" . '*Message*:' . "\n" . '[your-message]' . "\n" ],
 				'new_tab' => [ 'formy_chat_tabs_status', 'off' ],

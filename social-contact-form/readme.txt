@@ -4,7 +4,7 @@ Tags: WhatsApp chat, WhatsApp integration, click to chat, contact form, contact 
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 2.10.0
+Stable tag: 2.10.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,7 +25,7 @@ FormyChat is a revolutionary contact form plugin for WordPress that takes the da
 
 [youtube https://youtu.be/bjJcWoY-8zA?rel=0]
 
-[👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
+👁️ [View Demo](https://go.wppool.dev/BsjA) | 🚀 [Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
 
 == Quick and Easy Integration Between WhatsApp and WordPress ==
 FormyChat is the most convenient WordPress form plugin that does one thing exceptionally well - **sending contact form leads directly to WhatsApp**. Collect all the user's form submission data and send it to WhatsApp instantly. A simple, powerful, easy-to-use, 100% beginner-friendly WordPress form plugin that puts the WhatsApp app in the front. Sending data from the WordPress contact form to WhatsApp is no longer a headache!
@@ -39,7 +39,7 @@ Send your Contact Form 7 leads to WhatsApp chat. Contact Form 7 is regarded as o
 
 Not only that, you can turn your boring Contact Form 7 forms into a gorgeous WhatsApp chat widget from the plugin settings.
 
-[👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
+👁️ [View Demo](https://go.wppool.dev/BsjA) | 🚀 [Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
 
 === 🔝 FORMYCHAT FEATURES ===
 
@@ -61,9 +61,11 @@ Not only that, you can turn your boring Contact Form 7 forms into a gorgeous Wha
 
 * **Disable Contact Form 7 email notifications**: Don’t want to use any third-party SMTP plugin for CF7 forms? Enable this feature to disable the email notification for your selected Contact Form 7 form and use FormyChat CF7 integration without any SMPT setup.
 
+* **Triggers:** Set triggers on when the chat widget should appear. You can show it after a few seconds, on page scroll, or use the exit intent trigger.
+
 * **Easy setup wizard:** Take our 2-minute challenge to build your first floating contact form. Our WordPress form templates provide the most beginner-friendly experience for setting up the contact form easily. You can set up the widget behavior with just a single click. 
 
-[👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get The ULTIMATE Version](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
+👁️ [View Demo](https://go.wppool.dev/BsjA) | 🚀 [Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
 
 === ✨ FORMYCHAT ULTIMATE FEATURES ===
 
@@ -116,7 +118,7 @@ Not only that, you can turn your boring Contact Form 7 forms into a gorgeous Wha
 * **Sorting, filtering, searching**: Get a search box on the leads screen page. Found any user with a custom search. Sort your data anytime and filter these user data with the filtering option. Enter your start and end date and hit the enter button. You're done seeing the specific data chart of your targeted time. 
 * **Export as CSV**: Why concise into the site dashboard only? Get an export button on the top right corner of the page. Just click on it and get all the user data in one place in a CSV format. All you need to do is hit the enter button and download the CSV. That's it! The field is yours. 
 
-📨 **Email notifications**: 
+📨 **Email notifications:** 
 
 - Send contact form submissions to email alongside WhatsApp chat. Give yourself the luxury of receiving leads on multiple platforms and stay on top of your game. 
 
@@ -191,6 +193,15 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 
 == Changelog ==
+
+= 2.10.1 - 20 JAN 2024 =
+* **New:** Added ‘Open form on scrolling page’.
+* **New:** Added ‘Open form on exiting page’.
+* **Improvement:** Now Country Codes will be automatically selected.
+* **Improvement:** Enhanced ‘Duplicate Widget’ flow.
+* **Improvement:** Reverted the old tags {page_id} {site_url}
+* **Fix:** ‘Invalid Date’ triggers for some old sites.
+* **Fix:** ‘Device information now showing correctly’. Added others meta data.
 
 = 2.10.0 - 31 DEC 2024 =
 * **New:** Added Gravity Form Integration.

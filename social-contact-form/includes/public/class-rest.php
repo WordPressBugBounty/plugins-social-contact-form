@@ -112,6 +112,11 @@ if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 
 			$widget = \FormyChat\Models\Widget::find($form_data['widget_id']);
 
+			// If widget is not found, return.
+			if ( ! $widget ) {
+				return;
+			}
+
 			$settings = $widget->config['email'];
 
 			// Bail, if email is not enabled.

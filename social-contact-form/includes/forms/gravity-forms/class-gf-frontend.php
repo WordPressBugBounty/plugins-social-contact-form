@@ -125,16 +125,33 @@ class Frontend extends \FormyChat\Base {
             'new_tab' => gform_get_meta($form['id'], 'formychat_new_tab'),
         ];
 
-        add_action('wp_footer', function () use ( $form, $entry, $settings ) {
+        /**
+         * Enqueue the formychat script in the footer.
+         *
+         * @param array $form The form data.
+         * @param array $entry The entry data.
+         * @param array $settings The settings data.
+         */
+        function enqueue_formychat_script( $form, $entry, $settings ) {
+            // Create a unique ID to prevent potential script collision
+            $script_id = 'formychat-script-' . uniqid();
+            ?>
+            <script id="<?php echo esc_attr( $script_id ); ?>" type="text/javascript">
+            (function () {
+                document.addEventListener("formychat_loaded", function (e) {
+                    window.gform_formychat(
+                        <?php echo wp_json_encode( $form ); ?>, 
+                        <?php echo wp_json_encode( $entry ); ?>, 
+                        <?php echo wp_json_encode( $settings ); ?>
+                    );
+                });
+            })();
+            </script>
+            <?php
+        }
 
-			$js = '(function () {
-           document.addEventListener("formychat_loaded", function (e) {
-            window.gform_formychat( ' . wp_json_encode( $form ) . ', ' . wp_json_encode( $entry ) . ' ,
-            ' . wp_json_encode( $settings ) . ' );
-        });
-    })()';
-
-            echo '<script>' . esc_js( $js ) . '</script>';
+        add_action( 'wp_footer', function () use ( $form, $entry, $settings ) {
+            enqueue_formychat_script( $form, $entry, $settings );
         });
 
         return $confirmation;

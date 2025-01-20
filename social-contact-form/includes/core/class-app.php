@@ -1373,7 +1373,7 @@ if ( ! class_exists( __NAMESPACE__ . '\App' ) ) {
 			$configuration = [
 				'whatsapp' => [
 					'web_version' => true,
-					'country_code' => '44',
+					'country_code' => '',
 					'number' => '',
 					'message_template' =>
 						'Name: {name}
@@ -1398,6 +1398,10 @@ Message: {message}',
 						'left' => '',
 						'right' => '',
 					],
+
+					'show_after_scroll' => false,
+					'scroll_to' => 25,
+					'show_on_exit' => false,
 				],
 				'cta' => [
 					'enabled' => true,
@@ -1501,8 +1505,11 @@ Message: {message}',
 		 */
 		public static function custom_tags() {
 			$tags = [
+				'site_name' => get_bloginfo( 'name' ),
 				'site_url' => get_site_url(),
+				'user_id' => get_current_user_id(),
 				'page_url' => '',
+				'page_id' => get_the_ID(),
 			];
 
 			return apply_filters( 'formychat_custom_tags', $tags );

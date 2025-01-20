@@ -180,16 +180,16 @@ Comments: {Comments}',
             foreach ( $values as $key => $value ) {
 
                 if ( 'formychat_country_code' === $key ) {
-                    gform_update_meta($form_id, 'formychat_country_code', $value);
+                    gform_update_meta($form_id, 'formychat_country_code', $value, $form_id);
                     continue;
                 }
 
                 if ( 'formychat_number' === $key ) {
-                    gform_update_meta($form_id, 'formychat_number', $value);
+                    gform_update_meta($form_id, 'formychat_number', $value, $form_id);
                     continue;
                 }
 
-                gform_update_meta($form_id, 'formychat_' . $key, $value);
+                gform_update_meta($form_id, 'formychat_' . $key, $value, $form_id);
             }
         }
 

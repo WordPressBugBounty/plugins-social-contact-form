@@ -66,8 +66,8 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 			$this->formychat_custom_icon();
 
 			// Enqueue admin-util
-			wp_enqueue_script( 'formychat-admin-util', FORMYCHAT_PUBLIC . '/js/admin-util.js', [], FORMYCHAT_VERSION, true );
-			wp_enqueue_style( 'formychat-admin-util', FORMYCHAT_PUBLIC . '/css/admin-util.css', [], FORMYCHAT_VERSION );
+			wp_enqueue_script( 'formychat-admin-common', FORMYCHAT_PUBLIC . '/js/admin.common.js', [], FORMYCHAT_VERSION, true );
+			wp_enqueue_style( 'formychat-admin-common', FORMYCHAT_PUBLIC . '/css/admin-common.css', [], FORMYCHAT_VERSION );
 
 			// Only load for FormyChat pages.
 			if ( ! in_array($hook, [ 'toplevel_page_formychat', 'formychat_page_formychat-leads' ]) ) {
@@ -98,6 +98,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 
 					'data' => [
 						'widget_config' => App::widget_config(),
+						'custom_tags' => App::custom_tags(),
 					],
 
 					'site' => [

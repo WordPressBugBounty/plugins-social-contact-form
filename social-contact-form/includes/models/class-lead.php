@@ -13,7 +13,7 @@ namespace FormyChat\Models;
 defined( 'ABSPATH' ) || exit;
 
 
-if ( ! class_exists( __NAMESPACE__ . '\Lead') ) {
+if ( ! class_exists( __NAMESPACE__ . '\Lead' ) ) {
 	/**
 	 * Lead model.
 	 *
@@ -48,14 +48,27 @@ if ( ! class_exists( __NAMESPACE__ . '\Lead') ) {
 			// Add created_at.
 			$data['created_at'] = current_time( 'mysql' );
 
-			// Encode field and meta.
-			$data['field'] = wp_json_encode( $data['field'] );
-			$data['meta']  = wp_json_encode( $data['meta'] );
+			// Ensure proper JSON encoding with error handling
+			$data['field'] = wp_json_encode( $data['field'], JSON_UNESCAPED_UNICODE ) ?: '{}'; // phpcs:ignore
+			$data['meta']  = wp_json_encode( $data['meta'], JSON_UNESCAPED_UNICODE ) ?: '{}'; // phpcs:ignore
 
-			$wpdb->insert(
+			$result = $wpdb->insert(
 				$table_name,
-				$data
+				$data,
+				[
+					'%d',  // widget_id
+					'%s',  // field
+					'%s',  // meta
+					'%s',  // note
+					'%s',  // form
+					'%d',  // form_id
+					'%s',  // created_at
+				]
 			); // db call ok; no-cache ok.
+
+			if ( false === $result ) {
+				return 0;
+			}
 
 			return $wpdb->insert_id;
 		}
@@ -140,13 +153,13 @@ if ( ! class_exists( __NAMESPACE__ . '\Lead') ) {
 
 			if ( $leads ) {
 				foreach ( $leads as $lead ) {
-					$lead->id = intval($lead->id);
-					$lead->widget_id = empty( $lead->widget_id ) ? 1 : intval($lead->widget_id);
+					$lead->id = intval( $lead->id );
+					$lead->widget_id = empty( $lead->widget_id ) ? 1 : intval( $lead->widget_id );
 					$lead->field = empty( $lead->field ) ? [] : json_decode( ( $lead->field ) );
 					$lead->meta = empty( $lead->meta ) ? [] : json_decode( ( $lead->meta ) );
 					$lead->note = empty( $lead->note ) ? '' : $lead->note;
 					$lead->form = empty( $lead->form ) ? 'formychat' : $lead->form;
-					$lead->form_id = empty( $lead->form_id ) ? 0 : intval($lead->form_id);
+					$lead->form_id = empty( $lead->form_id ) ? 0 : intval( $lead->form_id );
 				}
 			}
 

@@ -71,10 +71,11 @@ if ( ! class_exists(__NAMESPACE__ . '\Hooks') ) {
 
 			$number = isset( $_GET['number'] ) ? sanitize_text_field( wp_unslash( $_GET['number'] ) ) : '';
 			$new_tab = isset( $_GET['new_tab'] ) ? sanitize_text_field( wp_unslash( $_GET['new_tab'] ) ) : '';
-
+			$web = isset( $_GET['web'] ) ? sanitize_text_field( wp_unslash( $_GET['web'] ) ) : '';
 			echo '<div class="formychat-custom-form" style="padding: 15px;"
 			data-whatsapp="' . esc_attr( $number ) . '"
 			data-new-tab="' . esc_attr( $new_tab ) . '"
+			data-web="' . esc_attr( $web ) . '"
 			>';
 
 			if ( isset( $_GET['header']) && ! empty( $_GET['header'] ) ) {

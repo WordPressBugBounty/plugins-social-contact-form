@@ -97,8 +97,8 @@ class Database extends \FormyChat\Base {
             `cf7_id` text NULL DEFAULT NULL,
             `field` text NULL DEFAULT NULL,
             `meta` text NULL DEFAULT NULL,
-            `created_at` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-            `deleted_at` timestamp DEFAULT NULL,
+            `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+            `deleted_at` DATETIME DEFAULT NULL,
             `note` text DEFAULT NULL,
             PRIMARY KEY  (`id`)
         ) $charset_collate;" ); // phpcs:ignore
@@ -124,9 +124,9 @@ class Database extends \FormyChat\Base {
             `name` varchar(255) DEFAULT NULL,
             `is_active` tinyint(1) DEFAULT 1,
             `config` long NULL DEFAULT NULL,
-            `created_at` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-            `updated_at` timestamp NULL DEFAULT NULL,
-            `deleted_at` timestamp NULL DEFAULT NULL,
+            `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+            `updated_at` DATETIME NULL DEFAULT NULL,
+            `deleted_at` DATETIME NULL DEFAULT NULL,
             PRIMARY KEY (id)
         ) $charset_collate;" ); // phpcs:ignore
     }

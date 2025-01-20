@@ -476,6 +476,29 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			]);
 		}
 
+		/**
+		 * Action save_country_code.
+		 *
+		 * @param \WP_REST_Request $request Request object.
+		 * @return \WP_REST_Response
+		 */
+		public function action_save_country_code( $request ) {
+			$code = $request->get_param( 'code' );
+
+			if ( ! $code ) {
+				return new \WP_REST_Response( [
+					'success' => false,
+					'message' => __( 'No country code provided.', 'social-contact-form' ),
+				]);
+			}
+
+			update_option( 'formychat_country_code', $code );
+
+			return new \WP_REST_Response( [
+				'success' => true,
+				'message' => __( 'Country code saved.', 'social-contact-form' ),
+			]);
+		}
 
 		/**
 		 * Get leads.
