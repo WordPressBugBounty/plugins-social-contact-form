@@ -100,14 +100,17 @@ if ( ! class_exists( __NAMESPACE__ . '\Boot' ) ) {
 
 			// Gravity Forms.
 			require_once FORMYCHAT_INCLUDES . '/forms/gravity-forms/class-gf-admin.php';
+
+			// FluentForm.
+			require_once FORMYCHAT_INCLUDES . '/forms/fluentform/class-fluentform-admin.php';
 		}
 
 		/**
 		 * Include public files.
 		 */
 		private function include_public_files() {
-			require_once FORMYCHAT_INCLUDES . '/public/class-hooks.php';
 			require_once FORMYCHAT_INCLUDES . '/public/class-assets.php';
+			require_once FORMYCHAT_INCLUDES . '/public/class-widget-form.php';
 			require_once FORMYCHAT_INCLUDES . '/public/class-rest.php';
 
 			// Contact Form 7.
@@ -118,6 +121,9 @@ if ( ! class_exists( __NAMESPACE__ . '\Boot' ) ) {
 
 			// Gravity Forms.
 			require_once FORMYCHAT_INCLUDES . '/forms/gravity-forms/class-gf-frontend.php';
+
+			// FluentForm.
+			require_once FORMYCHAT_INCLUDES . '/forms/fluentform/class-fluentform-frontend.php';
 		}
 	}
 

@@ -74,7 +74,6 @@ class Admin extends \FormyChat\Base {
 
         echo '<br/>';
 
-        // Use these tags {tags}
         $tags = [];
 
         if ( ! array_key_exists( 'fields', $settings->form_data ) ) {

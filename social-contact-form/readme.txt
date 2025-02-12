@@ -4,7 +4,7 @@ Tags: WhatsApp chat, WhatsApp integration, click to chat, contact form, contact 
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 2.10.1
+Stable tag: 2.10.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -193,6 +193,11 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 
 == Changelog ==
+
+= 2.10.2 - 12 FEB 2024 =
+* **New:** Added **Fluent Form** Integration.
+* **Improvement:** Enhanced customization options for **Message Templates**.
+* **Fix:** Issue with navigation to WhatsApp Desktop not working properly.
 
 = 2.10.1 - 20 JAN 2024 =
 * **New:** Added ‘Open form on scrolling page’.

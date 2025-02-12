@@ -25,8 +25,6 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
 	 */
 	class Admin extends \FormyChat\Base {
 
-
-
 		/**
 		 * Register actions.
 		 *

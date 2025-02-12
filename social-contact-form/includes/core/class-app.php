@@ -1380,6 +1380,10 @@ if ( ! class_exists( __NAMESPACE__ . '\App' ) ) {
 Email: {email}
 Phone: {phone}
 Message: {message}',
+					'cf7_message_template' => '',
+					'fluentform_message_template' => '',
+					'gravity_message_template' => '',
+					'wpforms_message_template' => '',
 					'new_tab' => true,
 					'agent_mode' => 'single',
 					'agents' => [],
@@ -1431,6 +1435,7 @@ Message: {message}',
 					'cf7_id' => 0,
 					'gravity_id' => 0,
 					'wpforms_id' => 0,
+					'fluentform_id' => 0,
 				],
 				'email' => [
 					'enabled' => false,
@@ -1514,6 +1519,38 @@ Message: {message}',
 
 			return apply_filters( 'formychat_custom_tags', $tags );
 		}
+
+		/**
+		 * Get all forms.
+		 *
+		 * @return array
+		 */
+		public static function get_forms() {
+			$forms = [
+				'formychat' => [
+					'label' => 'FormyChat',
+					'logo' => FORMYCHAT_PUBLIC . '/images/forms/formychat.png',
+				],
+				'cf7' => [
+					'label' => 'Contact Form 7',
+					'logo' => FORMYCHAT_PUBLIC . '/images/forms/contact-form-7.png',
+				],
+				'gravity' => [
+					'label' => 'Gravity Forms',
+					'logo' => FORMYCHAT_PUBLIC . '/images/forms/gravity-forms.png',
+				],
+				'wpforms' => [
+					'label' => 'WP Forms',
+					'logo' => FORMYCHAT_PUBLIC . '/images/forms/wp-forms.png',
+				],
+				'fluentform' => [
+					'label' => 'Fluent Forms',
+					'logo' => FORMYCHAT_PUBLIC . '/images/forms/fluent-form.png',
+				],
+			];
+
+			return apply_filters( 'formychat_forms', $forms );
+		}
 	}
 }
 
@@ -1525,7 +1562,7 @@ if ( ! function_exists( '\formychat' ) ) {
 	 * FormyChat function.
 	 *
 	 * @since 1.0.0
-	 * @return void
+	 * @return mixed
 	 */
 	function formychat() {
 		// Get the instance of the FormyChat class.

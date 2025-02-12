@@ -95,6 +95,8 @@ if ( ! class_exists( __NAMESPACE__ . '\Frontend' ) ) {
 			unset( $formychat['number'] );
 
 			$response['formychat'] = apply_filters( 'formychat_cf7_posted_data', $formychat );
+
+			unset($formychat);
 			return $response;
 		}
 	}

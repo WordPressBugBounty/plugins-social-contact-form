@@ -34,6 +34,11 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 		 */
 		public function actions() {
 			add_action( 'rest_api_init', array( $this, 'register_routes' ) );
+
+			add_filter('formychat_form_fields_cf7', [ $this, 'formychat_form_fields_cf7' ], 10, 2);
+			add_filter('formychat_form_fields_gravity', [ $this, 'formychat_form_fields_gravity' ], 10, 2);
+			add_filter('formychat_form_fields_wpforms', [ $this, 'formychat_form_fields_wpforms' ], 10, 2);
+			add_filter('formychat_form_fields_fluentform', [ $this, 'formychat_form_fields_fluentform' ], 10, 2);
 		}
 
 		/**
@@ -86,6 +91,10 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 						'callback' => [ $this, 'perform_action' ],
 					],
 				],
+				'form_fields' => [
+					'methods' => 'GET',
+					'callback' => [ $this, 'get_form_fields' ],
+				],
 			]);
 
 			if ( ! empty($routes) ) {
@@ -119,6 +128,8 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 		public function get_widgets( $request ) {
 			$widgets = Widget::get_all();
 
+			$widgets = apply_filters( 'formychat_get_widgets', $widgets );
+
 			return new \WP_REST_Response( $widgets );
 		}
 
@@ -133,6 +144,8 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			$widget = Widget::find( $widget_id );
 
 			if ( $widget ) {
+				$widget = apply_filters( 'formychat_get_widget', $widget );
+
 				return new \WP_REST_Response( [
 					'success' => true,
 					'data' => $widget,
@@ -163,10 +176,12 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			] );
 
 			if ( $widget_id ) {
+				$widget = apply_filters( 'formychat_get_widget', Widget::find( $widget_id ) );
+
 				return new \WP_REST_Response( [
 					'success' => true,
 					'id' => $widget_id,
-					'data' => Widget::find( $widget_id ),
+					'data' => $widget,
 				]);
 			}
 
@@ -280,103 +295,6 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 		}
 
 		/**
-		 * Get CF7 form.
-		 *
-		 * @param \WP_REST_Request $request Request object.
-		 * @return \WP_REST_Response
-		 */
-		public function action_load_cf7_form( $request ) {
-			$id = $request->get_param( 'id' );
-
-			if ( ! $id ) {
-				return new \WP_REST_Response( [
-					'success' => false,
-					'message' => __( 'No form ID provided.', 'social-contact-form' ),
-				]);
-			}
-			// do_shortcode( wp_sprintf( '[contact-form-7 id=%s]', $id ));
-
-			return new \WP_REST_Response( [
-				'success' => true,
-				'form' => do_shortcode( wp_sprintf( '[contact-form-7 id=%s]', $id )),
-			]);
-		}
-
-		/**
-		 * Action activate CF7 plugin.
-		 *
-		 * @param \WP_REST_Request $request Request object.
-		 * @return \WP_REST_Response
-		 */
-		public function action_activate_cf7( $request ) {
-
-			// Include plugin.php for get_plugin_data() function.
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-
-			if ( ! file_exists( WP_PLUGIN_DIR . '/contact-form-7/wp-contact-form-7.php' ) ) {
-
-				// Include necessary WordPress files for installing and activating plugins.
-				require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
-				require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-				require_once ABSPATH . 'wp-admin/includes/class-plugin-upgrader.php';
-				require_once ABSPATH . 'wp-admin/includes/file.php';
-				require_once ABSPATH . 'wp-admin/includes/misc.php';
-
-				// Request filesystem credentials if necessary.
-				$creds = request_filesystem_credentials('', '', false, false, null);
-
-				// Check if we can use the filesystem, if not, throw an error.
-				if ( ! WP_Filesystem( $creds ) ) {
-					return new \WP_REST_Response( [
-						'success' => false,
-						'message' => __( 'Could not access filesystem.', 'social-contact-form' ),
-					], 500 );
-				}
-
-				$api = plugins_api( 'plugin_information', [ 'slug' => 'contact-form-7' ] );
-
-				if ( is_wp_error( $api ) ) {
-					return new \WP_REST_Response( [
-						'success' => false,
-						'message' => $api->get_error_message(),
-					], 500 );
-				}
-
-				try {
-					$upgrader = new \Plugin_Upgrader( new \WP_Upgrader_Skin() );
-					$install = $upgrader->install( $api->download_link );
-
-					if ( is_wp_error( $install ) ) {
-						return new \WP_REST_Response( [
-							'success' => false,
-							'message' => $install->get_error_message(),
-						], 500 );
-					}
-				} catch ( \Exception $e ) {
-					return new \WP_REST_Response( [
-						'success' => false,
-						'message' => $e->getMessage(),
-					], 500 );
-				}
-			}
-
-			// Activate plugin.
-			$activated = activate_plugin( 'contact-form-7/wp-contact-form-7.php' );
-
-			if ( is_wp_error( $activated ) ) {
-				return new \WP_REST_Response( [
-					'success' => false,
-					'message' => $activated->get_error_message(),
-				], 500 );
-			}
-
-			return new \WP_REST_Response( [
-				'success' => true,
-				'message' => __( 'Contact Form 7 plugin activated.', 'social-contact-form' ),
-			]);
-		}
-
-		/**
 		 * Activate plugin.
 		 *
 		 * @param \WP_REST_Request $request Request object.
@@ -398,7 +316,13 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 					'file' => 'wpforms-lite/wpforms.php',
 					'slug' => 'wpforms-lite',
 				],
+				'fluentform' => [
+					'file' => 'fluentform/fluentform.php',
+					'slug' => 'fluentform',
+				],
 			];
+
+			$plugins = apply_filters( 'formychat_form_plugins', $plugins );
 
 			if ( ! isset( $plugins[ $plugin ] ) ) {
 				return new \WP_REST_Response( [
@@ -530,7 +454,6 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				'per_page' => $request->has_param( 'per_page' ) ? $request->get_param( 'per_page' ) : 10,
 				'page' => $request->has_param( 'page' ) ? intval( $request->get_param( 'page' ) ) : 1,
 				'order_by' => $request->has_param( 'order_by' ) ? $request->get_param( 'order_by' ) : 'created_at',
-				// 'cf7_id' => $request->has_param( 'cf7_id' ) ? $request->get_param( 'cf7_id' ) : '',
 				'widget_id' => $request->has_param( 'widget_id' ) ? $request->get_param( 'widget_id' ) : '',
 				'before' => $before,
 				'after' => $after,
@@ -590,10 +513,10 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				'fonts' => \FormyChat\App::fonts(),
 				'pages' => $this->get_pages(),
 				'widgets' => Widget::get_names(),
-				'cf7_forms'   => $this->get_cf7_forms(),
-				'gravity_forms' => $this->get_gravity_forms(),
-				'wpforms_forms' => $this->get_wpforms_forms(),
+				'forms' => $this->get_forms(),
 			];
+
+			$contents = apply_filters( 'formychat_contents_response', $contents );
 
 			return new \WP_REST_Response( $contents );
 		}
@@ -614,6 +537,22 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			}
 
 			return $pages;
+		}
+
+		/**
+		 * Get all forms.
+		 *
+		 * @return array
+		 */
+		public function get_forms() {
+			$forms = [
+				'cf7'   => $this->get_cf7_forms(),
+				'gravity' => $this->get_gravity_forms(),
+				'wpforms' => $this->get_wpforms_forms(),
+				'fluentform' => $this->get_fluentform_forms(),
+			];
+
+			return apply_filters( 'formychat_forms', $forms );
 		}
 
 
@@ -649,7 +588,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 
 			wp_reset_postdata();
 
-			return $forms;
+			return apply_filters( 'formychat_cf7_forms', $forms );
 		}
 
 		/**
@@ -679,7 +618,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				];
 			}
 
-			return $gravity_forms;
+			return apply_filters( 'formychat_gravity_forms', $gravity_forms );
 		}
 
 		/**
@@ -688,6 +627,12 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 		 * @return array
 		 */
 		public function get_wpforms_forms() {
+
+			// Bail if wpforms is not active.
+			if ( ! class_exists( 'WPForms' ) ) {
+				return [];
+			}
+
 			// Use wpdb to get all forms.
 			global $wpdb;
 
@@ -707,10 +652,207 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				];
 			}
 
-			return $wpforms;
+			return apply_filters( 'formychat_wpforms_forms', $wpforms );
+		}
+
+		/**
+		 * Get all FluentForms.
+		 *
+		 * @return array
+		 */
+		public function get_fluentform_forms() {
+
+			// Bail if fluentform is not active.
+			if ( ! function_exists( 'fluentFormApi' ) ) {
+				return [];
+			}
+
+			global $wpdb;
+
+			$forms = $wpdb->get_results("SELECT id, title FROM {$wpdb->prefix}fluentform_forms WHERE status = 'published'"); // db call ok; no-cache ok.
+
+			if ( empty($forms) ) {
+				return [];
+			}
+
+			$fluentform_forms = [];
+
+			foreach ( $forms as $form ) {
+				$fluentform_forms[] = [
+					'value' => $form->id,
+					'name' => $form->title,
+					'label' => $form->title,
+				];
+			}
+
+			return $fluentform_forms;
+		}
+
+		/**
+		 * Get form fields.
+		 *
+		 * @param \WP_REST_Request $request Request object.
+		 * @return \WP_REST_Response
+		 */
+		public function get_form_fields( $request ) {
+			$form = $request->has_param( 'mode' ) ? $request->get_param( 'mode' ) : 'formychat';
+			$form_id = $request->has_param( 'form_id' ) ? $request->get_param( 'form_id' ) : '';
+
+			$fields = apply_filters( 'formychat_form_fields', [], $form, $form_id );
+
+			// If formychat.
+			if ( 'formychat' === $form ) {
+				$fields = [
+					'name' => __( 'Name', 'social-contact-form' ),
+					'email' => __( 'Email', 'social-contact-form' ),
+					'phone' => __( 'Phone', 'social-contact-form' ),
+					'message' => __( 'Message', 'social-contact-form' ),
+				];
+			}
+
+			$fields = apply_filters( 'formychat_form_fields_' . $form, $fields, $form_id );
+
+			return new \WP_REST_Response( [
+				'success' => true,
+				'data' => $fields,
+			] );
+		}
+
+
+		/**
+		 * List of fields used in the form.
+         *
+		 * @param mixed $fields
+		 * @param mixed $form_id
+		 */
+		public function formychat_form_fields_cf7( $fields, $form_id ) {
+			// Bail if cf7 is not active.
+			if ( ! class_exists( 'WPCF7' ) ) {
+				return [];
+			}
+
+			// Get form by id.
+			$form = \WPCF7_ContactForm::get_instance($form_id);
+
+			// Bail if form is not found.
+			if ( ! $form ) {
+				return [];
+			}
+
+			$tags = $form->scan_form_tags();
+
+			$fields = [];
+
+			foreach ( $tags as $tag ) {
+				// If name is empty, continue.
+				if ( empty( $tag->name ) ) {
+					continue;
+				}
+
+				$fields[ $tag->name ] = ucfirst($tag->name);
+			}
+
+			return $fields;
+		}
+
+		/**
+		 * List of fields used in the form.
+         *
+		 * @param mixed $fields
+		 * @param mixed $form_id
+		 */
+		public function formychat_form_fields_gravity( $fields, $form_id ) {
+			// Bail if gravity is not active.
+			if ( ! class_exists( 'GFAPI' ) ) {
+				return [];
+			}
+
+			$form = \GFAPI::get_form($form_id);
+
+			$fields = [];
+
+			foreach ( $form['fields'] as $field ) {
+				$fields[ $field->label ] = $field->label;
+			}
+
+			return $fields;
+		}
+
+		/**
+		 * List of fields used in the form.
+         *
+		 * @param mixed $fields Array of form fields
+		 * @param mixed $form_id Form ID
+		 * @return array Modified fields array
+		 */
+		public function formychat_form_fields_wpforms( $fields, $form_id ) {
+			// Bail if wpforms is not active.
+			if ( ! class_exists( 'WPForms' ) ) {
+				return [];
+			}
+
+			// Ensure we have valid input
+			if ( empty($form_id) || ! is_array($fields) ) {
+				return $fields;
+			}
+
+			// Get the form object
+			$form = wpforms()->form->get($form_id);
+			if ( empty($form) ) {
+				return $fields;
+			}
+
+			// Get form data
+			$form_data = wpforms_decode($form->post_content);
+			if ( empty($form_data['fields']) ) {
+				return $fields;
+			}
+
+			// Initialize array to store field information
+			$fields = [];
+
+			// Loop through each field in the form
+			foreach ( $form_data['fields'] as $field ) {
+				$field_label = isset($field['label']) ? $field['label'] : '';
+
+				// Store field information
+				$fields[ $field_label ] = $field_label;
+			}
+
+			return $fields;
+		}
+
+		/**
+		 * List of fields used in the form.
+         *
+		 * @param mixed $fields
+		 * @param mixed $form_id
+		 */
+		public function formychat_form_fields_fluentform( $fields, $form_id ) {
+			// Bail if fluentform is not active.
+			if ( ! function_exists( 'fluentFormApi' ) ) {
+				return [];
+			}
+
+			$form_api = fluentFormApi('forms')->form($form_id);
+            // Fields exists in the form.
+            $form_fields = $form_api->fields();
+
+			$fields = [];
+            foreach ( $form_fields['fields'] as $field ) {
+                if ( 'input_name' === $field['element'] ) {
+                    // For name fields, get all sub-field names
+                    foreach ( $field['fields'] as $name_key => $name_field ) {
+                        $fields[ $name_key ] = $name_key;
+                    }
+                } else {
+                    $fields[ $field['attributes']['name'] ] = $field['attributes']['name'];
+                }
+            }
+
+			return $fields;
 		}
 	}
-
 
 	// Initialize the plugin.
 	Rest::init();

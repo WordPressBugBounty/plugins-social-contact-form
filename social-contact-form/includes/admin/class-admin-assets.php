@@ -65,8 +65,8 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 			// Always load custom icon.
 			$this->formychat_custom_icon();
 
-			// Enqueue admin-util
-			wp_enqueue_script( 'formychat-admin-common', FORMYCHAT_PUBLIC . '/js/admin.common.js', [], FORMYCHAT_VERSION, true );
+			// Enqueue admin-util.
+			wp_enqueue_script( 'formychat-admin-common', FORMYCHAT_PUBLIC . '/js/admin.common.js', [ 'jquery' ], FORMYCHAT_VERSION, false );
 			wp_enqueue_style( 'formychat-admin-common', FORMYCHAT_PUBLIC . '/css/admin-common.css', [], FORMYCHAT_VERSION );
 
 			// Only load for FormyChat pages.
@@ -98,7 +98,9 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 
 					'data' => [
 						'widget_config' => App::widget_config(),
+						'total_widgets' => Widget::total(),
 						'custom_tags' => App::custom_tags(),
+						'forms' => $this->get_forms(),
 					],
 
 					'site' => [
@@ -108,26 +110,48 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 						'admin_email' => get_bloginfo('admin_email'),
 					],
 
-					'cf7' => [
-						'is_installed' => file_exists(WP_PLUGIN_DIR . '/contact-form-7/wp-contact-form-7.php'),
-						'is_active' => is_plugin_active('contact-form-7/wp-contact-form-7.php'),
-					],
+					'additional' => [
+						'cf7' => [
+							'is_installed' => file_exists(WP_PLUGIN_DIR . '/contact-form-7/wp-contact-form-7.php'),
+							'is_active' => is_plugin_active('contact-form-7/wp-contact-form-7.php'),
+							'leads' => Lead::total_from( 'cf7' ),
+						],
 
-					// Gravity Forms.
-					'gravity' => [
-						'is_installed' => file_exists(WP_PLUGIN_DIR . '/gravityforms/gravityforms.php'),
-						'is_active' => is_plugin_active('gravityforms/gravityforms.php'),
-					],
-					'wpforms' => [
-						'is_installed' => file_exists(WP_PLUGIN_DIR . '/wpforms-lite/wpforms.php'),
-						'is_active' => is_plugin_active('wpforms-lite/wpforms.php'),
-					],
+						// Gravity Forms.
+						'gravity' => [
+							'is_installed' => file_exists(WP_PLUGIN_DIR . '/gravityforms/gravityforms.php'),
+							'is_active' => is_plugin_active('gravityforms/gravityforms.php'),
+							'leads' => Lead::total_from( 'gravity' ),
+						],
 
+						// WP Forms.
+						'wpforms' => [
+							'is_installed' => file_exists(WP_PLUGIN_DIR . '/wpforms-lite/wpforms.php'),
+							'is_active' => is_plugin_active('wpforms-lite/wpforms.php'),
+							'leads' => Lead::total_from( 'wpforms' ),
+						],
+
+						// Fluent Form.
+						'fluentform' => [
+							'is_installed' => file_exists(WP_PLUGIN_DIR . '/fluentform/fluentform.php'),
+							'is_active' => is_plugin_active('fluentform/fluentform.php'),
+							'leads' => Lead::total_from( 'fluentform' ),
+						],
+					],
 				]
 			);
 
 			$font_css = App::embed_fonts();
 			wp_add_inline_style('formychat-admin', $font_css);
+		}
+
+		/**
+		 * Get all forms.
+		 *
+		 * @return array
+		 */
+		public function get_forms() {
+			return \FormyChat\App::get_forms();
 		}
 	}
 
