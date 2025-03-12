@@ -49,6 +49,7 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 			add_action('formychat_form_wpforms', [ $this, 'form_wpforms' ], 10, 1);
 			add_action('formychat_form_gravity', [ $this, 'form_gravity' ], 10, 1);
 			add_action('formychat_form_fluentform', [ $this, 'form_fluentform' ], 10, 1);
+			add_action('formychat_form_forminator', [ $this, 'form_forminator' ], 10, 1);
 		}
 
 		/**
@@ -292,6 +293,15 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 		 */
 		public function show_admin_bar() {
 			return apply_filters('formychat_show_admin_bar', false);
+		}
+
+		/**
+		 * Form forminator.
+		 *
+		 * @return void
+		 */
+		public function form_forminator( $form_id ) {
+			echo do_shortcode(wp_sprintf('[forminator_form id="%d"]', $form_id));
 		}
 	}
 

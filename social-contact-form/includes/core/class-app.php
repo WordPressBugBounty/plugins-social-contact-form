@@ -5,16 +5,13 @@
  * @package FormyChat
  * @since 1.0.0
  */
-
 // Namespace .
 namespace FormyChat;
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-
 if ( ! class_exists( __NAMESPACE__ . '\App' ) ) {
-
 	/**
 	 * App class.
 	 *
@@ -1436,6 +1433,7 @@ Message: {message}',
 					'gravity_id' => 0,
 					'wpforms_id' => 0,
 					'fluentform_id' => 0,
+					'forminator_id' => 0,
 				],
 				'email' => [
 					'enabled' => false,
@@ -1547,9 +1545,81 @@ Message: {message}',
 					'label' => 'Fluent Forms',
 					'logo' => FORMYCHAT_PUBLIC . '/images/forms/fluent-form.png',
 				],
+				'forminator' => [
+					'label' => 'Forminator',
+					'logo' => FORMYCHAT_PUBLIC . '/images/forms/forminator.png',
+				],
 			];
 
 			return apply_filters( 'formychat_forms', $forms );
+		}
+
+
+
+		/**
+		 * FormyChat Form Fields.
+		 *
+		 * @since 1.0.0
+		 */
+		public static function form_fields() {
+
+			$user = wp_get_current_user();
+			$default_values = [];
+
+			if ( $user->exists() ) {
+				$default_values['name'] = $user->display_name;
+				$default_values['email'] = $user->user_email;
+				$default_values['phone'] = get_user_meta( $user->ID, 'billing_phone', true );
+			}
+
+			$fields = [
+				[
+					'name' => 'name',
+					'type' => 'text',
+					'default' => array_key_exists( 'name', $default_values ) ? $default_values['name'] : '',
+					'help_text' => '',
+					'attributes' => [
+						'placeholder' => __( 'Enter your Name', 'social-contact-form' ),
+						'required' => true,
+					],
+				],
+				[
+					'name' => 'email',
+					'type' => 'email',
+					'default' => array_key_exists( 'email', $default_values ) ? $default_values['email'] : '',
+					'help_text' => '',
+					'attributes' => [
+						'placeholder' => __( 'Enter your Email', 'social-contact-form' ),
+						'required' => true,
+					],
+					'condition' => 'name != ""',
+				],
+				[
+					'name' => 'phone',
+					'type' => 'phone',
+					'default' => array_key_exists( 'phone', $default_values ) ? $default_values['phone'] : '',
+					'help_text' => '',
+					'attributes' => [
+						'placeholder' => __( 'Enter your Phone', 'social-contact-form' ),
+						'required' => true,
+						'minlength' => 7,
+						'maxlength' => 15,
+						'min' => '100000',
+						'max' => '999999999999999',
+					],
+				],
+				[
+					'name' => 'message',
+					'type' => 'textarea',
+					'help_text' => '',
+					'attributes' => [
+						'placeholder' => __( 'Enter your Message', 'social-contact-form' ),
+						'required' => false,
+					],
+				],
+			];
+
+			return apply_filters( 'formychat_form_fields', $fields );
 		}
 	}
 }

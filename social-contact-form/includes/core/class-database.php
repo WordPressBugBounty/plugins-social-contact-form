@@ -36,17 +36,11 @@ class Database extends \FormyChat\Base {
         // Create SCF Table.
         $this->create_scf_table();
 
-        // Create CF7 Table.
-        $this->create_cf7_table();
-
         // Create Widget Table.
         $this->create_widget_table();
 
         // Fix for old version.
         $this->migrate_to_multiwidgets();
-
-        // Merge cf7 leads to scf leads.
-        $this->merge_cf7_to_scf();
     }
 
     /**
@@ -84,25 +78,6 @@ class Database extends \FormyChat\Base {
         }
     }
 
-
-    /**
-     * CF7 Table.
-     */
-    public function create_cf7_table() {
-        global $wpdb;
-        $charset_collate = $wpdb->get_charset_collate();
-
-        $wpdb->query( "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}cf7_leads(
-            `id` mediumint(30) NOT NULL AUTO_INCREMENT,
-            `cf7_id` text NULL DEFAULT NULL,
-            `field` text NULL DEFAULT NULL,
-            `meta` text NULL DEFAULT NULL,
-            `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-            `deleted_at` DATETIME DEFAULT NULL,
-            `note` text DEFAULT NULL,
-            PRIMARY KEY  (`id`)
-        ) $charset_collate;" ); // phpcs:ignore
-    }
 
     /**
      * Widget Table.
@@ -363,39 +338,6 @@ class Database extends \FormyChat\Base {
         } catch ( \Exception $e ) { // phpcs:ignore
             // Do nothing.
         }
-    }
-
-    /**
-     * Merge CF7 to SCF.
-     */
-    public function merge_cf7_to_scf() {
-        global $wpdb;
-
-        // Get all CF7 leads.
-        $cf7_leads = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}cf7_leads"); // db call ok; no-cache ok.
-
-        // Bail if no leads.
-        if ( empty($cf7_leads) ) {
-            return;
-        }
-
-        // Loop through leads.
-        foreach ( $cf7_leads as $lead ) {
-            $data = [
-                'widget_id' => 1,
-                'field' => $lead->field,
-                'meta' => $lead->meta,
-                'note' => $lead->note,
-                'form' => 'cf7',
-                'form_id' => $lead->cf7_id,
-            ];
-
-            // Create lead.
-            \FormyChat\Models\Lead::create($data);
-        }
-
-        // Drop CF7 table.
-        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}cf7_leads"); // db call ok; no-cache ok.
     }
 }
 

@@ -12,7 +12,6 @@ namespace FormyChat\Admin;
 use FormyChat\App;
 use FormyChat\Models\Widget;
 use FormyChat\Models\Lead;
-use FormyChat\Models\LeadCF7;
 
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
@@ -101,6 +100,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 						'total_widgets' => Widget::total(),
 						'custom_tags' => App::custom_tags(),
 						'forms' => $this->get_forms(),
+						'form_fields' => App::form_fields(),
 					],
 
 					'site' => [
@@ -136,6 +136,13 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 							'is_installed' => file_exists(WP_PLUGIN_DIR . '/fluentform/fluentform.php'),
 							'is_active' => is_plugin_active('fluentform/fluentform.php'),
 							'leads' => Lead::total_from( 'fluentform' ),
+						],
+
+						// forminator.
+						'forminator' => [
+							'is_installed' => file_exists(WP_PLUGIN_DIR . '/forminator/forminator.php'),
+							'is_active' => is_plugin_active('forminator/forminator.php'),
+							'leads' => Lead::total_from( 'forminator' ),
 						],
 					],
 				]

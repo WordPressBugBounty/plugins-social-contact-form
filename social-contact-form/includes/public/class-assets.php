@@ -70,6 +70,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets' ) ) {
 						'countries' => \FormyChat\App::countries(),
 						'widgets'     => \FormyChat\Models\Widget::get_active_widgets(),
 						'default_config' => \FormyChat\App::widget_config(),
+						'form_fields' => \FormyChat\App::form_fields(),
 					],
 					'site' => [
 						'url' => get_site_url(),

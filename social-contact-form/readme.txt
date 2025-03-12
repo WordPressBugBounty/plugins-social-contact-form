@@ -1,18 +1,18 @@
-=== Connect Form to Chat Apps with Contact Form 7, WPForms, Gravity Form | Welcome Popup & Multi-agent Live Chat - FormyChat ===
+=== Connect Form to Chat Apps with Contact Form 7, WPForms, Gravity Forms, Fluent Forms | Welcome Popup & Multi-agent Live Chat - FormyChat ===
 Contributors: wppool, azizultex, wpdarkmode, iamjafran, devsabbirahmed
-Tags: WhatsApp chat, WhatsApp integration, click to chat, contact form, contact form builder
+Tags: WhatsApp chat, WhatsApp integration, click to chat, whatsapp business, chat button
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 2.10.2
+Stable tag: 2.10.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WhatsApp Chat for WordPress 🚀. Connect contact forms to WhatsApp. WhatsApp notifications plugin with notifications for Contact Form 7, WPForms, & Gravity Form.
+WhatsApp Chat for WordPress. Connect contact forms to WhatsApp & WhatsApp Business. WhatsApp notifications plugin with notifications for Contact Form 7, WPForms, Gravity Forms & Fluent Forms.
 
 == Description ==
 
-**FormyChat (WhatsApp Contact Form)** allows you to send WordPress contact form leads directly to your WhatsApp account. A quick and easy floating chat widget to get contact form data in WhatsApp chat.🔥
+**FormyChat (WhatsApp Contact Form)** allows you to send WordPress contact form leads directly to your WhatsApp or WhatsApp business. A quick and easy floating chat button to get contact form data in WhatsApp🔥
 
 **Let’s grow, connect, and thrive together!**
 
@@ -21,72 +21,78 @@ WhatsApp Chat for WordPress 🚀. Connect contact forms to WhatsApp. WhatsApp no
 * **🎥 Subscribe on [YouTube](https://www.youtube.com/@WPPOOL)**
 * **👍 Like Our [Facebook Page](https://www.facebook.com/wppool.dev)**
 
-FormyChat is a revolutionary contact form plugin for WordPress that takes the data from the contact form and sends the collected information to your WhatsApp number. Where traditional WP forms send leads to your email or website, this WordPress chat plugin makes it really easy to send the WordPress contact form leads directly to your WhatsApp account. It also supports automatic redirection to WhatsApp Web for desktop users and WhatsApp Mobile for smartphone/mobile users. This click to chat app works as a WhatsApp notification plugin for WordPress and is super easy to use.
+FormyChat is a revolutionary contact form plugin for WordPress that takes the data from the contact form and sends the collected information to your WhatsApp or WhatsApp business number. Where traditional WP forms send leads to your email or website, this WordPress chat button makes it really easy to send the WordPress contact form leads directly to your WhatsApp or WhatsApp business account. It also supports automatic redirection to WhatsApp Web for desktop users and WhatsApp Mobile for smartphone/mobile users. This click to chat app works as a WhatsApp notification plugin for WordPress and is super easy to use.
 
 [youtube https://youtu.be/bjJcWoY-8zA?rel=0]
 
-👁️ [View Demo](https://go.wppool.dev/BsjA) | 🚀 [Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
+[👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
 
 == Quick and Easy Integration Between WhatsApp and WordPress ==
-FormyChat is the most convenient WordPress form plugin that does one thing exceptionally well - **sending contact form leads directly to WhatsApp**. Collect all the user's form submission data and send it to WhatsApp instantly. A simple, powerful, easy-to-use, 100% beginner-friendly WordPress form plugin that puts the WhatsApp app in the front. Sending data from the WordPress contact form to WhatsApp is no longer a headache!
+FormyChat is the most convenient WordPress form plugin that does one thing exceptionally well - **sending contact form leads directly to WhatsApp or WhatsApp Business.** Collect all the user's form submission data and send it to WhatsApp instantly. A simple, powerful, easy-to-use, 100% beginner-friendly WordPress form plugin that puts the WhatsApp app in the front. **Sending data from the WordPress contact form to WhatsApp or WhatsApp Business** is no longer a headache!
 
-All contact form leads that are sent to WhatsApp chat are saved as a lead (WordPress contact) on your website as well. So, you can always trace back where the message originated from. This is the ultimate WhatsApp notification plugin for WordPress sites.
+All contact form leads that are sent to WhatsApp or WhatsApp Business chat are saved as a lead (WordPress contact) on your website as well. So, you can always trace back where the message originated from. This is the ultimate WhatsApp notification plugin for WordPress sites.
 
-== WHATSAPP NOTIFICATIONS FOR CONTACT FORM 7 FORMS ==
-Send your Contact Form 7 leads to WhatsApp chat. Contact Form 7 is regarded as one of the most popular contact form plugins for WordPress and once you integrate your Contact Form 7 forms with WhatsApp, it becomes a game changer. When you connect your CF7 forms with our form to chat plugin, you get CF7 form notifications on your WhatsApp number. That means no hassle to check customer queries from the WordPress dashboard. Reply to them from anywhere you want using your phone.
 
-[youtube https://youtu.be/kQO9Bbp7tgA?rel=0]
+==📝 FORM INTEGRATIONS: == 
 
-Not only that, you can turn your boring Contact Form 7 forms into a gorgeous WhatsApp chat widget from the plugin settings.
+FormyChat simplifies adding contact forms to your website with two flexible options:
 
-👁️ [View Demo](https://go.wppool.dev/BsjA) | 🚀 [Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
+- 1️⃣ **A floating chat button for quick and easy access.**
+You can select your form from the plugin settings to enable a floating contact form. Once you connect a form, submissions will be sent directly to your WhatsApp account.
 
-=== 🔝 FORMYCHAT FEATURES ===
+- 2️⃣ **An embedded form for a fixed layout.**
+With simple plugin settings, you can choose the best option for your needs. FormyChat works with all form builders, ensuring compatibility and ease of use.
 
-* **Contact form to WhatsApp:** One of the key features of this WhatsApp notification plugin is to send your WordPress site’s contact form submissions to your WordPress contact form to WhatsApp. Get your subscriber's data in one place within seconds. Managing WP contact forms is now easier than ever!
 
-*  **Contact Form 7 to WhatsApp:** With the WhatsApp contact form 7 integration, you can easily configure your CF7 forms to send form submission data to your WhatsApp number. Also, you can convert your CF7 forms into a floating contact form which gives you a proven way of getting more engagements. This is the ultimate integration between WhatsApp and WordPress.
+Currently, our integrated popular forms include:
+
+* **[Contact Form 7](https://www.youtube.com/watch?v=YJQPU2lQbEk)**
+* **[WPForms ](https://www.youtube.com/watch?v=K3xLL3zJKYc)**
+* **[Gravity Forms](https://www.youtube.com/watch?v=6LX4e5009G8)**
+* **Fluent Forms to WhatsApp**
+
+
+[👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
+
+=== 😍 FORMYCHAT FREE FEATURES ===
 
 * **🔥 Greetings popup (Welcome popup):** Grab your visitor's attention by welcoming them with a personalized greetings popup. You can choose your desired template, and customize the heading, popup message, heading size, message size, colors, font, and on-click action.
 
-* **Personalized floating contact form icon:** Embed the WhatsApp contact form on any page with a customizable WhatsApp button. Your users can click on the floating chat icon and submit their info. You can choose between different sizes and alignment options for the button. Send data from WordPress form to WhatsApp in style.
+* **Personalized Floating Contact Form Icon:** Embed the Whatsapp contact form on any page with a customizable WhatsApp chat button. Your users can click on the floating chat icon and submit their info. You can choose between different sizes and alignment options for the button. Send data from the WordPress form to WhatsApp or WhatsApp business in style.
 
-* **Personalized Call to action:** With WhatsApp Contact Form, you can personalize the call to action button. Edit the button's text any time with your preferred font sizes. Get the best WordPress contact form customization features.
+* **Personalized Call to Action:** With WhatsApp Contact Form, you can personalize the call to action button. Edit the button's text any time with your preferred font sizes. Get the best WordPress contact form customization features.
 
-*  **Personalized popup contact form:** We built FormyChat in a way that you can customize it anytime according to your needs. Design the popup WordPress contact form with your favorite font style. You can take advantage of the multiple font styles, personalized header text, footer text, and submit button text. Collect form submission data in style!
+*  **Personalized Popup Contact Form:** We built FormyChat in a way that you can customize it anytime according to your needs. Design the popup WordPress contact form with your favorite font style. You can take advantage of the multiple font styles, personalized header text, footer text, and submit button text. Collect form submission data in style!
 
 * **🔥 Access Contact Form Leads:** Get access to the list of submissions that are made through your contact form. Easily get important submission information like date, time, name, email, contact, and messages in one place.
 
-* **Merge tags and Preset Messages:** By using preset messages and merge tags — you can add things like {url} or {title} in the preset messages. These tags will dynamically convert to the actual URL and Title of the pages when users use them and will be displayed in all sent messages at the top. (So you can identify where the users are coming from & do upsell later)
+* **Merge Tags and Preset Messages:** By using preset messages and merge tags — you can add things like {url} or {title} in the preset messages. These tags will dynamically convert to the actual URL and Title of the pages when users use them and will be displayed in all sent messages at the top. (So you can identify where the users are coming from & do upsell later)
 
-* **Disable Contact Form 7 email notifications**: Don’t want to use any third-party SMTP plugin for CF7 forms? Enable this feature to disable the email notification for your selected Contact Form 7 form and use FormyChat CF7 integration without any SMPT setup.
+* **Disable Contact Form 7 Email Notifications**: Don’t want to use any third-party SMTP plugin for CF7 forms? Enable this feature to disable the email notification for your selected Contact Form 7 form and use FormyChat CF7 integration without any SMPT setup.
 
-* **Triggers:** Set triggers on when the chat widget should appear. You can show it after a few seconds, on page scroll, or use the exit intent trigger.
+* **Easy Setup Wizard:** Take our 2-minute challenge to build your first floating contact form. Our WordPress form templates provide the most beginner-friendly experience for setting up the contact form easily. You can set up the widget behavior with just a single click. 
 
-* **Easy setup wizard:** Take our 2-minute challenge to build your first floating contact form. Our WordPress form templates provide the most beginner-friendly experience for setting up the contact form easily. You can set up the widget behavior with just a single click. 
+[👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get The ULTIMATE Version](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
 
-👁️ [View Demo](https://go.wppool.dev/BsjA) | 🚀 [Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
+=== 🔥 FORMYCHAT ULTIMATE FEATURES ===
 
-=== ✨ FORMYCHAT ULTIMATE FEATURES ===
+* **😍 Unlimited Widgets & Customization** 
 
-**😍 Unlimited widgets & customization** 
+* **Multi-Agent Live Chat:** Create multiple agents with different WhatsApp or WhatsApp Business numbers in a popup dialog. Each agent can have a customized profile, including details like working hours, daily roster, avatar, and name tag (upcoming). You can even load the form when users click on an agent for seamless interaction.
 
-* **Multi-agent live chat:** Create multiple agents with different WhatsApp numbers in a popup dialog. Each agent can have a customized profile, including details like working hours, daily roster, avatar, and name tag (upcoming). You can even load the form when users click on an agent for seamless interaction.
-
-* **Unlimited floating widgets**: Go limitless with WhatsApp floating widgets! Create as many widgets as you want and set them on your desired page. Use multiple WhatsApp accounts for different pages and get your entire sales team involved. It doesn't get easier than this!
-* **Multi-agent live chat:** Create multiple agents with different WhatsApp numbers in a popup dialog. Each agent can have a customized profile, including details like working hours, daily roster, avatar, and name tag (upcoming). You can even load the form when users click on an agent for seamless interaction.
-* **Duplicate widgets**: Efficiently duplicate existing widgets to create a new one. It's as easy as saying 1,2,3!
+* **Unlimited Floating Widgets**: Go limitless with WhatsApp floating widgets! Create as many chat buttons as you want and set them on your desired page. Use multiple WhatsApp or WhatsApp business accounts for different pages and get your entire sales team involved. It doesn't get easier than this!
+* **Duplicate Widgets**: Efficiently duplicate existing widgets to create a new one. It's as easy as saying 1,2,3!
 * **Exclude Contact Form Widget**: Easily exclude the contact form widget from any page of your website. This helps you stay in control and place the widget exactly where you want.
 
 **💬 More WhatsApp-centric features**
 
-* **WhatsApp web redirection for desktop**: Navigate WhatsApp web directly from your desktop. Formy Chat allows your site visitors to fill out the form within a minute. They can connect through WhatsApp Web, fill up data, and submit. WordPress form to WhatsApp chat is now super convenient!
-* **Personalized preset messages**: Set your words as you like. The ULTIMATE version of this website contact form plugin allows you to create customized preset messages. Edit and preset text words, and provide line breaks on your custom message.
-* **Country code selection:** Allow users to choose country code while submitting their phone number on the floating form. This helps you keep getting accurate lead data and avoid any confusion.
+* **WhatsApp Web Redirection for Desktop**: Navigate WhatsApp web directly from your desktop. FormyChat allows your site visitors to fill out the form within a minute. They can connect through WhatsApp Web, fill up data, and submit. WordPress form to WhatsApp chat is now super convenient!
+* **Personalized Preset Messages**: Set your words as you like. The ULTIMATE version of this website contact form plugin allows you to create customized preset messages. Edit and preset text words, and provide line breaks on your custom message.
+* **Country Code Selection:** Allow users to choose country code while submitting their phone number on the floating form. This helps you keep getting accurate lead data and avoid any confusion.
 
 🎨 **Detailed contact form customization**
 
-* **Custom Icon**: Set any custom icon as the click to chat button of your form. The ULTIMATE Version of the Formy Chat can choose an icon from your gallery.
+* **Custom Icon**: Set any custom icon as the click to chat button of your form. The ULTIMATE Version of the FormyChat can choose an icon from your gallery.
 * **Custom Size**: Customize your form icon size with just a slide. Have your favorite form ready to go with your style in minutes.
 * **Custom Position**: Not happy with the preset position of your form icon? No worries. With FormyChat ULTIMATE, set the form icon anywhere on your site page. You only need to mention your icon's top, bottom, left, and right positions on the screen. 
 
@@ -103,22 +109,21 @@ Not only that, you can turn your boring Contact Form 7 forms into a gorgeous Wha
 
 👋 **Greetings popup customization:** 
 
-* **Premium template style:** Access the premium popup templates and greet your visitors in style.
-* **Custom heading & message size:** Customize the heading and popup message size exactly as you wish.
-* **Premium fonts:** Customize the popup with your favorite font and add a personalized look to the popup.
-* **Customize on-click action:** You can customize whether the popup will open the form on-click or redirect the user to WhatsApp.
+* **Premium Template Style:** Access the premium popup templates and greet your visitors in style.
+* **Custom Heading & Message Size:** Customize the heading and popup message size exactly as you wish.
+* **Premium Fonts:** Customize the popup with your favorite font and add a personalized look to the popup.
+* **Customize On-Click Action:** You can customize whether the popup will open the form on-click or redirect the user to WhatsApp.
 
 📑 **Leads (form submission data) collection:**
 
-* **Access leads**: FormyChat ULTIMATE gives you access to enter into the leads repository. It's a data collection table where you can see all the submitted form messages in one place. 
-* **Contact Form 7 form leads**: Leads from CF7 forms will also be saved in the leads section where you can find individual columns for each form field. You can also access leads from separate contact forms to distinguish them easily. 
+* **Access Leads**: FormyChat ULTIMATE gives you access to enter into the leads repository. It's a data collection table where you can see all the submitted form messages in one place. 
 * **Access Lead details**: Get every submission information in detail like date, time, name, email, contact, and messages in one place. The best thing about this feature is that everything is customizable for you. 
-* **Form data and metadata**: You can access form data by clicking on the view icon. In the user detail box, you'll find some metadata of your users. Delete specific user data anytime you want. 
-* **Filter leads based on form and floating widgets**: If you have multiple form types (FormyChat form or CF7 form), you can easily filter them based on the form type. Also, you can filter leads based on specific widget names.
-* **Sorting, filtering, searching**: Get a search box on the leads screen page. Found any user with a custom search. Sort your data anytime and filter these user data with the filtering option. Enter your start and end date and hit the enter button. You're done seeing the specific data chart of your targeted time. 
+* **Form data and Metadata**: You can access form data by clicking on the view icon. In the user detail box, you'll find some metadata of your users. Delete specific user data anytime you want. 
+* **Filter Leads Based on Form and Floating Widgets**: If you have multiple form types (FormyChat form or CF7 form), you can easily filter them based on the form type. Also, you can filter leads based on specific widget names.
+* **Sorting, Filtering, Searching**: Get a search box on the leads screen page. Found any user with a custom search. Sort your data anytime and filter these user data with the filtering option. Enter your start and end date and hit the enter button. You're done seeing the specific data chart of your targeted time. 
 * **Export as CSV**: Why concise into the site dashboard only? Get an export button on the top right corner of the page. Just click on it and get all the user data in one place in a CSV format. All you need to do is hit the enter button and download the CSV. That's it! The field is yours. 
 
-📨 **Email notifications:** 
+📨 **Email notifications**: 
 
 - Send contact form submissions to email alongside WhatsApp chat. Give yourself the luxury of receiving leads on multiple platforms and stay on top of your game. 
 
@@ -164,8 +169,8 @@ WhatsApp is a registered trademark and brand by Meta.
 = How to send WordPress form entries to WhatsApp? =
 Getting started with the plugin is extremely simple. Activate the plugin, provide your WhatsApp number, customize the widget, and activate the contact form to get started.
 
-= How to Connect Contact Form 7 to WhatsApp? =
-There are two ways to send your Contact Form 7 forms directly to your WhatsApp account. You can either do it from Contact Form 7 settings by adding your WhatsApp number and enabling the WhatsApp redirection or you can select your CF7 form from the plugin settings to get a floating contact form.
+= How to Connect Contact Form 7, WPForm, Gravity Form, Fluent Form to WhatsApp or WhatsApp Business? =
+There are two ways to send your preferred form leads directly to your WhatsApp account. You can either do it from **Contact Form 7 / WPForms / Gravity Forms / Fluent Forms** settings by adding your WhatsApp number and enabling the WhatsApp redirection or you can select your **Contact Form 7 / WPForms / Gravity Forms / Fluent Forms**  form , from the plugin settings to get a floating contact form.
 
 = Can I use my own icon for the floating button? =
 Yes, you can use your own icon as the floating button.
@@ -194,19 +199,17 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 == Changelog ==
 
+= 2.10.3 - 12 MAR 2024 =
+
+* **New:** Added **Forminator Form** Integration.
+* **Improvement:** Enhanced Floating Widget Preview on Admin Panel.
+* **Improvement:** Now everything of FormyChat Form can be customized programmatically.
+* **Fix:** Fixed "Users able to create Agent without Information". WhatsApp number will be checked before creating Agent.
+
 = 2.10.2 - 12 FEB 2024 =
 * **New:** Added **Fluent Form** Integration.
 * **Improvement:** Enhanced customization options for **Message Templates**.
 * **Fix:** Issue with navigation to WhatsApp Desktop not working properly.
-
-= 2.10.1 - 20 JAN 2024 =
-* **New:** Added ‘Open form on scrolling page’.
-* **New:** Added ‘Open form on exiting page’.
-* **Improvement:** Now Country Codes will be automatically selected.
-* **Improvement:** Enhanced ‘Duplicate Widget’ flow.
-* **Improvement:** Reverted the old tags {page_id} {site_url}
-* **Fix:** ‘Invalid Date’ triggers for some old sites.
-* **Fix:** ‘Device information now showing correctly’. Added others meta data.
 
 = 2.10.0 - 31 DEC 2024 =
 * **New:** Added Gravity Form Integration.

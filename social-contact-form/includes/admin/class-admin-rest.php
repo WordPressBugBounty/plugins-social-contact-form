@@ -39,6 +39,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			add_filter('formychat_form_fields_gravity', [ $this, 'formychat_form_fields_gravity' ], 10, 2);
 			add_filter('formychat_form_fields_wpforms', [ $this, 'formychat_form_fields_wpforms' ], 10, 2);
 			add_filter('formychat_form_fields_fluentform', [ $this, 'formychat_form_fields_fluentform' ], 10, 2);
+			add_filter('formychat_form_fields_forminator', [ $this, 'formychat_form_fields_forminator' ], 10, 2);
 		}
 
 		/**
@@ -320,6 +321,10 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 					'file' => 'fluentform/fluentform.php',
 					'slug' => 'fluentform',
 				],
+				'forminator' => [
+					'file' => 'forminator/forminator.php',
+					'slug' => 'forminator',
+				],
 			];
 
 			$plugins = apply_filters( 'formychat_form_plugins', $plugins );
@@ -550,6 +555,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				'gravity' => $this->get_gravity_forms(),
 				'wpforms' => $this->get_wpforms_forms(),
 				'fluentform' => $this->get_fluentform_forms(),
+				'forminator' => $this->get_forminator_forms(),
 			];
 
 			return apply_filters( 'formychat_forms', $forms );
@@ -686,6 +692,36 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			}
 
 			return $fluentform_forms;
+		}
+
+		/**
+		 * Get all forminator forms.
+		 *
+		 * @return array
+		 */
+		public function get_forminator_forms() {
+			// Bail if forminator is not active.
+			if ( ! class_exists( '\Forminator_API' ) ) {
+				return [];
+			}
+
+			$forms = \Forminator_API::get_forms();
+
+			if ( empty( $forms ) ) {
+				return [];
+			}
+
+			$forminator_forms = [];
+
+			foreach ( $forms as $form ) {
+				$forminator_forms[] = [
+					'value' => $form->id,
+					'name' => $form->name,
+					'label' => $form->name,
+				];
+			}
+
+			return $forminator_forms;
 		}
 
 		/**
@@ -849,6 +885,29 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
                     $fields[ $field['attributes']['name'] ] = $field['attributes']['name'];
                 }
             }
+
+			return $fields;
+		}
+
+		/**
+		 * List of fields used in the form.
+         *
+		 * @param mixed $fields
+		 * @param mixed $form_id
+		 */
+		public function formychat_form_fields_forminator( $fields, $form_id ) {
+			// Bail if forminator is not active.
+			if ( ! class_exists( '\Forminator_API' ) ) {
+				return [];
+			}
+
+			$form = \Forminator_API::get_form($form_id);
+
+			$fields = [];
+
+			foreach ( $form->fields as $field ) {
+				$fields[ $field->raw['element_id'] ] = $field->raw['field_label'];
+			}
 
 			return $fields;
 		}
