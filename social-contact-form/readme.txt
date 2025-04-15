@@ -4,7 +4,7 @@ Tags: WhatsApp chat, WhatsApp integration, click to chat, whatsapp business, cha
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 2.10.3
+Stable tag: 2.10.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -198,6 +198,13 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 
 == Changelog ==
+
+= 2.10.4 - 15 APR 2025 =
+* **New:** Added **Formidable Form** Integration.
+* **Improvement:** Improved the preview design of widget.
+* **Fix:** Fixed "WhatsApp not opening after submitting GravityForm".
+* **Fix:** Fixed "Leads not collecting from Fluent Form".
+
 
 = 2.10.3 - 12 MAR 2024 =
 

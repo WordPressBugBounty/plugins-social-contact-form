@@ -40,6 +40,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			add_filter('formychat_form_fields_wpforms', [ $this, 'formychat_form_fields_wpforms' ], 10, 2);
 			add_filter('formychat_form_fields_fluentform', [ $this, 'formychat_form_fields_fluentform' ], 10, 2);
 			add_filter('formychat_form_fields_forminator', [ $this, 'formychat_form_fields_forminator' ], 10, 2);
+			add_filter('formychat_form_fields_formidable', [ $this, 'formychat_form_fields_formidable' ], 10, 2);
 		}
 
 		/**
@@ -325,6 +326,10 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 					'file' => 'forminator/forminator.php',
 					'slug' => 'forminator',
 				],
+				'formidable' => [
+					'file' => 'formidable/formidable.php',
+					'slug' => 'formidable',
+				],
 			];
 
 			$plugins = apply_filters( 'formychat_form_plugins', $plugins );
@@ -556,6 +561,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				'wpforms' => $this->get_wpforms_forms(),
 				'fluentform' => $this->get_fluentform_forms(),
 				'forminator' => $this->get_forminator_forms(),
+				'formidable' => $this->get_formidable_forms(),
 			];
 
 			return apply_filters( 'formychat_forms', $forms );
@@ -722,6 +728,39 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			}
 
 			return $forminator_forms;
+		}
+
+
+		/**
+		 * Get all Formidable forms.
+		 *
+		 * @param \WP_REST_Request $request Request object.
+		 * @return \WP_REST_Response
+		 */
+		public function get_formidable_forms() {
+			$forms = [];
+
+			if ( ! class_exists( 'FrmForm' ) ) {
+				return $forms;
+			}
+
+			$forms = \FrmForm::getAll();
+
+			if ( empty( $forms ) ) {
+				return [];
+			}
+
+			$formidable_forms = [];
+
+			foreach ( $forms as $form ) {
+				$formidable_forms[] = [
+					'value' => $form->id,
+					'name' => $form->name,
+					'label' => $form->name,
+				];
+			}
+
+			return $formidable_forms;
 		}
 
 		/**
@@ -907,6 +946,39 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 
 			foreach ( $form->fields as $field ) {
 				$fields[ $field->raw['element_id'] ] = $field->raw['field_label'];
+			}
+
+			return $fields;
+		}
+
+		/**
+		 * Get all fields from a specific Formidable form.
+		 *
+		 * @param array  $fields  Initial fields array.
+		 * @param string $form_id Form ID to get fields from.
+		 * @return array Array of form fields with field ID as key and field name as value.
+		 */
+		public function formychat_form_fields_formidable( $fields, $form_id ) {
+			// Initialize empty array for storing fields
+			$forms = array();
+
+			// Check if Formidable Forms is active
+			if ( ! class_exists( 'FrmField' ) ) {
+				return $forms;
+			}
+
+			// Get all fields for the specified form using FrmField::get_all_for_form()
+			$form_fields = \FrmField::get_all_for_form( $form_id );
+
+			// Loop through each field and add to the array
+			foreach ( $form_fields as $field ) {
+
+				// If button field, continue.
+				if ( 'submit' === $field->type ) {
+					continue;
+				}
+
+				$fields[ $field->name ] = $field->name;
 			}
 
 			return $fields;

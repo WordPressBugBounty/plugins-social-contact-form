@@ -104,8 +104,8 @@ if ( ! class_exists( __NAMESPACE__ . '\Boot' ) ) {
 			// FluentForm.
 			require_once FORMYCHAT_INCLUDES . '/forms/fluentform/class-fluentform-admin.php';
 
-			// Forminator.
-			// require_once FORMYCHAT_INCLUDES . '/forms/forminator/class-forminator-admin.php';
+			// Formidable.
+			require_once FORMYCHAT_INCLUDES . '/forms/formidable/class-formidable-admin.php';
 		}
 
 		/**
@@ -128,8 +128,8 @@ if ( ! class_exists( __NAMESPACE__ . '\Boot' ) ) {
 			// FluentForm.
 			require_once FORMYCHAT_INCLUDES . '/forms/fluentform/class-fluentform-frontend.php';
 
-			// Forminator.
-			// require_once FORMYCHAT_INCLUDES . '/forms/forminator/class-forminator-frontend.php';
+			// Formidable.
+			require_once FORMYCHAT_INCLUDES . '/forms/formidable/class-formidable-frontend.php';
 		}
 	}
 

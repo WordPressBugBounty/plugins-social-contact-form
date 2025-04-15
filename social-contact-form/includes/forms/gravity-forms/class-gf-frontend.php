@@ -138,13 +138,22 @@ class Frontend extends \FormyChat\Base {
             ?>
             <script id="<?php echo esc_attr( $script_id ); ?>" type="text/javascript">
             (function () {
-                document.addEventListener("formychat_loaded", function (e) {
+                function submit(){
+                    
                     window.gform_formychat(
                         <?php echo wp_json_encode( $form ); ?>, 
                         <?php echo wp_json_encode( $entry ); ?>, 
                         <?php echo wp_json_encode( $settings ); ?>
                     );
-                });
+                }
+                if ( window.gform_formychat ) {
+                    submit();
+                } else {
+                    document.addEventListener("formychat_gf_loaded", function (e) {
+                        submit();
+                    });
+                }
+                
             })();
             </script>
             <?php

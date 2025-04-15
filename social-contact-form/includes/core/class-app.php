@@ -1381,6 +1381,8 @@ Message: {message}',
 					'fluentform_message_template' => '',
 					'gravity_message_template' => '',
 					'wpforms_message_template' => '',
+					'formidable_message_template' => '',
+
 					'new_tab' => true,
 					'agent_mode' => 'single',
 					'agents' => [],
@@ -1434,6 +1436,7 @@ Message: {message}',
 					'wpforms_id' => 0,
 					'fluentform_id' => 0,
 					'forminator_id' => 0,
+					'formidable_id' => 0,
 				],
 				'email' => [
 					'enabled' => false,
@@ -1548,6 +1551,10 @@ Message: {message}',
 				'forminator' => [
 					'label' => 'Forminator',
 					'logo' => FORMYCHAT_PUBLIC . '/images/forms/forminator.png',
+				],
+				'formidable' => [
+					'label' => 'Formidable',
+					'logo' => FORMYCHAT_PUBLIC . '/images/forms/formidable.png',
 				],
 			];
 

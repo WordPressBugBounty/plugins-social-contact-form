@@ -144,6 +144,12 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 							'is_active' => is_plugin_active('forminator/forminator.php'),
 							'leads' => Lead::total_from( 'forminator' ),
 						],
+
+						// Formidable.
+						'formidable' => [
+							'is_installed' => file_exists(WP_PLUGIN_DIR . '/formidable/formidable.php'),
+							'is_active' => is_plugin_active('formidable/formidable.php'),
+						],
 					],
 				]
 			);
