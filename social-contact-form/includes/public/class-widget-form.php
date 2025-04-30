@@ -51,6 +51,7 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 			add_action('formychat_form_fluentform', [ $this, 'form_fluentform' ], 10, 1);
 			add_action('formychat_form_forminator', [ $this, 'form_forminator' ], 10, 1);
 			add_action('formychat_form_formidable', [ $this, 'form_formidable' ], 10, 1);
+			add_action('formychat_form_ninja', [ $this, 'form_ninja' ], 10, 1);
 		}
 
 		/**
@@ -313,6 +314,15 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 		 */
 		public function form_formidable( $form_id ) {
 			echo do_shortcode(wp_sprintf('[formidable id="%d"]', $form_id));
+		}
+
+		/**
+		 * Form Ninja.
+		 *
+		 * @return void
+		 */
+		public function form_ninja( $form_id ) {
+			echo do_shortcode(wp_sprintf('[ninja_form id="%d"]', $form_id));
 		}
 	}
 

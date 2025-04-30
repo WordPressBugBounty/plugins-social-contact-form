@@ -106,6 +106,11 @@ if ( ! class_exists( __NAMESPACE__ . '\Boot' ) ) {
 
 			// Formidable.
 			require_once FORMYCHAT_INCLUDES . '/forms/formidable/class-formidable-admin.php';
+
+			// Ninja.
+			if ( class_exists( '\NF_Abstracts_Action' ) ) {
+				require_once FORMYCHAT_INCLUDES . '/forms/ninjaforms/class-ninjaforms-admin.php';
+			}
 		}
 
 		/**

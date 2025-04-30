@@ -1382,6 +1382,7 @@ Message: {message}',
 					'gravity_message_template' => '',
 					'wpforms_message_template' => '',
 					'formidable_message_template' => '',
+					'ninja_message_template' => '',
 
 					'new_tab' => true,
 					'agent_mode' => 'single',
@@ -1437,6 +1438,7 @@ Message: {message}',
 					'fluentform_id' => 0,
 					'forminator_id' => 0,
 					'formidable_id' => 0,
+					'ninja_id' => 0,
 				],
 				'email' => [
 					'enabled' => false,
@@ -1555,6 +1557,11 @@ Message: {message}',
 				'formidable' => [
 					'label' => 'Formidable',
 					'logo' => FORMYCHAT_PUBLIC . '/images/forms/formidable.png',
+				],
+
+				'ninja' => [
+					'label' => 'Ninja Forms',
+					'logo' => FORMYCHAT_PUBLIC . '/images/forms/ninja-forms.png',
 				],
 			];
 

@@ -41,6 +41,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			add_filter('formychat_form_fields_fluentform', [ $this, 'formychat_form_fields_fluentform' ], 10, 2);
 			add_filter('formychat_form_fields_forminator', [ $this, 'formychat_form_fields_forminator' ], 10, 2);
 			add_filter('formychat_form_fields_formidable', [ $this, 'formychat_form_fields_formidable' ], 10, 2);
+			add_filter('formychat_form_fields_ninja', [ $this, 'formychat_form_fields_ninja' ], 10, 2);
 		}
 
 		/**
@@ -330,6 +331,10 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 					'file' => 'formidable/formidable.php',
 					'slug' => 'formidable',
 				],
+				'ninja' => [
+					'file' => 'ninja-forms/ninja-forms.php',
+					'slug' => 'ninja-forms',
+				],
 			];
 
 			$plugins = apply_filters( 'formychat_form_plugins', $plugins );
@@ -562,6 +567,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				'fluentform' => $this->get_fluentform_forms(),
 				'forminator' => $this->get_forminator_forms(),
 				'formidable' => $this->get_formidable_forms(),
+				'ninja' => $this->get_ninja_forms(),
 			];
 
 			return apply_filters( 'formychat_forms', $forms );
@@ -735,13 +741,13 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 		 * Get all Formidable forms.
 		 *
 		 * @param \WP_REST_Request $request Request object.
-		 * @return \WP_REST_Response
+		 * @return array
 		 */
 		public function get_formidable_forms() {
 			$forms = [];
 
 			if ( ! class_exists( 'FrmForm' ) ) {
-				return $forms;
+				return [];
 			}
 
 			$forms = \FrmForm::getAll();
@@ -761,6 +767,39 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			}
 
 			return $formidable_forms;
+		}
+
+		/**
+		 * Get all Ninja Forms.
+		 *
+		 * @return array
+		 */
+		public function get_ninja_forms() {
+			$forms = [];
+
+			if ( ! class_exists( 'Ninja_Forms' ) ) {
+				return $forms;
+			}
+
+			global $wpdb;
+
+			$forms = $wpdb->get_results( "SELECT id, title, form_title FROM {$wpdb->prefix}nf3_forms" ); // db call ok; no-cache ok.
+
+			if ( empty( $forms ) ) {
+				return [];
+			}
+
+			$ninja_forms = [];
+
+			foreach ( $forms as $form ) {
+				$ninja_forms[] = [
+					'value' => $form->id,
+					'name' => $form->form_title,
+					'label' => $form->form_title,
+				];
+			}
+
+			return $ninja_forms;
 		}
 
 		/**
@@ -979,6 +1018,35 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				}
 
 				$fields[ $field->name ] = $field->name;
+			}
+
+			return $fields;
+		}
+
+		/**
+		 * List of fields used in the form.
+         *
+		 * @param mixed $fields
+		 * @param mixed $form_id
+		 */
+		public function formychat_form_fields_ninja( $fields, $form_id ) {
+			// Bail if ninja is not active.
+			if ( ! class_exists( 'Ninja_Forms' ) ) {
+				return [];
+			}
+
+			global $wpdb;
+
+			$form = $wpdb->get_results( $wpdb->prepare( "SELECT `key`, `label` FROM {$wpdb->prefix}nf3_fields WHERE parent_id = %d AND type != %s", $form_id, 'submit' ) ); // db call ok; no-cache ok.
+
+			if ( ! $form ) {
+				return [];
+			}
+
+			$fields = [];
+
+			foreach ( $form as $field ) {
+				$fields[ $field->key ] = $field->label;
 			}
 
 			return $fields;

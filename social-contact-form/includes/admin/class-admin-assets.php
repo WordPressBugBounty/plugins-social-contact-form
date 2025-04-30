@@ -93,6 +93,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 						'cf7_leads' => Lead::total_from( 'cf7' ),
 						'gf_leads' => Lead::total_from( 'gravity' ),
 						'wpforms_leads' => Lead::total_from( 'wpforms' ),
+						'ninja_leads' => Lead::total_from( 'ninja' ),
 					],
 
 					'data' => [
@@ -149,6 +150,12 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 						'formidable' => [
 							'is_installed' => file_exists(WP_PLUGIN_DIR . '/formidable/formidable.php'),
 							'is_active' => is_plugin_active('formidable/formidable.php'),
+						],
+
+						// Ninja Forms.
+						'ninja' => [
+							'is_installed' => file_exists(WP_PLUGIN_DIR . '/ninja-forms/ninja-forms.php'),
+							'is_active' => is_plugin_active('ninja-forms/ninja-forms.php'),
 						],
 					],
 				]
