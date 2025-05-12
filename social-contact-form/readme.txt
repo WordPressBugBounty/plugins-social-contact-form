@@ -4,7 +4,7 @@ Tags: WhatsApp chat, WhatsApp integration, click to chat, whatsapp business, cha
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.10.5
+Stable tag: 2.10.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -198,6 +198,11 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 
 == Changelog ==
+
+= 2.10.6 - 12 MAY 2025 =
+* **Fixed:** 'Filters' not working on Leads page for custom forms.
+* **Fixed:** Custom Icon Position broken.
+* **Fixed:** Form not submitted from Formidable Form.
 
 = 2.10.5 - 30 APR 2025 =
 * **New:** Added **Ninja Form** Integration.

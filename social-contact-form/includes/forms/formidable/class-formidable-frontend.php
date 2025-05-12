@@ -194,6 +194,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Frontend' ) ) {
 					'new_tab' => isset( $options['formychat_new_tab'] ) ? wp_validate_boolean( $options['formychat_new_tab'] ) : 0,
 					'navigate_to_web' => isset( $options['formychat_navigate_to_web'] ) ? \wp_validate_boolean( $options['formychat_navigate_to_web'] ) : '',
 				],
+				'form_id' => $form_id,
 			];
 
 			// Print Inline_script.
