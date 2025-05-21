@@ -239,6 +239,9 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 		 */
 		public function footer( $form ) {
 			$this->enqueue_form_style($form);
+
+			// Filter WP Dark Mode.
+			add_filter('wp_dark_mode_is_excluded', '__return_true', 999999);
 		}
 
 		/**

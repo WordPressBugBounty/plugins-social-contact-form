@@ -59,6 +59,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets' ) ) {
 					'rest_nonce'  => wp_create_nonce( 'wp_rest' ),
 
 					'is_premium'      => $this->is_ultimate_active(),
+					'is_form_page'    => defined('FORMYCHAT_FORM_PAGE'),
 
 					'current' => [
 						'post_type' => get_post_type(),

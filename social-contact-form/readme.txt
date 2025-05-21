@@ -4,11 +4,11 @@ Tags: WhatsApp chat, WhatsApp integration, click to chat, whatsapp business, cha
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.10.6
+Stable tag: 2.10.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WhatsApp Chat for WordPress. Connect contact forms to WhatsApp & WhatsApp Business. WhatsApp notifications plugin with notifications for Contact Form 7, WPForms, Gravity Forms & Fluent Forms.
+WhatsApp Chat for WordPress, Connect contact forms to WhatsApp Business, Connect WooCommerce with WhatsApp, Enable live chat, Click to chat with WhatsApp
 
 == Description ==
 
@@ -35,21 +35,35 @@ All contact form leads that are sent to WhatsApp or WhatsApp Business chat are s
 
 ==📝 FORM INTEGRATIONS: == 
 
-FormyChat simplifies adding contact forms to your website with two flexible options:
+FormyChat simplifies adding contact forms to your website with **two flexible options:**
 
-- 1️⃣ **A floating chat button for quick and easy access.**
-You can select your form from the plugin settings to enable a floating contact form. Once you connect a form, submissions will be sent directly to your WhatsApp account.
+**1️⃣ Floating Chat Button for Quick Access**
+The floating chat button allows users to collect leads quickly by displaying a chat widget on their website. When a user submits the form through the chat button, the lead will be sent directly to WhatsApp.
 
-- 2️⃣ **An embedded form for a fixed layout.**
-With simple plugin settings, you can choose the best option for your needs. FormyChat works with all form builders, ensuring compatibility and ease of use.
+**How it works:**
 
+* The user can add existing form fields into the floating chat button.
+* Leads collected through the chat button are sent directly to WhatsApp
+* **Compatible Forms:**
+ * Contact Form 7
+ * WPForms
+ * Gravity Forms
+ * Ninja Forms
+ * Fluent Forms
 
-Currently, our integrated popular forms include:
+**2️⃣ A Embedded Form for a Fixed Layout**
 
-* **[Contact Form 7](https://www.youtube.com/watch?v=YJQPU2lQbEk)**
-* **[WPForms ](https://www.youtube.com/watch?v=K3xLL3zJKYc)**
-* **[Gravity Forms](https://www.youtube.com/watch?v=6LX4e5009G8)**
-* **Fluent Forms to WhatsApp**
+Integrate your existing form with FormyChat. This allows you to directly send leads to WhatsApp from your embedded form.
+
+**How it works:**
+
+* Integrate the embedded form with FormyChat.
+* When a user fills out the form, the lead is sent directly to WhatsApp through FormyChat.
+* **Compatible Forms:**
+ * Contact Form 7
+ * WPForms
+ * Gravity Forms
+ * Ninja Forms
 
 
 [👁️ View Demo](https://go.wppool.dev/BsjA) | [🚀 Get ULTIMATE](https://go.wppool.dev/krvG) | 🤝 [Join Our Facebook Community](https://cutt.ly/ceCQgvoT)
@@ -169,7 +183,7 @@ WhatsApp is a registered trademark and brand by Meta.
 = How to send WordPress form entries to WhatsApp? =
 Getting started with the plugin is extremely simple. Activate the plugin, provide your WhatsApp number, customize the widget, and activate the contact form to get started.
 
-= How to Connect Contact Form 7, WPForm, Gravity Form, Fluent Form to WhatsApp or WhatsApp Business? =
+= How to Connect Contact Form 7, WPForm, Gravity Form, Fluent Form, etc to WhatsApp or WhatsApp Business? =
 There are two ways to send your preferred form leads directly to your WhatsApp account. You can either do it from **Contact Form 7 / WPForms / Gravity Forms / Fluent Forms** settings by adding your WhatsApp number and enabling the WhatsApp redirection or you can select your **Contact Form 7 / WPForms / Gravity Forms / Fluent Forms**  form , from the plugin settings to get a floating contact form.
 
 = Can I use my own icon for the floating button? =
@@ -199,10 +213,13 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 == Changelog ==
 
+= 2.10.7 - 21 MAY 2025 =
+* **Fixed:** WP Dark Mode switch appears inside FormyChat Widget with Custom Form.
+
 = 2.10.6 - 12 MAY 2025 =
-* **Fixed:** 'Filters' not working on Leads page for custom forms.
+* **Fixed:** 'Filters' are not working on the Leads page for custom forms.
 * **Fixed:** Custom Icon Position broken.
-* **Fixed:** Form not submitted from Formidable Form.
+* **Fixed:** The form was not submitted from the Formidable Form.
 
 = 2.10.5 - 30 APR 2025 =
 * **New:** Added **Ninja Form** Integration.
