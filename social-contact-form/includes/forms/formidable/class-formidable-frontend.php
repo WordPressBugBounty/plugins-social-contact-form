@@ -199,11 +199,10 @@ if ( ! class_exists( __NAMESPACE__ . '\Frontend' ) ) {
 
 			// Print Inline_script.
 			echo '<script> 
-    
 			if ( window.formychat_formidable_submit ) {
 				window.formychat_formidable_submit(' . json_encode( $data ) . ');
 			} else {
-				document.addEventListener("formychat_loaded", (event) => {
+				document.addEventListener("formychat_formidable_loaded", (event) => {
 					if ( window.formychat_formidable_loaded ) return;
 					window.formychat_formidable_submit(' . json_encode( $data ) . ');
 					window.formychat_formidable_loaded = true;

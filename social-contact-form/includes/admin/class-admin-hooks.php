@@ -27,11 +27,28 @@ if ( ! class_exists( __NAMESPACE__ . '\Hooks') ) {
 		 *
 		 * @since 1.0.0
 		 */
-		public function actions() {
-			// To.
+		public function hooks() {
+			$this->add_actions();
+			$this->add_filters();
+		}
+
+		/**
+		 * Register actions.
+		 *
+		 * @since 1.0.0
+		 */
+		public function add_actions() {
 			add_action('admin_init', [ $this, 'init_appsero' ], 0);
 			add_action('admin_init', [ $this, 'handle_safe_redirection' ]);
 			add_action('admin_menu', [ $this, 'register_admin_menu' ], 10);
+		}
+
+		/**
+		 * Register filters.
+		 *
+		 * @since 1.0.0
+		 */
+		public function add_filters() {
 			add_filter('plugin_action_links_' . plugin_basename( FORMYCHAT_FILE ), [ $this, 'plugin_action_links' ]);
 		}
 
@@ -84,7 +101,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Hooks') ) {
 				[ $this, 'load_lead_app' ]
 			);
 
-			do_action('scf_admin_menu');
+			do_action('formychat_admin_menu');
 		}
 
 
@@ -141,7 +158,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Hooks') ) {
 			if ( function_exists( 'wppool_plugin_init' ) ) {
 				$bg_image = plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/background-image.png';
 
-				$scf_plugin = wppool_plugin_init('social_contact_form', $bg_image  );
+				$formychat_plugin = wppool_plugin_init('social_contact_form', $bg_image  );
 			}
 		}
 	}

@@ -36,6 +36,10 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 			add_action('template_redirect', [ $this, 'template_redirect' ]);
 
 			// Extended hooks.
+					add_action('formychat_widget_not_found_error', [ $this, 'widget_not_found' ], 10, 1);
+			add_action('formychat_form_not_found_error', [ $this, 'form_not_found' ], 10, 3);
+
+			// Legacy support for old hook names (deprecated)
 			add_action('formychat_widget_not_found', [ $this, 'widget_not_found' ], 10, 1);
 			add_action('formychat_form_not_found', [ $this, 'form_not_found' ], 10, 3);
 
@@ -65,6 +69,8 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 			if ( defined('FORMYCHAT_FORM_PAGE') ) {
 				return;
 			}
+
+			do_action('formychat_print_widgets');
 
 			echo '<div id="formychat-widgets"></div>';
 		}
@@ -100,14 +106,36 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 
 			// Widget not found.
 			if ( ! $widget ) {
+				do_action('formychat_widget_not_found_error', $widget_id);
+				// Legacy support for old hook name (deprecated)
 				do_action('formychat_widget_not_found', $widget_id);
+
+				// Show deprecation notice in debug mode
+				if ( defined('WP_DEBUG') && WP_DEBUG ) {
+					_doing_it_wrong(
+						'formychat_widget_not_found',
+						'Use formychat_widget_not_found_error instead. This hook will be removed in version 3.0.0.',
+						'2.0.0'
+					);
+				}
 				wp_footer();
 				exit;
 			}
 
 			// Form not found.
 			if ( ! $form_id ) {
+				do_action('formychat_form_not_found_error', $form, $form_id, $widget);
+				// Legacy support for old hook name (deprecated)
 				do_action('formychat_form_not_found', $form, $form_id, $widget);
+
+				// Show deprecation notice in debug mode
+				if ( defined('WP_DEBUG') && WP_DEBUG ) {
+					_doing_it_wrong(
+						'formychat_form_not_found',
+						'Use formychat_form_not_found_error instead. This hook will be removed in version 3.0.0.',
+						'2.0.0'
+					);
+				}
 				wp_footer();
 				exit;
 			}
@@ -146,13 +174,20 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 		 * @return void
 		 */
 		public function widget_not_found( $widget_id ) {
-			echo wp_kses_post(
-				apply_filters(
-					'formychat_widget_not_found_content',
-					'<h2>No widget found</h2>',
-					$widget_id
-				)
+			$content = apply_filters(
+				'formychat_widget_not_found_error_content',
+				'<h2>No widget found</h2>',
+				$widget_id
 			);
+
+			// Legacy support for old filter name (deprecated)
+			$content = apply_filters(
+				'formychat_widget_not_found_content',
+				$content,
+				$widget_id
+			);
+
+			echo wp_kses_post($content);
 		}
 
 		/**
@@ -161,15 +196,26 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 		 * @return void
 		 */
 		public function form_not_found( $form, $form_id, $widget ) {
-			echo wp_kses_post(
-				apply_filters(
-					'formychat_form_not_found_content',
-					'<h2>No form found</h2>',
-					$form,
-					$form_id,
-					$widget
-				)
+			$content = '<h2>No form found</h2>';
+
+			$content = apply_filters(
+				'formychat_form_not_found_error_content',
+				$content,
+				$form,
+				$form_id,
+				$widget
 			);
+
+			// Legacy support for old filter name (deprecated)
+			$content = apply_filters(
+				'formychat_form_not_found_content',
+				$content,
+				$form,
+				$form_id,
+				$widget
+			);
+
+			echo wp_kses_post($content);
 		}
 
 		/**
@@ -201,12 +247,16 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 
 			// Bail if forms is empty.
 			if ( empty($forms) ) {
+				do_action('formychat_forms_not_found_error', $widget);
+				// Legacy support for old hook name (deprecated)
 				do_action('formychat_forms_not_found', $widget);
 				return;
 			}
 
 			// Bail if form not found.
 			if ( ! isset($forms[ $form ]) ) {
+				do_action('formychat_form_not_found_error', $form, $form_id, $widget);
+				// Legacy support for old hook name (deprecated)
 				do_action('formychat_form_not_found', $form, $form_id, $widget);
 				return;
 			}

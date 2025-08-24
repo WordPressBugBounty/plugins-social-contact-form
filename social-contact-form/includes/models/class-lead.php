@@ -23,7 +23,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Lead' ) ) {
 	class Lead {
 
 		/**
-		 * Create lead for SCF.
+		 * Create lead for FORMYCHAT.
 		 *
 		 * @param mixed $field Field.
 		 * @param mixed $meta Meta.

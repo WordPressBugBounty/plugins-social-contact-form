@@ -74,7 +74,6 @@ if ( ! class_exists( __NAMESPACE__ . '\Boot' ) ) {
 			require_once FORMYCHAT_INCLUDES . '/admin/class-admin-rest.php';
 			// Rest.
 			require_once FORMYCHAT_INCLUDES . '/compatibility/class-compatibility.php';
-
 			// Load deprecated class.
 			require_once FORMYCHAT_INCLUDES . '/others/functions.php';
 		}
@@ -87,6 +86,8 @@ if ( ! class_exists( __NAMESPACE__ . '\Boot' ) ) {
 			if ( ! is_admin() ) {
 				return;
 			}
+
+			require_once FORMYCHAT_INCLUDES . '/admin/legacy/class-admin.php';
 
 			require_once FORMYCHAT_INCLUDES . '/admin/class-admin-assets.php';
 

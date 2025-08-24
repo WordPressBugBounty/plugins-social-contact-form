@@ -85,7 +85,7 @@ if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 
 			do_action('formychat_form_submitted', $form_data, $request);
 
-			$form_data = apply_filters('formychat_form_data', $form_data);
+			$form_data = apply_filters('formychat_lead_data', $form_data, $request);
 
 			$lead_id = Lead::create($form_data);
 

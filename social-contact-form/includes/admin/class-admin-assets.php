@@ -28,11 +28,11 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 	class Assets extends \FormyChat\Base {
 
 		/**
-		 * Actions
+		 * Hooks
 		 *
 		 * @since 1.0.0
 		 */
-		public function actions() {
+		public function hooks() {
 			add_action('admin_enqueue_scripts', [ $this, 'enqueue_scripts' ]);
 		}
 		/**
@@ -49,8 +49,8 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 				height: 30px !important;
 			}";
 
-			wp_enqueue_style( 'scf_inline_style', esc_url( FORMYCHAT_PUBLIC ) . '/css/blank.css', [], microtime() );
-			wp_add_inline_style('scf_inline_style', $css);
+			wp_enqueue_style( 'formychat_inline_style', esc_url( FORMYCHAT_PUBLIC ) . '/css/blank.css', [], microtime() );
+			wp_add_inline_style('formychat_inline_style', apply_filters('formychat_custom_css', $css));
 		}
 
 		/**
@@ -80,7 +80,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 			wp_localize_script(
 				'formychat-admin',
 				'formychat_admin_vars',
-				[
+				apply_filters('formychat_admin_vars', [
 					'rest_endpoint'    => rest_url('formychat'),
 					'rest_nonce'  => wp_create_nonce('wp_rest'),
 					'public'      => FORMYCHAT_PUBLIC . '/',
@@ -158,7 +158,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 							'is_active' => is_plugin_active('ninja-forms/ninja-forms.php'),
 						],
 					],
-				]
+				])
 			);
 
 			$font_css = App::embed_fonts();

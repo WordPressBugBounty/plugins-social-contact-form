@@ -50,7 +50,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets' ) ) {
 			wp_localize_script(
 				'formychat-frontend',
 				'formychat_vars',
-				apply_filters( 'scf_localize_script', [
+				apply_filters( 'formychat_vars', [
 
 					'ajax_url'    => admin_url( 'admin-ajax.php' ),
 					'nonce'       => wp_create_nonce( 'formychat_widget_nonce' ),
@@ -120,7 +120,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets' ) ) {
 				'phone' => get_user_meta( $user->ID, 'billing_phone', true ),
 			];
 
-			return $user_data;
+			return apply_filters( 'formychat_user_data', $user_data );
 		}
 	}
 

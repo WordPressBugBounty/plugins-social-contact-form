@@ -13,11 +13,11 @@ defined( 'ABSPATH' ) || exit;
 
 class Compatibility extends \FormyChat\Base {
     /**
-     * Actions.
+     * Hooks.
      *
      * @since 2.9.3
      */
-    public function actions() {
+    public function hooks() {
         $themes_support = [
             'twentytwentyfive' => [ $this, 'twentytwentyfive' ],
         ];

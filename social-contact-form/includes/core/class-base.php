@@ -54,11 +54,27 @@ if ( ! class_exists( __NAMESPACE__ . 'Base' ) ) {
 		public static function init() {
 			$instance = static::get_instance();
 
-			$instance->actions();
-			$instance->filters();
+			$instance->hooks();
 		}
+
 		/**
-		 * Executes the actions hooks for the child class.
+		 * Executes the hooks for the child class.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function hooks() {
+			// Call actions and filters if exists.
+			if ( method_exists( $this, 'actions' ) ) {
+				$this->actions();
+			}
+			if ( method_exists( $this, 'filters' ) ) {
+				$this->filters();
+			}
+		}
+
+		/**
+		 * Actions.
 		 *
 		 * @since 1.0.0
 		 * @return void
@@ -66,7 +82,7 @@ if ( ! class_exists( __NAMESPACE__ . 'Base' ) ) {
 		public function actions() {}
 
 		/**
-		 * Executes the filter hooks for the child class.
+		 * Filters.
 		 *
 		 * @since 1.0.0
 		 * @return void
@@ -79,8 +95,8 @@ if ( ! class_exists( __NAMESPACE__ . 'Base' ) ) {
 		 * @since 1.0.0
 		 * @return bool
 		 */
-		public function is_ultimate_active() {
-			return apply_filters( 'is_scf_ultimate', false );
+		public function is_ultimate_active(): bool {
+			return apply_filters( 'formychat_is_ultimate', false ) || apply_filters( 'is_scf_ultimate', false );
 		}
 	}
 }

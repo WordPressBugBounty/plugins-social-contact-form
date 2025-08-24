@@ -47,7 +47,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
                 'route' => '/formychat',
             ];
 
-            return $menu_items;
+            return apply_filters('formychat_fluentform_menu_items', $menu_items);
         }
 
         /**
@@ -213,20 +213,77 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
                 return;
             }
 
-            $form_api = fluentFormApi('forms')->form($form_id);
+            // Bail if fluentform is not active.
+			if ( ! function_exists( 'fluentFormApi' ) ) {
+				return [];
+			}
+
+			$form_api = fluentFormApi('forms')->form($form_id);
             // Fields exists in the form.
             $form_fields = $form_api->fields();
 
-            $fields = [];
-            foreach ( $form_fields['fields'] as $field ) {
-                if ( 'input_name' === $field['element'] ) {
-                    // For name fields, get all sub-field names
-                    foreach ( $field['fields'] as $name_key => $name_field ) {
-                        $fields[] = $name_key; // This will add first_name, middle_name, last_name
-                    }
-                } else {
-                    $fields[] = isset($field['attributes']['name']) ? $field['attributes']['name'] : ''; // This will add email, subject, message etc if exists
+			$fields = [];
+            /**
+             * Recursively extract all field names from Fluent Forms field structure.
+             *
+             * @param array $fields_array Array of fields or subfields.
+             * @param array $fields Accumulator for field names.
+             * @return void
+             */
+            function formychat_extract_fluentform_field_names( $fields_array, &$fields ) {
+                if ( ! is_array( $fields_array ) ) {
+                    return;
                 }
+
+                foreach ( $fields_array as $field ) {
+                    // Defensive: skip if not array
+                    if ( ! is_array( $field ) ) {
+                        continue;
+                    }
+
+                    // Get the field element type
+                    $element = isset( $field['element'] ) ? $field['element'] : '';
+
+                    // If the field has 'attributes' and a 'name', add it
+                    if ( isset( $field['attributes'] ) && is_array( $field['attributes'] ) && ! empty( $field['attributes']['name'] ) ) {
+                        $fields[ $field['attributes']['name'] ] = $field['attributes']['name'];
+                    }
+
+                    // If the field has 'columns', recursively process each column's fields
+                    if ( isset( $field['columns'] ) && is_array( $field['columns'] ) ) {
+                        foreach ( $field['columns'] as $column ) {
+                            if ( isset( $column['fields'] ) && is_array( $column['fields'] ) ) {
+                                formychat_extract_fluentform_field_names( $column['fields'], $fields );
+                            }
+                        }
+                    }
+
+                    // Handle nested fields - flatten them into main array
+                    if ( isset( $field['fields'] ) && is_array( $field['fields'] ) ) {
+                        // Process nested fields
+                        foreach ( $field['fields'] as $sub_field ) {
+                            if ( is_array( $sub_field ) ) {
+                                // For address and name fields, only process visible fields
+                                if ( in_array( $element, array( 'address', 'input_name' ) ) ) {
+                                    if ( isset( $sub_field['settings']['visible'] ) && ! $sub_field['settings']['visible'] ) {
+                                        continue;
+                                    }
+                                }
+
+                                // Recursively process the sub-field
+                                formychat_extract_fluentform_field_names( array( $sub_field ), $fields );
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Initialize fields array
+            $fields = array();
+
+            // Recursively extract all field names from the form fields
+            if ( isset( $form_fields['fields'] ) && is_array( $form_fields['fields'] ) ) {
+                formychat_extract_fluentform_field_names( $form_fields['fields'], $fields );
             }
 
             $formychat_status = Helper::getFormMeta($form_id, 'formychat_status', false);

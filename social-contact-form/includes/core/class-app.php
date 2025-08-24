@@ -61,7 +61,7 @@ if ( ! class_exists( __NAMESPACE__ . '\App' ) ) {
 
 			];
 
-			return apply_filters( 'scf_fonts', $fonts );
+			return apply_filters( 'formychat_fonts', $fonts );
 		}
 
 		/**
@@ -1332,7 +1332,7 @@ if ( ! class_exists( __NAMESPACE__ . '\App' ) ) {
 				];
 			}, $countries );
 
-			return apply_filters( 'scf_countries', $countries );
+			return apply_filters( 'formychat_countries', $countries );
 		}
 
 		/**
@@ -1356,7 +1356,7 @@ if ( ! class_exists( __NAMESPACE__ . '\App' ) ) {
 				}
 			}
 
-			$css = apply_filters( 'scf_fonts_css', $css );
+			$css = apply_filters( 'formychat_fonts_css', $css );
 			return $css;
 		}
 
@@ -1376,7 +1376,8 @@ if ( ! class_exists( __NAMESPACE__ . '\App' ) ) {
 						'Name: {name}
 Email: {email}
 Phone: {phone}
-Message: {message}',
+Message: 
+{message}',
 					'cf7_message_template' => '',
 					'fluentform_message_template' => '',
 					'gravity_message_template' => '',
@@ -1439,6 +1440,8 @@ Message: {message}',
 					'forminator_id' => 0,
 					'formidable_id' => 0,
 					'ninja_id' => 0,
+
+					'google_analytics' => false,
 				],
 				'email' => [
 					'enabled' => false,

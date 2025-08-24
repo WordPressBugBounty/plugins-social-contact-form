@@ -51,7 +51,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
 					$this->render_formychat_tab( $values );
 				},
 			];
-			return $sections;
+			return apply_filters('formychat_formidable_sections', $sections);
 		}
 
 		/**

@@ -5,7 +5,7 @@
  * @package FormyChat
  */
 
-namespace WPPOOL\SCF;
+namespace WPPOOL\FORMYCHAT;
 
 class Admin {
 

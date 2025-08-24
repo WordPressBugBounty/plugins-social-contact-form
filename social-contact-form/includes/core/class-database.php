@@ -22,9 +22,9 @@ defined( 'ABSPATH' ) || exit;
 class Database extends \FormyChat\Base {
 
     /**
-     * Actions.
+     * Hooks.
      */
-    public function actions() {
+    public function hooks() {
         add_action( 'init', array( $this, 'create_tables' ), 0 );
     }
 
@@ -33,8 +33,8 @@ class Database extends \FormyChat\Base {
      */
     public function create_tables() {
 
-        // Create SCF Table.
-        $this->create_scf_table();
+        // Create FORMYCHAT Table.
+        $this->create_formychat_table();
 
         // Create Widget Table.
         $this->create_widget_table();
@@ -44,9 +44,9 @@ class Database extends \FormyChat\Base {
     }
 
     /**
-     * SCF Table.
+     * FORMYCHAT Table.
      */
-    public function create_scf_table() {
+    public function create_formychat_table() {
         global $wpdb;
         $charset_collate = $wpdb->get_charset_collate();
 
@@ -60,7 +60,7 @@ class Database extends \FormyChat\Base {
             PRIMARY KEY (`id`)
         ) $charset_collate;" ); // phpcs:ignore 
 
-        // Alter SCF Table, add form (string) and form_id (int) columns if not exists.
+        // Alter FORMYCHAT Table, add form (string) and form_id (int) columns if not exists.
         $column_exists = $wpdb->get_results("SHOW COLUMNS FROM {$wpdb->prefix}scf_leads LIKE 'form'"); // db call ok; no-cache ok.
         if ( empty($column_exists) ) {
             $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD COLUMN form text NULL DEFAULT NULL"); // db call ok; no-cache ok.
@@ -71,11 +71,13 @@ class Database extends \FormyChat\Base {
             $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD COLUMN form_id mediumint NULL DEFAULT NULL"); // db call ok; no-cache ok.
         }
 
-        // Alter SCF Table, add widget_id (int) column if not exists.
+        // Alter FORMYCHAT Table, add widget_id (int) column if not exists.
         $column_exists = $wpdb->get_results("SHOW COLUMNS FROM {$wpdb->prefix}scf_leads LIKE 'widget_id'"); // db call ok; no-cache ok.
         if ( empty($column_exists) ) {
             $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD COLUMN widget_id mediumint NULL DEFAULT 1"); // db call ok; no-cache ok.
         }
+
+        do_action('formychat_lead_table_created');
     }
 
 
@@ -87,11 +89,11 @@ class Database extends \FormyChat\Base {
         global $wpdb;
         $charset_collate = $wpdb->get_charset_collate();
 
-        if ( get_option('scf_widget_table_created') ) {
+        if ( get_option('formychat_widget_table_created') ) {
             // Drop old table.
             $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}scf_widgets"); // db call ok; no-cache ok.
 
-            delete_option('scf_widget_table_created');
+            delete_option('formychat_widget_table_created');
         }
 
         $wpdb->query( "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}scf_widgets(
@@ -104,6 +106,8 @@ class Database extends \FormyChat\Base {
             `deleted_at` DATETIME NULL DEFAULT NULL,
             PRIMARY KEY (id)
         ) $charset_collate;" ); // phpcs:ignore
+
+        do_action('formychat_widget_table_created');
     }
 
     /**
@@ -117,7 +121,7 @@ class Database extends \FormyChat\Base {
         }
 
         // WhatsApp.
-        $whatsapp = get_option('scf_whatsapp', '');
+        $whatsapp = get_option('formychat_whatsapp', '');
 
         // Bail if not set.
         if ( empty($whatsapp) ) {
@@ -131,12 +135,12 @@ class Database extends \FormyChat\Base {
         $config = \FormyChat\App::widget_config();
 
         // Others
-        $icon = get_option('scf_icon', '');
-        $cta = get_option('scf_call_to_action', '');
-        $form = get_option('scf_form', '');
-        $cf7 = get_option('scf_contact_form_7', '');
-        $greetings = get_option('scf_greetings', '');
-        $target = get_option('scf_target', '');
+        $icon = get_option('formychat_icon', '');
+        $cta = get_option('formychat_call_to_action', '');
+        $form = get_option('formychat_form', '');
+        $cf7 = get_option('formychat_contact_form_7', '');
+        $greetings = get_option('formychat_greetings', '');
+        $target = get_option('formychat_target', '');
 
         // Old to new keys mapping.
         $old_keys = [
@@ -324,7 +328,7 @@ class Database extends \FormyChat\Base {
 
         $payload = [
             'name' => __( 'My First Widget', 'formychat' ),
-            'is_active' => wp_validate_boolean(  get_option('scf_enabled', 0) ),
+            'is_active' => wp_validate_boolean(  get_option('formychat_enabled', 0) ),
             'config' => $config,
         ];
 
@@ -333,6 +337,8 @@ class Database extends \FormyChat\Base {
 
             // Update old version.
             update_option('formychat_has_first_widget', true);
+
+            do_action('formychat_widget_migrated', $payload);
 
             // Update old version.
         } catch ( \Exception $e ) { // phpcs:ignore

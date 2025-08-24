@@ -31,7 +31,7 @@ class Admin extends \FormyChat\Base {
      */
     public function add_settings_section( $sections ) {
         $sections['formychat'] = esc_html__('WhatsApp (FormyChat)', 'social-contact-form');
-        return $sections;
+        return apply_filters('formychat_wpforms_sections', $sections);
     }
 
     /**
@@ -51,6 +51,8 @@ class Admin extends \FormyChat\Base {
         echo 'Send messages through this form while submitting directly to your WhatsApp account account while submitting';
 
         echo '<br/><br/><br/>';
+
+        do_action('formychat_wpforms_settings_before_html', $settings);
 
         wpforms_panel_field(
             'toggle',
@@ -136,6 +138,8 @@ class Admin extends \FormyChat\Base {
                 'tooltip' => esc_html__('Enable to open whatsapp in new tab. Note: This option is for only desktop devices, It will be useful for WhatsApp web on desktop devices.', 'social-contact-form'),
             ]
         );
+
+        do_action('formychat_wpforms_settings_after_html', $settings);
 
         echo '</div>';
     }

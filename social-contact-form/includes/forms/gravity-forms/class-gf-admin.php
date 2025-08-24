@@ -47,7 +47,7 @@ class Admin extends \FormyChat\Base {
             'capabilities' => [ 'gravityforms_edit_forms' ],
         ];
 
-        return $menu_items;
+        return apply_filters('formychat_gravityforms_menu_items', $menu_items);
     }
 
     /**

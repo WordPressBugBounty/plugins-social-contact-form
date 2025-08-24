@@ -30,11 +30,28 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 	 */
 	class Rest extends \FormyChat\Base {
 		/**
-		 * Actions.
+		 * Hooks.
 		 */
-		public function actions() {
-			add_action( 'rest_api_init', array( $this, 'register_routes' ) );
+		public function hooks() {
+			$this->add_actions();
+			$this->add_filters();
+		}
 
+		/**
+		 * Register actions.
+		 *
+		 * @since 1.0.0
+		 */
+		public function add_actions() {
+			add_action( 'rest_api_init', array( $this, 'register_routes' ) );
+		}
+
+		/**
+		 * Register filters.
+		 *
+		 * @since 1.0.0
+		 */
+		public function add_filters() {
 			add_filter('formychat_form_fields_cf7', [ $this, 'formychat_form_fields_cf7' ], 10, 2);
 			add_filter('formychat_form_fields_gravity', [ $this, 'formychat_form_fields_gravity' ], 10, 2);
 			add_filter('formychat_form_fields_wpforms', [ $this, 'formychat_form_fields_wpforms' ], 10, 2);
@@ -179,7 +196,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			] );
 
 			if ( $widget_id ) {
-				$widget = apply_filters( 'formychat_get_widget', Widget::find( $widget_id ) );
+				$widget = apply_filters('formychat_get_widget', Widget::find( $widget_id ));
 
 				return new \WP_REST_Response( [
 					'success' => true,
@@ -214,13 +231,15 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 
 			$data = [];
 
-			$allowed = [ 'name', 'is_active', 'config' ];
+			$allowed = apply_filters('formychat_widget_allowed_fields', [ 'name', 'is_active', 'config' ]);
 
 			foreach ( $allowed as $key ) {
 				if ( $request->has_param( $key ) ) {
 					$data[ $key ] = $request->get_param( $key );
 				}
 			}
+
+			$data = apply_filters('formychat_update_widget', $data, $widget_id);
 
 			// Bail if no data.
 			if ( empty( $data ) ) {
@@ -235,7 +254,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			if ( $updated ) {
 				return new \WP_REST_Response( [
 					'success' => true,
-					'data' => Widget::find( $widget_id ),
+					'data' => apply_filters('formychat_get_widget', Widget::find( $widget_id ), $widget_id),
 				]);
 			}
 
@@ -266,6 +285,9 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			$deleted = Widget::delete( $ids );
 
 			if ( $deleted ) {
+
+				do_action('formychat_widget_deleted', $ids);
+
 				return new \WP_REST_Response( [
 					'success' => true,
 					'message' => __( 'Widget deleted.', 'social-contact-form' ),
@@ -409,6 +431,8 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				], 500 );
 			}
 
+			do_action('formychat_plugin_activated', $plugin);
+
 			return new \WP_REST_Response( [
 				'success' => true,
 				'message' => wp_sprintf( '%s plugin activated.', ucfirst( $plugin['slug'] ) ),
@@ -432,6 +456,8 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			}
 
 			update_option( 'formychat_country_code', $code );
+
+			do_action('formychat_country_code_updated', $code);
 
 			return new \WP_REST_Response( [
 				'success' => true,
@@ -484,6 +510,8 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				return new \WP_REST_Response([]);
 			}
 
+			$leads = apply_filters('formychat_get_leads', $leads, $filter);
+
 			return new \WP_REST_Response( $leads );
 		}
 
@@ -510,6 +538,8 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 
 			\FormyChat\Models\Lead::delete( $ids, $form );
 
+			do_action('formychat_leads_deleted', $ids, $form);
+
 			return new \WP_REST_Response( [
 				'success' => true,
 				'message' => __( 'Leads deleted.', 'social-contact-form' ),
@@ -531,7 +561,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				'forms' => $this->get_forms(),
 			];
 
-			$contents = apply_filters( 'formychat_contents_response', $contents );
+			$contents = apply_filters( 'formychat_get_contents', $contents );
 
 			return new \WP_REST_Response( $contents );
 		}
@@ -551,7 +581,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				return [];
 			}
 
-			return $pages;
+			return apply_filters('formychat_get_pages', $pages);
 		}
 
 		/**
@@ -570,7 +600,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				'ninja' => $this->get_ninja_forms(),
 			];
 
-			return apply_filters( 'formychat_forms', $forms );
+			return apply_filters( 'formychat_get_forms', $forms );
 		}
 
 
@@ -583,7 +613,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 		public function get_cf7_forms() {
 			$forms = [];
 			if ( ! class_exists('WPCF7') ) {
-				return $forms;
+				return apply_filters( 'formychat_get_cf7_forms', $forms );
 			}
 
 			$args = [
@@ -606,7 +636,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 
 			wp_reset_postdata();
 
-			return apply_filters( 'formychat_cf7_forms', $forms );
+			return apply_filters( 'formychat_get_cf7_forms', $forms );
 		}
 
 		/**
@@ -617,13 +647,13 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 		public function get_gravity_forms() {
 			$forms = [];
 			if ( ! class_exists('GFAPI') ) {
-				return $forms;
+				return apply_filters( 'formychat_get_gravity_forms', $forms );
 			}
 
 			$forms = \GFAPI::get_forms();
 
 			if ( empty( $forms ) ) {
-				return [];
+				return apply_filters( 'formychat_get_gravity_forms', $forms );
 			}
 
 			$gravity_forms = [];
@@ -636,7 +666,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				];
 			}
 
-			return apply_filters( 'formychat_gravity_forms', $gravity_forms );
+			return apply_filters( 'formychat_get_gravity_forms', $gravity_forms );
 		}
 
 		/**
@@ -648,7 +678,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 
 			// Bail if wpforms is not active.
 			if ( ! class_exists( 'WPForms' ) ) {
-				return [];
+				return apply_filters( 'formychat_get_wpforms_forms', [] );
 			}
 
 			// Use wpdb to get all forms.
@@ -657,7 +687,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			$forms = $wpdb->get_results( "SELECT ID, post_title FROM {$wpdb->posts} WHERE post_type = 'wpforms' AND post_status = 'publish'" ); // db call ok; no-cache ok.
 
 			if ( empty( $forms ) ) {
-				return [];
+				return apply_filters( 'formychat_get_wpforms_forms', [] );
 			}
 
 			$wpforms = [];
@@ -670,7 +700,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				];
 			}
 
-			return apply_filters( 'formychat_wpforms_forms', $wpforms );
+			return apply_filters( 'formychat_get_wpforms_forms', $wpforms );
 		}
 
 		/**
@@ -682,7 +712,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 
 			// Bail if fluentform is not active.
 			if ( ! function_exists( 'fluentFormApi' ) ) {
-				return [];
+				return apply_filters( 'formychat_get_fluentform_forms', [] );
 			}
 
 			global $wpdb;
@@ -690,7 +720,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			$forms = $wpdb->get_results("SELECT id, title FROM {$wpdb->prefix}fluentform_forms WHERE status = 'published'"); // db call ok; no-cache ok.
 
 			if ( empty($forms) ) {
-				return [];
+				return apply_filters( 'formychat_get_fluentform_forms', [] );
 			}
 
 			$fluentform_forms = [];
@@ -703,7 +733,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				];
 			}
 
-			return $fluentform_forms;
+			return apply_filters( 'formychat_get_fluentform_forms', $fluentform_forms );
 		}
 
 		/**
@@ -714,13 +744,13 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 		public function get_forminator_forms() {
 			// Bail if forminator is not active.
 			if ( ! class_exists( '\Forminator_API' ) ) {
-				return [];
+				return apply_filters( 'formychat_get_forminator_forms', [] );
 			}
 
 			$forms = \Forminator_API::get_forms();
 
 			if ( empty( $forms ) ) {
-				return [];
+				return apply_filters( 'formychat_get_forminator_forms', [] );
 			}
 
 			$forminator_forms = [];
@@ -733,7 +763,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				];
 			}
 
-			return $forminator_forms;
+			return apply_filters( 'formychat_get_forminator_forms', $forminator_forms );
 		}
 
 
@@ -747,13 +777,13 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			$forms = [];
 
 			if ( ! class_exists( 'FrmForm' ) ) {
-				return [];
+				return apply_filters( 'formychat_get_formidable_forms', [] );
 			}
 
 			$forms = \FrmForm::getAll();
 
 			if ( empty( $forms ) ) {
-				return [];
+				return apply_filters( 'formychat_get_formidable_forms', [] );
 			}
 
 			$formidable_forms = [];
@@ -766,7 +796,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				];
 			}
 
-			return $formidable_forms;
+			return apply_filters( 'formychat_get_formidable_forms', $formidable_forms );
 		}
 
 		/**
@@ -786,7 +816,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			$forms = $wpdb->get_results( "SELECT id, title, form_title FROM {$wpdb->prefix}nf3_forms" ); // db call ok; no-cache ok.
 
 			if ( empty( $forms ) ) {
-				return [];
+				return apply_filters( 'formychat_get_ninja_forms', [] );
 			}
 
 			$ninja_forms = [];
@@ -799,7 +829,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				];
 			}
 
-			return $ninja_forms;
+			return apply_filters( 'formychat_get_ninja_forms', $ninja_forms );
 		}
 
 		/**
@@ -842,7 +872,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 		public function formychat_form_fields_cf7( $fields, $form_id ) {
 			// Bail if cf7 is not active.
 			if ( ! class_exists( 'WPCF7' ) ) {
-				return [];
+				return apply_filters( 'formychat_cf7_fields', $fields, $form_id );
 			}
 
 			// Get form by id.
@@ -850,7 +880,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 
 			// Bail if form is not found.
 			if ( ! $form ) {
-				return [];
+				return apply_filters( 'formychat_cf7_fields', $fields, $form_id );
 			}
 
 			$tags = $form->scan_form_tags();
@@ -866,7 +896,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				$fields[ $tag->name ] = ucfirst($tag->name);
 			}
 
-			return $fields;
+			return apply_filters( 'formychat_cf7_fields', $fields, $form_id );
 		}
 
 		/**
@@ -878,7 +908,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 		public function formychat_form_fields_gravity( $fields, $form_id ) {
 			// Bail if gravity is not active.
 			if ( ! class_exists( 'GFAPI' ) ) {
-				return [];
+				return apply_filters( 'formychat_gravity_fields', $fields, $form_id );
 			}
 
 			$form = \GFAPI::get_form($form_id);
@@ -889,7 +919,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				$fields[ $field->label ] = $field->label;
 			}
 
-			return $fields;
+			return apply_filters( 'formychat_gravity_fields', $fields, $form_id );
 		}
 
 		/**
@@ -902,24 +932,24 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 		public function formychat_form_fields_wpforms( $fields, $form_id ) {
 			// Bail if wpforms is not active.
 			if ( ! class_exists( 'WPForms' ) ) {
-				return [];
+				return apply_filters( 'formychat_wpforms_fields', $fields, $form_id );
 			}
 
 			// Ensure we have valid input
 			if ( empty($form_id) || ! is_array($fields) ) {
-				return $fields;
+				return apply_filters( 'formychat_wpforms_fields', $fields, $form_id );
 			}
 
 			// Get the form object
 			$form = wpforms()->form->get($form_id);
 			if ( empty($form) ) {
-				return $fields;
+				return apply_filters( 'formychat_wpforms_fields', $fields, $form_id );
 			}
 
 			// Get form data
 			$form_data = wpforms_decode($form->post_content);
 			if ( empty($form_data['fields']) ) {
-				return $fields;
+				return apply_filters( 'formychat_wpforms_fields', $fields, $form_id );
 			}
 
 			// Initialize array to store field information
@@ -933,7 +963,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				$fields[ $field_label ] = $field_label;
 			}
 
-			return $fields;
+			return apply_filters( 'formychat_wpforms_fields', $fields, $form_id );
 		}
 
 		/**
@@ -953,18 +983,70 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
             $form_fields = $form_api->fields();
 
 			$fields = [];
-            foreach ( $form_fields['fields'] as $field ) {
-                if ( 'input_name' === $field['element'] ) {
-                    // For name fields, get all sub-field names
-                    foreach ( $field['fields'] as $name_key => $name_field ) {
-                        $fields[ $name_key ] = $name_key;
+            /**
+             * Recursively extract all field names from Fluent Forms field structure.
+             *
+             * @param array $fields_array Array of fields or subfields.
+             * @param array $fields Accumulator for field names.
+             * @return void
+             */
+            function formychat_extract_fluentform_field_names( $fields_array, &$fields ) {
+                if ( ! is_array( $fields_array ) ) {
+                    return;
+                }
+
+                foreach ( $fields_array as $field ) {
+                    // Defensive: skip if not array
+                    if ( ! is_array( $field ) ) {
+                        continue;
                     }
-                } else {
-                    $fields[ $field['attributes']['name'] ] = $field['attributes']['name'];
+
+                    // Get the field element type
+                    $element = isset( $field['element'] ) ? $field['element'] : '';
+
+                    // If the field has 'attributes' and a 'name', add it
+                    if ( isset( $field['attributes'] ) && is_array( $field['attributes'] ) && ! empty( $field['attributes']['name'] ) ) {
+                        $fields[ $field['attributes']['name'] ] = $field['attributes']['name'];
+                    }
+
+                    // If the field has 'columns', recursively process each column's fields
+                    if ( isset( $field['columns'] ) && is_array( $field['columns'] ) ) {
+                        foreach ( $field['columns'] as $column ) {
+                            if ( isset( $column['fields'] ) && is_array( $column['fields'] ) ) {
+                                formychat_extract_fluentform_field_names( $column['fields'], $fields );
+                            }
+                        }
+                    }
+
+                    // Handle nested fields - flatten them into main array
+                    if ( isset( $field['fields'] ) && is_array( $field['fields'] ) ) {
+                        // Process nested fields
+                        foreach ( $field['fields'] as $sub_field ) {
+                            if ( is_array( $sub_field ) ) {
+                                // For address and name fields, only process visible fields
+                                if ( in_array( $element, array( 'address', 'input_name' ) ) ) {
+                                    if ( isset( $sub_field['settings']['visible'] ) && ! $sub_field['settings']['visible'] ) {
+                                        continue;
+                                    }
+                                }
+
+                                // Recursively process the sub-field
+                                formychat_extract_fluentform_field_names( array( $sub_field ), $fields );
+                            }
+                        }
+                    }
                 }
             }
 
-			return $fields;
+            // Initialize fields array
+            $fields = array();
+
+            // Recursively extract all field names from the form fields
+            if ( isset( $form_fields['fields'] ) && is_array( $form_fields['fields'] ) ) {
+                formychat_extract_fluentform_field_names( $form_fields['fields'], $fields );
+            }
+
+			return apply_filters( 'formychat_fluentform_fields', $fields, $form_id );
 		}
 
 		/**
@@ -983,11 +1065,15 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 
 			$fields = [];
 
+			if ( empty( $form->fields ) ) {
+				return apply_filters( 'formychat_forminator_fields', $fields, $form_id );
+			}
+
 			foreach ( $form->fields as $field ) {
 				$fields[ $field->raw['element_id'] ] = $field->raw['field_label'];
 			}
 
-			return $fields;
+			return apply_filters( 'formychat_forminator_fields', $fields, $form_id );
 		}
 
 		/**
@@ -1020,7 +1106,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				$fields[ $field->name ] = $field->name;
 			}
 
-			return $fields;
+			return apply_filters( 'formychat_formidable_fields', $fields, $form_id );
 		}
 
 		/**
@@ -1049,7 +1135,7 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 				$fields[ $field->key ] = $field->label;
 			}
 
-			return $fields;
+			return apply_filters( 'formychat_ninja_fields', $fields, $form_id );
 		}
 	}
 

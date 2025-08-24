@@ -26,13 +26,31 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
 	class Admin extends \FormyChat\Base {
 
 		/**
+		 * Register hooks.
+		 *
+		 * @since 1.0.0
+		 */
+		public function hooks() {
+			$this->add_actions();
+			$this->add_filters();
+		}
+
+		/**
 		 * Register actions.
 		 *
 		 * @since 1.0.0
 		 */
-		public function actions() {
-			add_filter('wpcf7_editor_panels', [ $this, 'register_formychat_tab' ], 10, 1);
+		public function add_actions() {
 			add_action('wpcf7_save_contact_form', [ $this, 'save_contact_form' ]);
+		}
+
+		/**
+		 * Register filters.
+		 *
+		 * @since 1.0.0
+		 */
+		public function add_filters() {
+			add_filter('wpcf7_editor_panels', [ $this, 'register_formychat_tab' ], 10, 1);
 		}
 
 
@@ -48,7 +66,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
 				'title' => __('WhatsApp (FormyChat)', 'social-contact-form'),
 				'callback' => array( $this, 'formychat_cf7_tab_callback' ),
 			);
-			return $panels;
+			return apply_filters('formychat_cf7_panels', $panels);
 		}
 
 		public function print_tooltip( $text = '' ) {
