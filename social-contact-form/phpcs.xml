@@ -17,7 +17,7 @@
 	<!-- BASIC Configuration -->
 	<arg name="extensions" value="php" />
 	<arg name="basepath" value="."/> <!-- Strip the filepaths down to the relevant bit. -->
-	<arg name="parallel" value="20"/> <!-- Check up to 20 files simultaneously. -->
+	<arg name="parallel" value="50"/> <!-- Check up to 20 files simultaneously. -->
     <arg value="ps" /> <!-- Show progress -->
 	<arg name="colors" /> <!-- Show colors in console -->
     <arg value="ns" /> <!-- Show sniff codes in all reports -->

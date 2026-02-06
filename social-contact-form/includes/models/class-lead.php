@@ -206,6 +206,169 @@ if ( ! class_exists( __NAMESPACE__ . '\Lead' ) ) {
 			global $wpdb;
 			return $wpdb->get_var( $wpdb->prepare( "SELECT count(*) FROM {$wpdb->prefix}scf_leads WHERE form = %s AND deleted_at IS NULL", $form ) ); // db call ok; no-cache ok.
 		}
+
+		/**
+		 * Get leads pending Google Sheets sync.
+		 *
+		 * @param int $limit 0 = no limit.
+		 * @return array
+		 */
+		public static function get_pending_sync( int $limit = 0 ): array {
+			global $wpdb;
+
+			$limit_sql = $limit > 0 ? $wpdb->prepare( 'LIMIT %d', $limit ) : '';
+
+			$leads = $wpdb->get_results(
+				"SELECT * FROM {$wpdb->prefix}scf_leads
+				WHERE google_sheet_synced_at IS NULL
+				AND deleted_at IS NULL
+				ORDER BY created_at ASC
+				{$limit_sql}" // phpcs:ignore
+			); // db call ok; no-cache ok.
+
+			if ( $leads ) {
+				foreach ( $leads as $lead ) {
+					$lead->id        = intval( $lead->id );
+					$lead->widget_id = empty( $lead->widget_id ) ? 1 : intval( $lead->widget_id );
+					$lead->field     = empty( $lead->field ) ? [] : json_decode( $lead->field );
+					$lead->meta      = empty( $lead->meta ) ? [] : json_decode( $lead->meta );
+					$lead->note      = empty( $lead->note ) ? '' : $lead->note;
+					$lead->form      = empty( $lead->form ) ? 'formychat' : $lead->form;
+					$lead->form_id   = empty( $lead->form_id ) ? 0 : intval( $lead->form_id );
+				}
+			}
+
+			return $leads ? $leads : [];
+		}
+
+		/**
+		 * Mark leads as synced to Google Sheets.
+		 *
+		 * @param array $ids Lead IDs.
+		 * @return int Number of rows updated.
+		 */
+		public static function mark_synced( array $ids ): int {
+			global $wpdb;
+
+			if ( empty( $ids ) ) {
+				return 0;
+			}
+
+			$placeholders = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
+
+			$wpdb->query(
+				$wpdb->prepare(
+					"UPDATE {$wpdb->prefix}scf_leads
+					SET google_sheet_synced_at = %s
+					WHERE id IN ({$placeholders})", // phpcs:ignore
+					current_time( 'mysql' ),
+					...$ids
+				)
+			); // db call ok; no-cache ok.
+
+			return $wpdb->rows_affected;
+		}
+
+		/**
+		 * Reset sync status for all leads.
+		 *
+		 * @return int Number of rows updated.
+		 */
+		public static function reset_sync_status(): int {
+			global $wpdb;
+
+			$wpdb->query(
+				"UPDATE {$wpdb->prefix}scf_leads
+				SET google_sheet_synced_at = NULL
+				WHERE deleted_at IS NULL" // phpcs:ignore
+			); // db call ok; no-cache ok.
+
+			return $wpdb->rows_affected;
+		}
+
+		/**
+		 * Count synced leads.
+		 *
+		 * @return int
+		 */
+		public static function count_synced(): int {
+			global $wpdb;
+			return (int) $wpdb->get_var(
+				"SELECT COUNT(*) FROM {$wpdb->prefix}scf_leads
+				WHERE google_sheet_synced_at IS NOT NULL
+				AND deleted_at IS NULL" // phpcs:ignore
+			); // db call ok; no-cache ok.
+		}
+
+		/**
+		 * Count pending sync leads.
+		 *
+		 * @return int
+		 */
+		public static function count_pending_sync(): int {
+			global $wpdb;
+			return (int) $wpdb->get_var(
+				"SELECT COUNT(*) FROM {$wpdb->prefix}scf_leads
+				WHERE google_sheet_synced_at IS NULL
+				AND deleted_at IS NULL" // phpcs:ignore
+			); // db call ok; no-cache ok.
+		}
+
+		/**
+		 * Get a single lead by ID.
+		 *
+		 * @param int $id Lead ID.
+		 * @return object|null
+		 */
+		public static function find( int $id ) {
+			global $wpdb;
+
+			$lead = $wpdb->get_row(
+				$wpdb->prepare(
+					"SELECT * FROM {$wpdb->prefix}scf_leads WHERE id = %d AND deleted_at IS NULL",
+					$id
+				)
+			); // db call ok; no-cache ok.
+
+			if ( $lead ) {
+				$lead->id        = intval( $lead->id );
+				$lead->widget_id = empty( $lead->widget_id ) ? 1 : intval( $lead->widget_id );
+				$lead->field     = empty( $lead->field ) ? [] : json_decode( $lead->field );
+				$lead->meta      = empty( $lead->meta ) ? [] : json_decode( $lead->meta );
+				$lead->note      = empty( $lead->note ) ? '' : $lead->note;
+				$lead->form      = empty( $lead->form ) ? 'formychat' : $lead->form;
+				$lead->form_id   = empty( $lead->form_id ) ? 0 : intval( $lead->form_id );
+			}
+
+			return $lead;
+		}
+
+		/**
+		 * Get all unique field keys from all leads.
+		 *
+		 * @return array Unique field keys.
+		 */
+		public static function get_all_field_keys(): array {
+			global $wpdb;
+
+			$fields = $wpdb->get_col(
+				"SELECT field FROM {$wpdb->prefix}scf_leads WHERE deleted_at IS NULL AND field IS NOT NULL AND field != ''" // phpcs:ignore
+			); // db call ok; no-cache ok.
+
+			$keys = [];
+			foreach ( $fields as $field_json ) {
+				$field = json_decode( $field_json, true );
+				if ( is_array( $field ) ) {
+					foreach ( array_keys( $field ) as $key ) {
+						if ( ! in_array( $key, $keys, true ) ) {
+							$keys[] = $key;
+						}
+					}
+				}
+			}
+
+			return $keys;
+		}
 	}
 
 }

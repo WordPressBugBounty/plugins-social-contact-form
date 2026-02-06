@@ -95,7 +95,7 @@ if ( ! class_exists( __NAMESPACE__ . 'Base' ) ) {
 		 * @since 1.0.0
 		 * @return bool
 		 */
-		public function is_ultimate_active(): bool {
+		public function is_ultimate_active() {
 			return apply_filters( 'formychat_is_ultimate', false ) || apply_filters( 'is_scf_ultimate', false );
 		}
 	}

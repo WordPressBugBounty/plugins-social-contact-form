@@ -115,6 +115,16 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 					'methods' => 'GET',
 					'callback' => [ $this, 'get_form_fields' ],
 				],
+				'custom_css' => [
+					[
+						'methods' => 'GET',
+						'callback' => [ $this, 'get_custom_css' ],
+					],
+					[
+						'methods' => 'POST',
+						'callback' => [ $this, 'save_custom_css' ],
+					],
+				],
 			]);
 
 			if ( ! empty($routes) ) {
@@ -1136,6 +1146,52 @@ if ( ! class_exists ( __NAMESPACE__ . '\Rest') ) {
 			}
 
 			return apply_filters( 'formychat_ninja_fields', $fields, $form_id );
+		}
+
+		/**
+		 * Get custom CSS.
+		 *
+		 * @param \WP_REST_Request $request Request object.
+		 * @return \WP_REST_Response
+		 */
+		public function get_custom_css( $request ) {
+			$custom_css = get_option( 'formychat_custom_css', '' );
+
+			return new \WP_REST_Response( [
+				'success' => true,
+				'data' => [
+					'custom_css' => $custom_css,
+				],
+			] );
+		}
+
+		/**
+		 * Save custom CSS.
+		 *
+		 * @param \WP_REST_Request $request Request object.
+		 * @return \WP_REST_Response
+		 */
+		public function save_custom_css( $request ) {
+			$custom_css = $request->get_param( 'custom_css' );
+
+			if ( null === $custom_css ) {
+				return new \WP_REST_Response( [
+					'success' => false,
+					'message' => __( 'No CSS provided.', 'social-contact-form' ),
+				], 400 );
+			}
+
+			$custom_css = wp_strip_all_tags( $custom_css );
+
+			// Always save, even if unchanged (update_option returns false if unchanged, but we still want success).
+			update_option( 'formychat_custom_css', $custom_css );
+
+			do_action( 'formychat_custom_css_saved', $custom_css );
+
+			return new \WP_REST_Response( [
+				'success' => true,
+				'message' => __( 'Custom CSS saved successfully.', 'social-contact-form' ),
+			] );
 		}
 	}
 

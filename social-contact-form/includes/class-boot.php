@@ -76,6 +76,16 @@ if ( ! class_exists( __NAMESPACE__ . '\Boot' ) ) {
 			require_once FORMYCHAT_INCLUDES . '/compatibility/class-compatibility.php';
 			// Load deprecated class.
 			require_once FORMYCHAT_INCLUDES . '/others/functions.php';
+
+			// Integrations.
+			require_once FORMYCHAT_INCLUDES . '/admin/class-integrations.php';
+			require_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-token.php';
+			require_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-api.php';
+			require_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-sync.php';
+			require_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-cron.php';
+
+			// WooCommerce Addon.
+			require_once FORMYCHAT_INCLUDES . '/addons/woocommerce/class-load.php';
 		}
 
 		/**

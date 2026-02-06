@@ -92,6 +92,16 @@ if ( ! class_exists( __NAMESPACE__ . '\Hooks') ) {
 				[ $this, 'load_widget_app' ]
 			);
 
+			// Custom CSS.
+			add_submenu_page(
+				'formychat',
+				__('Custom CSS', 'social-contact-form'),
+				__('Custom CSS', 'social-contact-form'),
+				'manage_options',
+				'formychat-custom-css',
+				[ $this, 'load_custom_css_app' ]
+			);
+
 			add_submenu_page(
 				'formychat',
 				__('FormyChat Leads', 'social-contact-form'),
@@ -99,6 +109,15 @@ if ( ! class_exists( __NAMESPACE__ . '\Hooks') ) {
 				'manage_options',
 				'formychat-leads',
 				[ $this, 'load_lead_app' ]
+			);
+
+			add_submenu_page(
+				'formychat',
+				__('Integrations', 'social-contact-form'),
+				__('Integrations', 'social-contact-form') . ' <span style="background-color: #28a745; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; margin-left: 5px;">NEW</span>',
+				'manage_options',
+				'formychat-integrations',
+				[ $this, 'load_integrations_app' ]
 			);
 
 			do_action('formychat_admin_menu');
@@ -121,6 +140,24 @@ if ( ! class_exists( __NAMESPACE__ . '\Hooks') ) {
 		 */
 		public function load_lead_app() {
 			echo '<div id="formychat-leads"></div>';
+		}
+
+		/**
+		 * Render integration page.
+		 *
+		 * @return void
+		 */
+		public function load_integrations_app() {
+			echo '<div id="formychat-integrations"></div>';
+		}
+
+		/**
+		 * Render Custom CSS page.
+		 *
+		 * @return void
+		 */
+		public function load_custom_css_app() {
+			echo '<div id="formychat-custom-css"></div>';
 		}
 
 		/**
@@ -157,8 +194,9 @@ if ( ! class_exists( __NAMESPACE__ . '\Hooks') ) {
 
 			if ( function_exists( 'wppool_plugin_init' ) ) {
 				$bg_image = plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/background-image.png';
-
-				$formychat_plugin = wppool_plugin_init('social_contact_form', $bg_image  );
+				$plugin = wppool_plugin_init('social_contact_form', $bg_image  );
+				// $campaign_image = plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/black-friday.png';
+				// $plugin->set_campaign($campaign_image, '2025-11-17', '2025-12-4');
 			}
 		}
 	}

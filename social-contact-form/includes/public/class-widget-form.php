@@ -36,7 +36,7 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 			add_action('template_redirect', [ $this, 'template_redirect' ]);
 
 			// Extended hooks.
-					add_action('formychat_widget_not_found_error', [ $this, 'widget_not_found' ], 10, 1);
+			add_action('formychat_widget_not_found_error', [ $this, 'widget_not_found' ], 10, 1);
 			add_action('formychat_form_not_found_error', [ $this, 'form_not_found' ], 10, 3);
 
 			// Legacy support for old hook names (deprecated)
@@ -71,6 +71,8 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 			}
 
 			do_action('formychat_print_widgets');
+
+			$this->print_custom_css();
 
 			echo '<div id="formychat-widgets"></div>';
 		}
@@ -289,6 +291,7 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 		 */
 		public function footer( $form ) {
 			$this->enqueue_form_style($form);
+			$this->print_custom_css();
 
 			// Filter WP Dark Mode.
 			add_filter('wp_dark_mode_is_excluded', '__return_true', 999999);
@@ -302,6 +305,19 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
 		public function enqueue_form_style( $form = 'cf7' ) {
 			if ( file_exists(plugin_dir_path(FORMYCHAT_FILE) . "/public/css/forms/{$form}.css") ) {
 				wp_enqueue_style("formychat-{$form}", FORMYCHAT_PUBLIC . "/css/forms/{$form}.css", []);
+			}
+		}
+
+		/**
+		 * Print custom css.
+		 *
+		 * @return void
+		 */
+		public function print_custom_css() {
+			$custom_css = get_option('formychat_custom_css', '');
+			$custom_css = apply_filters('formychat_custom_css', $custom_css);
+			if ( ! empty($custom_css) ) {
+				echo '<style id="formychat-custom-css">' . esc_html( $custom_css ) . '</style>';
 			}
 		}
 

@@ -77,6 +77,13 @@ class Database extends \FormyChat\Base {
             $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD COLUMN widget_id mediumint NULL DEFAULT 1"); // db call ok; no-cache ok.
         }
 
+        // Alter FORMYCHAT Table, add google_sheet_synced_at column if not exists.
+        $column_exists = $wpdb->get_results("SHOW COLUMNS FROM {$wpdb->prefix}scf_leads LIKE 'google_sheet_synced_at'"); // db call ok; no-cache ok.
+        if ( empty($column_exists) ) {
+            $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD COLUMN google_sheet_synced_at DATETIME NULL DEFAULT NULL"); // db call ok; no-cache ok.
+            $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD INDEX idx_google_sheet_sync (google_sheet_synced_at)"); // db call ok; no-cache ok.
+        }
+
         do_action('formychat_lead_table_created');
     }
 

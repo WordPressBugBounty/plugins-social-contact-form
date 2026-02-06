@@ -1339,7 +1339,7 @@ if ( ! class_exists( __NAMESPACE__ . '\App' ) ) {
 		 * Embed fonts.
 		 *
 		 * @since 1.0.0
-		 * @return void
+		 * @return mixed
 		 */
 		public static function embed_fonts() {
 			$fonts = self::fonts();
@@ -1501,6 +1501,16 @@ Message:
 							'cta_message_size' => 'medium',
 							'cta_message_size_custom' => 16,
 						],
+					],
+				],
+
+				// Integrations.
+				'integrations' => [
+					'fluent-crm' => [
+						'enabled' => false,
+						'lists' => get_option( 'formychat_integration_fluent-crm_lists', [] ),
+						'tags' => get_option( 'formychat_integration_fluent-crm_tags', [] ),
+						'fields_mapping' => get_option( 'formychat_integration_fluent-crm_fields_mapping', [] ),
 					],
 				],
 			];

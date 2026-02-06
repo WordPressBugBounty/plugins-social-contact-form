@@ -69,7 +69,13 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 			wp_enqueue_style( 'formychat-admin-common', FORMYCHAT_PUBLIC . '/css/admin-common.css', [], FORMYCHAT_VERSION );
 
 			// Only load for FormyChat pages.
-			if ( ! in_array($hook, [ 'toplevel_page_formychat', 'formychat_page_formychat-leads' ]) ) {
+			if ( ! in_array($hook, [
+				'toplevel_page_formychat',
+				'formychat_page_formychat-leads',
+				'formychat_page_formychat-integrations',
+				'formychat_page_formychat-custom-css',
+				'formychat_page_formychat-woocommerce',
+			]) ) {
 				return false;
 			}
 
@@ -84,6 +90,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 					'rest_endpoint'    => rest_url('formychat'),
 					'rest_nonce'  => wp_create_nonce('wp_rest'),
 					'public'      => FORMYCHAT_PUBLIC . '/',
+					'custom_css'  => get_option( 'formychat_custom_css', '' ),
 
 					'is_premium'  => $this->is_ultimate_active(),
 
@@ -157,6 +164,21 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 							'is_installed' => file_exists(WP_PLUGIN_DIR . '/ninja-forms/ninja-forms.php'),
 							'is_active' => is_plugin_active('ninja-forms/ninja-forms.php'),
 						],
+
+						// FluentCRM.
+						'fluentcrm' => [
+							'is_installed' => file_exists(WP_PLUGIN_DIR . '/fluent-crm/fluent-crm.php'),
+							'is_active' => is_plugin_active('fluent-crm/fluent-crm.php'),
+							'is_enabled' => wp_validate_boolean(get_option('formychat_integration_fluent-crm', false)),
+						],
+
+						// Mailchimp.
+						'mailchimp' => [
+							'is_enabled' => wp_validate_boolean(get_option('formychat_integration_mailchimp', false)),
+						],
+
+						// Google Sheets.
+						'google_sheets' => $this->get_google_sheets_data(),
 					],
 				])
 			);
@@ -172,6 +194,51 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets') ) {
 		 */
 		public function get_forms() {
 			return \FormyChat\App::get_forms();
+		}
+
+		/**
+		 * Get Google Sheets data for localized script.
+		 *
+		 * @return array
+		 */
+		private function get_google_sheets_data() {
+			$data           = get_option( 'formychat_google_sheets', [] );
+			$just_connected = (bool) get_transient( 'formychat_google_sheets_just_connected' );
+
+			if ( $just_connected ) {
+				delete_transient( 'formychat_google_sheets_just_connected' );
+			}
+
+			$is_revoked  = ! empty( $data['revoked'] );
+			$is_connected = ! empty( $data['connected'] ) && ! $is_revoked;
+
+			// Get sync settings and stats.
+			$sync_settings = \FormyChat\Google_Sheets_Sync::get_settings();
+			$intervals     = \FormyChat\Google_Sheets_Cron::get_intervals_for_frontend();
+
+			// Get sync stats.
+			$sync_service = new \FormyChat\Google_Sheets_Sync();
+			$sync_stats   = [
+				'total'   => (int) Lead::total(),
+				'synced'  => Lead::count_synced(),
+				'pending' => Lead::count_pending_sync(),
+			];
+			$free_limit = $sync_service->get_free_limit();
+
+			return [
+				'is_enabled'     => wp_validate_boolean( get_option( 'formychat_integration_google_sheets', false ) ),
+				'just_connected' => $just_connected,
+				'connected'      => $is_connected,
+				'revoked'        => $is_revoked,
+				'email'          => $data['email'] ?? '',
+				'picture'        => $data['picture'] ?? '',
+				'access_token'   => $is_revoked ? '' : ( $data['access_token'] ?? '' ),
+				'refresh_token'  => $is_revoked ? '' : ( $data['refresh_token'] ?? '' ),
+				'sync_settings'  => $sync_settings,
+				'sync_stats'     => $sync_stats,
+				'intervals'      => $intervals,
+				'free_limit'     => $free_limit,
+			];
 		}
 	}
 
