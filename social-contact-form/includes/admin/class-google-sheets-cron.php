@@ -72,15 +72,15 @@ class Google_Sheets_Cron extends Base {
 		$custom_schedules = [
 			'formychat_15min'  => [
 				'interval' => 15 * MINUTE_IN_SECONDS,
-				'display'  => __( 'Every 15 minutes', 'formychat' ),
+				'display'  => __( 'Every 15 minutes', 'social-contact-form' ),
 			],
 			'formychat_30min'  => [
 				'interval' => 30 * MINUTE_IN_SECONDS,
-				'display'  => __( 'Every 30 minutes', 'formychat' ),
+				'display'  => __( 'Every 30 minutes', 'social-contact-form' ),
 			],
 			'formychat_6hours' => [
 				'interval' => 6 * HOUR_IN_SECONDS,
-				'display'  => __( 'Every 6 hours', 'formychat' ),
+				'display'  => __( 'Every 6 hours', 'social-contact-form' ),
 			],
 		];
 
@@ -101,23 +101,23 @@ class Google_Sheets_Cron extends Base {
 			[
 				'15m'   => [
 					'schedule' => 'formychat_15min',
-					'label'    => __( 'Every 15 minutes', 'formychat' ),
+					'label'    => __( 'Every 15 minutes', 'social-contact-form' ),
 				],
 				'30m'   => [
 					'schedule' => 'formychat_30min',
-					'label'    => __( 'Every 30 minutes', 'formychat' ),
+					'label'    => __( 'Every 30 minutes', 'social-contact-form' ),
 				],
 				'1h'    => [
 					'schedule' => 'hourly',
-					'label'    => __( 'Every hour', 'formychat' ),
+					'label'    => __( 'Every hour', 'social-contact-form' ),
 				],
 				'6h'    => [
 					'schedule' => 'formychat_6hours',
-					'label'    => __( 'Every 6 hours', 'formychat' ),
+					'label'    => __( 'Every 6 hours', 'social-contact-form' ),
 				],
 				'daily' => [
 					'schedule' => 'daily',
-					'label'    => __( 'Daily', 'formychat' ),
+					'label'    => __( 'Daily', 'social-contact-form' ),
 				],
 			]
 		);

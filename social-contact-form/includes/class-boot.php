@@ -98,6 +98,9 @@ if ( ! class_exists( __NAMESPACE__ . '\Boot' ) ) {
 			}
 
 			require_once FORMYCHAT_INCLUDES . '/admin/legacy/class-admin.php';
+			
+			// Load translation strings class.
+			require_once FORMYCHAT_INCLUDES . '/class-strings.php';
 
 			require_once FORMYCHAT_INCLUDES . '/admin/class-admin-assets.php';
 

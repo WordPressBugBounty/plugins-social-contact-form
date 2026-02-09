@@ -334,7 +334,7 @@ class Database extends \FormyChat\Base {
         $config['greetings']['templates']['simple']['font_family'] = 'default' === $config['greetings']['templates']['simple']['font_family'] ? 'sans-serif' : $config['greetings']['templates']['simple']['font_family'];
 
         $payload = [
-            'name' => __( 'My First Widget', 'formychat' ),
+            'name' => __( 'My First Widget', 'social-contact-form' ),
             'is_active' => wp_validate_boolean(  get_option('formychat_enabled', 0) ),
             'config' => $config,
         ];

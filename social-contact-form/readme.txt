@@ -1,10 +1,10 @@
 === Contact Form to Chat Apps | Click to Chat to Order - FormyChat ===
-Contributors: wppool, azizultex, wpdarkmode, iamjafran, devsabbirahmed
+Contributors: wppool, azizultex, wpdarkmode, iamjafran, devsabbirahmed, shahreyar46
 Tags: whatsapp chat, woocommerce whatsapp, click to chat, whatsapp business, live chat
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 2.15.0
+Stable tag: 2.15.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -268,6 +268,11 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 
 == Changelog ==
+
+= 2.15.1 - 9 Feb, 2026 =
+* **New:** Added POT file & made the entire plugin text translatable.
+* **Improvement:** Enhance security and minor bug fixing.
+
 
 = 2.15.0 - 24 Dec, 2025 =
 * **New: Google Sheets integration:**

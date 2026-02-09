@@ -283,7 +283,7 @@ class Google_Sheets_Sync extends Base {
 			return [
 				'success' => false,
 				'synced'  => 0,
-				'error'   => __( 'Google Sheets integration is disabled.', 'formychat' ),
+				'error'   => __( 'Google Sheets integration is disabled.', 'social-contact-form' ),
 			];
 		}
 
@@ -293,7 +293,7 @@ class Google_Sheets_Sync extends Base {
 			return [
 				'success' => false,
 				'synced'  => 0,
-				'error'   => __( 'No spreadsheet selected.', 'formychat' ),
+				'error'   => __( 'No spreadsheet selected.', 'social-contact-form' ),
 			];
 		}
 
@@ -304,7 +304,7 @@ class Google_Sheets_Sync extends Base {
 			return [
 				'success' => false,
 				'synced'  => 0,
-				'error'   => __( 'Free tier limit reached. Upgrade to sync more leads.', 'formychat' ),
+				'error'   => __( 'Free tier limit reached. Upgrade to sync more leads.', 'social-contact-form' ),
 			];
 		}
 

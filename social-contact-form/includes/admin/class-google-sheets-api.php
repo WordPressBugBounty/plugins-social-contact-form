@@ -39,11 +39,11 @@ class Google_Sheets_API {
 		$data = get_option( 'formychat_google_sheets', [] );
 
 		if ( empty( $data['connected'] ) || ! empty( $data['revoked'] ) ) {
-			return new \WP_Error( 'not_connected', __( 'Google Sheets is not connected.', 'formychat' ) );
+			return new \WP_Error( 'not_connected', __( 'Google Sheets is not connected.', 'social-contact-form' ) );
 		}
 
 		if ( empty( $data['access_token'] ) ) {
-			return new \WP_Error( 'no_token', __( 'No access token available.', 'formychat' ) );
+			return new \WP_Error( 'no_token', __( 'No access token available.', 'social-contact-form' ) );
 		}
 
 		// Check if token is expired and refresh if needed.
@@ -51,7 +51,7 @@ class Google_Sheets_API {
 		if ( $expires && $expires < time() ) {
 			$refreshed = Google_Sheets_Token::force_refresh();
 			if ( ! $refreshed ) {
-				return new \WP_Error( 'token_expired', __( 'Access token expired and refresh failed.', 'formychat' ) );
+				return new \WP_Error( 'token_expired', __( 'Access token expired and refresh failed.', 'social-contact-form' ) );
 			}
 			$data = get_option( 'formychat_google_sheets', [] );
 		}
@@ -103,7 +103,7 @@ class Google_Sheets_API {
 		$result      = json_decode( $body, true );
 
 		if ( $status_code >= 400 ) {
-			$error_message = $result['error']['message'] ?? __( 'API request failed.', 'formychat' );
+			$error_message = $result['error']['message'] ?? __( 'API request failed.', 'social-contact-form' );
 			error_log( 'FormyChat: API error ' . $status_code . ': ' . $error_message );
 			return new \WP_Error( 'api_error', $error_message, [ 'status' => $status_code ] );
 		}

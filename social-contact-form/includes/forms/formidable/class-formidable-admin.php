@@ -44,7 +44,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
 		 */
 		public function add_settings_tab( $sections, $values ) {
 			$sections['formychat'] = [
-				'name'       => __( 'WhatsApp (FormyChat)', 'formychat' ),
+				'name'       => __( 'WhatsApp (FormyChat)', 'social-contact-form' ),
 				'icon'       => 'formidable_formychat_icon',
 				'html_class'      => 'formychat-formidable-nav',
 				'function'   => function () use ( $values ) {

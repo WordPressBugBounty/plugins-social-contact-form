@@ -248,7 +248,7 @@ class Integrations extends Base {
 
 		return rest_ensure_response( [
 			'success' => true,
-			'message' => __( 'Google Sheets disconnected successfully.', 'formychat' ),
+			'message' => __( 'Google Sheets disconnected successfully.', 'social-contact-form' ),
 		] );
 	}
 
@@ -262,7 +262,7 @@ class Integrations extends Base {
 		$data = get_option( 'formychat_google_sheets', [] );
 
 		if ( empty( $data ) || empty( $data['connected'] ) ) {
-			return new \WP_Error( 'not_connected', __( 'Google Sheets is not connected.', 'formychat' ), [ 'status' => 400 ] );
+			return new \WP_Error( 'not_connected', __( 'Google Sheets is not connected.', 'social-contact-form' ), [ 'status' => 400 ] );
 		}
 
 		if ( $email ) {
@@ -290,7 +290,7 @@ class Integrations extends Base {
 		$data = get_option( 'formychat_google_sheets', [] );
 
 		if ( empty( $data ) || empty( $data['connected'] ) ) {
-			return new \WP_Error( 'not_connected', __( 'Google Sheets is not connected.', 'formychat' ), [ 'status' => 400 ] );
+			return new \WP_Error( 'not_connected', __( 'Google Sheets is not connected.', 'social-contact-form' ), [ 'status' => 400 ] );
 		}
 
 		if ( $access_token ) {
@@ -339,7 +339,7 @@ class Integrations extends Base {
 		$title = $request->get_param( 'title' );
 
 		if ( empty( $title ) ) {
-			return new \WP_Error( 'missing_title', __( 'Spreadsheet title is required.', 'formychat' ), [ 'status' => 400 ] );
+			return new \WP_Error( 'missing_title', __( 'Spreadsheet title is required.', 'social-contact-form' ), [ 'status' => 400 ] );
 		}
 
 		$api    = new Google_Sheets_API();
@@ -543,7 +543,7 @@ class Integrations extends Base {
 
 		return rest_ensure_response( [
 			'success' => true,
-			'message' => __( 'Integration updated successfully.', 'formychat' ),
+			'message' => __( 'Integration updated successfully.', 'social-contact-form' ),
 		] );
 	}
 
@@ -649,7 +649,7 @@ class Integrations extends Base {
 		$action = $request->get_param( 'action' ); // 'install' or 'activate'
 
 		if ( empty( $integration_id ) ) {
-			return new \WP_Error( 'missing_integration_id', __( 'Integration ID is required.', 'formychat' ), [ 'status' => 400 ] );
+			return new \WP_Error( 'missing_integration_id', __( 'Integration ID is required.', 'social-contact-form' ), [ 'status' => 400 ] );
 		}
 
 		// Get integration data
@@ -664,12 +664,12 @@ class Integrations extends Base {
 		}
 
 		if ( ! $integration ) {
-			return new \WP_Error( 'integration_not_found', __( 'Integration not found.', 'formychat' ), [ 'status' => 404 ] );
+			return new \WP_Error( 'integration_not_found', __( 'Integration not found.', 'social-contact-form' ), [ 'status' => 404 ] );
 		}
 
 		// Check if it's a WordPress plugin integration
 		if ( 'wp_plugin' !== $integration['type'] || empty( $integration['plugin'] ) ) {
-			return new \WP_Error( 'invalid_integration_type', __( 'This integration cannot be installed automatically.', 'formychat' ), [ 'status' => 400 ] );
+			return new \WP_Error( 'invalid_integration_type', __( 'This integration cannot be installed automatically.', 'social-contact-form' ), [ 'status' => 400 ] );
 		}
 
 		$plugin_file = $integration['plugin'];
@@ -698,7 +698,7 @@ class Integrations extends Base {
 				'success' => true,
 				'action' => 'activated',
 				// translators: %s is the integration title (e.g. FluentCRM, MailChimp)
-				'message' => wp_sprintf( esc_html__( '%s has been activated successfully.', 'formychat' ), $integration['title'] ),
+				'message' => wp_sprintf( esc_html__( '%s has been activated successfully.', 'social-contact-form' ), $integration['title'] ),
 				'integration' => array_merge( $integration, [
 					'is_installed' => true,
 					'is_activated' => true,
@@ -736,12 +736,12 @@ class Integrations extends Base {
 
 			// Check if we can use the filesystem, if not, throw an error.
 			if ( ! WP_Filesystem( $creds ) ) {
-				return new \WP_Error( 'filesystem_error', __( 'Could not access filesystem.', 'formychat' ), [ 'status' => 500 ] );
+				return new \WP_Error( 'filesystem_error', __( 'Could not access filesystem.', 'social-contact-form' ), [ 'status' => 500 ] );
 			}
 
 			// Check if plugins directory is writable
 			if ( ! wp_is_writable( WP_PLUGIN_DIR ) ) {
-				return new \WP_Error( 'filesystem_error', __( 'Plugins directory is not writable.', 'formychat' ), [ 'status' => 500 ] );
+				return new \WP_Error( 'filesystem_error', __( 'Plugins directory is not writable.', 'social-contact-form' ), [ 'status' => 500 ] );
 			}
 
 			// Get plugin slug from plugin file
@@ -752,12 +752,12 @@ class Integrations extends Base {
 
 			if ( is_wp_error( $api ) ) {
 				// translators: %s is the error message from WordPress API
-				return new \WP_Error( 'plugin_api_failed', wp_sprintf( esc_html__( 'Could not retrieve plugin information: %s', 'formychat' ), $api->get_error_message() ), [ 'status' => 500 ] );
+				return new \WP_Error( 'plugin_api_failed', wp_sprintf( esc_html__( 'Could not retrieve plugin information: %s', 'social-contact-form' ), $api->get_error_message() ), [ 'status' => 500 ] );
 			}
 
 			// Check if download link exists
 			if ( empty( $api->download_link ) ) {
-				return new \WP_Error( 'no_download_link', __( 'Plugin download link not found.', 'formychat' ), [ 'status' => 500 ] );
+				return new \WP_Error( 'no_download_link', __( 'Plugin download link not found.', 'social-contact-form' ), [ 'status' => 500 ] );
 			}
 
 			// Create a custom silent upgrader skin to prevent any HTML output
@@ -817,7 +817,7 @@ class Integrations extends Base {
 			}
 
 			if ( ! $install_result ) {
-				$error_message = __( 'Plugin installation failed.', 'formychat' );
+				$error_message = __( 'Plugin installation failed.', 'social-contact-form' );
 				if ( ! empty( $skin->error_message ) ) {
 					$error_message = $skin->error_message;
 				}
@@ -826,7 +826,7 @@ class Integrations extends Base {
 
 			// Check if plugin file exists after installation
 			if ( ! file_exists( $plugin_path ) ) {
-				return new \WP_Error( 'installation_failed', __( 'Plugin file not found after installation.', 'formychat' ), [ 'status' => 500 ] );
+				return new \WP_Error( 'installation_failed', __( 'Plugin file not found after installation.', 'social-contact-form' ), [ 'status' => 500 ] );
 			}
 
 			// Activate plugin after installation with output buffering
@@ -847,7 +847,7 @@ class Integrations extends Base {
 				'success' => true,
 				'action' => 'installed_and_activated',
 				// translators: %s is the integration title (e.g. FluentCRM, MailChimp)
-				'message' => sprintf( __( '%s has been installed and activated successfully.', 'formychat' ), $integration['title'] ),
+				'message' => sprintf( __( '%s has been installed and activated successfully.', 'social-contact-form' ), $integration['title'] ),
 				'integration' => array_merge( $integration, [
 					'is_installed' => true,
 					'is_activated' => true,
@@ -863,7 +863,7 @@ class Integrations extends Base {
 			return rest_ensure_response( [
 				'success' => true,
 				// translators: %s is the integration title (e.g. FluentCRM, MailChimp)
-				'message' => sprintf( __( '%s is already installed and activated.', 'formychat' ), $integration['title'] ),
+				'message' => sprintf( __( '%s is already installed and activated.', 'social-contact-form' ), $integration['title'] ),
 				'integration' => array_merge( $integration, [
 					'is_installed' => true,
 					'is_activated' => true,
@@ -874,7 +874,7 @@ class Integrations extends Base {
 			] );
 		}
 
-		return new \WP_Error( 'invalid_action', __( 'Invalid action requested.', 'formychat' ), [ 'status' => 400 ] );
+		return new \WP_Error( 'invalid_action', __( 'Invalid action requested.', 'social-contact-form' ), [ 'status' => 400 ] );
 	}
 }
 

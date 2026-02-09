@@ -13,6 +13,7 @@ excludes:
     - .json
     - .xml
     - docs/**
+    - .claude/**
     - report.txt
 compression: 9
 max_file_size: 10MB
