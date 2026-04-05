@@ -8,8 +8,11 @@ namespace FormyChat;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+	exit();
 }
+
+// phpcs:disable PHPCompatibility.Operators.NewOperators -- Plugin requires PHP 7.0+; ?? is valid.
 
 class Integrations extends Base {
 	/**
@@ -98,7 +101,8 @@ class Integrations extends Base {
 			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 			error_log( 'FormyChat: Redirecting to clean URL...' );
 			wp_safe_redirect( admin_url( 'admin.php?page=formychat-integrations' ) );
-			exit;
+			// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+			exit();
 		} else {
 			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 			error_log( 'FormyChat: Missing tokens - access_token empty: ' . ( empty( $access_token ) ? 'yes' : 'no' ) . ', refresh_token empty: ' . ( empty( $refresh_token ) ? 'yes' : 'no' ) );
@@ -552,13 +556,14 @@ class Integrations extends Base {
 	 */
 	public function categories() {
 		$categories = [
-			'crm_marketing' => 'CRM & Marketing',
-			'email_newsletters' => 'Email & Newsletters',
-			'automation_webhooks' => 'Automation & Webhooks',
-			'file_storage_cloud' => 'File Storage & Cloud',
-			'analytics_tracking' => 'Analytics & Tracking',
-			'communication' => 'Communication',
-			'others' => 'Others',
+			'all' => __( 'All', 'social-contact-form' ),
+			'crm_marketing' => __( 'CRM & Marketing', 'social-contact-form' ),
+			'email_newsletters' => __( 'Email & Newsletters', 'social-contact-form' ),
+			'automation_webhooks' => __( 'Automation & Webhooks', 'social-contact-form' ),
+			'file_storage_cloud' => __( 'File Storage & Cloud', 'social-contact-form' ),
+			'analytics_tracking' => __( 'Analytics & Tracking', 'social-contact-form' ),
+			'communication' => __( 'Communication', 'social-contact-form' ),
+			'others' => __( 'Others', 'social-contact-form' ),
 		];
 
 		return apply_filters( 'formychat_integrations_categories', $categories );
@@ -592,8 +597,8 @@ class Integrations extends Base {
 				'id' => 'fluent-crm',
 				'logo' => FORMYCHAT_PUBLIC . '/images/integrations/fluent-crm.png',
 				'color' => 'rgb(119 66 230)',
-				'title' => 'FluentCRM',
-				'description' => 'Connect your Form leads to FluentCRM and instantly add new contacts when a form is submitted. Perfect for automated email campaigns and segmented marketing.',
+				'title' => __( 'FluentCRM', 'social-contact-form' ),
+				'description' => __( 'Connect your Form leads to FluentCRM and instantly add new contacts when a form is submitted. Perfect for automated email campaigns and segmented marketing.', 'social-contact-form' ),
 				'type' => 'wp_plugin',
 				'plugin' => 'fluent-crm/fluent-crm.php',
 				'categories' => [ 'crm_marketing', 'email_newsletters' ],
@@ -606,8 +611,8 @@ class Integrations extends Base {
 				'id' => 'mailchimp',
 				'logo' => FORMYCHAT_PUBLIC . '/images/integrations/mailchimp.png',
 				'color' => 'rgb(255 224 27)',
-				'title' => 'MailChimp',
-				'description' => 'Create Mailchimp newsletter signups directly from your form submissions. Automatically grow your audience and engage your subscribers.',
+				'title' => __( 'MailChimp', 'social-contact-form' ),
+				'description' => __( 'Create Mailchimp newsletter signups directly from your form submissions. Automatically grow your audience and engage your subscribers.', 'social-contact-form' ),
 				'type' => 'api',
 				'categories' => [ 'crm_marketing', 'email_newsletters' ],
 				'status' => 'available',
@@ -619,8 +624,8 @@ class Integrations extends Base {
 				'id' => 'google_sheets',
 				'logo' => FORMYCHAT_PUBLIC . '/images/integrations/google-sheets.png',
 				'color' => 'rgb(52 168 83)',
-				'title' => 'Google Sheets',
-				'description' => 'Sync form submissions directly to Google Sheets in real time. Perfect for reporting, analytics, or team collaboration without manual data entry.',
+				'title' => __( 'Google Sheets', 'social-contact-form' ),
+				'description' => __( 'Sync form submissions directly to Google Sheets in real time. Perfect for reporting, analytics, or team collaboration without manual data entry.', 'social-contact-form' ),
 				'type' => 'api',
 				'categories' => [ 'automation_webhooks', 'file_storage_cloud' ],
 				'status' => 'available',
@@ -631,8 +636,8 @@ class Integrations extends Base {
 			[
 				'id' => 'mailpoet',
 				'logo' => FORMYCHAT_PUBLIC . '/images/integrations/mailpoet.png',
-				'title' => 'MailPoet',
-				'description' => 'Add subscribers to your MailPoet mailing lists as soon as they submit a form. Automate your newsletter growth and keep your audience engaged.',
+				'title' => __( 'MailPoet', 'social-contact-form' ),
+				'description' => __( 'Add subscribers to your MailPoet mailing lists as soon as they submit a form. Automate your newsletter growth and keep your audience engaged.', 'social-contact-form' ),
 				'plugin' => 'mailpoet/mailpoet.php',
 				'status' => 'upcoming',
 			],

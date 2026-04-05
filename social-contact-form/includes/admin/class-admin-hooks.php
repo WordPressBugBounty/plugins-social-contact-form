@@ -3,205 +3,208 @@
  * Admin Hooks.
  *
  * @package FormyChat
- * @since 1.0.0
+ * @since   1.0.0
  */
 
 // Namespace .
 namespace FormyChat\Admin;
 
 // Exit if accessed directly.
-defined('ABSPATH') || exit;
+// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+defined('ABSPATH') || exit();
 
 
-if ( ! class_exists( __NAMESPACE__ . '\Hooks') ) {
-	/**
-	 * Admin class.
-	 *
-	 * @package FormyChat
-	 * @since 1.0.0
-	 */
-	class Hooks extends \FormyChat\Base {
-
-		/**
-		 * Constructor.
-		 *
-		 * @since 1.0.0
-		 */
-		public function hooks() {
-			$this->add_actions();
-			$this->add_filters();
-		}
-
-		/**
-		 * Register actions.
-		 *
-		 * @since 1.0.0
-		 */
-		public function add_actions() {
-			add_action('admin_init', [ $this, 'init_appsero' ], 0);
-			add_action('admin_init', [ $this, 'handle_safe_redirection' ]);
-			add_action('admin_menu', [ $this, 'register_admin_menu' ], 10);
-		}
-
-		/**
-		 * Register filters.
-		 *
-		 * @since 1.0.0
-		 */
-		public function add_filters() {
-			add_filter('plugin_action_links_' . plugin_basename( FORMYCHAT_FILE ), [ $this, 'plugin_action_links' ]);
-		}
+if ( ! class_exists(__NAMESPACE__ . '\Hooks') ) {
+    /**
+     * Admin class.
+     *
+     * @package FormyChat
+     * @since   1.0.0
+     */
+    class Hooks extends \FormyChat\Base {
 
 
+        /**
+         * Constructor.
+         *
+         * @since 1.0.0
+         */
+        public function hooks() {
+            $this->add_actions();
+            $this->add_filters();
+        }
 
-		/**
-		 * Redirect to setup page on activation.
-		 *
-		 * @return void
-		 */
-		public function handle_safe_redirection() {
-			if ( ! wp_validate_boolean( get_option( 'scf-setup-run' ) ) ) {
-				update_option( 'scf-setup-run', true );
-				wp_safe_redirect( admin_url( 'admin.php?page=formychat' ) );
-				exit;
-			}
-		}
+        /**
+         * Register actions.
+         *
+         * @since 1.0.0
+         */
+        public function add_actions() {
+            add_action('admin_init', [ $this, 'init_appsero' ], 0);
+            add_action('admin_init', [ $this, 'handle_safe_redirection' ]);
+            add_action('admin_menu', [ $this, 'register_admin_menu' ], 10);
+        }
 
-		/**
-		 * Admin menu.
-		 *
-		 * @return void
-		 */
-		public function register_admin_menu() {
-			add_menu_page(
-				__('FormyChat', 'social-contact-form'),
-				__('FormyChat', 'social-contact-form'),
-				'manage_options',
-				'formychat',
-				[ $this, 'load_widget_app' ],
-				'dashicons-formychat'
-			);
-
-			// Submenu with same slug as parent.
-			add_submenu_page(
-				'formychat',
-				__('Floating Widgets', 'social-contact-form'),
-				__('Floating Widgets', 'social-contact-form'),
-				'manage_options',
-				'formychat',
-				[ $this, 'load_widget_app' ]
-			);
-
-			// Custom CSS.
-			add_submenu_page(
-				'formychat',
-				__('Custom CSS', 'social-contact-form'),
-				__('Custom CSS', 'social-contact-form'),
-				'manage_options',
-				'formychat-custom-css',
-				[ $this, 'load_custom_css_app' ]
-			);
-
-			add_submenu_page(
-				'formychat',
-				__('FormyChat Leads', 'social-contact-form'),
-				__('Leads', 'social-contact-form'),
-				'manage_options',
-				'formychat-leads',
-				[ $this, 'load_lead_app' ]
-			);
-
-			add_submenu_page(
-				'formychat',
-				__('Integrations', 'social-contact-form'),
-				__('Integrations', 'social-contact-form') . ' <span style="background-color: #28a745; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; margin-left: 5px;">NEW</span>',
-				'manage_options',
-				'formychat-integrations',
-				[ $this, 'load_integrations_app' ]
-			);
-
-			do_action('formychat_admin_menu');
-		}
+        /**
+         * Register filters.
+         *
+         * @since 1.0.0
+         */
+        public function add_filters() {
+            add_filter('plugin_action_links_' . plugin_basename(FORMYCHAT_FILE), [ $this, 'plugin_action_links' ]);
+        }
 
 
-		/**
-		 * Render settings page.
-		 *
-		 * @return void
-		 */
-		public function load_widget_app() {
-			echo '<div id="formychat-widgets"></div>';
-		}
 
-		/**
-		 * Render leads page.
-		 *
-		 * @return void
-		 */
-		public function load_lead_app() {
-			echo '<div id="formychat-leads"></div>';
-		}
+        /**
+         * Redirect to setup page on activation.
+         *
+         * @return void
+         */
+        public function handle_safe_redirection() {
+            if ( ! wp_validate_boolean(get_option('scf-setup-run')) ) {
+                update_option('scf-setup-run', true);
+                wp_safe_redirect(admin_url('admin.php?page=formychat'));
+                // phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+                exit();
+            }
+        }
 
-		/**
-		 * Render integration page.
-		 *
-		 * @return void
-		 */
-		public function load_integrations_app() {
-			echo '<div id="formychat-integrations"></div>';
-		}
+        /**
+         * Admin menu.
+         *
+         * @return void
+         */
+        public function register_admin_menu() {
+            add_menu_page(
+                __('FormyChat', 'social-contact-form'),
+                __('FormyChat', 'social-contact-form'),
+                'manage_options',
+                'formychat',
+                [ $this, 'load_widget_app' ],
+                'dashicons-formychat'
+            );
 
-		/**
-		 * Render Custom CSS page.
-		 *
-		 * @return void
-		 */
-		public function load_custom_css_app() {
-			echo '<div id="formychat-custom-css"></div>';
-		}
+            // Submenu with same slug as parent.
+            add_submenu_page(
+                'formychat',
+                __('Floating Widgets', 'social-contact-form'),
+                __('Floating Widgets', 'social-contact-form'),
+                'manage_options',
+                'formychat',
+                [ $this, 'load_widget_app' ]
+            );
 
-		/**
-		 * Add plugin action links.
-		 *
-		 * @param array $links Plugin action links.
-		 * @return array
-		 */
-		public function plugin_action_links( $links ) {
-			if ( $this->is_ultimate_active() ) {
-				$links[] = '<a href="' . admin_url('admin.php?page=formychat') . '">' . __('Settings', 'social-contact-form') . '</a>';
-			} else {
-				$links[] = '<a href="https://go.wppool.dev/2rc7/?ref=' . esc_url(home_url()) . '" target="_blank" style="color: #b32d2e;">' . __('Upgrade', 'social-contact-form') . '</a>';
-			}
-			return $links;
-		}
+            // Custom CSS.
+            add_submenu_page(
+                'formychat',
+                __('Custom CSS', 'social-contact-form'),
+                __('Custom CSS', 'social-contact-form'),
+                'manage_options',
+                'formychat-custom-css',
+                [ $this, 'load_custom_css_app' ]
+            );
 
-		/**
-		 * Initialize Appsero SDK.
-		 *
-		 * @return void
-		 */
-		public function init_appsero() {
-			if ( ! class_exists('\Appsero\Client') ) {
-				require_once FORMYCHAT_INCLUDES . '/appsero/src/Client.php';
-			}
+            add_submenu_page(
+                'formychat',
+                __('FormyChat Leads', 'social-contact-form'),
+                __('Leads', 'social-contact-form'),
+                'manage_options',
+                'formychat-leads',
+                [ $this, 'load_lead_app' ]
+            );
 
-			add_filter('appsero_is_local', '__return_false');
+            add_submenu_page(
+                'formychat',
+                __('Integrations', 'social-contact-form'),
+                __('Integrations', 'social-contact-form') . ' <span style="background-color: #28a745; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; margin-left: 5px;">NEW</span>',
+                'manage_options',
+                'formychat-integrations',
+                [ $this, 'load_integrations_app' ]
+            );
 
-			$appsero = new \Appsero\Client('9b39bac1-3b27-41d1-aeec-18fbfd4a9977', 'FormyChat', FORMYCHAT_FILE);
-
-			// Active insights.
-			$appsero->insights()->init();
-
-			if ( function_exists( 'wppool_plugin_init' ) ) {
-				$bg_image = plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/background-image.png';
-				$plugin = wppool_plugin_init('social_contact_form', $bg_image  );
-				// $campaign_image = plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/black-friday.png';
-				// $plugin->set_campaign($campaign_image, '2025-11-17', '2025-12-4');
-			}
-		}
-	}
+            do_action('formychat_admin_menu');
+        }
 
 
-	// Initialize the plugin.
-	Hooks::init();
+        /**
+         * Render settings page.
+         *
+         * @return void
+         */
+        public function load_widget_app() {
+            echo '<div id="formychat-widgets"></div>';
+        }
+
+        /**
+         * Render leads page.
+         *
+         * @return void
+         */
+        public function load_lead_app() {
+            echo '<div id="formychat-leads"></div>';
+        }
+
+        /**
+         * Render integration page.
+         *
+         * @return void
+         */
+        public function load_integrations_app() {
+            echo '<div id="formychat-integrations"></div>';
+        }
+
+        /**
+         * Render Custom CSS page.
+         *
+         * @return void
+         */
+        public function load_custom_css_app() {
+            echo '<div id="formychat-custom-css"></div>';
+        }
+
+        /**
+         * Add plugin action links.
+         *
+         * @param  array $links Plugin action links.
+         * @return array
+         */
+        public function plugin_action_links( $links ) {
+            if ( $this->is_ultimate_active() ) {
+                $links[] = '<a href="' . admin_url('admin.php?page=formychat') . '">' . __('Settings', 'social-contact-form') . '</a>';
+            } else {
+                $links[] = '<a href="https://go.wppool.dev/2rc7/?ref=' . esc_url(home_url()) . '" target="_blank" style="color: #b32d2e;">' . __('Upgrade', 'social-contact-form') . '</a>';
+            }
+            return $links;
+        }
+
+        /**
+         * Initialize Appsero SDK.
+         *
+         * @return void
+         */
+        public function init_appsero() {
+            if ( ! class_exists('\Appsero\Client') ) {
+                include_once FORMYCHAT_INCLUDES . '/appsero/src/Client.php';
+            }
+
+            add_filter('appsero_is_local', '__return_false');
+
+            $appsero = new \Appsero\Client('9b39bac1-3b27-41d1-aeec-18fbfd4a9977', 'FormyChat', FORMYCHAT_FILE);
+
+            // Active insights.
+            $appsero->insights()->init();
+
+            if ( function_exists('wppool_plugin_init') ) {
+                $bg_image = plugin_dir_url(FORMYCHAT_FILE) . '/includes/wppool/background-image.png';
+                $plugin = wppool_plugin_init('social_contact_form', $bg_image);
+                // $campaign_image = plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/black-friday.png';
+                // $plugin->set_campaign($campaign_image, '2025-11-17', '2025-12-4');
+            }
+        }
+    }
+
+
+    // Initialize the plugin.
+    Hooks::init();
 }

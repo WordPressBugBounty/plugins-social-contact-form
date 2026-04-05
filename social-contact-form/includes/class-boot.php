@@ -4,156 +4,158 @@
  * Loads all the required files.
  *
  * @package FormyChat
- * @since 1.0.0
+ * @since   1.0.0
  */
 
 // Namespace.
 namespace FormyChat;
 
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+defined('ABSPATH') || exit();
 
-if ( ! class_exists( __NAMESPACE__ . '\Boot' ) ) {
+if ( ! class_exists(__NAMESPACE__ . '\Boot') ) {
 
-	class Boot {
-		/**
-		 * Constructor.
-		 */
-		public function run() {
-			$this->define_constants();
-			$this->includes();
-		}
+    class Boot {
 
-		/**
-		 * Define constants.
-		 */
-		private function define_constants() {
-			// Other constants.
-			define( 'FORMYCHAT_INCLUDES', plugin_dir_path( FORMYCHAT_FILE ) . '/includes' );
-			define( 'FORMYCHAT_PUBLIC', plugin_dir_url( FORMYCHAT_FILE ) . 'public' );
-		}
+        /**
+         * Constructor.
+         */
+        public function run() {
+            $this->define_constants();
+            $this->includes();
+        }
 
-		/**
-		 * Include files.
-		 */
-		private function includes() {
-			$this->include_libs();
-			$this->include_common_file();
-			$this->include_admin_files();
-			$this->include_public_files();
-		}
+        /**
+         * Define constants.
+         */
+        private function define_constants() {
+            // Other constants.
+            define('FORMYCHAT_INCLUDES', plugin_dir_path(FORMYCHAT_FILE) . '/includes');
+            define('FORMYCHAT_PUBLIC', plugin_dir_url(FORMYCHAT_FILE) . 'public');
+        }
 
-		/**
-		 * Include libraries.
-		 */
-		private function include_libs() {
-			// Require files.
-			if ( file_exists( FORMYCHAT_INCLUDES . '/wppool/class-plugin.php' ) ) {
-				require_once FORMYCHAT_INCLUDES . '/wppool/class-plugin.php';
-			}
-		}
+        /**
+         * Include files.
+         */
+        private function includes() {
+            $this->include_libs();
+            $this->include_common_file();
+            $this->include_admin_files();
+            $this->include_public_files();
+        }
 
-		/**
-		 * Include common files.
-		 */
-		private function include_common_file() {
+        /**
+         * Include libraries.
+         */
+        private function include_libs() {
+            // Require files.
+            if ( file_exists(FORMYCHAT_INCLUDES . '/wppool/class-plugin.php') ) {
+                include_once FORMYCHAT_INCLUDES . '/wppool/class-plugin.php';
+            }
+        }
 
-			// Load deprecated class.
-			require_once FORMYCHAT_INCLUDES . '/others/class-admin.php';
+        /**
+         * Include common files.
+         */
+        private function include_common_file() {
 
-			// Base.
-			require_once FORMYCHAT_INCLUDES . '/core/class-base.php';
-			require_once FORMYCHAT_INCLUDES . '/core/class-app.php';
+            // Load deprecated class.
+            include_once FORMYCHAT_INCLUDES . '/others/class-admin.php';
 
-			// Models.
-			require_once FORMYCHAT_INCLUDES . '/core/class-database.php';
+            // Base.
+            include_once FORMYCHAT_INCLUDES . '/core/class-base.php';
+            include_once FORMYCHAT_INCLUDES . '/core/class-app.php';
 
-			require_once FORMYCHAT_INCLUDES . '/models/class-widget.php';
-			require_once FORMYCHAT_INCLUDES . '/models/class-lead.php';
-			// Rest.
-			require_once FORMYCHAT_INCLUDES . '/admin/class-admin-rest.php';
-			// Rest.
-			require_once FORMYCHAT_INCLUDES . '/compatibility/class-compatibility.php';
-			// Load deprecated class.
-			require_once FORMYCHAT_INCLUDES . '/others/functions.php';
+            // Models.
+            include_once FORMYCHAT_INCLUDES . '/core/class-database.php';
 
-			// Integrations.
-			require_once FORMYCHAT_INCLUDES . '/admin/class-integrations.php';
-			require_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-token.php';
-			require_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-api.php';
-			require_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-sync.php';
-			require_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-cron.php';
+            include_once FORMYCHAT_INCLUDES . '/models/class-widget.php';
+            include_once FORMYCHAT_INCLUDES . '/models/class-lead.php';
+            // Rest.
+            include_once FORMYCHAT_INCLUDES . '/admin/class-admin-rest.php';
+            // Rest.
+            include_once FORMYCHAT_INCLUDES . '/compatibility/class-compatibility.php';
+            // Load deprecated class.
+            include_once FORMYCHAT_INCLUDES . '/others/functions.php';
 
-			// WooCommerce Addon.
-			require_once FORMYCHAT_INCLUDES . '/addons/woocommerce/class-load.php';
-		}
+            // Integrations.
+            include_once FORMYCHAT_INCLUDES . '/admin/class-integrations.php';
+            include_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-token.php';
+            include_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-api.php';
+            include_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-sync.php';
+            include_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-cron.php';
 
-		/**
-		 * Include admin files.
-		 */
-		private function include_admin_files() {
-			// Bail if not in admin.
-			if ( ! is_admin() ) {
-				return;
-			}
+            // WooCommerce Addon.
+            include_once FORMYCHAT_INCLUDES . '/addons/woocommerce/class-load.php';
+        }
 
-			require_once FORMYCHAT_INCLUDES . '/admin/legacy/class-admin.php';
-			
-			// Load translation strings class.
-			require_once FORMYCHAT_INCLUDES . '/class-strings.php';
+        /**
+         * Include admin files.
+         */
+        private function include_admin_files() {
+            // Bail if not in admin.
+            if ( ! is_admin() ) {
+                return;
+            }
 
-			require_once FORMYCHAT_INCLUDES . '/admin/class-admin-assets.php';
+            include_once FORMYCHAT_INCLUDES . '/admin/legacy/class-admin.php';
 
-			require_once FORMYCHAT_INCLUDES . '/admin/class-admin-hooks.php';
+            // Load translation strings class.
+            include_once FORMYCHAT_INCLUDES . '/class-strings.php';
 
-			// Contact Form 7.
-			require_once FORMYCHAT_INCLUDES . '/forms/contact-form/class-cf7-admin.php';
+            include_once FORMYCHAT_INCLUDES . '/admin/class-admin-assets.php';
 
-			// WPForms.
-			require_once FORMYCHAT_INCLUDES . '/forms/wpforms/class-wpforms-admin.php';
+            include_once FORMYCHAT_INCLUDES . '/admin/class-admin-hooks.php';
 
-			// Gravity Forms.
-			require_once FORMYCHAT_INCLUDES . '/forms/gravity-forms/class-gf-admin.php';
+            // Contact Form 7.
+            include_once FORMYCHAT_INCLUDES . '/forms/contact-form/class-cf7-admin.php';
 
-			// FluentForm.
-			require_once FORMYCHAT_INCLUDES . '/forms/fluentform/class-fluentform-admin.php';
+            // WPForms.
+            include_once FORMYCHAT_INCLUDES . '/forms/wpforms/class-wpforms-admin.php';
 
-			// Formidable.
-			require_once FORMYCHAT_INCLUDES . '/forms/formidable/class-formidable-admin.php';
+            // Gravity Forms.
+            include_once FORMYCHAT_INCLUDES . '/forms/gravity-forms/class-gf-admin.php';
 
-			// Ninja.
-			if ( class_exists( '\NF_Abstracts_Action' ) ) {
-				require_once FORMYCHAT_INCLUDES . '/forms/ninjaforms/class-ninjaforms-admin.php';
-			}
-		}
+            // FluentForm.
+            include_once FORMYCHAT_INCLUDES . '/forms/fluentform/class-fluentform-admin.php';
 
-		/**
-		 * Include public files.
-		 */
-		private function include_public_files() {
-			require_once FORMYCHAT_INCLUDES . '/public/class-assets.php';
-			require_once FORMYCHAT_INCLUDES . '/public/class-widget-form.php';
-			require_once FORMYCHAT_INCLUDES . '/public/class-rest.php';
+            // Formidable.
+            include_once FORMYCHAT_INCLUDES . '/forms/formidable/class-formidable-admin.php';
 
-			// Contact Form 7.
-			require_once FORMYCHAT_INCLUDES . '/forms/contact-form/class-cf7-frontend.php';
+            // Ninja.
+            if ( class_exists('\NF_Abstracts_Action') ) {
+                include_once FORMYCHAT_INCLUDES . '/forms/ninjaforms/class-ninjaforms-admin.php';
+            }
+        }
 
-			// WPForms.
-			require_once FORMYCHAT_INCLUDES . '/forms/wpforms/class-wpforms-frontend.php';
+        /**
+         * Include public files.
+         */
+        private function include_public_files() {
+            include_once FORMYCHAT_INCLUDES . '/public/class-assets.php';
+            include_once FORMYCHAT_INCLUDES . '/public/class-widget-form.php';
+            include_once FORMYCHAT_INCLUDES . '/public/class-rest.php';
 
-			// Gravity Forms.
-			require_once FORMYCHAT_INCLUDES . '/forms/gravity-forms/class-gf-frontend.php';
+            // Contact Form 7.
+            include_once FORMYCHAT_INCLUDES . '/forms/contact-form/class-cf7-frontend.php';
 
-			// FluentForm.
-			require_once FORMYCHAT_INCLUDES . '/forms/fluentform/class-fluentform-frontend.php';
+            // WPForms.
+            include_once FORMYCHAT_INCLUDES . '/forms/wpforms/class-wpforms-frontend.php';
 
-			// Formidable.
-			require_once FORMYCHAT_INCLUDES . '/forms/formidable/class-formidable-frontend.php';
-		}
-	}
+            // Gravity Forms.
+            include_once FORMYCHAT_INCLUDES . '/forms/gravity-forms/class-gf-frontend.php';
 
-	// Go go go.
-	$formychat = new Boot();
-	$formychat->run();
+            // FluentForm.
+            include_once FORMYCHAT_INCLUDES . '/forms/fluentform/class-fluentform-frontend.php';
+
+            // Formidable.
+            include_once FORMYCHAT_INCLUDES . '/forms/formidable/class-formidable-frontend.php';
+        }
+    }
+
+    // Go go go.
+    $formychat = new Boot();
+    $formychat->run();
 
 }

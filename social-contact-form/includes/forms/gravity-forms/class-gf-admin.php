@@ -3,7 +3,10 @@
 namespace FormyChat\Forms\GravityForms;
 
 // Exit if accessed directly.
-defined('ABSPATH') || exit;
+// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+defined('ABSPATH') || exit();
+
+// phpcs:disable Universal.Operators.DisallowShortTernary -- Short ternary used for concise defaults.
 
 use Gravity_Forms\Gravity_Forms\Settings\Settings;
 
@@ -13,6 +16,7 @@ use Gravity_Forms\Gravity_Forms\Settings\Settings;
  * @since 1.0.0
  */
 class Admin extends \FormyChat\Base {
+
 
     /**
      * Actions.
@@ -62,21 +66,33 @@ class Admin extends \FormyChat\Base {
 
         $form = \GFAPI::get_form($form_id);
 
-        $fields = array_map(function ( $field ) {
-            return $field->label;
-        }, $form['fields']);
+        $fields = array_map(
+            function ( $field ) {
+                return $field->label;
+            }, $form['fields']
+        );
 
         $custom_tags = \FormyChat\App::custom_tags();
-        if ( is_array ( $custom_tags ) && ! empty( $custom_tags ) ) {
-            $fields = array_merge( $fields, array_keys( $custom_tags ) );
+        if ( is_array($custom_tags) && ! empty($custom_tags) ) {
+            $fields = array_merge($fields, array_keys($custom_tags));
         }
 
-        $html = wp_sprintf('<p>Use the tags bellow to customize your message: %s</p>', wp_sprintf('<strong>{%s}<strong>', implode('}, {', array_map(function ( $field ) {
-            return $field;
-        }, $fields))));
+        $html = wp_sprintf(
+            '<p>Use the tags bellow to customize your message: %s</p>', wp_sprintf(
+                '<strong>{%s}<strong>', implode(
+                    '}, {', array_map(
+                        function ( $field ) {
+                            return $field;
+                        }, $fields
+                    )
+                )
+            )
+        );
 
         $initial_values = [
             'status' => gform_get_meta($form_id, 'formychat_status'),
+            'destination_type' => gform_get_meta($form_id, 'formychat_destination_type') ?: 'phone',
+            'group_invite_code' => gform_get_meta($form_id, 'formychat_group_invite_code') ?: '',
             'country_code' => gform_get_meta($form_id, 'formychat_country_code'),
             'number' => gform_get_meta($form_id, 'formychat_number'),
             'message' => null !== gform_get_meta($form_id, 'formychat_message') ? gform_get_meta($form_id, 'formychat_message') : 'Name: {Name}
@@ -93,7 +109,7 @@ Comments: {Comments}',
         ];
 
         ob_start();
-        formychat_phone_number_field( $args );
+        formychat_phone_number_field($args);
 
         $phone_number_field = ob_get_clean();
 
@@ -110,10 +126,32 @@ Comments: {Comments}',
                             'tooltip'    => esc_html__('Enable WhatsApp notifications for this form.', 'social-contact-form'),
                         ],
                         [
+                            'name'       => 'destination_type',
+                            'type'       => 'radio',
+                            'label'      => esc_html__('Destination', 'social-contact-form'),
+                            'tooltip'    => esc_html__('Send to a phone number or a WhatsApp group.', 'social-contact-form'),
+                            'choices'    => [
+                                [
+									'label' => esc_html__('Phone', 'social-contact-form'),
+									'value' => 'phone',
+								],
+                                [
+									'label' => esc_html__('Group', 'social-contact-form') . ( $this->is_ultimate_active() ? '' : ' (Pro)' ),
+									'value' => 'group',
+								],
+                            ],
+                        ],
+                        [
                             'type'       => 'html',
                             'label'      => esc_html__('WhatsApp Number', 'social-contact-form'),
                             'tooltip'    => esc_html__('Enter your WhatsApp number.', 'social-contact-form'),
                             'html'       => $phone_number_field,
+                        ],
+                        [
+                            'name'       => 'group_invite_code',
+                            'type'       => 'text',
+                            'label'      => esc_html__('Group Invite Link', 'social-contact-form'),
+                            'tooltip'    => esc_html__('Paste your WhatsApp group invite link.', 'social-contact-form'),
                         ],
                         [
                             'name'       => 'message',
@@ -152,7 +190,8 @@ Comments: {Comments}',
      * @return void
      */
     public function footer() {
-        $css = wp_sprintf('.gform-icon--formychat { 
+        $css = wp_sprintf(
+            '.gform-icon--formychat { 
             content: " ";
             background: url( %s ) no-repeat center center;
             background-size: 100%% 100%%;
@@ -160,15 +199,16 @@ Comments: {Comments}',
             width: 30px;
             height: 35px;
             transform: scale(1.2)
-        }', FORMYCHAT_PUBLIC . '/images/whatsapp.svg');
+        }', FORMYCHAT_PUBLIC . '/images/whatsapp.svg'
+        );
         echo '<style>' . esc_html($css) . '</style>'; // phpcs:ignore
     }
 
     /**
      * Save custom settings.
      *
-     * @param array $form The form data.
-     * @param int $form_id The ID of the form.
+     * @param  array $form    The form data.
+     * @param  int   $form_id The ID of the form.
      * @return array The modified form data.
      */
     public function save( $values ) {
@@ -189,6 +229,16 @@ Comments: {Comments}',
                     continue;
                 }
 
+                if ( in_array($key, [ 'destination_type', 'formychat_destination_type' ], true) ) {
+                    gform_update_meta($form_id, 'formychat_destination_type', $value, $form_id);
+                    continue;
+                }
+
+                if ( in_array($key, [ 'group_invite_code', 'formychat_group_invite_code' ], true) ) {
+                    gform_update_meta($form_id, 'formychat_group_invite_code', $value, $form_id);
+                    continue;
+                }
+
                 gform_update_meta($form_id, 'formychat_' . $key, $value, $form_id);
             }
         }
@@ -199,8 +249,8 @@ Comments: {Comments}',
     /**
      * Form saved.
      *
-     * @param array $form The form data.
-     * @param bool $is_new If the form is new.
+     * @param array $form   The form data.
+     * @param bool  $is_new If the form is new.
      */
     public function after_save( $form, $is_new ) {
 
@@ -210,7 +260,7 @@ Comments: {Comments}',
             return;
         }
 
-		if ( $is_new ) {
+        if ( $is_new ) {
 
             $message = 'Thanks for contacting us! We will get back to you shortly.';
 
@@ -218,13 +268,17 @@ Comments: {Comments}',
 
             if ( $fields && is_array($fields) ) {
                 $message = '';
-                $message = implode("\n", array_map(function ( $field ) {
-                    return $field->label . ': {' . $field->label . '}';
-                }, $fields));
-			}
+                $message = implode(
+                    "\n", array_map(
+                        function ( $field ) {
+                            return $field->label . ': {' . $field->label . '}';
+                        }, $fields
+                    )
+                );
+            }
 
-            gform_update_meta( $form_id, 'formychat_message', $message, $form_id );
-		}
+            gform_update_meta($form_id, 'formychat_message', $message, $form_id);
+        }
     }
 }
 

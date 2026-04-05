@@ -1,0 +1,3134 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-02-09 11:37+0600\n"
+"PO-Revision-Date: 2026-03-12 00:30:58\n"
+"Last-Translator: FormyChat <noreply@formychat.com>\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;esc_html;esc_html_e;_e;esc_attr;esc_attr_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: .agent\n"
+"X-Poedit-SearchPathExcluded-1: .claude\n"
+"X-Poedit-SearchPathExcluded-2: .git\n"
+"X-Poedit-SearchPathExcluded-3: .github\n"
+"X-Poedit-SearchPathExcluded-4: .wordpress-org\n"
+"X-Poedit-SearchPathExcluded-5: docs\n"
+"X-Poedit-SearchPathExcluded-6: node_modules\n"
+"X-Poedit-SearchPathExcluded-7: src/assets\n"
+"x-generator: generate-po-translations.js\n"
+
+#: includes/addons/woocommerce/class-admin.php:51
+#: includes/addons/woocommerce/class-admin.php:52
+#: includes/class-strings.php:210
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: includes/addons/woocommerce/class-admin.php:207
+#: includes/addons/woocommerce/class-admin.php:257
+msgid "No settings provided."
+msgstr "Nenhuma configuração fornecida."
+
+#: includes/addons/woocommerce/class-admin.php:220
+#: includes/addons/woocommerce/class-admin.php:270
+msgid "Settings saved successfully."
+msgstr "Configurações salvas com sucesso."
+
+#: includes/addons/woocommerce/class-admin.php:283
+msgid "Product Name"
+msgstr "Nome do produto"
+
+#: includes/addons/woocommerce/class-admin.php:284
+msgid "Product Slug"
+msgstr "Lesma de produto"
+
+#: includes/addons/woocommerce/class-admin.php:285
+msgid "Product SKU"
+msgstr "SKU do produto"
+
+#: includes/addons/woocommerce/class-admin.php:286
+msgid "Product Price"
+msgstr "Preço do produto"
+
+#: includes/addons/woocommerce/class-admin.php:287
+msgid "Regular Price"
+msgstr "Preço normal"
+
+#: includes/addons/woocommerce/class-admin.php:288
+msgid "Sale Price"
+msgstr "Preço de venda"
+
+#: includes/addons/woocommerce/class-admin.php:289
+msgid "Stock Status"
+msgstr "Status do estoque"
+
+#: includes/addons/woocommerce/class-admin.php:290
+msgid "Current URL"
+msgstr "URL atual"
+
+#: includes/addons/woocommerce/class-admin.php:291
+msgid "Current Page Title"
+msgstr "Título da página atual"
+
+#: includes/addons/woocommerce/class-admin.php:292
+msgid "Site Title"
+msgstr "Título do site"
+
+#: includes/addons/woocommerce/class-admin.php:293
+msgid "Site URL"
+msgstr "URL do site"
+
+#: includes/addons/woocommerce/class-admin.php:294
+msgid "Site Email"
+msgstr "E-mail do site"
+
+#: includes/addons/woocommerce/class-admin.php:295
+msgid "Current Date"
+msgstr "Data Atual"
+
+#: includes/addons/woocommerce/class-admin.php:296
+msgid "Current Time"
+msgstr "Hora atual"
+
+#: includes/admin/class-admin-hooks.php:77
+#: includes/admin/class-admin-hooks.php:78 includes/class-strings.php:777
+#: includes/forms/contact-form/class-cf7-admin.php:114
+msgid "FormyChat"
+msgstr "FormyChat"
+
+#: includes/admin/class-admin-hooks.php:88
+#: includes/admin/class-admin-hooks.php:89 includes/class-strings.php:39
+msgid "Floating Widgets"
+msgstr "Widgets Flutuantes"
+
+#: includes/admin/class-admin-hooks.php:98
+#: includes/admin/class-admin-hooks.php:99 includes/class-strings.php:271
+msgid "Custom CSS"
+msgstr "CSS personalizado"
+
+#: includes/admin/class-admin-hooks.php:107 includes/class-strings.php:579
+msgid "FormyChat Leads"
+msgstr "Leads do FormyChat"
+
+#: includes/admin/class-admin-hooks.php:108 includes/class-strings.php:199
+msgid "Leads"
+msgstr "Pistas"
+
+#: includes/admin/class-admin-hooks.php:116
+#: includes/admin/class-admin-hooks.php:117 includes/class-strings.php:190
+msgid "Integrations"
+msgstr "Integrações"
+
+#: includes/admin/class-admin-hooks.php:171 includes/class-strings.php:276
+#: includes/class-strings.php:531
+msgid "Settings"
+msgstr "Configurações"
+
+#: includes/admin/class-admin-hooks.php:173
+msgid "Upgrade"
+msgstr "Atualizar"
+
+#: includes/admin/class-admin-rest.php:187
+#: includes/admin/class-admin-rest.php:238
+msgid "Widget not found."
+msgstr "Widget não encontrado."
+
+#: includes/admin/class-admin-rest.php:220
+msgid "Widget not created."
+msgstr "Widget não criado."
+
+#: includes/admin/class-admin-rest.php:258
+msgid "No data to update."
+msgstr "Não há dados para atualizar."
+
+#: includes/admin/class-admin-rest.php:273
+msgid "Widget not updated."
+msgstr "Widget não atualizado."
+
+#: includes/admin/class-admin-rest.php:288
+msgid "No widget ID provided."
+msgstr "Nenhum ID de widget fornecido."
+
+#: includes/admin/class-admin-rest.php:303
+msgid "Widget deleted."
+msgstr "Widget excluído."
+
+#: includes/admin/class-admin-rest.php:309
+msgid "Widget not deleted."
+msgstr "Widget não excluído."
+
+#: includes/admin/class-admin-rest.php:325
+msgid "Action not found."
+msgstr "Ação não encontrada."
+
+#: includes/admin/class-admin-rest.php:377
+msgid "Plugin not found."
+msgstr "Plug-in não encontrado."
+
+#: includes/admin/class-admin-rest.php:403
+#: includes/admin/class-integrations.php:739
+msgid "Could not access filesystem."
+msgstr "Não foi possível acessar o sistema de arquivos."
+
+#: includes/admin/class-admin-rest.php:464
+msgid "No country code provided."
+msgstr "Nenhum código de país fornecido."
+
+#: includes/admin/class-admin-rest.php:474
+msgid "Country code saved."
+msgstr "Código do país salvo."
+
+#: includes/admin/class-admin-rest.php:540
+msgid "No lead ID provided."
+msgstr "Nenhum ID de lead foi fornecido."
+
+#: includes/admin/class-admin-rest.php:555
+msgid "Leads deleted."
+msgstr "Leads excluídos."
+
+#: includes/admin/class-admin-rest.php:860 includes/class-strings.php:221
+msgid "Name"
+msgstr "Nome"
+
+#: includes/admin/class-admin-rest.php:861 includes/class-strings.php:222
+msgid "Email"
+msgstr "E-mail"
+
+#: includes/admin/class-admin-rest.php:862 includes/class-strings.php:223
+msgid "Phone"
+msgstr "Telefone"
+
+#: includes/admin/class-admin-rest.php:863 includes/class-strings.php:224
+msgid "Message"
+msgstr "Mensagem"
+
+#: includes/admin/class-admin-rest.php:1180
+msgid "No CSS provided."
+msgstr "Nenhum CSS fornecido."
+
+#: includes/admin/class-admin-rest.php:1193
+msgid "Custom CSS saved successfully."
+msgstr "CSS personalizado salvo com sucesso."
+
+#: includes/admin/class-google-sheets-api.php:42
+#: includes/admin/class-integrations.php:265
+#: includes/admin/class-integrations.php:293
+msgid "Google Sheets is not connected."
+msgstr "O Planilhas Google não está conectado."
+
+#: includes/admin/class-google-sheets-api.php:46
+msgid "No access token available."
+msgstr "Nenhum token de acesso disponível."
+
+#: includes/admin/class-google-sheets-api.php:54
+msgid "Access token expired and refresh failed."
+msgstr "O token de acesso expirou e a atualização falhou."
+
+#: includes/admin/class-google-sheets-api.php:106
+msgid "API request failed."
+msgstr "Falha na solicitação da API."
+
+#: includes/admin/class-google-sheets-cron.php:75
+#: includes/admin/class-google-sheets-cron.php:104
+msgid "Every 15 minutes"
+msgstr "A cada 15 minutos"
+
+#: includes/admin/class-google-sheets-cron.php:79
+#: includes/admin/class-google-sheets-cron.php:108
+msgid "Every 30 minutes"
+msgstr "A cada 30 minutos"
+
+#: includes/admin/class-google-sheets-cron.php:83
+#: includes/admin/class-google-sheets-cron.php:116
+msgid "Every 6 hours"
+msgstr "A cada 6 horas"
+
+#: includes/admin/class-google-sheets-cron.php:112
+msgid "Every hour"
+msgstr "A cada hora"
+
+#: includes/admin/class-google-sheets-cron.php:120
+msgid "Daily"
+msgstr "Diária"
+
+#: includes/admin/class-google-sheets-sync.php:286
+msgid "Google Sheets integration is disabled."
+msgstr "A integração do Planilhas Google está desativada."
+
+#: includes/admin/class-google-sheets-sync.php:296
+msgid "No spreadsheet selected."
+msgstr "Nenhuma planilha selecionada."
+
+#: includes/admin/class-google-sheets-sync.php:307
+msgid "Free tier limit reached. Upgrade to sync more leads."
+msgstr "Limite do nível gratuito atingido. Atualize para sincronizar mais leads."
+
+#: includes/admin/class-integrations.php:251
+msgid "Google Sheets disconnected successfully."
+msgstr "O Planilhas Google foi desconectado com sucesso."
+
+#: includes/admin/class-integrations.php:342
+msgid "Spreadsheet title is required."
+msgstr "O título da planilha é obrigatório."
+
+#: includes/admin/class-integrations.php:546
+msgid "Integration updated successfully."
+msgstr "Integração atualizada com sucesso."
+
+#: includes/admin/class-integrations.php:652
+msgid "Integration ID is required."
+msgstr "O ID de integração é obrigatório."
+
+#: includes/admin/class-integrations.php:667
+msgid "Integration not found."
+msgstr "Integração não encontrada."
+
+#: includes/admin/class-integrations.php:672
+msgid "This integration cannot be installed automatically."
+msgstr "Esta integração não pode ser instalada automaticamente."
+
+#: includes/admin/class-integrations.php:744
+msgid "Plugins directory is not writable."
+msgstr "O diretório de plug-ins não é gravável."
+
+#: includes/admin/class-integrations.php:760
+msgid "Plugin download link not found."
+msgstr "Link para download do plug-in não encontrado."
+
+#: includes/admin/class-integrations.php:820
+msgid "Plugin installation failed."
+msgstr "A instalação do plug-in falhou."
+
+#: includes/admin/class-integrations.php:829
+msgid "Plugin file not found after installation."
+msgstr "Arquivo de plug-in não encontrado após a instalação."
+
+#: includes/admin/class-integrations.php:850
+#, php-format
+msgid "%s has been installed and activated successfully."
+msgstr "P14 foi instalado e ativado com sucesso."
+
+#: includes/admin/class-integrations.php:866
+#, php-format
+msgid "%s is already installed and activated."
+msgstr "P14 já está instalado e ativado."
+
+#: includes/admin/class-integrations.php:877
+msgid "Invalid action requested."
+msgstr "Ação inválida solicitada."
+
+#: includes/class-strings.php:38
+msgid "Widget name"
+msgstr "Nome do widget"
+
+#: includes/class-strings.php:40 includes/class-strings.php:578
+msgid "Create new"
+msgstr "Criar novo"
+
+#: includes/class-strings.php:41
+msgid "Upgrade now"
+msgstr "Atualize agora"
+
+#: includes/class-strings.php:42
+msgid "Please wait while we load your widgets."
+msgstr "Aguarde enquanto carregamos seus widgets."
+
+#: includes/class-strings.php:43
+msgid "Please wait while we load your widget"
+msgstr "Aguarde enquanto carregamos seu widget"
+
+#: includes/class-strings.php:44
+msgid "Form mode"
+msgstr "Modo de formulário"
+
+#: includes/class-strings.php:45
+msgid "Created at"
+msgstr "Criado em"
+
+#: includes/class-strings.php:46
+msgid "Untitled widget"
+msgstr "Widget sem título"
+
+#: includes/class-strings.php:47
+msgid "Duplicate Widget?"
+msgstr "Widget duplicado?"
+
+#: includes/class-strings.php:48
+msgid "Please select a name for your new duplicated widget"
+msgstr "Selecione um nome para seu novo widget duplicado"
+
+#: includes/class-strings.php:49
+msgid "Creating"
+msgstr "Criando"
+
+#: includes/class-strings.php:50
+msgid "Create Widget"
+msgstr "Criar widget"
+
+#: includes/class-strings.php:51
+msgid "Edit Widget"
+msgstr "Editar widget"
+
+#: includes/class-strings.php:52
+msgid "Delete Widget"
+msgstr "Excluir widget"
+
+#: includes/class-strings.php:53
+msgid "Duplicate Widget"
+msgstr "Widget duplicado"
+
+#: includes/class-strings.php:54
+msgid "Widget List"
+msgstr "Lista de widgets"
+
+#: includes/class-strings.php:55
+msgid "No widgets found"
+msgstr "Nenhum widget encontrado"
+
+#: includes/class-strings.php:56
+msgid "Widgets"
+msgstr "Widgets"
+
+#: includes/class-strings.php:57
+msgid "FormyChat Widgets"
+msgstr "Widgets do FormyChat"
+
+#: includes/class-strings.php:58
+msgid "Get Started with FormyChat"
+msgstr "Comece com o FormyChat"
+
+#: includes/class-strings.php:61
+msgid "Save"
+msgstr "Salvar"
+
+#: includes/class-strings.php:62 includes/class-strings.php:326
+#: includes/class-strings.php:478 includes/class-strings.php:780
+msgid "Save Changes"
+msgstr "Salvar alterações"
+
+#: includes/class-strings.php:63 includes/class-strings.php:481
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: includes/class-strings.php:64
+msgid "Delete"
+msgstr "Excluir"
+
+#: includes/class-strings.php:65
+msgid "Edit"
+msgstr "Editar"
+
+#: includes/class-strings.php:66 includes/class-strings.php:699
+msgid "Close"
+msgstr "Fechar"
+
+#: includes/class-strings.php:67
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: includes/class-strings.php:68
+msgid "Back"
+msgstr "Voltar"
+
+#: includes/class-strings.php:69
+msgid "Next"
+msgstr "Próxima"
+
+#: includes/class-strings.php:70
+msgid "Next →"
+msgstr "Próximo →"
+
+#: includes/class-strings.php:71
+msgid "← Prev"
+msgstr "← Anterior"
+
+#: includes/class-strings.php:72 includes/class-strings.php:548
+msgid "Step"
+msgstr "Etapa"
+
+#: includes/class-strings.php:73 includes/class-strings.php:549
+msgid "Create"
+msgstr "Criar"
+
+#: includes/class-strings.php:74
+msgid "Continue"
+msgstr "Continuar"
+
+#: includes/class-strings.php:75
+msgid "Duplicate"
+msgstr "Duplicada"
+
+#: includes/class-strings.php:76
+msgid "Copy"
+msgstr "Cópia"
+
+#: includes/class-strings.php:77
+msgid "Add"
+msgstr "Adicionar"
+
+#: includes/class-strings.php:78 includes/class-strings.php:517
+msgid "Remove"
+msgstr "Remover"
+
+#: includes/class-strings.php:79
+msgid "Update"
+msgstr "Atualizar"
+
+#: includes/class-strings.php:80
+msgid "Apply"
+msgstr "Aplicar"
+
+#: includes/class-strings.php:81 includes/class-strings.php:461
+msgid "Reset"
+msgstr "Reiniciar"
+
+#: includes/class-strings.php:84
+msgid "Agent Name"
+msgstr "Nome do Agente"
+
+#: includes/class-strings.php:85
+msgid "Agent {number}"
+msgstr "Agente P2"
+
+#: includes/class-strings.php:86 includes/class-strings.php:452
+#: includes/forms/contact-form/class-cf7-admin.php:146
+msgid "WhatsApp Number"
+msgstr "Número do WhatsApp"
+
+#: includes/class-strings.php:87
+msgid "WhatsApp number"
+msgstr "Número do WhatsApp"
+
+#: includes/class-strings.php:88
+msgid "Send to"
+msgstr "Enviar para"
+
+#: includes/class-strings.php:89
+msgid "WhatsApp Group"
+msgstr "Grupo WhatsApp"
+
+#: includes/class-strings.php:90
+msgid "Send messages to any phone number."
+msgstr "Envie mensagens para um único número de telefone."
+
+#: includes/class-strings.php:91
+msgid "Send messages to a WhatsApp group."
+msgstr "Envie mensagens para um grupo do WhatsApp."
+
+#: includes/class-strings.php:94
+msgid "WhatsApp Group URL or Code"
+msgstr "URL ou código do grupo WhatsApp"
+
+#: includes/class-strings.php:95
+msgid "Paste group invite link or code (e.g. https://chat.whatsapp.com/ABC123)"
+msgstr ""
+"Cole o link ou código de convite do grupo (por exemplo, "
+"https://chat.whatsapp.com/ABC123)"
+
+#: includes/class-strings.php:97
+msgid "Paste the full WhatsApp group invite URL or just the invite code"
+msgstr ""
+"Cole o URL completo do convite do grupo do WhatsApp ou apenas o código do "
+"convite"
+
+#: includes/class-strings.php:98
+msgid "Enter your WhatsApp number with country code"
+msgstr "Digite seu número do WhatsApp com o código do país"
+
+#: includes/class-strings.php:98
+msgid "WhatsApp messaging"
+msgstr "Mensagens no WhatsApp"
+
+#: includes/class-strings.php:99
+msgid "Send message to WhatsApp"
+msgstr "Enviar mensagem para o WhatsApp"
+
+#: includes/class-strings.php:100
+msgid ""
+"When enabled, visitors are redirected to WhatsApp to send the message after "
+"submit. When disabled, the lead is stored in FormyChat only—no WhatsApp "
+"redirect."
+msgstr "Quando ativado, os visitantes são redirecionados ao WhatsApp para enviar a mensagem após o envio. Quando desativado, o lead fica apenas no FormyChat—sem redirecionamento ao WhatsApp."
+
+
+#: includes/class-strings.php:99
+msgid "Choose how you prefer to display your widget"
+msgstr "Escolha como você prefere exibir seu widget"
+
+#: includes/class-strings.php
+msgid "Single"
+msgstr "Solteira"
+
+#: includes/class-strings.php
+msgid "Multi-agents"
+msgstr "Multiagentes"
+
+#: includes/class-strings.php:102
+msgid "Display widget for one agent."
+msgstr "Widget de exibição para um agente."
+
+#: includes/class-strings.php:103
+msgid "Display widget for multiple agents."
+msgstr "Widget de exibição para vários agentes."
+
+#: includes/class-strings.php:104
+msgid "Example: John Doe"
+msgstr "Exemplo: John Doe"
+
+#: includes/class-strings.php:90
+msgid "Subtitle / Designation"
+msgstr "Legenda / Designação"
+
+#: includes/class-strings.php:91
+msgid "Example: Technical Support Executive"
+msgstr "Exemplo: Executivo de Suporte Técnico"
+
+#: includes/class-strings.php:92
+msgid "Agent WhatsApp number"
+msgstr "Número do WhatsApp do agente"
+
+#: includes/class-strings.php:93
+msgid "Move up"
+msgstr "Subir"
+
+#: includes/class-strings.php:94
+msgid "Move down"
+msgstr "Mover para baixo"
+
+#: includes/class-strings.php:95
+msgid "Please add at least one agent"
+msgstr "Adicione pelo menos um agente"
+
+#: includes/class-strings.php:96
+msgid "Add new agent"
+msgstr "Adicionar novo agente"
+
+#: includes/class-strings.php:97
+msgid "Behaviors"
+msgstr "Comportamentos"
+
+#: includes/class-strings.php:98 includes/class-strings.php:470
+#: includes/class-strings.php:747
+msgid "Open WhatsApp in a new tab"
+msgstr "Abra o WhatsApp em uma nova aba"
+
+#: includes/class-strings.php:99
+msgid ""
+"Open the WhatsApp link in a new tab on Desktop. <br/><b>Note:</b> In "
+"Safari, WhatsApp will be opened in current tab."
+msgstr ""
+"Abra o link do WhatsApp em uma nova aba no Desktop. <br/><b>Nota:</b> No "
+"Safari, o WhatsApp será aberto na guia atual."
+
+#: includes/class-strings.php:100
+msgid "Navigate to WhatsApp Web from desktop"
+msgstr "Navegue até o WhatsApp Web no desktop"
+
+#: includes/class-strings.php:101
+msgid ""
+"By enabling this feature, WhatsApp will be automatically opened on your web "
+"browser when accessed from a laptop/PC."
+msgstr ""
+"Ao ativar este recurso, o WhatsApp será aberto automaticamente no seu "
+"navegador quando acessado de um laptop/PC."
+
+#: includes/class-strings.php:102
+msgid "On click Agent"
+msgstr "Ao clicar em Agente"
+
+#: includes/class-strings.php:103
+msgid "Agent Photo"
+msgstr "Foto do Agente"
+
+#: includes/class-strings.php:104
+msgid "Add Agent"
+msgstr "Adicionar agente"
+
+#: includes/class-strings.php:105
+msgid "Delete Agent"
+msgstr "Excluir agente"
+
+#: includes/class-strings.php:106
+msgid "Agent Title"
+msgstr "Título do agente"
+
+#: includes/class-strings.php:107
+msgid "Agents"
+msgstr "Agentes"
+
+#: includes/class-strings.php:108
+msgid "Agent Designation"
+msgstr "Designação do Agente"
+
+#: includes/class-strings.php:111 includes/class-strings.php:545
+msgid "Customize"
+msgstr "Personalizar"
+
+#: includes/class-strings.php:112 includes/class-strings.php:546
+msgid "Greetings"
+msgstr "Saudações"
+
+#: includes/class-strings.php:113
+msgid "Triggers"
+msgstr "Gatilhos"
+
+#: includes/class-strings.php:114 includes/class-strings.php:544
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: includes/class-strings.php:115
+msgid "Header"
+msgstr "Cabeçalho"
+
+#: includes/class-strings.php:116
+msgid "Preview"
+msgstr "Visualização"
+
+#: includes/class-strings.php:119 includes/class-strings.php:406
+msgid "Greeting Message"
+msgstr "Mensagem de saudação"
+
+#: includes/class-strings.php:120
+msgid "Welcome Message"
+msgstr "Mensagem de boas-vindas"
+
+#: includes/class-strings.php:121
+msgid "Offline Message"
+msgstr "Mensagem off-line"
+
+#: includes/class-strings.php:122
+msgid "Online Message"
+msgstr "Mensagem on-line"
+
+#: includes/class-strings.php:123
+msgid "Reply Time"
+msgstr "Tempo de resposta"
+
+#: includes/class-strings.php:126
+msgid "Widget Style"
+msgstr "Estilo de widget"
+
+#: includes/class-strings.php:127
+msgid "Widget Position"
+msgstr "Posição do widget"
+
+#: includes/class-strings.php:128
+msgid "Button Color"
+msgstr "Cor do botão"
+
+#: includes/class-strings.php:129
+msgid "Text Color"
+msgstr "Cor do texto"
+
+#: includes/class-strings.php:130
+msgid "Background Color"
+msgstr "Cor de fundo"
+
+#: includes/class-strings.php:131
+msgid "Header Color"
+msgstr "Cor do cabeçalho"
+
+#: includes/class-strings.php:132
+msgid "Border Radius"
+msgstr "Raio da Fronteira"
+
+#: includes/class-strings.php:133
+msgid "Widget Size"
+msgstr "Tamanho do widget"
+
+#: includes/class-strings.php:136
+msgid "Trigger Settings"
+msgstr "Configurações de gatilho"
+
+#: includes/class-strings.php:137
+msgid "Show on Pages"
+msgstr "Mostrar nas páginas"
+
+#: includes/class-strings.php:138
+msgid "Hide on Pages"
+msgstr "Ocultar nas páginas"
+
+#: includes/class-strings.php:139
+msgid "Show After"
+msgstr "Mostrar depois"
+
+#: includes/class-strings.php:140
+msgid "Hide After"
+msgstr "Esconder depois"
+
+#: includes/class-strings.php:141
+msgid "Display Rules"
+msgstr "Regras de exibição"
+
+#: includes/class-strings.php:142
+msgid "Activate Widget"
+msgstr "Ativar widget"
+
+#: includes/class-strings.php:143
+msgid "Time delay"
+msgstr "Atraso de tempo"
+
+#: includes/class-strings.php:144
+msgid "Page Scroll"
+msgstr "Rolagem de página"
+
+#: includes/class-strings.php:145
+msgid "Exit Intent"
+msgstr "Intenção de saída"
+
+#: includes/class-strings.php:146
+msgid "Display after"
+msgstr "Exibir depois"
+
+#: includes/class-strings.php:147
+msgid "seconds when page is loaded"
+msgstr "segundos quando a página é carregada"
+
+#: includes/class-strings.php:148
+msgid "scrolling on the page"
+msgstr "rolando na página"
+
+#: includes/class-strings.php:149
+msgid "Display when visitor is about to leave"
+msgstr "Exibir quando o visitante está prestes a sair"
+
+#: includes/class-strings.php:150
+msgid "Widget turned off"
+msgstr "Widget desativado"
+
+#: includes/class-strings.php:151
+msgid ""
+"This floating widget is currently turned off, would you like to turn it ON "
+"and save to show it on your site?"
+msgstr ""
+"Este widget flutuante está desativado no momento. Gostaria de ativá-lo e "
+"salvá-lo para exibi-lo em seu site?"
+
+#: includes/class-strings.php:152
+msgid "Save & Show on my site"
+msgstr "Salvar e mostrar no meu site"
+
+#: includes/class-strings.php:153
+msgid "Just save and keep it off"
+msgstr "Basta salvar e mantê-lo desligado"
+
+#: includes/class-strings.php:154
+msgid "Targets"
+msgstr "Alvas"
+
+#: includes/class-strings.php:155
+msgid "Exclude pages"
+msgstr "Excluir páginas"
+
+#: includes/class-strings.php:156
+msgid "Exclude all pages excepts:"
+msgstr "Exclua todas as páginas, exceto:"
+
+#: includes/class-strings.php:157
+msgid "FluentCRM Settings"
+msgstr "Configurações do FluentCRM"
+
+#: includes/class-strings.php:158
+msgid "Send leads to FluentCRM"
+msgstr "Envie leads para o FluentCRM"
+
+#: includes/class-strings.php:159
+msgid "Send leads to Mailchimp"
+msgstr "Envie leads para Mailchimp"
+
+#: includes/class-strings.php:162
+msgid "Successfully saved!"
+msgstr "Salvo com sucesso!"
+
+#: includes/class-strings.php:163
+msgid "Successfully updated!"
+msgstr "Atualizado com sucesso!"
+
+#: includes/class-strings.php:164
+msgid "Successfully deleted!"
+msgstr "Excluído com sucesso!"
+
+#: includes/class-strings.php:165
+msgid "Successfully duplicated!"
+msgstr "Duplicado com sucesso!"
+
+#: includes/class-strings.php:166
+msgid "Error saving changes"
+msgstr "Erro ao salvar as alterações"
+
+#: includes/class-strings.php:167
+msgid "Error deleting item"
+msgstr "Erro ao excluir item"
+
+#: includes/class-strings.php:168
+msgid "An error occurred"
+msgstr "Ocorreu um erro"
+
+#: includes/class-strings.php:171
+msgid "Are you sure you want to delete this?"
+msgstr "Tem certeza de que deseja excluir isto?"
+
+#: includes/class-strings.php:172
+msgid "Untitled Page"
+msgstr "Página sem título"
+
+#: includes/class-strings.php:173
+msgid "Are you sure you want to delete this widget?"
+msgstr "Tem certeza de que deseja excluir este widget?"
+
+#: includes/class-strings.php:174
+msgid ""
+"Deleting this will remove the widget permanently from your site. Are you "
+"sure you want to delete this widget permanently?"
+msgstr ""
+"Excluir isso removerá o widget permanentemente do seu site. Tem certeza de "
+"que deseja excluir este widget permanentemente?"
+
+#: includes/class-strings.php:175
+msgid "This widget is currently in use!"
+msgstr "Este widget está em uso no momento!"
+
+#: includes/class-strings.php:176
+msgid "Are you sure you want to delete this agent?"
+msgstr "Tem certeza de que deseja excluir este agente?"
+
+#: includes/class-strings.php:177
+msgid "This action cannot be undone."
+msgstr "Esta ação não pode ser desfeita."
+
+#: includes/class-strings.php:178
+msgid "Widget deleted successfully"
+msgstr "Widget excluído com sucesso"
+
+#: includes/class-strings.php:179
+msgid "Copy of {name}"
+msgstr "Cópia de P0"
+
+#: includes/class-strings.php:182
+msgid "Upgrade to Pro"
+msgstr "Atualizar para Pro"
+
+#: includes/class-strings.php:183
+msgid "This is a Pro feature"
+msgstr "Este é um recurso Pro"
+
+#: includes/class-strings.php:184
+msgid "Try all the premium features for free."
+msgstr "Experimente todos os recursos premium gratuitamente."
+
+#: includes/class-strings.php:185
+msgid "Unlock this feature"
+msgstr "Desbloquear este recurso"
+
+#: includes/class-strings.php:186
+msgid "Premium Only"
+msgstr "Somente Premium"
+
+#: includes/class-strings.php:187
+msgid "Get Pro"
+msgstr "Torne-se profissional"
+
+#: includes/class-strings.php:191
+msgid "Integration Settings"
+msgstr "Configurações de integração"
+
+#: includes/class-strings.php:192 includes/class-strings.php:515
+msgid "Connect"
+msgstr "Conectar"
+
+#: includes/class-strings.php:193
+msgid "Disconnect"
+msgstr "Desconectar"
+
+#: includes/class-strings.php:194
+msgid "Connected"
+msgstr "Conectada"
+
+#: includes/class-strings.php:195 includes/class-strings.php:642
+msgid "Not Connected"
+msgstr "Não conectado"
+
+#: includes/class-strings.php:196
+msgid "Configure"
+msgstr "Configurar"
+
+#: includes/class-strings.php:200
+msgid "Lead Name"
+msgstr "Nome do lead"
+
+#: includes/class-strings.php:201
+msgid "Lead Email"
+msgstr "E-mail principal"
+
+#: includes/class-strings.php:202
+msgid "Lead Phone"
+msgstr "Telefone principal"
+
+#: includes/class-strings.php:203
+msgid "Lead Message"
+msgstr "Mensagem principal"
+
+#: includes/class-strings.php:204
+msgid "No leads found"
+msgstr "Nenhum lead encontrado"
+
+#: includes/class-strings.php:205
+msgid "Total Leads"
+msgstr "Total de leads"
+
+#: includes/class-strings.php:206
+msgid "View Lead"
+msgstr "Ver lead"
+
+#: includes/class-strings.php:207 includes/class-strings.php:310
+msgid "Delete Lead"
+msgstr "Excluir lead"
+
+#: includes/class-strings.php:211 includes/class-strings.php:378
+msgid "Product Page"
+msgstr "Página do produto"
+
+#: includes/class-strings.php:212 includes/class-strings.php:379
+msgid "Cart Page"
+msgstr "Página do carrinho"
+
+#: includes/class-strings.php:213 includes/class-strings.php:380
+msgid "Checkout Page"
+msgstr "Página de check-out"
+
+#: includes/class-strings.php:214 includes/class-strings.php:377
+msgid "Shop Page"
+msgstr "Página da loja"
+
+#: includes/class-strings.php:215
+msgid "Enable on Product Pages"
+msgstr "Ativar nas páginas de produtos"
+
+#: includes/class-strings.php:216
+msgid "Enable on Cart Page"
+msgstr "Ativar na página do carrinho"
+
+#: includes/class-strings.php:217
+msgid "Enable on Checkout Page"
+msgstr "Ativar na página de checkout"
+
+#: includes/class-strings.php:220
+msgid "Contact Form 7"
+msgstr "Formulário de contato 7"
+
+#: includes/class-strings.php:225
+msgid "Subject"
+msgstr "Assunto"
+
+#: includes/class-strings.php:226
+msgid "Title"
+msgstr "Título"
+
+#: includes/class-strings.php:227
+msgid "Description"
+msgstr "Descrição"
+
+#: includes/class-strings.php:228
+msgid "Status"
+msgstr "Status"
+
+#: includes/class-strings.php:229
+msgid "Date"
+msgstr "Data"
+
+#: includes/class-strings.php:230
+msgid "Actions"
+msgstr "Ações"
+
+#: includes/class-strings.php:233
+msgid "Active"
+msgstr "Ativa"
+
+#: includes/class-strings.php:234
+msgid "Inactive"
+msgstr "Inativa"
+
+#: includes/class-strings.php:235
+msgid "Enabled"
+msgstr "Habilitada"
+
+#: includes/class-strings.php:236
+msgid "Disabled"
+msgstr "Desabilitada"
+
+#: includes/class-strings.php:237
+msgid "Online"
+msgstr "On-line"
+
+#: includes/class-strings.php:238
+msgid "Offline"
+msgstr "Off-line"
+
+#: includes/class-strings.php:239 includes/class-strings.php:535
+msgid "Loading..."
+msgstr "Carregando..."
+
+#: includes/class-strings.php:240 includes/class-strings.php:583
+msgid "Saving..."
+msgstr "Salvando..."
+
+#: includes/class-strings.php:243
+msgid "Previous"
+msgstr "Anterior"
+
+#: includes/class-strings.php:244
+msgid "First"
+msgstr "Primeira"
+
+#: includes/class-strings.php:245 includes/class-strings.php:555
+msgid "Last"
+msgstr "Durar"
+
+#: includes/class-strings.php:246 includes/class-strings.php:439
+msgid "Showing"
+msgstr "Mostrando"
+
+#: includes/class-strings.php:247
+msgid "of"
+msgstr "de"
+
+#: includes/class-strings.php:248
+msgid "results"
+msgstr "resultados"
+
+#: includes/class-strings.php:249
+msgid "per page"
+msgstr "por página"
+
+#: includes/class-strings.php:252
+msgid "Search"
+msgstr "Procurar"
+
+#: includes/class-strings.php:253
+msgid "Filter"
+msgstr "Filtro"
+
+#: includes/class-strings.php:254
+msgid "Sort by"
+msgstr "Ordenar por"
+
+#: includes/class-strings.php:255
+msgid "Search widgets..."
+msgstr "Widgets de pesquisa..."
+
+#: includes/class-strings.php:256
+msgid "Search leads..."
+msgstr "Pesquisar leads..."
+
+#: includes/class-strings.php:257
+msgid "No results found"
+msgstr "Nenhum resultado encontrado"
+
+#: includes/class-strings.php:258
+msgid "Small"
+msgstr "Pequena"
+
+#: includes/class-strings.php:259
+msgid "Medium"
+msgstr "Média"
+
+#: includes/class-strings.php:260
+msgid "Large"
+msgstr "Grande"
+
+#: includes/class-strings.php:261
+msgid "Custom"
+msgstr "Personalizada"
+
+#: includes/class-strings.php:262
+msgid "Position"
+msgstr "Posição"
+
+#: includes/class-strings.php:265
+msgid "Help"
+msgstr "Ajuda"
+
+#: includes/class-strings.php:266
+msgid "Learn more"
+msgstr "Saber mais"
+
+#: includes/class-strings.php:267 includes/class-strings.php:634
+msgid "Documentation"
+msgstr "Documentação"
+
+#: includes/class-strings.php:268
+msgid "Support"
+msgstr "Apoiar"
+
+#: includes/class-strings.php:272
+msgid "Add Custom CSS"
+msgstr "Adicionar CSS personalizado"
+
+#: includes/class-strings.php:273
+msgid "CSS saved successfully"
+msgstr "CSS salvo com sucesso"
+
+#: includes/class-strings.php:277
+msgid "General"
+msgstr "Em geral"
+
+#: includes/class-strings.php:278 includes/class-strings.php:476
+msgid "Advanced"
+msgstr "Avançada"
+
+#: includes/class-strings.php:279
+msgid "Appearance"
+msgstr "Aparência"
+
+#: includes/class-strings.php:280
+msgid "Behavior"
+msgstr "Comportamento"
+
+#: includes/class-strings.php:281
+msgid "Display"
+msgstr "Mostrar"
+
+#: includes/class-strings.php:282
+msgid "Options"
+msgstr "Opções"
+
+#: includes/class-strings.php:283 includes/class-strings.php:538
+msgid "Select"
+msgstr "Selecione"
+
+#: includes/class-strings.php:284
+msgid "Choose"
+msgstr "Escolher"
+
+#: includes/class-strings.php:285
+msgid "Upload"
+msgstr "Carregar"
+
+#: includes/class-strings.php:286
+msgid "Upload Image"
+msgstr "Carregar imagem"
+
+#: includes/class-strings.php:287
+msgid "Remove Image"
+msgstr "Remover imagem"
+
+#: includes/class-strings.php:288
+msgid "Change Image"
+msgstr "Alterar imagem"
+
+#: includes/class-strings.php:291
+msgid "Let's create your first widget and bring your dashboard to life!"
+msgstr "Vamos criar seu primeiro widget e dar vida ao seu painel!"
+
+#: includes/class-strings.php:292 includes/class-strings.php:507
+msgid "Watch Tutorial"
+msgstr "Assistir ao tutorial"
+
+#: includes/class-strings.php:293
+msgid "Create Floating Widget"
+msgstr "Criar widget flutuante"
+
+#: includes/class-strings.php:296
+msgid "Not found"
+msgstr "Não encontrado"
+
+#: includes/class-strings.php:299
+msgid "FormyChat Modules"
+msgstr "Módulos FormyChat"
+
+#: includes/class-strings.php:300
+msgid "Integrate your favorite modules and supercharge your workflow"
+msgstr "Integre seus módulos favoritos e aprimore seu fluxo de trabalho"
+
+#: includes/class-strings.php:301 includes/class-strings.php:633
+msgid "Tutorial"
+msgstr "Tutorial"
+
+#: includes/class-strings.php:302 includes/class-strings.php:635
+msgid "Review Us"
+msgstr "Avalie-nos"
+
+#: includes/class-strings.php:303
+msgid "Search Modules"
+msgstr "Módulos de pesquisa"
+
+#: includes/class-strings.php:304
+msgid "Don't see your tool?"
+msgstr "Não vê sua ferramenta?"
+
+#: includes/class-strings.php:305
+msgid ""
+"Your favorite tool could be our next big integration. Don't miss the chance "
+"to get it added!"
+msgstr ""
+"Sua ferramenta favorita pode ser nossa próxima grande integração. Não perca "
+"a chance de adicioná-lo!"
+
+#: includes/class-strings.php:306
+msgid "Suggest Now"
+msgstr "Sugira agora"
+
+#: includes/class-strings.php:309
+msgid "Contact Form Leads"
+msgstr "Leads do formulário de contato"
+
+#: includes/class-strings.php:311
+msgid "Delete selected {count} Leads"
+msgstr "Excluir leads P1 selecionados"
+
+#: includes/class-strings.php:312
+msgid "Are you sure you want to delete this lead?"
+msgstr "Tem certeza de que deseja excluir este lead?"
+
+#: includes/class-strings.php:313
+msgid "Are you sure you want to delete selected {count} leads?"
+msgstr "Tem certeza de que deseja excluir os leads P1 selecionados?"
+
+#: includes/class-strings.php:314
+msgid "Export"
+msgstr "Exportar"
+
+#: includes/class-strings.php:315
+msgid "Select Source"
+msgstr "Selecione a fonte"
+
+#: includes/class-strings.php:316
+msgid "Select Widget"
+msgstr "Selecione Widget"
+
+#: includes/class-strings.php:317
+msgid "Select Form"
+msgstr "Selecione o formulário"
+
+#: includes/class-strings.php:318
+msgid "to"
+msgstr "para"
+
+#: includes/class-strings.php:319
+msgid "Please wait while we load your leads."
+msgstr "Aguarde enquanto carregamos seus leads."
+
+#: includes/class-strings.php:320
+msgid "Widget"
+msgstr "Widget"
+
+#: includes/class-strings.php:321
+msgid "Sync"
+msgstr "Sincronizar"
+
+#: includes/class-strings.php:322
+msgid "No leads found."
+msgstr "Nenhuma pista encontrada."
+
+#: includes/class-strings.php:325
+msgid "Custom CSS Editor"
+msgstr "Editor CSS personalizado"
+
+#: includes/class-strings.php:327 includes/class-strings.php:338
+msgid "Add custom CSS to customize your site's appearance"
+msgstr "Adicione CSS personalizado para personalizar a aparência do seu site"
+
+#: includes/class-strings.php:328
+msgid "CSS Styling Guide"
+msgstr "Guia de estilo CSS"
+
+#: includes/class-strings.php:329
+msgid "lines"
+msgstr "linhas"
+
+#: includes/class-strings.php:330
+msgid "characters"
+msgstr "personagens"
+
+#: includes/class-strings.php:331
+msgid "Target all widgets"
+msgstr "Segmentar todos os widgets"
+
+#: includes/class-strings.php:332
+msgid "Target specific widget"
+msgstr "Widget específico de destino"
+
+#: includes/class-strings.php:333
+msgid "Tip"
+msgstr "Dica"
+
+#: includes/class-strings.php:334 includes/class-strings.php:339
+msgid ""
+"Use browser developer tools to inspect widget elements and find the exact "
+"selectors you need."
+msgstr ""
+"Use ferramentas de desenvolvedor de navegador para inspecionar elementos de "
+"widget e encontrar os seletores exatos de que você precisa."
+
+#: includes/class-strings.php:335 includes/class-strings.php:340
+msgid "/** Enter your custom CSS here */"
+msgstr "/** Insira seu CSS personalizado aqui */"
+
+#: includes/class-strings.php:336
+msgid "Custom CSS saved successfully!"
+msgstr "CSS personalizado salvo com sucesso!"
+
+#: includes/class-strings.php:337
+msgid "Error saving CSS. Please try again."
+msgstr "Erro ao salvar CSS. Por favor, tente novamente."
+
+#: includes/class-strings.php:341
+msgid "Failed to save CSS"
+msgstr "Falha ao salvar CSS"
+
+#: includes/class-strings.php:344
+msgid "Customize Icon"
+msgstr "Personalizar ícone"
+
+#: includes/class-strings.php:345
+msgid "Custom Icon"
+msgstr "Ícone personalizado"
+
+#: includes/class-strings.php:346
+msgid "Icon Size"
+msgstr "Tamanho do ícone"
+
+#: includes/class-strings.php:347 includes/class-strings.php:659
+msgid "Select the size of the icon"
+msgstr "Selecione o tamanho do ícone"
+
+#: includes/class-strings.php:348
+msgid "Custom Icon Size"
+msgstr "Tamanho do ícone personalizado"
+
+#: includes/class-strings.php:349
+msgid "Icon Position"
+msgstr "Posição do ícone"
+
+#: includes/class-strings.php:350
+msgid "Select the position of the icon"
+msgstr "Selecione a posição do ícone"
+
+#: includes/class-strings.php:351
+msgid "Custom Icon Position"
+msgstr "Posição do ícone personalizado"
+
+#: includes/class-strings.php:352
+msgid "Display floating widget on"
+msgstr "Exibir widget flutuante ativado"
+
+#: includes/class-strings.php:353
+msgid "Choose where the floating widget will be visible - Desktop or Mobile."
+msgstr "Escolha onde o widget flutuante ficará visível - Desktop ou Mobile."
+
+#: includes/class-strings.php:354 includes/class-strings.php:473
+#: includes/class-strings.php:745
+msgid "Desktop"
+msgstr "Área de trabalho"
+
+#: includes/class-strings.php:355 includes/class-strings.php:474
+#: includes/class-strings.php:746
+msgid "Mobile"
+msgstr "Móvel"
+
+#: includes/class-strings.php:356
+msgid "Call to action"
+msgstr "Chamada para ação"
+
+#: includes/class-strings.php:357
+msgid "Show Call to action"
+msgstr "Mostrar apelo à ação"
+
+#: includes/class-strings.php:358
+msgid "Call to action text"
+msgstr "Texto de apelo à ação"
+
+#: includes/class-strings.php:359
+msgid "Customize Form"
+msgstr "Personalizar formulário"
+
+#: includes/class-strings.php:360
+msgid "Choose the source through which you want to send message to WhatsApp"
+msgstr "Escolha a fonte pela qual deseja enviar mensagem para o WhatsApp"
+
+#: includes/class-strings.php:361 includes/class-strings.php:753
+msgid "Select a form"
+msgstr "Selecione um formulário"
+
+#: includes/class-strings.php:362
+msgid "Message Template"
+msgstr "Modelo de mensagem"
+
+#: includes/class-strings.php:363
+msgid "Message template which will be sent to WhatsApp."
+msgstr "Modelo de mensagem que será enviada para o WhatsApp."
+
+#: includes/class-strings.php:366
+msgid "Synced"
+msgstr "Sincronizada"
+
+#: includes/class-strings.php:367
+msgid "Pending"
+msgstr "Pendente"
+
+#: includes/class-strings.php:368
+msgid "Form Submitted data"
+msgstr "Dados enviados do formulário"
+
+#: includes/class-strings.php:369
+msgid "Others Information"
+msgstr "Outras informações"
+
+#: includes/class-strings.php:370
+msgid "− Show less"
+msgstr "− Mostrar menos"
+
+#: includes/class-strings.php:371
+msgid "+ Show more"
+msgstr "+ Mostrar mais"
+
+#: includes/class-strings.php:374
+msgid "FormyChat WooCommerce Buttons"
+msgstr "Botões FormyChat WooCommerce"
+
+#: includes/class-strings.php:375
+msgid ""
+"Connect your WooCommerce store with WhatsApp to enable one-click product "
+"inquiries and instant order requests."
+msgstr ""
+"Conecte sua loja WooCommerce ao WhatsApp para permitir consultas de "
+"produtos com um clique e solicitações de pedidos instantâneas."
+
+#: includes/class-strings.php:376
+msgid "Menu"
+msgstr "Menu"
+
+#: includes/class-strings.php:383 includes/class-strings.php:730
+msgid "Create your first agent"
+msgstr "Crie seu primeiro agente"
+
+#: includes/class-strings.php:386
+msgid "days"
+msgstr "dias"
+
+#: includes/class-strings.php:387
+msgid "hours"
+msgstr "horas"
+
+#: includes/class-strings.php:388
+msgid "minutes"
+msgstr "minutos"
+
+#: includes/class-strings.php:389
+msgid "seconds"
+msgstr "segundas"
+
+#: includes/class-strings.php:390
+msgid "Try a free demo"
+msgstr "Experimente uma demonstração gratuita"
+
+#: includes/class-strings.php:393
+msgid "Display Greeting Popup"
+msgstr "Exibir pop-up de saudação"
+
+#: includes/class-strings.php:394
+msgid "Choose Greetings Template"
+msgstr "Escolha o modelo de saudações"
+
+#: includes/class-strings.php:395
+msgid "Customize Greetings"
+msgstr "Personalizar saudações"
+
+#: includes/class-strings.php:396
+msgid "Greeting Heading"
+msgstr "Título de saudação"
+
+#: includes/class-strings.php:397
+msgid "Heading Size"
+msgstr "Tamanho do título"
+
+#: includes/class-strings.php:398
+msgid "Custom Heading Size"
+msgstr "Tamanho do título personalizado"
+
+#: includes/class-strings.php:399
+msgid "Message Size"
+msgstr "Tamanho da mensagem"
+
+#: includes/class-strings.php:400
+msgid "Custom Message Size"
+msgstr "Tamanho de mensagem personalizado"
+
+#: includes/class-strings.php:401
+msgid "Greeting Colors"
+msgstr "Cores de saudação"
+
+#: includes/class-strings.php:402
+msgid "Heading Color"
+msgstr "Cor do título"
+
+#: includes/class-strings.php:403
+msgid "Message Color"
+msgstr "Cor da mensagem"
+
+#: includes/class-strings.php:404
+msgid "Greetings Font Family"
+msgstr "Saudações, família de fontes"
+
+#: includes/class-strings.php:405
+msgid "Show Main Content"
+msgstr "Mostrar conteúdo principal"
+
+#: includes/class-strings.php:407
+msgid "Greeting Font Family"
+msgstr "Família de fontes de saudação"
+
+#: includes/class-strings.php:408
+msgid "Show Greetings CTA"
+msgstr "Mostrar CTA de saudações"
+
+#: includes/class-strings.php:409
+msgid "Greeting CTA Text"
+msgstr "Texto do CTA de saudação"
+
+#: includes/class-strings.php:410
+msgid "CTA Icon"
+msgstr "Ícone de CTA"
+
+#: includes/class-strings.php:411
+msgid "CTA Style"
+msgstr "Estilo de CTA"
+
+#: includes/class-strings.php:412
+msgid "Show Greeting CTA"
+msgstr "Mostrar CTA de saudação"
+
+#: includes/class-strings.php:413
+msgid "Greeting CTA Heading"
+msgstr "Título do CTA de saudação"
+
+#: includes/class-strings.php:414
+msgid "CTA Heading Size"
+msgstr "Tamanho do título do CTA"
+
+#: includes/class-strings.php:415
+msgid "Custom CTA Heading Size"
+msgstr "Tamanho do título do CTA personalizado"
+
+#: includes/class-strings.php:416
+msgid "Greeting CTA Message"
+msgstr "Mensagem de CTA de saudação"
+
+#: includes/class-strings.php:417
+msgid "CTA Message Size"
+msgstr "Tamanho da mensagem do CTA"
+
+#: includes/class-strings.php:418
+msgid "Custom CTA Message Size"
+msgstr "Tamanho de mensagem de CTA personalizado"
+
+#: includes/class-strings.php:419
+msgid "CTA Colors"
+msgstr "Cores do CTA"
+
+#: includes/class-strings.php:420
+msgid "Greeting Behavior"
+msgstr "Comportamento de saudação"
+
+#: includes/class-strings.php:421
+msgid "On click Action"
+msgstr "Ao clicar em Ação"
+
+#: includes/class-strings.php:422
+msgid "Enable Greetings"
+msgstr "Ativar saudações"
+
+#: includes/class-strings.php:423
+msgid "Before Heading"
+msgstr "Antes de ir"
+
+#: includes/class-strings.php:424
+msgid "After Heading"
+msgstr "Depois do título"
+
+#: includes/class-strings.php:425
+msgid "After Message"
+msgstr "Depois da mensagem"
+
+#: includes/class-strings.php:426
+msgid "Before CTA"
+msgstr "Antes do CTA"
+
+#: includes/class-strings.php:427
+msgid "After CTA"
+msgstr "Depois do CTA"
+
+#: includes/class-strings.php:428
+msgid "Style {number}"
+msgstr "Estilo P2"
+
+#: includes/class-strings.php:429
+msgid "Load The Selected Form"
+msgstr "Carregar o formulário selecionado"
+
+#: includes/class-strings.php:430
+msgid "Redirected to WhatsApp directly"
+msgstr "Redirecionado diretamente para o WhatsApp"
+
+#: includes/class-strings.php:431
+msgid "CTA Text Color"
+msgstr "Cor do texto do CTA"
+
+#: includes/class-strings.php:432
+msgid "CTA Background Color"
+msgstr "Cor de fundo do CTA"
+
+#: includes/class-strings.php:433
+msgid "Left"
+msgstr "Esquerda"
+
+#: includes/class-strings.php:434
+msgid "Right"
+msgstr "Certa"
+
+#: includes/class-strings.php:435
+msgid "Top"
+msgstr "Principal"
+
+#: includes/class-strings.php:436
+msgid "Bottom"
+msgstr "Fundo"
+
+#: includes/class-strings.php:442
+msgid "Coming Soon"
+msgstr "Em breve"
+
+#: includes/class-strings.php:443
+msgid "Cart Page Button"
+msgstr "Botão da página do carrinho"
+
+#: includes/class-strings.php:444
+msgid "Checkout Page Button"
+msgstr "Botão da página de checkout"
+
+#: includes/class-strings.php:445
+msgid ""
+"We're working on WhatsApp integration for the cart page. Stay tuned for "
+"updates!"
+msgstr ""
+"Estamos trabalhando na integração do WhatsApp para a página do carrinho. "
+"Fique ligado nas atualizações!"
+
+#: includes/class-strings.php:446
+msgid ""
+"We're working on WhatsApp integration for the checkout page. Stay tuned for "
+"updates!"
+msgstr ""
+"Estamos trabalhando na integração do WhatsApp para a página de checkout. "
+"Fique ligado nas atualizações!"
+
+#: includes/class-strings.php:449
+msgid "WhatsApp Button for Shop Page"
+msgstr "Botão WhatsApp para página da loja"
+
+#: includes/class-strings.php:450
+msgid ""
+"Let customers contact you or place orders via WhatsApp directly from the "
+"shop page."
+msgstr ""
+"Permita que os clientes entrem em contato com você ou façam pedidos via "
+"WhatsApp diretamente na página da loja."
+
+#: includes/class-strings.php:451
+msgid "Show WhatsApp Button on Shop Page"
+msgstr "Mostrar botão do WhatsApp na página da loja"
+
+#: includes/class-strings.php:453
+msgid "Please enter a valid WhatsApp number (7-15 digits)"
+msgstr "Insira um número de WhatsApp válido (7 a 15 dígitos)"
+
+#: includes/class-strings.php:454
+msgid "Button Position"
+msgstr "Posição do botão"
+
+#: includes/class-strings.php:455
+msgid "Button Text"
+msgstr "Texto do botão"
+
+#: includes/class-strings.php:456
+msgid "Buy on WhatsApp"
+msgstr "Compre no WhatsApp"
+
+#: includes/class-strings.php:457
+msgid "Pre-filled Message"
+msgstr "Mensagem pré-preenchida"
+
+#: includes/class-strings.php:458
+msgid "Customize what message customers send when they click."
+msgstr "Personalize a mensagem que os clientes enviam quando clicam."
+
+#: includes/class-strings.php:459
+msgid "Button Style"
+msgstr "Estilo de botão"
+
+#: includes/class-strings.php:460
+msgid "Customize the WhatsApp button appearance however you want."
+msgstr "Personalize a aparência do botão do WhatsApp como desejar."
+
+#: includes/class-strings.php:462
+msgid "Background color"
+msgstr "Cor de fundo"
+
+#: includes/class-strings.php:463 includes/class-strings.php:742
+msgid "Default button background color"
+msgstr "Cor de fundo do botão padrão"
+
+#: includes/class-strings.php:464
+msgid "Background hover color"
+msgstr "Cor de foco do plano de fundo"
+
+#: includes/class-strings.php:465
+msgid "Button background color on hover"
+msgstr "Cor de fundo do botão ao passar o mouse"
+
+#: includes/class-strings.php:466
+msgid "Button text color"
+msgstr "Cor do texto do botão"
+
+#: includes/class-strings.php:467
+msgid "Text hover color"
+msgstr "Cor de foco do texto"
+
+#: includes/class-strings.php:468
+msgid "Button text color on hover"
+msgstr "Cor do texto do botão ao passar o mouse"
+
+#: includes/class-strings.php:469
+msgid "Button Border Radius"
+msgstr "Raio da borda do botão"
+
+#: includes/class-strings.php:471 includes/class-strings.php:743
+msgid "Hide \"Add to Cart\" button"
+msgstr "Ocultar o botão \"Adicionar ao carrinho\""
+
+#: includes/class-strings.php:472 includes/class-strings.php:744
+msgid "Display button on"
+msgstr "Botão de exibição ativado"
+
+#: includes/class-strings.php:475
+msgid "Less"
+msgstr "Menos"
+
+#: includes/class-strings.php:477 includes/class-strings.php:781
+msgid "Discard"
+msgstr "Descartar"
+
+#: includes/class-strings.php:479
+msgid "Reset Colors"
+msgstr "Redefinir cores"
+
+#: includes/class-strings.php:480
+msgid "Are you sure you want to reset all colors to default?"
+msgstr "Tem certeza de que deseja redefinir todas as cores para o padrão?"
+
+#: includes/class-strings.php:482
+msgid "Above \"Add to Cart\" button"
+msgstr "Acima do botão \"Adicionar ao carrinho\""
+
+#: includes/class-strings.php:483
+msgid "Below \"Add to Cart\" button"
+msgstr "Abaixo do botão \"Adicionar ao carrinho\""
+
+#: includes/class-strings.php:486
+msgid "WhatsApp Button for Single Product Page"
+msgstr "Botão WhatsApp para página de produto único"
+
+#: includes/class-strings.php:487
+msgid ""
+"Let customers contact you or place orders via WhatsApp directly from the "
+"single product page."
+msgstr ""
+"Permita que os clientes entrem em contato com você ou façam pedidos via "
+"WhatsApp diretamente na página de um único produto."
+
+#: includes/class-strings.php:488
+msgid "Show WhatsApp Button on Single Product Page"
+msgstr "Mostrar botão do WhatsApp na página de um único produto"
+
+#: includes/class-strings.php:489
+msgid "Advance"
+msgstr "Avançar"
+
+#: includes/class-strings.php:490
+msgid "After product meta"
+msgstr "Depois da meta do produto"
+
+#: includes/class-strings.php:491
+msgid "After product short description"
+msgstr "Após breve descrição do produto"
+
+#: includes/class-strings.php:494
+msgid "Available Variables"
+msgstr "Variáveis ​​Disponíveis"
+
+#: includes/class-strings.php:495
+msgid "WooCommerce Vars:"
+msgstr "Variações WooCommerce:"
+
+#: includes/class-strings.php:496
+msgid "Conditional Blocks:"
+msgstr "Blocos Condicionais:"
+
+#: includes/class-strings.php:497
+msgid "Global Vars:"
+msgstr "Variações globais:"
+
+#: includes/class-strings.php:500
+msgid ""
+"No extra setup needed. Just keep it enabled, and you can instantly connect "
+"any FormyChat widget with FluentCRM."
+msgstr ""
+"Nenhuma configuração extra necessária. Basta mantê-lo ativado e você poderá "
+"conectar instantaneamente qualquer widget FormyChat ao FluentCRM."
+
+#: includes/class-strings.php:501
+msgid "Instructions:"
+msgstr "Instruções:"
+
+#: includes/class-strings.php:502
+msgid "Create or edit a FormyChat widget."
+msgstr "Crie ou edite um widget FormyChat."
+
+#: includes/class-strings.php:503
+msgid "Go to {step} stepper."
+msgstr "Vá para o passo P8."
+
+#: includes/class-strings.php:504
+msgid "Search for \"{option}\" and {action} it."
+msgstr "Procure por \"P9\" e P7."
+
+#: includes/class-strings.php:505
+msgid "Then setup with your preferred lists, tags, and other options."
+msgstr "Em seguida, configure suas listas, tags e outras opções preferidas."
+
+#: includes/class-strings.php:506
+msgid "🎉 That's it - your leads will start flowing directly into FluentCRM!"
+msgstr "🎉 É isso aí - seus leads começarão a fluir diretamente para o FluentCRM!"
+
+#: includes/class-strings.php:510
+msgid "Connect Mailchimp"
+msgstr "Conectar Mailchimp"
+
+#: includes/class-strings.php:511
+msgid "Login to your {account} to get your API key."
+msgstr "Faça login no seu P10 para obter sua chave API."
+
+#: includes/class-strings.php:512
+msgid "API Key"
+msgstr "Chave de API"
+
+#: includes/class-strings.php:513
+msgid "Get your API key from Mailchimp profile > Extras > API keys"
+msgstr "Obtenha sua chave de API em perfil Mailchimp > Extras > Chaves de API"
+
+#: includes/class-strings.php:514
+msgid "Get your API key from Mailchimp profile > Extras > API keys. {link}"
+msgstr "Obtenha sua chave de API em Perfil Mailchimp > Extras > Chaves de API. P4"
+
+#: includes/class-strings.php:516
+msgid "Connecting..."
+msgstr "Conectando..."
+
+#: includes/class-strings.php:518
+msgid "Connected successfully"
+msgstr "Conectado com sucesso"
+
+#: includes/class-strings.php:519
+msgid "Connection failed. Please check your API key."
+msgstr "Falha na conexão. Verifique sua chave de API."
+
+#: includes/class-strings.php:520
+msgid "Remove API Key"
+msgstr "Remover chave de API"
+
+#: includes/class-strings.php:521
+msgid ""
+"Are you sure you want to remove the API key? This will disconnect your "
+"integration."
+msgstr ""
+"Tem certeza de que deseja remover a chave de API? Isso desconectará sua "
+"integração."
+
+#: includes/class-strings.php:522
+msgid "Yes, remove it!"
+msgstr "Sim, remova-o!"
+
+#: includes/class-strings.php:523
+msgid "Removing..."
+msgstr "Removendo..."
+
+#: includes/class-strings.php:526
+msgid "Default WhatsApp Message"
+msgstr "Mensagem padrão do WhatsApp"
+
+#: includes/class-strings.php:529
+msgid "Google Sheets Sync"
+msgstr "Sincronização do Planilhas Google"
+
+#: includes/class-strings.php:530
+msgid ""
+"Please connect your Google account in the <a "
+"href=\"admin.php?page=formychat-integrations\" class=\"text-blue-600 "
+"hover:underline font-medium\">Integrations</a> page first."
+msgstr ""
+"Conecte sua conta do Google primeiro na página <a "
+"href=\"admin.php?page=formychat-integrations\" class=\"text-blue-600 "
+"hover:underline font-medium\">Integrações</a>."
+
+#: includes/class-strings.php:532
+msgid "Spreadsheet"
+msgstr "Planilha"
+
+#: includes/class-strings.php:533
+msgid "Open"
+msgstr "Abrir"
+
+#: includes/class-strings.php:534
+msgid "Change"
+msgstr "Mudar"
+
+#: includes/class-strings.php:536
+msgid "Select a spreadsheet"
+msgstr "Selecione uma planilha"
+
+#: includes/class-strings.php:537
+msgid "Setting up..."
+msgstr "Configurando..."
+
+#: includes/class-strings.php:539 includes/class-strings.php:576
+msgid "Note: Selecting a sheet will clear its existing data."
+msgstr "Nota: Selecionar uma planilha limpará seus dados existentes."
+
+#: includes/class-strings.php:540
+msgid "+ Create a new spreadsheet"
+msgstr "+ Crie uma nova planilha"
+
+#: includes/class-strings.php:541
+msgid "Enter spreadsheet name"
+msgstr "Insira o nome da planilha"
+
+#: includes/class-strings.php:542
+msgid "Creating..."
+msgstr "Criando..."
+
+#: includes/class-strings.php:543
+msgid "✔ Save"
+msgstr "✔ Salvar"
+
+#: includes/class-strings.php:547
+msgid "Triggers & Targeting"
+msgstr "Gatilhos e segmentação"
+
+#: includes/class-strings.php:550
+msgid "Or select from existing spreadsheets"
+msgstr "Ou selecione uma planilha existente"
+
+#: includes/class-strings.php:551
+msgid "Sync Frequency"
+msgstr "Frequência de sincronização"
+
+#: includes/class-strings.php:552
+msgid "Sync Interval"
+msgstr "Intervalo de sincronização"
+
+#: includes/class-strings.php:553
+msgid "More settings \\u2192"
+msgstr "Mais configurações \\u2192"
+
+#: includes/class-strings.php:554
+msgid "synced"
+msgstr "sincronizada"
+
+#: includes/class-strings.php:556
+msgid "Syncing..."
+msgstr "Sincronizando..."
+
+#: includes/class-strings.php:557
+msgid "Synced!"
+msgstr "Sincronizada!"
+
+#: includes/class-strings.php:558
+msgid "Sync Now"
+msgstr "Sincronizar agora"
+
+#: includes/class-strings.php:559
+msgid "Free version limit reached ({limit} rows). Upgrade to sync unlimited leads."
+msgstr ""
+"Limite de versão gratuita atingido (linhas P3). Atualize para sincronizar "
+"leads ilimitados."
+
+#: includes/class-strings.php:560
+msgid "Full Resync"
+msgstr "Ressincronização completa"
+
+#: includes/class-strings.php:561
+msgid ""
+"This will clear all existing data in the spreadsheet and re-sync all leads "
+"from scratch."
+msgstr ""
+"Isso limpará todos os dados existentes na planilha e sincronizará novamente "
+"todos os leads do zero."
+
+#: includes/class-strings.php:562
+msgid "Please backup your spreadsheet before proceeding."
+msgstr "Faça backup de sua planilha antes de continuar."
+
+#: includes/class-strings.php:563
+msgid "Yes, resync!"
+msgstr "Sim, ressincronize!"
+
+#: includes/class-strings.php:566
+msgid "Connect Google Sheets"
+msgstr "Conectar Planilhas Google"
+
+#: includes/class-strings.php:567
+msgid ""
+"Automatically sync your leads to Google Sheets in real-time. Keep track of "
+"all conversations in one place."
+msgstr ""
+"Sincronize automaticamente seus leads com o Planilhas Google em tempo real. "
+"Acompanhe todas as conversas em um só lugar."
+
+#: includes/class-strings.php:568
+msgid "Continue with Google"
+msgstr "Continuar com o Google"
+
+#: includes/class-strings.php:569
+msgid "<strong>{account}</strong> connection expired. Please reconnect."
+msgstr "A conexão <strong> P10 </strong> expirou. Por favor, reconecte."
+
+#: includes/class-strings.php:570
+msgid "Your account"
+msgstr "Sua conta"
+
+#: includes/class-strings.php:571
+msgid "You'll be redirected to Google to authorize access to your spreadsheets"
+msgstr "Você será redirecionado ao Google para autorizar o acesso às suas planilhas"
+
+#: includes/class-strings.php:572
+msgid "Account connected 🎉"
+msgstr "Conta conectada 🎉"
+
+#: includes/class-strings.php:573
+msgid "- choose one -"
+msgstr "- escolha um -"
+
+#: includes/class-strings.php:574
+msgid "Search spreadsheets..."
+msgstr "Pesquisar planilhas..."
+
+#: includes/class-strings.php:575
+msgid "No spreadsheets found"
+msgstr "Nenhuma planilha encontrada"
+
+#: includes/class-strings.php:577
+msgid "Or"
+msgstr "Ou"
+
+#: includes/class-strings.php:580
+msgid "select existing"
+msgstr "selecione existente"
+
+#: includes/class-strings.php:581
+msgid "Select sync mode"
+msgstr "Selecione o modo de sincronização"
+
+#: includes/class-strings.php:582
+msgid "Select interval"
+msgstr "Selecione o intervalo"
+
+#: includes/class-strings.php:584
+msgid "Save & Sync"
+msgstr "Salvar e sincronizar"
+
+#: includes/class-strings.php:585
+msgid "Connection failed. Please try again."
+msgstr "Falha na conexão. Por favor, tente novamente."
+
+#: includes/class-strings.php:586
+msgid "Disconnect Google Account"
+msgstr "Desconectar conta do Google"
+
+#: includes/class-strings.php:587
+msgid ""
+"Are you sure you want to disconnect? This will stop syncing form "
+"submissions to Google Sheets."
+msgstr ""
+"Tem certeza de que deseja desconectar? Isso interromperá a sincronização "
+"dos envios de formulários com o Planilhas Google."
+
+#: includes/class-strings.php:588
+msgid "Yes, disconnect!"
+msgstr "Sim, desconecte!"
+
+#: includes/class-strings.php:589
+msgid "Disconnecting..."
+msgstr "Desconectando..."
+
+#: includes/class-strings.php:590
+msgid "Google Sheets"
+msgstr "Planilhas Google"
+
+#: includes/class-strings.php:591
+msgid ""
+"Connect your Google account to sync all form submissions directly to {link} "
+"in real time."
+msgstr ""
+"Conecte sua conta do Google para sincronizar todos os envios de formulários "
+"diretamente ao P4 em tempo real."
+
+#: includes/class-strings.php:592
+msgid "Choose Spreadsheet"
+msgstr "Escolha planilha"
+
+#: includes/class-strings.php:593
+msgid "Scheduled (Recommended)"
+msgstr "Agendado (recomendado)"
+
+#: includes/class-strings.php:594
+msgid "Real-time"
+msgstr "Em tempo real"
+
+#: includes/class-strings.php:595
+msgid "Manual"
+msgstr "Manual"
+
+#: includes/class-strings.php:596
+msgid "Never"
+msgstr "Nunca"
+
+#: includes/class-strings.php:597
+msgid "Just now"
+msgstr "Agora mesmo"
+
+#: includes/class-strings.php:598
+msgid "1 minute ago"
+msgstr "1 minuto atrás"
+
+#: includes/class-strings.php:599
+msgid "{minutes} minutes ago"
+msgstr "P11 minutos atrás"
+
+#: includes/class-strings.php:600
+msgid "Failed to load Google Sheets status"
+msgstr "Falha ao carregar o status do Planilhas Google"
+
+#: includes/class-strings.php:601
+msgid "Failed to disconnect."
+msgstr "Falha ao desconectar."
+
+#: includes/class-strings.php:602
+msgid "Failed to setup spreadsheet."
+msgstr "Falha ao configurar a planilha."
+
+#: includes/class-strings.php:603
+msgid ""
+"Failed to load spreadsheets. Please disconnect and reconnect your Google "
+"account."
+msgstr "Falha ao carregar planilhas. Desconecte e reconecte sua conta do Google."
+
+#: includes/class-strings.php:604
+msgid "Failed to create spreadsheet."
+msgstr "Falha ao criar planilha."
+
+#: includes/class-strings.php:605
+msgid "Settings saved successfully!"
+msgstr "Configurações salvas com sucesso!"
+
+#: includes/class-strings.php:606
+msgid "Failed to save settings."
+msgstr "Falha ao salvar as configurações."
+
+#: includes/class-strings.php:607
+msgid "Spreadsheet \"{name}\" initialized and {count} lead(s) synced!"
+msgstr "Planilha \"P0\" inicializada e derivação(ões) P1 sincronizada(s)!"
+
+#: includes/class-strings.php:608
+msgid "Spreadsheet \"{name}\" created and {count} lead(s) synced!"
+msgstr "Planilha \"P0\" criada e lead(s) P1 sincronizados!"
+
+#: includes/class-strings.php:609
+msgid "Settings saved!"
+msgstr "Configurações salvas!"
+
+#: includes/class-strings.php:610
+msgid "Full resync complete! Synced {count} lead(s)."
+msgstr "Ressincronização completa concluída! Cabo(s) P1 sincronizado(s)."
+
+#: includes/class-strings.php:611
+msgid "Sync failed."
+msgstr "Falha na sincronização."
+
+#: includes/class-strings.php:612
+msgid "Resync failed."
+msgstr "A ressincronização falhou."
+
+#: includes/class-strings.php:613
+msgid "Failed to load spreadsheets"
+msgstr "Falha ao carregar planilhas"
+
+#: includes/class-strings.php:616
+msgid "Mailchimp module is not active."
+msgstr "O módulo Mailchimp não está ativo."
+
+#: includes/class-strings.php:617
+msgid "To connect your leads with Mailchimp, please activate the module first."
+msgstr "Para conectar seus leads ao Mailchimp, primeiro ative o módulo."
+
+#: includes/class-strings.php:618
+msgid "Activate Mailchimp \\u2192"
+msgstr "Ativar Mailchimp \\u2192"
+
+#: includes/class-strings.php:619
+msgid "Mailchimp API key is not connected."
+msgstr "A chave da API Mailchimp não está conectada."
+
+#: includes/class-strings.php:620
+msgid ""
+"Please connect your Mailchimp account by adding your API key in the "
+"integrations page."
+msgstr ""
+"Conecte sua conta do Mailchimp adicionando sua chave de API na página de "
+"integrações."
+
+#: includes/class-strings.php:621
+msgid "Go to Mailchimp Module \\u2192"
+msgstr "Vá para o Módulo Mailchimp \\u2192"
+
+#: includes/class-strings.php:622
+msgid "FluentCRM is not installed."
+msgstr "FluentCRM não está instalado."
+
+#: includes/class-strings.php:623
+msgid ""
+"To connect your leads with FluentCRM, please install and activate the "
+"plugin first."
+msgstr "Para conectar seus leads ao FluentCRM, instale e ative o plugin primeiro."
+
+#: includes/class-strings.php:624
+msgid "Install FluentCRM \\u2192"
+msgstr "Instale o FluentCRM \\u2192"
+
+#: includes/class-strings.php:625
+msgid "FluentCRM is not active."
+msgstr "FluentCRM não está ativo."
+
+#: includes/class-strings.php:626
+msgid "Please activate the FluentCRM plugin to send leads directly from FormyChat."
+msgstr "Ative o plugin FluentCRM para enviar leads diretamente do FormyChat."
+
+#: includes/class-strings.php:627
+msgid "Activate FluentCRM \\u2192"
+msgstr "Ativar FluentCRM \\u2192"
+
+#: includes/class-strings.php:628
+msgid "FluentCRM is not enabled."
+msgstr "FluentCRM não está habilitado."
+
+#: includes/class-strings.php:629
+msgid ""
+"Please enable the FluentCRM integration to send leads directly from "
+"FormyChat."
+msgstr "Ative a integração do FluentCRM para enviar leads diretamente do FormyChat."
+
+#: includes/class-strings.php:630
+msgid "Enable FluentCRM \\u2192"
+msgstr "Habilitar FluentCRM \\u2192"
+
+#: includes/class-strings.php:639
+msgid "Upcoming"
+msgstr "Por vir"
+
+#: includes/class-strings.php:640
+msgid "Installing..."
+msgstr "Instalando..."
+
+#: includes/class-strings.php:641
+msgid "Activating..."
+msgstr "Ativando..."
+
+#: includes/class-strings.php:643
+msgid "Activate"
+msgstr "Ativar"
+
+#: includes/class-strings.php:644
+msgid "Install"
+msgstr "Instalar"
+
+#: includes/class-strings.php:647
+msgid "GET PREMIUM"
+msgstr "OBTER PRÊMIO"
+
+#: includes/class-strings.php:650
+msgid "Reset Message Template"
+msgstr "Redefinir modelo de mensagem"
+
+#: includes/class-strings.php:651
+msgid "Are you sure you want to reset the message template?"
+msgstr "Tem certeza de que deseja redefinir o modelo de mensagem?"
+
+#: includes/class-strings.php:652
+msgid "Yes, reset!"
+msgstr "Sim, redefinir!"
+
+#: includes/class-strings.php:653
+msgid "Toggle Preview of Preset Message"
+msgstr "Alternar visualização da mensagem predefinida"
+
+#: includes/class-strings.php:654
+msgid "Keyboard Shortcuts"
+msgstr "Atalhos de teclado"
+
+#: includes/class-strings.php:655
+msgid "Some formatting rules are not supported in the WhatsApp Windows"
+msgstr "Algumas regras de formatação não são suportadas no WhatsApp Windows"
+
+#: includes/class-strings.php:656
+msgid "Preview Message"
+msgstr "Visualizar mensagem"
+
+#: includes/class-strings.php:660
+msgid "Call to action style"
+msgstr "Estilo de apelo à ação"
+
+#: includes/class-strings.php:661
+msgid "Text Size"
+msgstr "Tamanho do texto"
+
+#: includes/class-strings.php:662
+msgid "Custom Text Size"
+msgstr "Tamanho de texto personalizado"
+
+#: includes/class-strings.php:665
+msgid ""
+"Enable this option to receive all lead information to your given email "
+"address"
+msgstr ""
+"Habilite esta opção para receber todas as informações do lead em seu "
+"endereço de e-mail fornecido"
+
+#: includes/class-strings.php:666
+msgid "Receive leads via email"
+msgstr "Receba leads por e-mail"
+
+#: includes/class-strings.php:667
+msgid "Use admin email to receive leads"
+msgstr "Use o e-mail do administrador para receber leads"
+
+#: includes/class-strings.php:668
+msgid "Enter email address"
+msgstr "Digite o endereço de e-mail"
+
+#: includes/class-strings.php:669
+msgid "FluentSMTP"
+msgstr "FluenteSMTP"
+
+#: includes/class-strings.php:670 includes/class-strings.php:683
+msgid "plugin to receive mail."
+msgstr "plugin para receber e-mails."
+
+#: includes/class-strings.php:671
+msgid "Form Size"
+msgstr "Tamanho do formulário"
+
+#: includes/class-strings.php:672
+msgid "Custom Form Size"
+msgstr "Tamanho de formulário personalizado"
+
+#: includes/class-strings.php:673
+msgid "Form Title"
+msgstr "Título do formulário"
+
+#: includes/class-strings.php:674
+msgid "Form Title (Ex: Contact via WhatsApp)"
+msgstr "Título do Formulário (Ex: Contato via WhatsApp)"
+
+#: includes/class-strings.php:675
+msgid "Leave blank to disable"
+msgstr "Deixe em branco para desabilitar"
+
+#: includes/class-strings.php:676
+msgid "Header Text"
+msgstr "Texto do cabeçalho"
+
+#: includes/class-strings.php:677
+msgid "Header Text (Ex: Please fill up the fields below)"
+msgstr "Texto do cabeçalho (Ex: Preencha os campos abaixo)"
+
+#: includes/class-strings.php:678
+msgid "Footer Text"
+msgstr "Texto do rodapé"
+
+#: includes/class-strings.php:679
+msgid "Footer Text (Ex: Powered by FormyChat)"
+msgstr "Texto do rodapé (ex: desenvolvido por FormyChat)"
+
+#: includes/class-strings.php:680
+msgid "Submit Button Text"
+msgstr "Enviar texto do botão"
+
+#: includes/class-strings.php:681
+msgid "Button Text (Ex: Send on WhatsApp)"
+msgstr "Texto do botão (Ex: Enviar no WhatsApp)"
+
+#: includes/class-strings.php:682
+msgid "Please configure any SMTP e.g."
+msgstr "Configure qualquer SMTP, por exemplo."
+
+#: includes/class-strings.php:684
+msgid "or"
+msgstr "ou"
+
+#: includes/class-strings.php:685
+msgid ""
+"Please configure any SMTP e.g. {wp_mail_smtp} or {fluent_smtp} plugin to "
+"receive mail."
+msgstr ""
+"Configure qualquer SMTP, por exemplo. Plugin P12 ou P13 para receber "
+"e-mails."
+
+#: includes/class-strings.php:688
+msgid ""
+"{plugin} is not {status}! Please {action} it first to send unlimited "
+"messages through any of your {plugin} forms"
+msgstr ""
+"P5 não é P6! Por favor, P7 primeiro envie mensagens ilimitadas através de "
+"qualquer um dos seus formulários P5"
+
+#: includes/class-strings.php:689
+msgid "Install & Activate"
+msgstr "Instalar e ativar"
+
+#: includes/class-strings.php:690
+msgid "installed"
+msgstr "instalada"
+
+#: includes/class-strings.php:691
+msgid "activated"
+msgstr "ativada"
+
+#: includes/class-strings.php:692
+msgid ""
+"{plugin} is not {status}! Please activate it first to send unlimited "
+"messages through any of your {plugin} forms"
+msgstr ""
+"P5 não é P6! Ative-o primeiro para enviar mensagens ilimitadas através de "
+"qualquer um dos seus formulários P5"
+
+#: includes/class-strings.php:693
+msgid "This will add country code with number to choose."
+msgstr "Isso adicionará o código do país com um número para escolher."
+
+#: includes/class-strings.php:694
+msgid "Allow users to select"
+msgstr "Permitir que os usuários selecionem"
+
+#: includes/class-strings.php:695
+msgid "country code"
+msgstr "código do país"
+
+#: includes/class-strings.php:696
+msgid "Open the form by default when the page is loaded."
+msgstr "Abra o formulário por padrão quando a página for carregada."
+
+#: includes/class-strings.php:697
+msgid "Open by default"
+msgstr "Aberto por padrão"
+
+#: includes/class-strings.php:698
+msgid "Close the form after a successful submission."
+msgstr "Feche o formulário após um envio bem-sucedido."
+
+#: includes/class-strings.php:700
+msgid "on Submit"
+msgstr "em Enviar"
+
+#: includes/class-strings.php:701
+msgid "Select form"
+msgstr "Selecione o formulário"
+
+#: includes/class-strings.php:702
+msgid "Select country"
+msgstr "Selecione o país"
+
+#: includes/class-strings.php:703
+msgid "Select font"
+msgstr "Selecione a fonte"
+
+#: includes/class-strings.php:706
+msgid "Google Analytics"
+msgstr "Google Analytics"
+
+#: includes/class-strings.php:707
+msgid "Enable this option to track form submissions with Google Analytics."
+msgstr ""
+"Habilite esta opção para rastrear envios de formulários com o Google "
+"Analytics."
+
+#: includes/class-strings.php:708
+msgid ""
+"Automatically send form leads to FluentCRM for email marketing campaigns "
+"and customer relationship management."
+msgstr ""
+"Envie automaticamente leads de formulários para o FluentCRM para campanhas "
+"de marketing por e-mail e gerenciamento de relacionamento com o cliente."
+
+#: includes/class-strings.php:709
+msgid "Automatically send form leads to Mailchimp for email marketing campaigns."
+msgstr ""
+"Envie automaticamente leads de formulário para Mailchimp para campanhas de "
+"marketing por e-mail."
+
+#: includes/class-strings.php:710
+msgid "- Select lists -"
+msgstr "- Selecionar listas -"
+
+#: includes/class-strings.php:711
+msgid "- Select tag -"
+msgstr "- Selecione a etiqueta -"
+
+#: includes/class-strings.php:712
+msgid "Select field"
+msgstr "Selecione o campo"
+
+#: includes/class-strings.php:713
+msgid "Select FluentCRM field"
+msgstr "Selecione o campo FluentCRM"
+
+#: includes/class-strings.php:714
+msgid "If enabled, existing contacts won't be updated/duplicated."
+msgstr "Se ativado, os contatos existentes não serão atualizados/duplicados."
+
+#: includes/class-strings.php:715
+msgid "Skip if contacts already exist in"
+msgstr "Ignorar se já existirem contatos em"
+
+#: includes/class-strings.php:716
+msgid "- Select audiences -"
+msgstr "- Selecione públicos -"
+
+#: includes/class-strings.php:717
+msgid "- Select tags -"
+msgstr "- Selecione tags -"
+
+#: includes/class-strings.php:718
+msgid "Select Mailchimp field"
+msgstr "Selecione o campo Mailchimp"
+
+#: includes/class-strings.php:721
+msgid "Hi! Have any queries?"
+msgstr "Oi! Tem alguma dúvida?"
+
+#: includes/class-strings.php:724 includes/class-strings.php:725
+msgid "Contact via WhatsApp"
+msgstr "Contato via WhatsApp"
+
+#: includes/class-strings.php:726
+msgid "Agent name"
+msgstr "Nome do agente"
+
+#: includes/class-strings.php:727
+msgid "Agent subtitle"
+msgstr "Legenda do agente"
+
+#: includes/class-strings.php:728 includes/class-strings.php:729
+msgid "Enter your phone"
+msgstr "Digite seu telefone"
+
+#: includes/class-strings.php:733 includes/core/class-app.php:30
+msgid "Default"
+msgstr "Padrão"
+
+#: includes/class-strings.php:734
+msgid "From"
+msgstr "De"
+
+#: includes/class-strings.php:735
+msgid "Ex: ca7*****************************-us14"
+msgstr "Ex: ca7*******************************-us14"
+
+#: includes/class-strings.php:750
+msgid "You can"
+msgstr "Você pode"
+
+#: includes/class-strings.php:751
+msgid "disable email notifications"
+msgstr "desativar notificações por e-mail"
+
+#: includes/class-strings.php:752
+msgid "from the selected CF7 form."
+msgstr "do formulário CF7 selecionado."
+
+#: includes/class-strings.php:756
+msgid "FluentCRM List(s):"
+msgstr "Lista(s) FluentCRM:"
+
+#: includes/class-strings.php:757
+msgid "FluentCRM Tag(s):"
+msgstr "Etiqueta(s) FluentCRM:"
+
+#: includes/class-strings.php:758
+msgid "Map Fields"
+msgstr "Campos do Mapa"
+
+#: includes/class-strings.php:759
+msgid "Please map your form's email field to FluentCRM Email before saving."
+msgstr ""
+"Mapeie o campo de e-mail do seu formulário para FluentCRM Email antes de "
+"salvar."
+
+#: includes/class-strings.php:760
+msgid "Your Form Fields"
+msgstr "Seus campos de formulário"
+
+#: includes/class-strings.php:761
+msgid "FluentCRM field"
+msgstr "Campo FluentCRM"
+
+#: includes/class-strings.php:764
+msgid "Mailchimp Settings"
+msgstr "Configurações do Mailchimp"
+
+#: includes/class-strings.php:765
+msgid "Mailchimp Audience(s):"
+msgstr "Público(s) do Mailchimp:"
+
+#: includes/class-strings.php:766
+msgid "Mailchimp Tag(s):"
+msgstr "Etiqueta(s) Mailchimp:"
+
+#: includes/class-strings.php:767
+msgid "Please map your form's email field to Mailchimp Email before saving."
+msgstr ""
+"Mapeie o campo de e-mail do seu formulário para Mailchimp Email antes de "
+"salvar."
+
+#: includes/class-strings.php:768
+msgid "Mailchimp field"
+msgstr "Campo Mailchimp"
+
+#: includes/class-strings.php:769
+#: includes/forms/contact-form/class-cf7-admin.php:188
+#: includes/forms/contact-form/class-cf7-admin.php:237
+msgid "Note:"
+msgstr "Observação:"
+
+#: includes/class-strings.php:770
+msgid ""
+"Address will be added only when all of the required fields are mapped "
+"(Street Address, City, State, Postal Code)."
+msgstr ""
+"O endereço será adicionado somente quando todos os campos obrigatórios "
+"estiverem mapeados (Endereço, Cidade, Estado, CEP)."
+
+#: includes/class-strings.php:771
+msgid "Skip if contacts already exist in Mailchimp"
+msgstr "Ignorar se os contatos já existirem no Mailchimp"
+
+#: includes/class-strings.php:774
+msgid "Setup Finished!"
+msgstr "Configuração concluída!"
+
+#: includes/class-strings.php:775
+msgid "Widget Updated!"
+msgstr "Widget atualizado!"
+
+#: includes/class-strings.php:776
+msgid "Now you can use"
+msgstr "Agora você pode usar"
+
+#: includes/class-strings.php:778
+msgid "Done"
+msgstr "Feita"
+
+#: includes/class-strings.php:779
+msgid "Upgrade all features"
+msgstr "Atualize todos os recursos"
+
+#: includes/core/class-app.php:31
+msgid "Arial"
+msgstr "Arial"
+
+#: includes/core/class-app.php:32
+msgid "Arial Black"
+msgstr "Arial Preto"
+
+#: includes/core/class-app.php:33
+msgid "Comic Sans MS"
+msgstr "Comic Sans MS"
+
+#: includes/core/class-app.php:34
+msgid "Courier New"
+msgstr "Correio Novo"
+
+#: includes/core/class-app.php:35
+msgid "Georgia"
+msgstr "Geórgia"
+
+#: includes/core/class-app.php:36
+msgid "Lucida Console"
+msgstr "Lucida Consola"
+
+#: includes/core/class-app.php:37
+msgid "Lucida Sans"
+msgstr "Lucida Sans"
+
+#: includes/core/class-app.php:38
+msgid "Tahoma"
+msgstr "Tahoma"
+
+#: includes/core/class-app.php:39
+msgid "Times New Roman"
+msgstr "Times New Roman"
+
+#: includes/core/class-app.php:40
+msgid "Trebuchet"
+msgstr "Trabuco"
+
+#: includes/core/class-app.php:41
+msgid "Verdana"
+msgstr "Verdana"
+
+#: includes/core/class-app.php:42
+msgid "Ubuntu"
+msgstr "Ubuntu"
+
+#: includes/core/class-app.php:44
+msgid "Roboto"
+msgstr "Robô"
+
+#: includes/core/class-app.php:45
+msgid "Roboto Condensed"
+msgstr "Robô Condensado"
+
+#: includes/core/class-app.php:46
+msgid "Open Sans"
+msgstr "Aberto sem"
+
+#: includes/core/class-app.php:47
+msgid "Lato"
+msgstr "Lato"
+
+#: includes/core/class-app.php:48
+msgid "Montserrat"
+msgstr "Montserrate"
+
+#: includes/core/class-app.php:49
+msgid "Raleway"
+msgstr "Raleway"
+
+#: includes/core/class-app.php:50
+msgid "PT Sans"
+msgstr "PT Sans"
+
+#: includes/core/class-app.php:51
+msgid "Roboto Slab"
+msgstr "Laje Roboto"
+
+#: includes/core/class-app.php:52
+msgid "Merriweather"
+msgstr "Merriweather"
+
+#: includes/core/class-app.php:53
+msgid "Playfair Display"
+msgstr "Exibição Playfair"
+
+#: includes/core/class-app.php:54
+msgid "Source Sans Pro"
+msgstr "Fonte Sans Pro"
+
+#: includes/core/class-app.php:55
+msgid "Noto Sans"
+msgstr "Noto Sans"
+
+#: includes/core/class-app.php:56
+msgid "Noto Serif"
+msgstr "Noto Serif"
+
+#: includes/core/class-app.php:57
+msgid "Roboto Mono"
+msgstr "Robô Mono"
+
+#: includes/core/class-app.php:58
+msgid "Nunito"
+msgstr "Nunito"
+
+#: includes/core/class-app.php:59
+msgid "Poppins"
+msgstr "Poppins"
+
+#: includes/core/class-app.php:60
+msgid "Rubik"
+msgstr "Rubik"
+
+#: includes/core/class-app.php:1609
+msgid "Enter your Name"
+msgstr "Digite seu nome"
+
+#: includes/core/class-app.php:1619
+msgid "Enter your Email"
+msgstr "Digite seu e-mail"
+
+#: includes/core/class-app.php:1630
+msgid "Enter your Phone"
+msgstr "Digite seu telefone"
+
+#: includes/core/class-app.php:1643
+msgid "Enter your Message"
+msgstr "Digite sua mensagem"
+
+#: includes/core/class-database.php:337
+msgid "My First Widget"
+msgstr "Meu primeiro widget"
+
+#: includes/forms/contact-form/class-cf7-admin.php:66
+#: includes/forms/formidable/class-formidable-admin.php:47
+#: includes/forms/gravity-forms/class-gf-admin.php:59
+msgid "WhatsApp (FormyChat)"
+msgstr "WhatsApp (FormyChat)"
+
+#: includes/forms/contact-form/class-cf7-admin.php:127
+msgid "Connect WhatsApp"
+msgstr "Conectar WhatsApp"
+
+#: includes/forms/contact-form/class-cf7-admin.php:138
+msgid "Enable to connect WhatsApp for this contact form."
+msgstr "Habilite para conectar o WhatsApp para este formulário de contato."
+
+#: includes/forms/contact-form/class-cf7-admin.php:167
+msgid "WhatsApp message body"
+msgstr "Corpo da mensagem do WhatsApp"
+
+#: includes/forms/contact-form/class-cf7-admin.php:172
+msgid "Use these tags in the message body:"
+msgstr "Use estas tags no corpo da mensagem:"
+
+#: includes/forms/contact-form/class-cf7-admin.php:186
+msgid "Format your whatsapp message"
+msgstr "Formate sua mensagem do WhatsApp"
+
+#: includes/forms/contact-form/class-cf7-admin.php:189
+msgid "File Upload field will not support on WhatsApp message body."
+msgstr ""
+"O campo de upload de arquivo não será compatível com o corpo da mensagem do "
+"WhatsApp."
+
+#: includes/forms/contact-form/class-cf7-admin.php:198
+msgid "Open in new tab"
+msgstr "Abrir em nova aba"
+
+#: includes/forms/contact-form/class-cf7-admin.php:208
+msgid "Enable to open whatsapp in new tab."
+msgstr "Habilite para abrir o Whatsapp em uma nova aba."
+
+#: includes/forms/contact-form/class-cf7-admin.php:212
+msgid ""
+"Note: This option is for only desktop devices, It will be useful for "
+"WhatsApp web on desktop devices."
+msgstr ""
+"Nota: Esta opção é apenas para dispositivos desktop. Será útil para "
+"WhatsApp web em dispositivos desktop."
+
+#: includes/forms/contact-form/class-cf7-admin.php:222
+msgid "Disable email notifications"
+msgstr "Desativar notificações por e-mail"
+
+#: includes/forms/contact-form/class-cf7-admin.php:234
+msgid "Enable this toggle to stop receiving email notifications from this form."
+msgstr ""
+"Ative esta opção para parar de receber notificações por e-mail deste "
+"formulário."
+
+#: includes/forms/contact-form/class-cf7-admin.php:238
+msgid ""
+"With this function enabled, you can use this Contact Form 7 form without "
+"using any SMTP plugin."
+msgstr ""
+"Com esta função habilitada, você pode usar este formulário Contact Form 7 "
+"sem usar nenhum plugin SMTP."
+
+#: includes/forms/fluentform/class-fluentform-admin.php:44
+msgid "Whatsapp (Formychat)"
+msgstr "Whatsapp (Formychat)"
+
+#: includes/forms/formidable/class-formidable-frontend.php:146
+msgid "Missing form ID."
+msgstr "ID do formulário ausente."
+
+#: includes/forms/formidable/class-formidable-frontend.php:154
+msgid "Form not found."
+msgstr "Formulário não encontrado."
+
+#: includes/forms/formidable/class-formidable-frontend.php:163
+msgid "No recent form submission found."
+msgstr "Nenhum envio de formulário recente encontrado."
+
+#: includes/forms/formidable/class-formidable-frontend.php:185
+msgid "Entry not found."
+msgstr "Entrada não encontrada."
+
+#: includes/forms/wpforms/class-wpforms-admin.php:47
+msgid "FormyChat Settings"
+msgstr "Configurações do FormyChat"
+
+#: includes/forms/wpforms/class-wpforms-admin.php:124
+#, php-format
+msgid "Available tags: %s"
+msgstr "Etiquetas disponíveis: P14"
+
+#: includes/others/functions.php:56
+msgid "Phone number"
+msgstr "Número de telefone"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_widget_opened"
+msgstr "formychat_widget_opened"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_widget_closed"
+msgstr "formychat_widget_closed"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_agent_selected"
+msgstr "formychat_agent_selected"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_form_loaded"
+msgstr "formychat_form_loaded"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_form_submitted"
+msgstr "formychat_form_submetido"
+
+#: includes/class-strings.php
+msgid "Select an option"
+msgstr "Selecione uma opção"
+
+#: includes/class-strings.php
+msgid "Ultimate"
+msgstr "Final"
+
+#: includes/class-strings.php
+msgid "New"
+msgstr "Nova"
+
+#: includes/class-strings.php
+msgid "Simple"
+msgstr "Simples"
+
+#: includes/class-strings.php
+msgid "Wave"
+msgstr "Aceno"
+
+#: includes/class-strings.php
+msgid "Whatsapp"
+msgstr "Whatsapp"
+
+#: includes/class-strings.php
+msgid "Keyboard Shortcuts: CTRL/CMD + B, I, S"
+msgstr "Atalhos de teclado: CTRL/CMD + B, I, S"
+
+#: includes/class-strings.php
+msgid "Insert"
+msgstr "Inserir"
+
+#: includes/class-strings.php
+msgid "All"
+msgstr "Todos"
+
+#: includes/class-strings.php
+msgid "CRM & Marketing"
+msgstr "CRM e marketing"
+
+#: includes/class-strings.php
+msgid "Email & Newsletters"
+msgstr "E-mail e boletins informativos"
+
+#: includes/class-strings.php
+msgid "Automation & Webhooks"
+msgstr "Automação e webhooks"
+
+#: includes/class-strings.php
+msgid "File Storage & Cloud"
+msgstr "Armazenamento de arquivos e nuvem"
+
+#: includes/class-strings.php
+msgid "Analytics & Tracking"
+msgstr "Análise e rastreamento"
+
+#: includes/class-strings.php
+msgid "Communication"
+msgstr "Comunicação"
+
+#: includes/class-strings.php
+msgid "Others"
+msgstr "Outras"
+
+#: includes/admin/class-integrations.php
+msgid ""
+"Connect your Form leads to FluentCRM and instantly add new contacts when a "
+"form is submitted. Perfect for automated email campaigns and segmented "
+"marketing."
+msgstr ""
+"Conecte seus leads de formulário ao FluentCRM e adicione novos contatos "
+"instantaneamente quando um formulário for enviado. Perfeito para campanhas "
+"automatizadas de e-mail e marketing segmentado."
+
+#: includes/admin/class-integrations.php
+msgid ""
+"Create Mailchimp newsletter signups directly from your form submissions. "
+"Automatically grow your audience and engage your subscribers."
+msgstr ""
+"Crie inscrições em boletins informativos Mailchimp diretamente a partir dos "
+"envios de seus formulários. Aumente automaticamente seu público e envolva "
+"seus assinantes."
+
+#: includes/admin/class-integrations.php
+msgid ""
+"Sync form submissions directly to Google Sheets in real time. Perfect for "
+"reporting, analytics, or team collaboration without manual data entry."
+msgstr ""
+"Sincronize os envios de formulários diretamente com o Planilhas Google em "
+"tempo real. Perfeito para relatórios, análises ou colaboração em equipe sem "
+"entrada manual de dados."
+
+#: includes/admin/class-integrations.php
+msgid ""
+"Add subscribers to your MailPoet mailing lists as soon as they submit a "
+"form. Automate your newsletter growth and keep your audience engaged."
+msgstr ""
+"Adicione assinantes às suas listas de e-mail MailPoet assim que eles "
+"enviarem um formulário. Automatize o crescimento do seu boletim informativo "
+"e mantenha o seu público envolvido."
+
+#: includes/class-strings.php
+msgid "Select pages"
+msgstr "Selecionar páginas"
+
+#: includes/class-strings.php
+msgid "No page found"
+msgstr "Nenhuma página encontrada"
+
+#: includes/class-strings.php
+msgid "All Widgets"
+msgstr "Todos os widgets"
+
+#: includes/class-strings.php
+msgid "All Forms"
+msgstr "Todos os formulários"
+
+
+#: includes/class-strings.php
+msgid "INSTALL"
+msgstr "INSTALAR"

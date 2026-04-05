@@ -3,7 +3,7 @@
  * Database Class for FormyChat.
  *
  * @package FormyChat
- * @since 3.0.0
+ * @since   3.0.0
  */
 
 
@@ -11,21 +11,23 @@
 namespace FormyChat;
 
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+defined('ABSPATH') || exit();
 
 /**
  * Database Class.
  *
  * @package FormyChat
- * @since 1.0.0
+ * @since   1.0.0
  */
 class Database extends \FormyChat\Base {
+
 
     /**
      * Hooks.
      */
     public function hooks() {
-        add_action( 'init', array( $this, 'create_tables' ), 0 );
+        add_action('init', array( $this, 'create_tables' ), 0);
     }
 
     /**
@@ -50,7 +52,8 @@ class Database extends \FormyChat\Base {
         global $wpdb;
         $charset_collate = $wpdb->get_charset_collate();
 
-        $wpdb->query( "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}scf_leads` (
+        $wpdb->query(
+            "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}scf_leads` (
             `id` mediumint(30) NOT NULL AUTO_INCREMENT,
             `field` text NOT NULL,
             `meta` text NOT NULL,
@@ -103,7 +106,8 @@ class Database extends \FormyChat\Base {
             delete_option('formychat_widget_table_created');
         }
 
-        $wpdb->query( "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}scf_widgets(
+        $wpdb->query(
+            "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}scf_widgets(
             `id` mediumint(30) NOT NULL AUTO_INCREMENT,
             `name` varchar(255) DEFAULT NULL,
             `is_active` tinyint(1) DEFAULT 1,
@@ -203,7 +207,7 @@ class Database extends \FormyChat\Base {
         try {
             foreach ( $old_keys as $key => $values ) {
                 foreach ( $values as $old_key => $new_key ) {
-                    if ( isset( ${$key}[ $old_key ] ) ) {
+                    if ( isset(${$key}[ $old_key ]) ) {
                         $config[ $key ][ $new_key ] = ${$key}[ $old_key ];
                     }
                 }
@@ -216,63 +220,63 @@ class Database extends \FormyChat\Base {
         $duplicate = \FormyChat\App::widget_config();
 
         // Format WhatsApp message template.
-        $config['whatsapp']['message_template'] = isset( $whatsapp['defined_preset'] ) && ! empty( $whatsapp['defined_preset'] ) ? str_replace('{break}', "\n", $whatsapp['defined_preset']) : $duplicate['whatsapp']['message_template'];
+        $config['whatsapp']['message_template'] = isset($whatsapp['defined_preset']) && ! empty($whatsapp['defined_preset']) ? str_replace('{break}', "\n", $whatsapp['defined_preset']) : $duplicate['whatsapp']['message_template'];
 
         // Add new_tab key to whatsapp.
-        if ( isset( $form['open_in_new_tab'] ) ) {
+        if ( isset($form['open_in_new_tab']) ) {
             $config['whatsapp']['new_tab'] = $form['open_in_new_tab'];
         }
 
         // Add hadDelay key to icon.
         if ( isset($config['icon']['delay']) && $config['icon']['delay'] > 0 ) {
             $config['icon']['has_delay'] = true;
-            $config['icon']['delay'] = intval( $config['icon']['delay'] );
+            $config['icon']['delay'] = intval($config['icon']['delay']);
         }
 
         // Icon position custom.
         $config['icon']['position_custom'] = [
-            'top' => isset( $icon['position']['top'] ) ? $icon['position']['top'] : null,
-            'right' => isset( $icon['position']['right'] ) ? $icon['position']['right'] : null,
-            'bottom' => isset( $icon['position']['bottom'] ) ? $icon['position']['bottom'] : null,
-            'left' => isset( $icon['position']['left'] ) ? $icon['position']['left'] : null,
+            'top' => isset($icon['position']['top']) ? $icon['position']['top'] : null,
+            'right' => isset($icon['position']['right']) ? $icon['position']['right'] : null,
+            'bottom' => isset($icon['position']['bottom']) ? $icon['position']['bottom'] : null,
+            'left' => isset($icon['position']['left']) ? $icon['position']['left'] : null,
         ];
 
         // Add cta enabled.
         $config['cta']['enabled'] = ! empty($cta['text']);
 
         // CF7 Form ID boolean.
-        $config['cf7']['form_id'] = intval( $config['cf7']['form_id'] );
+        $config['cf7']['form_id'] = intval($config['cf7']['form_id']);
 
         // form.open_by_default.
-        $config['form']['open_by_default'] = isset( $config['form']['open_by_default'] ) ? wp_validate_boolean( $config['form']['open_by_default'] ) : false;
+        $config['form']['open_by_default'] = isset($config['form']['open_by_default']) ? wp_validate_boolean($config['form']['open_by_default']) : false;
 
         // form.show_country_code_field
-        $config['form']['show_country_code_field'] = isset( $config['form']['show_country_code_field'] ) ? wp_validate_boolean( $config['form']['show_country_code_field'] ) : false;
+        $config['form']['show_country_code_field'] = isset($config['form']['show_country_code_field']) ? wp_validate_boolean($config['form']['show_country_code_field']) : false;
 
         // Form mode.
-        $config['form']['mode'] = isset( $cf7['selectedmode'] ) && 'cf7' === $cf7['selectedmode'] ? 'cf7' : 'formychat';
+        $config['form']['mode'] = isset($cf7['selectedmode']) && 'cf7' === $cf7['selectedmode'] ? 'cf7' : 'formychat';
 
         // Email.
         $config['email'] = [
-            'enabled' => isset( $cf7['activemail'] ) ? wp_validate_boolean( $cf7['activemail'] ) : false,
-            'address' => isset( $cf7['cf7mail'] ) ? $cf7['cf7mail'] : '',
-            'admin_email' => wp_validate_boolean( $cf7['confirmationstateofCustommail'] ),
+            'enabled' => isset($cf7['activemail']) ? wp_validate_boolean($cf7['activemail']) : false,
+            'address' => isset($cf7['cf7mail']) ? $cf7['cf7mail'] : '',
+            'admin_email' => wp_validate_boolean($cf7['confirmationstateofCustommail']),
         ];
 
         // Add default images.
-        $config['icon']['image_url'] = isset( $config['icon']['image_url'] ) && ! empty( $config['icon']['image_url'] ) ? $config['icon']['image_url'] : FORMYCHAT_PUBLIC . '/images/whatsapp.svg';
+        $config['icon']['image_url'] = isset($config['icon']['image_url']) && ! empty($config['icon']['image_url']) ? $config['icon']['image_url'] : FORMYCHAT_PUBLIC . '/images/whatsapp.svg';
 
         // If greetings is enabled.
-        $config['greetings']['enabled'] = isset( $greetings['enabled'] ) ? wp_validate_boolean( $greetings['enabled'] ) : false;
+        $config['greetings']['enabled'] = isset($greetings['enabled']) ? wp_validate_boolean($greetings['enabled']) : false;
 
         // Greetings on click.
-        $config['greetings']['on_click'] = isset( $greetings['on_click'] ) && 'load_form' === $greetings['on_click'] ? 'show_form' : 'redirect';
+        $config['greetings']['on_click'] = isset($greetings['on_click']) && 'load_form' === $greetings['on_click'] ? 'show_form' : 'redirect';
 
         // Template style will be +1.
-        $config['greetings']['style'] = isset( $greetings['template_style'] ) ? intval( $greetings['template_style'] ) + 1 : 1;
+        $config['greetings']['style'] = isset($greetings['template_style']) ? intval($greetings['template_style']) + 1 : 1;
 
         // Adjust simple.
-        $config['greetings']['templates']['simple']['background_color'] = isset( $config['greetings']['templates']['simple']['background'] ) && ! empty( $config['greetings']['templates']['simple']['cta_text_color'] ) ? $config['greetings']['templates']['wave']['background'] : '#FFFFFF';
+        $config['greetings']['templates']['simple']['background_color'] = isset($config['greetings']['templates']['simple']['background']) && ! empty($config['greetings']['templates']['simple']['cta_text_color']) ? $config['greetings']['templates']['wave']['background'] : '#FFFFFF';
 
         // Adjust wave.
         $wave_keys = [
@@ -301,12 +305,12 @@ class Database extends \FormyChat\Base {
         ];
 
         foreach ( $wave_keys as $old_key => $new_key ) {
-            $config['greetings']['templates']['wave'][ $new_key ] = isset( $config['greetings']['templates']['wave'][ $old_key ] ) && ! empty( $config['greetings']['templates']['wave'][ $old_key ] ) ? $config['greetings']['templates']['wave'][ $old_key ] : $duplicate['greetings']['templates']['wave'][ $new_key ];
+            $config['greetings']['templates']['wave'][ $new_key ] = isset($config['greetings']['templates']['wave'][ $old_key ]) && ! empty($config['greetings']['templates']['wave'][ $old_key ]) ? $config['greetings']['templates']['wave'][ $old_key ] : $duplicate['greetings']['templates']['wave'][ $new_key ];
         }
 
         // Boolean to show_icon and show_cta.
-        $config['greetings']['templates']['wave']['show_icon'] = wp_validate_boolean( $greetings['templates']['wave']['show_content'] );
-        $config['greetings']['templates']['wave']['show_cta'] = wp_validate_boolean( $greetings['templates']['wave']['show_cta'] );
+        $config['greetings']['templates']['wave']['show_icon'] = wp_validate_boolean($greetings['templates']['wave']['show_content']);
+        $config['greetings']['templates']['wave']['show_cta'] = wp_validate_boolean($greetings['templates']['wave']['show_cta']);
 
         $simple_keys = [
             'heading' => 'heading',
@@ -322,11 +326,11 @@ class Database extends \FormyChat\Base {
         ];
 
         foreach ( $simple_keys as $old_key => $new_key ) {
-            $config['greetings']['templates']['simple'][ $new_key ] = isset( $config['greetings']['templates']['simple'][ $old_key ] ) && ! empty( $config['greetings']['templates']['simple'][ $old_key ] ) ? $config['greetings']['templates']['simple'][ $old_key ] : $duplicate['greetings']['templates']['simple'][ $new_key ];
+            $config['greetings']['templates']['simple'][ $new_key ] = isset($config['greetings']['templates']['simple'][ $old_key ]) && ! empty($config['greetings']['templates']['simple'][ $old_key ]) ? $config['greetings']['templates']['simple'][ $old_key ] : $duplicate['greetings']['templates']['simple'][ $new_key ];
         }
 
         // Exclude all filter to boolean.
-        $config['target']['exclude_all_pages'] = isset( $config['target']['exclude_all_pages'] ) ? wp_validate_boolean( $config['target']['exclude_all_pages'] ) : false;
+        $config['target']['exclude_all_pages'] = isset($config['target']['exclude_all_pages']) ? wp_validate_boolean($config['target']['exclude_all_pages']) : false;
 
         // Default fonts are set to sans-serif.
         $config['form']['font_family'] = 'default' === $config['form']['font_family'] ? 'sans-serif' : $config['form']['font_family'];
@@ -334,8 +338,8 @@ class Database extends \FormyChat\Base {
         $config['greetings']['templates']['simple']['font_family'] = 'default' === $config['greetings']['templates']['simple']['font_family'] ? 'sans-serif' : $config['greetings']['templates']['simple']['font_family'];
 
         $payload = [
-            'name' => __( 'My First Widget', 'social-contact-form' ),
-            'is_active' => wp_validate_boolean(  get_option('formychat_enabled', 0) ),
+            'name' => __('My First Widget', 'social-contact-form'),
+            'is_active' => wp_validate_boolean(get_option('formychat_enabled', 0)),
             'config' => $config,
         ];
 

@@ -12,6 +12,7 @@ namespace Appsero;
 class Insights {
 
 
+
     /**
      * The notice text
      *
@@ -371,8 +372,7 @@ class Insights {
         $ip         = isset($_SERVER['SERVER_ADDR']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_ADDR'])) : '127.0.0.1';
         $is_local   = false;
 
-        if (
-            in_array($ip, [ '127.0.0.1', '::1' ], true)
+        if ( in_array($ip, [ '127.0.0.1', '::1' ], true)
             || ! strpos($host, '.')
             || in_array(strrchr($host, '.'), [ '.test', '.testing', '.local', '.localhost', '.localdomain' ], true)
         ) {
@@ -437,13 +437,13 @@ class Insights {
         $notice .= '<p class="description hidden" style="display:none;">We collect your server environment details (PHP, MySQL, server, WordPress versions), the number of users on your site, site language, number of active and inactive plugins, site name and URL, as well as your name and email address. This data is securely collected and managed by Appsero. <a style="color: #2271b1; text-decoration: underline;" href="' . $policy_url . '">Learn more</a> about how Appsero collects and handles your data.</p>';
 
         echo '<div class="updated wp-dark-mode-appsero-notice"><p>';
-        echo wp_kses_post( $notice );
+        echo wp_kses_post($notice);
         echo '</p><p class="submit">';
-        echo '&nbsp;<a href="' . esc_url($optin_url) . '" class="button-primary button-large">' . wp_kses_post( $this->client->__trans('Allow') ) . '</a>';
-        echo '&nbsp;<a href="' . esc_url($optout_url) . '" class="button-secondary button-large">' . wp_kses_post( $this->client->__trans('No thanks') ) . '</a>';
+        echo '&nbsp;<a href="' . esc_url($optin_url) . '" class="button-primary button-large">' . wp_kses_post($this->client->__trans('Allow')) . '</a>';
+        echo '&nbsp;<a href="' . esc_url($optout_url) . '" class="button-secondary button-large">' . wp_kses_post($this->client->__trans('No thanks')) . '</a>';
         echo '</p></div>';
 
-        echo "<script type='text/javascript'>jQuery('." . esc_attr( $this->client->slug ) . "-insights-data-we-collect').on('click', function(e) {
+        echo "<script type='text/javascript'>jQuery('." . esc_attr($this->client->slug) . "-insights-data-we-collect').on('click', function(e) {
                 e.preventDefault();
                 console.log('clicked');
                 jQuery(this).parents('.updated').find('p.description').slideToggle('fast').removeClass('hidden');
@@ -475,14 +475,16 @@ class Insights {
             $this->optin();
 
             wp_safe_redirect(remove_query_arg($this->client->slug . '_tracker_optin'));
-            exit;
+            // phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+            exit();
         }
 
         if ( isset($_GET[ $this->client->slug . '_tracker_optout' ]) && isset($_GET[ $this->client->slug . '_tracker_optout' ]) && 'true' === $_GET[ $this->client->slug . '_tracker_optout' ] ) {
             $this->optout();
 
             wp_safe_redirect(remove_query_arg($this->client->slug . '_tracker_optout'));
-            exit;
+            // phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+            exit();
         }
     }
 
@@ -847,7 +849,7 @@ class Insights {
         $this->deactivation_modal_styles();
         $reasons        = $this->get_uninstall_reasons();
         $custom_reasons = apply_filters('appsero_custom_deactivation_reasons', [], $this->client);
-		?>
+        ?>
 
         <div class="wd-dr-modal" id="<?php echo esc_attr($this->client->slug); ?>-wd-dr-modal">
             <div class="wd-dr-modal-wrap">
@@ -884,7 +886,7 @@ class Insights {
                     <p class="wd-dr-modal-reasons-bottom">
                         <?php
                         printf(
-                            wp_kses_post( $this->client->__trans('We share your data with <a href="%1$s" target="_blank">Appsero</a> to troubleshoot problems &amp; make product improvements. <a href="%2$s" target="_blank">Learn more</a> about how Appsero handles your data.') ),
+                            wp_kses_post($this->client->__trans('We share your data with <a href="%1$s" target="_blank">Appsero</a> to troubleshoot problems &amp; make product improvements. <a href="%2$s" target="_blank">Learn more</a> about how Appsero handles your data.')),
                             esc_url('https://appsero.com/'),
                             esc_url('https://appsero.com/privacy-policy')
                         );
@@ -965,8 +967,8 @@ class Insights {
                             url: ajaxurl,
                             type: 'POST',
                             data: {
-                                nonce: '<?php echo esc_attr( wp_create_nonce('appsero-security-nonce') ); ?>',
-                                action: '<?php echo esc_attr( $this->client->slug ); ?>_submit-uninstall-reason',
+                                nonce: '<?php echo esc_attr(wp_create_nonce('appsero-security-nonce')); ?>',
+                                action: '<?php echo esc_attr($this->client->slug); ?>_submit-uninstall-reason',
                                 reason_id: (0 === $radio.length) ? 'none' : $radio.val(),
                                 reason_info: (0 !== $input.length) ? $input.val().trim() : ''
                             },
@@ -983,7 +985,7 @@ class Insights {
             }(jQuery));
         </script>
 
-		<?php
+        <?php
     }
 
     /**
@@ -1063,7 +1065,7 @@ class Insights {
      * Deactivation modal styles
      */
     private function deactivation_modal_styles() {
-		?>
+        ?>
         <style type="text/css">
             .wd-dr-modal {
                 position: fixed;
@@ -1246,6 +1248,6 @@ class Insights {
                 margin-left: 4px;
             }
         </style>
-		<?php
+        <?php
     }
 }

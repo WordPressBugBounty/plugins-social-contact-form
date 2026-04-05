@@ -12,10 +12,12 @@
 namespace FormyChat\Publics;
 
 // Exit if accessed directly.
-defined('ABSPATH') || exit;
+// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+defined('ABSPATH') || exit();
 
 // User models.
 use FormyChat\Models\Lead;
+use FormyChat\Models\Widget;
 
 if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 	/**

@@ -9,9 +9,11 @@
 namespace FormyChat\Forms\WPForms;
 
 // Exit if accessed directly.
-defined('ABSPATH') || exit;
+// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+defined('ABSPATH') || exit();
 
 class Admin extends \FormyChat\Base {
+
 
 
     /**
@@ -41,7 +43,7 @@ class Admin extends \FormyChat\Base {
      */
     public function add_settings( $settings ) {
         // Output the section title
-		echo '<div class="wpforms-panel-content-section wpforms-panel-content-section-formychat" data-panel="formychat" style="display: none;">';
+        echo '<div class="wpforms-panel-content-section wpforms-panel-content-section-formychat" data-panel="formychat" style="display: none;">';
         echo '<div class="wpforms-panel-content-section-title">';
         echo '<span id="wpforms-builder-settings-notifications-title">';
         esc_html_e('FormyChat Settings', 'social-contact-form');
@@ -65,28 +67,61 @@ class Admin extends \FormyChat\Base {
             ]
         );
 
+        wpforms_panel_field(
+            'select',
+            'settings',
+            'formychat_destination_type',
+            $settings->form_data,
+            esc_html__('Destination', 'social-contact-form'),
+            [
+                'options' => [
+                    'phone' => esc_html__('Phone', 'social-contact-form'),
+                    'group' => esc_html__('Group', 'social-contact-form') . ( $this->is_ultimate_active() ? '' : ' (Pro)' ),
+                ],
+                'default' => 'phone',
+            ]
+        );
+
+        $destination_type = isset($settings->form_data['settings']['formychat_destination_type']) ? $settings->form_data['settings']['formychat_destination_type'] : 'phone';
+        $show_phone = ( 'group' !== $destination_type );
+        $show_group = ( 'group' === $destination_type );
+
+        echo '<div class="formychat-wpforms-dest-phone" style="' . ( $show_phone ? '' : 'display:none;' ) . '">';
         $args = [
-            'country_code' => array_key_exists( 'formychat_country_code', $settings->form_data['settings'] ) ? $settings->form_data['settings']['formychat_country_code'] : '',
-            'number' => array_key_exists( 'formychat_number', $settings->form_data['settings'] ) ? $settings->form_data['settings']['formychat_number'] : '',
+            'country_code' => array_key_exists('formychat_country_code', $settings->form_data['settings']) ? $settings->form_data['settings']['formychat_country_code'] : '',
+            'number' => array_key_exists('formychat_number', $settings->form_data['settings']) ? $settings->form_data['settings']['formychat_number'] : '',
             'country_code_name' => 'settings[formychat_country_code]',
             'number_name' => 'settings[formychat_number]',
         ];
+        formychat_phone_number_field($args);
+        echo '</div>';
 
-        formychat_phone_number_field( $args );
+        echo '<div class="formychat-wpforms-dest-group" style="' . ( $show_group ? '' : 'display:none;' ) . '">';
+        wpforms_panel_field(
+            'text',
+            'settings',
+            'formychat_group_invite_code',
+            $settings->form_data,
+            esc_html__('Group Invite Link', 'social-contact-form'),
+            [
+                'placeholder' => 'https://chat.whatsapp.com/XXXXXXXXXX',
+            ]
+        );
+        echo '</div>';
 
         echo '<br/>';
 
         $tags = [];
 
-        if ( ! array_key_exists( 'fields', $settings->form_data ) ) {
+        if ( ! array_key_exists('fields', $settings->form_data) ) {
             $settings->form_data['fields'] = [];
         }
 
         $default_message = 'Thank you for contacting us. We will get back to you soon.';
 
-        if ( $settings->form_data['fields'] && ! empty( $settings->form_data['fields'] ) ) {
+        if ( $settings->form_data['fields'] && ! empty($settings->form_data['fields']) ) {
 
-            $form_tags = array_column( $settings->form_data['fields'], 'label' );
+            $form_tags = array_column($settings->form_data['fields'], 'label');
 
             $tags = [];
             $default_message = '';
@@ -96,11 +131,15 @@ class Admin extends \FormyChat\Base {
             }
 
             // Merge if not empty.
-            $custom_tags = array_keys( \FormyChat\App::custom_tags() );
-            if ( is_array( $custom_tags ) && ! empty( $custom_tags ) ) {
-                $tags = array_merge( $tags, array_map( function ( $tag ) {
-                    return '<strong>{' . $tag . '}</strong>';
-                }, $custom_tags) );
+            $custom_tags = array_keys(\FormyChat\App::custom_tags());
+            if ( is_array($custom_tags) && ! empty($custom_tags) ) {
+                $tags = array_merge(
+                    $tags, array_map(
+                        function ( $tag ) {
+                            return '<strong>{' . $tag . '}</strong>';
+                        }, $custom_tags
+                    )
+                );
             }
         }
 
@@ -117,7 +156,7 @@ class Admin extends \FormyChat\Base {
             ]
         );
 
-        if ( ! empty( $tags ) ) {
+        if ( ! empty($tags) ) {
 
             echo '<div class="wpforms-panel-content-section-field-description">';
             printf(
@@ -140,6 +179,24 @@ class Admin extends \FormyChat\Base {
         );
 
         do_action('formychat_wpforms_settings_after_html', $settings);
+
+        ?>
+        <script>
+        (function(){
+            var section = document.querySelector('.wpforms-panel-content-section-formychat');
+            if (!section) return;
+            var select = section.querySelector('select[name="settings[formychat_destination_type]"]') || section.querySelector('select[name*="formychat_destination_type"]');
+            if (!select) return;
+            function toggle() {
+                var v = select.value || 'phone';
+                section.querySelectorAll('.formychat-wpforms-dest-phone').forEach(function(el){ el.style.display = (v === 'phone') ? '' : 'none'; });
+                section.querySelectorAll('.formychat-wpforms-dest-group').forEach(function(el){ el.style.display = (v === 'group') ? '' : 'none'; });
+            }
+            select.addEventListener('change', toggle);
+            toggle();
+        })();
+        </script>
+        <?php
 
         echo '</div>';
     }

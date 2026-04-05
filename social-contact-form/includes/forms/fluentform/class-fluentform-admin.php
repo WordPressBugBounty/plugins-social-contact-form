@@ -3,21 +3,23 @@
 /**
  * Custom Tab Integration for Fluent Forms
  *
- * @package     YourPlugin
- * @author      Your Name
- * @version     1.0.0
+ * @package YourPlugin
+ * @author  Your Name
+ * @version 1.0.0
  */
 
 namespace FormyChat\Forms\FluentForm;
 
 if ( ! defined('ABSPATH') ) {
-    exit;
+    // phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+    exit();
 }
 
 use FluentForm\App\Helpers\Helper;
 
 if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
     class Admin extends \FormyChat\Base {
+
 
         /**
          * Initialize the integration
@@ -36,7 +38,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
         /**
          * Add custom tab to the form settings menu
          *
-         * @param array $menu_items Current menu items
+         * @param  array $menu_items Current menu items
          * @return array Modified menu items
          */
         public function add_custom_tab( $menu_items ) {
@@ -54,7 +56,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
          * Add custom scripts and styles
          */
         public function add_custom_scripts() {
-			?>
+            ?>
             <script>
                 jQuery(document).ready(function($) {
 
@@ -84,6 +86,13 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
                         $('#ff_formychat_wrapper').show();
                         $('.settings_app').hide();
                     }
+
+                    // Toggle destination type (phone/group)
+                    $(document).on('change', '#ff_formychat_settings_form input[name="formychat_destination_type"]', function() {
+                        var v = $(this).val();
+                        $('.ff_dest_phone').toggle(v === 'phone');
+                        $('.ff_dest_group').toggle(v === 'group');
+                    });
 
                     // Handle switch. 
                     $(document).on('click', '#ff_formychat_settings_form  [role="switch"]', function() {
@@ -197,13 +206,13 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
                     margin-left: 10px;
                 }
             </style>
-			<?php
+            <?php
         }
 
         /**
          * Render the content for custom tab
          *
-         * @param string $route Current route/tab
+         * @param  string $route Current route/tab
          * @return void
          */
         public function render_tab_content( $route ) {
@@ -214,64 +223,64 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
             }
 
             // Bail if fluentform is not active.
-			if ( ! function_exists( 'fluentFormApi' ) ) {
-				return [];
-			}
+            if ( ! function_exists('fluentFormApi') ) {
+                return [];
+            }
 
-			$form_api = fluentFormApi('forms')->form($form_id);
+            $form_api = fluentFormApi('forms')->form($form_id);
             // Fields exists in the form.
             $form_fields = $form_api->fields();
 
-			$fields = [];
+            $fields = [];
             /**
              * Recursively extract all field names from Fluent Forms field structure.
              *
-             * @param array $fields_array Array of fields or subfields.
-             * @param array $fields Accumulator for field names.
+             * @param  array $fields_array Array of fields or subfields.
+             * @param  array $fields       Accumulator for field names.
              * @return void
              */
             function formychat_extract_fluentform_field_names( $fields_array, &$fields ) {
-                if ( ! is_array( $fields_array ) ) {
+                if ( ! is_array($fields_array) ) {
                     return;
                 }
 
                 foreach ( $fields_array as $field ) {
                     // Defensive: skip if not array
-                    if ( ! is_array( $field ) ) {
+                    if ( ! is_array($field) ) {
                         continue;
                     }
 
                     // Get the field element type
-                    $element = isset( $field['element'] ) ? $field['element'] : '';
+                    $element = isset($field['element']) ? $field['element'] : '';
 
                     // If the field has 'attributes' and a 'name', add it
-                    if ( isset( $field['attributes'] ) && is_array( $field['attributes'] ) && ! empty( $field['attributes']['name'] ) ) {
+                    if ( isset($field['attributes']) && is_array($field['attributes']) && ! empty($field['attributes']['name']) ) {
                         $fields[ $field['attributes']['name'] ] = $field['attributes']['name'];
                     }
 
                     // If the field has 'columns', recursively process each column's fields
-                    if ( isset( $field['columns'] ) && is_array( $field['columns'] ) ) {
+                    if ( isset($field['columns']) && is_array($field['columns']) ) {
                         foreach ( $field['columns'] as $column ) {
-                            if ( isset( $column['fields'] ) && is_array( $column['fields'] ) ) {
-                                formychat_extract_fluentform_field_names( $column['fields'], $fields );
+                            if ( isset($column['fields']) && is_array($column['fields']) ) {
+                                formychat_extract_fluentform_field_names($column['fields'], $fields);
                             }
                         }
                     }
 
                     // Handle nested fields - flatten them into main array
-                    if ( isset( $field['fields'] ) && is_array( $field['fields'] ) ) {
+                    if ( isset($field['fields']) && is_array($field['fields']) ) {
                         // Process nested fields
                         foreach ( $field['fields'] as $sub_field ) {
-                            if ( is_array( $sub_field ) ) {
+                            if ( is_array($sub_field) ) {
                                 // For address and name fields, only process visible fields
-                                if ( in_array( $element, array( 'address', 'input_name' ) ) ) {
-                                    if ( isset( $sub_field['settings']['visible'] ) && ! $sub_field['settings']['visible'] ) {
+                                if ( in_array($element, array( 'address', 'input_name' )) ) {
+                                    if ( isset($sub_field['settings']['visible']) && ! $sub_field['settings']['visible'] ) {
                                         continue;
                                     }
                                 }
 
                                 // Recursively process the sub-field
-                                formychat_extract_fluentform_field_names( array( $sub_field ), $fields );
+                                formychat_extract_fluentform_field_names(array( $sub_field ), $fields);
                             }
                         }
                     }
@@ -282,11 +291,13 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
             $fields = array();
 
             // Recursively extract all field names from the form fields
-            if ( isset( $form_fields['fields'] ) && is_array( $form_fields['fields'] ) ) {
-                formychat_extract_fluentform_field_names( $form_fields['fields'], $fields );
+            if ( isset($form_fields['fields']) && is_array($form_fields['fields']) ) {
+                formychat_extract_fluentform_field_names($form_fields['fields'], $fields);
             }
 
             $formychat_status = Helper::getFormMeta($form_id, 'formychat_status', false);
+            $formychat_destination_type = Helper::getFormMeta($form_id, 'formychat_destination_type', 'phone');
+            $formychat_group_invite_code = Helper::getFormMeta($form_id, 'formychat_group_invite_code', '');
             $formychat_phone_code = Helper::getFormMeta($form_id, 'formychat_phone_code', '');
             $formychat_whatsapp_number = Helper::getFormMeta($form_id, 'formychat_whatsapp_number', '');
 
@@ -303,7 +314,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
             // Create nonce for security
             $nonce = wp_create_nonce('ff_formychat_nonce');
 
-			?>
+            ?>
             <div id="ff_formychat_wrapper" class="ff_formychat_wrapper ff_settings_wrapper" style="<?php echo 'formychat' !== $route ? 'display:none;' : ''; ?>">
                 <h3><?php echo esc_html__('Whatsapp (Formychat) Settings', 'social-contact-form'); ?></h3>
 
@@ -340,17 +351,36 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
 
 
                     <div class="ff_settings_block">
+                        <label class="ff_setting_label"><?php echo esc_html__('Destination', 'social-contact-form'); ?></label>
+                        <div class="ff_setting_input">
+                            <label><input type="radio" name="formychat_destination_type" value="phone" <?php checked($formychat_destination_type, 'phone'); ?> /> <?php echo esc_html__('Phone', 'social-contact-form'); ?></label>
+                            <label style="margin-left:15px"><input type="radio" name="formychat_destination_type" value="group" <?php checked($formychat_destination_type, 'group'); ?> <?php echo $this->is_ultimate_active() ? '' : 'disabled'; ?> /> <?php echo esc_html__('Group', 'social-contact-form'); ?><?php echo $this->is_ultimate_active() ? '' : ' <span class="formychat-pro-badge">Pro</span>'; ?></label>
+                        </div>
+                    </div>
+
+                    <div class="ff_settings_block ff_dest_phone" style="<?php echo 'group' === $formychat_destination_type ? 'display:none' : ''; ?>">
                         <label class="ff_setting_label">
                             <?php echo esc_html__('WhatsApp Number', 'social-contact-form'); ?>
                         </label>
                         <?php
-                        formychat_phone_number_field([
-                            'country_code' => $formychat_phone_code,
-                            'number' => $formychat_whatsapp_number,
-                            'country_code_name' => 'formychat_phone_code',
-                            'number_name' => 'formychat_whatsapp_number',
-                        ]);
+                        formychat_phone_number_field(
+                            [
+								'country_code' => $formychat_phone_code,
+								'number' => $formychat_whatsapp_number,
+								'country_code_name' => 'formychat_phone_code',
+								'number_name' => 'formychat_whatsapp_number',
+                            ]
+                        );
                         ?>
+                    </div>
+                    <div class="ff_settings_block ff_dest_group" style="<?php echo 'phone' === $formychat_destination_type ? 'display:none' : ''; ?>">
+                        <label class="ff_setting_label"><?php echo esc_html__('Group Invite Link', 'social-contact-form'); ?></label>
+                        <?php
+                        formychat_group_invite_field([
+							'group_invite_code' => $formychat_group_invite_code,
+							'name' => 'formychat_group_invite_code',
+						]);
+						?>
                     </div>
 
 
@@ -367,9 +397,9 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
                                 $all_fields = array_merge($fields, array_keys(\FormyChat\App::custom_tags()));
                                 echo esc_html__('You can use the following placeholders:', 'social-contact-form');
                                 foreach ( $all_fields as $field ) {
-									?>
+                                    ?>
                                     <code>{<?php echo esc_attr($field); ?>}</code>,
-									<?php
+                                    <?php
                                 }
                             } else {
                                 echo esc_html__('No fields found', 'social-contact-form');
@@ -427,7 +457,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
                     color: #a94442;
                 }
             </style>
-			<?php
+            <?php
             wp_enqueue_script('formychat-admin-common', FORMYCHAT_PUBLIC . '/js/admin.common.js', [ 'jquery' ], FORMYCHAT_VERSION, false);
 
             $this->add_custom_scripts();
@@ -438,36 +468,46 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
          */
         public function save_settings() {
             // Verify nonce
-            if ( isset ($_POST['_nonce'] ) && ! wp_verify_nonce(sanitize_text_field ( wp_unslash($_POST['_nonce'] ) ), 'ff_formychat_nonce') ) {
-                wp_send_json_error([
-                    'message' => esc_html__('Invalid security token', 'social-contact-form'),
-                ]);
+            if ( isset($_POST['_nonce']) && ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_nonce'])), 'ff_formychat_nonce') ) {
+                wp_send_json_error(
+                    [
+						'message' => esc_html__('Invalid security token', 'social-contact-form'),
+                    ]
+                );
             }
 
-            $form_id = isset( $_POST['form_id'] ) && ! empty( $_POST['form_id'] ) ? intval( sanitize_text_field( wp_unslash($_POST['form_id'] ) ) ) : 0;
+            $form_id = isset($_POST['form_id']) && ! empty($_POST['form_id']) ? intval(sanitize_text_field(wp_unslash($_POST['form_id']))) : 0;
             if ( ! $form_id ) {
-                wp_send_json_error([
-                    'message' => esc_html__('Invalid form ID', 'social-contact-form'),
-                ]);
+                wp_send_json_error(
+                    [
+						'message' => esc_html__('Invalid form ID', 'social-contact-form'),
+                    ]
+                );
             }
 
-            $formychat_status = isset( $_POST['formychat_status'] ) && ! empty( $_POST['formychat_status'] ) ? '1' : '0';
-            $formychat_phone_code = isset( $_POST['formychat_phone_code'] ) && ! empty( $_POST['formychat_phone_code'] ) ? sanitize_text_field( wp_unslash($_POST['formychat_phone_code'] ) ) : '';
-            $formychat_whatsapp_number = isset( $_POST['formychat_whatsapp_number'] ) && ! empty( $_POST['formychat_whatsapp_number'] ) ? sanitize_text_field( wp_unslash($_POST['formychat_whatsapp_number'] ) ) : '';
-            $formychat_message_template = isset( $_POST['formychat_message_template'] ) && ! empty( $_POST['formychat_message_template'] ) ? sanitize_textarea_field( wp_unslash($_POST['formychat_message_template'] ) ) : '';
-            $formychat_new_tab = isset( $_POST['formychat_new_tab'] ) && ! empty( $_POST['formychat_new_tab'] ) ? '1' : '0';
-            $formychat_web_version = isset( $_POST['formychat_web_version'] ) && ! empty( $_POST['formychat_web_version'] ) ? '1' : '0';
+            $formychat_status = isset($_POST['formychat_status']) && ! empty($_POST['formychat_status']) ? '1' : '0';
+            $formychat_destination_type = isset($_POST['formychat_destination_type']) ? sanitize_text_field(wp_unslash($_POST['formychat_destination_type'])) : 'phone';
+            $formychat_group_invite_code = isset($_POST['formychat_group_invite_code']) ? sanitize_text_field(wp_unslash($_POST['formychat_group_invite_code'])) : '';
+            $formychat_phone_code = isset($_POST['formychat_phone_code']) && ! empty($_POST['formychat_phone_code']) ? sanitize_text_field(wp_unslash($_POST['formychat_phone_code'])) : '';
+            $formychat_whatsapp_number = isset($_POST['formychat_whatsapp_number']) && ! empty($_POST['formychat_whatsapp_number']) ? sanitize_text_field(wp_unslash($_POST['formychat_whatsapp_number'])) : '';
+            $formychat_message_template = isset($_POST['formychat_message_template']) && ! empty($_POST['formychat_message_template']) ? sanitize_textarea_field(wp_unslash($_POST['formychat_message_template'])) : '';
+            $formychat_new_tab = isset($_POST['formychat_new_tab']) && ! empty($_POST['formychat_new_tab']) ? '1' : '0';
+            $formychat_web_version = isset($_POST['formychat_web_version']) && ! empty($_POST['formychat_web_version']) ? '1' : '0';
 
             Helper::setFormMeta($form_id, 'formychat_status', $formychat_status);
+            Helper::setFormMeta($form_id, 'formychat_destination_type', $formychat_destination_type);
+            Helper::setFormMeta($form_id, 'formychat_group_invite_code', $formychat_group_invite_code);
             Helper::setFormMeta($form_id, 'formychat_phone_code', $formychat_phone_code);
             Helper::setFormMeta($form_id, 'formychat_whatsapp_number', $formychat_whatsapp_number);
             Helper::setFormMeta($form_id, 'formychat_message_template', $formychat_message_template);
             Helper::setFormMeta($form_id, 'formychat_new_tab', $formychat_new_tab);
             Helper::setFormMeta($form_id, 'formychat_web_version', $formychat_web_version);
 
-            wp_send_json_success([
-                'message' => esc_html__('Settings saved successfully', 'social-contact-form'),
-            ]);
+            wp_send_json_success(
+                [
+					'message' => esc_html__('Settings saved successfully', 'social-contact-form'),
+                ]
+            );
         }
     }
 }

@@ -4,126 +4,130 @@
  * Handles all assets for the public side.
  *
  * @package FormyChat
- * @since 1.0.0
+ * @since   1.0.0
  */
 
 // Namespace .
 namespace FormyChat\Publics;
 
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+defined('ABSPATH') || exit();
 
 
-if ( ! class_exists( __NAMESPACE__ . '\Assets' ) ) {
-	/**
-	 * Public Assets.
-	 * Handles all assets for the public side.
-	 *
-	 * @package FormyChat
-	 * @since 1.0.0
-	 */
-	class Assets extends \FormyChat\Base {
-		/**
-		 * Constructor.
-		 *
-		 * @since 1.0.0
-		 */
-		public function actions() {
-			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-		}
+if ( ! class_exists(__NAMESPACE__ . '\Assets') ) {
+    /**
+     * Public Assets.
+     * Handles all assets for the public side.
+     *
+     * @package FormyChat
+     * @since   1.0.0
+     */
+    class Assets extends \FormyChat\Base {
 
-		/**
-		 * Enqueue scripts and styles.
-		 *
-		 * @return void
-		 */
-		public function enqueue_scripts() {
+        /**
+         * Constructor.
+         *
+         * @since 1.0.0
+         */
+        public function actions() {
+            add_action('wp_enqueue_scripts', [ $this, 'enqueue_scripts' ]);
+        }
 
-			wp_enqueue_style( 'formychat-frontend', FORMYCHAT_PUBLIC . '/css/frontend.min.css', [], FORMYCHAT_VERSION );
+        /**
+         * Enqueue scripts and styles.
+         *
+         * @return void
+         */
+        public function enqueue_scripts() {
 
-			if ( defined('FORMYCHAT_FORM_ADMIN') ) {
-				return;
-			}
+            wp_enqueue_style('formychat-frontend', FORMYCHAT_PUBLIC . '/css/frontend.min.css', [], FORMYCHAT_VERSION);
 
-			wp_enqueue_script( 'formychat-frontend', FORMYCHAT_PUBLIC . '/js/frontend.min.js', [ 'jquery' ], FORMYCHAT_VERSION, true );
+            if ( defined('FORMYCHAT_FORM_ADMIN') ) {
+                return;
+            }
 
-			wp_localize_script(
-				'formychat-frontend',
-				'formychat_vars',
-				apply_filters( 'formychat_vars', [
+            wp_enqueue_script('formychat-frontend', FORMYCHAT_PUBLIC . '/js/frontend.min.js', [ 'jquery' ], FORMYCHAT_VERSION, true);
 
-					'ajax_url'    => admin_url( 'admin-ajax.php' ),
-					'nonce'       => wp_create_nonce( 'formychat_widget_nonce' ),
+            wp_localize_script(
+                'formychat-frontend',
+                'formychat_vars',
+                apply_filters(
+                    'formychat_vars', [
 
-					'rest_url'    => rest_url( 'formychat/v1' ),
-					'rest_nonce'  => wp_create_nonce( 'wp_rest' ),
+						'ajax_url'    => admin_url('admin-ajax.php'),
+						'nonce'       => wp_create_nonce('formychat_widget_nonce'),
 
-					'is_premium'      => $this->is_ultimate_active(),
-					'is_form_page'    => defined('FORMYCHAT_FORM_PAGE'),
+						'rest_url'    => rest_url('formychat/v1'),
+						'rest_nonce'  => wp_create_nonce('wp_rest'),
 
-					'current' => [
-						'post_type' => get_post_type(),
-						'post_id'   => get_the_ID(),
-						'is_home'   => is_home(),
-						'is_front_page' => is_front_page(),
-					],
-					'data' => [
-						'countries' => \FormyChat\App::countries(),
-						'widgets'     => \FormyChat\Models\Widget::get_active_widgets(),
-						'default_config' => \FormyChat\App::widget_config(),
-						'form_fields' => \FormyChat\App::form_fields(),
-					],
-					'site' => [
-						'url' => get_site_url(),
-						'name' => get_bloginfo( 'name' ),
-						'description' => get_bloginfo( 'description' ),
-					],
-					'user' => $this->get_user(),
-					'custom_tags' => \FormyChat\App::custom_tags(),
-				] )
-			);
+						'is_premium'      => $this->is_ultimate_active(),
+						'is_form_page'    => defined('FORMYCHAT_FORM_PAGE'),
 
-			// Embed fonts.
-			$font_css = \FormyChat\App::embed_fonts();
-			$inline_css = apply_filters( 'formychat_inline_css', $font_css );
-			if ( ! empty( $font_css ) ) {
-				wp_add_inline_style( 'formychat-frontend', $inline_css );
-			}
-		}
+						'current' => [
+							'post_type' => get_post_type(),
+							'post_id'   => get_the_ID(),
+							'is_home'   => is_home(),
+							'is_front_page' => is_front_page(),
+						],
+						'data' => [
+							'countries' => \FormyChat\App::countries(),
+							'widgets'     => \FormyChat\Models\Widget::get_active_widgets(),
+							'default_config' => \FormyChat\App::widget_config(),
+							'form_fields' => \FormyChat\App::form_fields(),
+						],
+						'site' => [
+							'url' => get_site_url(),
+							'name' => get_bloginfo('name'),
+							'description' => get_bloginfo('description'),
+						],
+						'user' => $this->get_user(),
+						'custom_tags' => \FormyChat\App::custom_tags(),
+                    ]
+                )
+            );
 
-		/**
-		 * Get user.
-		 *
-		 * @return array
-		 */
-		public function get_user() {
+            // Embed fonts.
+            $font_css = \FormyChat\App::embed_fonts();
+            $inline_css = apply_filters('formychat_inline_css', $font_css);
+            if ( ! empty($font_css) ) {
+                wp_add_inline_style('formychat-frontend', $inline_css);
+            }
+        }
 
-			// Bail if user is not logged in.
-			if ( ! is_user_logged_in() ) {
-				return [];
-			}
+        /**
+         * Get user.
+         *
+         * @return array
+         */
+        public function get_user() {
 
-			$user = wp_get_current_user();
+            // Bail if user is not logged in.
+            if ( ! is_user_logged_in() ) {
+                return [];
+            }
 
-			$name = $user->display_name;
+            $user = wp_get_current_user();
 
-			if ( empty( $name ) ) {
-				$name = trim( get_user_meta( $user->ID, 'first_name', true ) . ' ' . get_user_meta( $user->ID, 'last_name', true ) );
-			}
+            $name = $user->display_name;
 
-			$user_data = [
+            if ( empty($name) ) {
+                $name = trim(get_user_meta($user->ID, 'first_name', true) . ' ' . get_user_meta($user->ID, 'last_name', true));
+            }
+
+            $user_data = [
 				'id' => $user->ID,
 				'email' => $user->user_email,
-				'first_name' => get_user_meta( $user->ID, 'first_name', true ),
-				'last_name' => get_user_meta( $user->ID, 'last_name', true ),
+				'first_name' => get_user_meta($user->ID, 'first_name', true),
+				'last_name' => get_user_meta($user->ID, 'last_name', true),
 				'name' => $name,
-				'phone' => get_user_meta( $user->ID, 'billing_phone', true ),
-			];
+				'phone' => get_user_meta($user->ID, 'billing_phone', true),
+            ];
 
-			return apply_filters( 'formychat_user_data', $user_data );
-		}
-	}
+            return apply_filters('formychat_user_data', $user_data);
+        }
+    }
 
-	// Init.
-	Assets::init();
+    // Init.
+    Assets::init();
 }

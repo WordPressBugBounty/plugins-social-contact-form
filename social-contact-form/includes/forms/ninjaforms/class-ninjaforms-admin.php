@@ -5,14 +5,15 @@
  * Handles all Admin requests.
  *
  * @package FormyChat
- * @since 1.0.0
+ * @since   1.0.0
  */
 
 // Namespace.
 namespace FormyChat\Ninja;
 
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+defined('ABSPATH') || exit();
 
 
 /**
@@ -20,9 +21,10 @@ defined( 'ABSPATH' ) || exit;
  * Handles WhatsApp integration for Ninja Forms.
  *
  * @package FormyChat
- * @since 1.0.0
+ * @since   1.0.0
  */
 class WhatsAppAction extends \NF_Abstracts_Action {
+
 
     /**
      * Name of the action
@@ -51,21 +53,46 @@ class WhatsAppAction extends \NF_Abstracts_Action {
     public function __construct() {
         parent::__construct();
 
-        $this->_nicename = esc_html__( 'WhatsApp (FormyChat)', 'social-contact-form' );
+        $this->_nicename = esc_html__('WhatsApp (FormyChat)', 'social-contact-form');
 
         $this->_settings = array(
+            'formychat_destination_type' => array(
+                'name' => 'formychat_destination_type',
+                'type' => 'select',
+                'label' => esc_html__('Destination', 'social-contact-form'),
+                'options' => array(
+                    array(
+						'label' => esc_html__('Phone', 'social-contact-form'),
+						'value' => 'phone',
+					),
+                    array(
+						'label' => esc_html__('Group', 'social-contact-form'),
+						'value' => 'group',
+					),
+                ),
+                'group' => 'primary',
+                'width' => 'full',
+            ),
+            'formychat_group_invite_code' => array(
+                'name' => 'formychat_group_invite_code',
+                'type' => 'textbox',
+                'label' => esc_html__('Group Invite Link', 'social-contact-form'),
+                'help' => esc_html__('Paste your WhatsApp group invite link (e.g. https://chat.whatsapp.com/XXXXXXXXXX)', 'social-contact-form'),
+                'group' => 'primary',
+                'width' => 'full',
+            ),
             'formychat_number' => array(
                 'name' => 'formychat_number',
                 'type' => 'textbox',
-                'label' => esc_html__( 'WhatsApp Number (with country code)', 'social-contact-form' ),
-                'help' => esc_html__( 'WhatsApp number must be in international format with country code (e.g. 447123456789)', 'social-contact-form' ),
+                'label' => esc_html__('WhatsApp Number (with country code)', 'social-contact-form'),
+                'help' => esc_html__('WhatsApp number must be in international format with country code (e.g. 447123456789)', 'social-contact-form'),
                 'group' => 'primary',
                 'width' => 'full',
             ),
             'formychat_message' => array(
                 'name' => 'formychat_message',
                 'type' => 'textarea',
-                'label' => esc_html__( 'WhatsApp Message', 'social-contact-form' ),
+                'label' => esc_html__('WhatsApp Message', 'social-contact-form'),
                 'width' => 'full',
                 'group' => 'primary',
                 'value' => '',
@@ -75,7 +102,7 @@ class WhatsAppAction extends \NF_Abstracts_Action {
             'formychat_new_tab' => array(
                 'name' => 'formychat_new_tab',
                 'type' => 'toggle',
-                'label' => esc_html__( 'Open WhatsApp in new tab', 'social-contact-form' ),
+                'label' => esc_html__('Open WhatsApp in new tab', 'social-contact-form'),
                 'width' => 'full',
                 'group' => 'primary',
                 'value' => '0',
@@ -83,7 +110,7 @@ class WhatsAppAction extends \NF_Abstracts_Action {
             'formychat_web_version' => array(
                 'name' => 'formychat_web_version',
                 'type' => 'toggle',
-                'label' => esc_html__( 'Navigate to WhatsApp Web for Desktop', 'social-contact-form' ),
+                'label' => esc_html__('Navigate to WhatsApp Web for Desktop', 'social-contact-form'),
                 'width' => 'full',
                 'group' => 'primary',
                 'value' => '0',
@@ -107,12 +134,12 @@ class WhatsAppAction extends \NF_Abstracts_Action {
          $fields = Ninja_Forms()->form($form_id)->get_fields();
 
          // Merge tags
-		foreach ( $fields as $field ) {
+        foreach ( $fields as $field ) {
             // If field is not a submit button.
             if ( $field->get_setting('type') !== 'submit' ) {
                 $available_tags[] = '{' . $field->get_setting('key') . '}';
             }
-		}
+        }
 
         if ( class_exists('\FormyChat\App') && method_exists('\FormyChat\App', 'custom_tags') ) {
             $custom_tags = \FormyChat\App::custom_tags();
@@ -136,14 +163,16 @@ class WhatsAppAction extends \NF_Abstracts_Action {
     /**
      * Save action settings - simplified.
      *
-     * @param array $action_settings
+     * @param  array $action_settings
      * @return array
      */
     public function save( $action_settings ) {
 
-        // Sanitize number, and message.
-        $action_settings['formychat_number'] = sanitize_text_field($action_settings['formychat_number']);
-        $action_settings['formychat_message'] = sanitize_textarea_field($action_settings['formychat_message']);
+        // Sanitize number, message, and group invite.
+        $action_settings['formychat_number'] = isset($action_settings['formychat_number']) ? sanitize_text_field($action_settings['formychat_number']) : '';
+        $action_settings['formychat_message'] = isset($action_settings['formychat_message']) ? sanitize_textarea_field($action_settings['formychat_message']) : '';
+        $action_settings['formychat_destination_type'] = isset($action_settings['formychat_destination_type']) ? sanitize_text_field($action_settings['formychat_destination_type']) : 'phone';
+        $action_settings['formychat_group_invite_code'] = isset($action_settings['formychat_group_invite_code']) ? sanitize_text_field($action_settings['formychat_group_invite_code']) : '';
 
         return $action_settings;
     }
@@ -151,15 +180,16 @@ class WhatsAppAction extends \NF_Abstracts_Action {
     /**
      * Process the action
      *
-     * @param array $action_settings
-     * @param int $form_id
-     * @param array $data
+     * @param  array $action_settings
+     * @param  int   $form_id
+     * @param  array $data
      * @return array
      */
     public function process( $action_settings, $form_id, $data ) {
-        // Get phone number
-		$number = isset($action_settings['formychat_number']) ? $action_settings['formychat_number'] : '';
-        // Get message
+        // Get phone number / group
+        $destination_type = isset($action_settings['formychat_destination_type']) ? $action_settings['formychat_destination_type'] : 'phone';
+        $group_invite_code = isset($action_settings['formychat_group_invite_code']) ? $action_settings['formychat_group_invite_code'] : '';
+        $number = isset($action_settings['formychat_number']) ? $action_settings['formychat_number'] : '';
         $message = isset($action_settings['formychat_message']) ? $action_settings['formychat_message'] : '';
 
         // Options
@@ -168,8 +198,10 @@ class WhatsAppAction extends \NF_Abstracts_Action {
 
         // Add WhatsApp URL to form data (can be used by success messages or redirects)
         $data['actions']['formychat'] = array(
+            'destination_type' => $destination_type,
+            'group_invite_code' => $group_invite_code,
             'new_tab' => $new_tab,
-            'whatsapp_number' => $number,
+            'whatsapp_number' => ( 'group' === $destination_type && $group_invite_code ) ? $group_invite_code : $number,
             'message' => $message,
             'web_version' => $web_version,
         );
@@ -179,12 +211,16 @@ class WhatsAppAction extends \NF_Abstracts_Action {
 }
 
 // Register the action
-add_filter('ninja_forms_register_actions', function ( $actions ) {
-    $actions['formychat'] = new WhatsAppAction();
-    return $actions;
-});
+add_filter(
+    'ninja_forms_register_actions', function ( $actions ) {
+        $actions['formychat'] = new WhatsAppAction();
+        return $actions;
+    }
+);
 
-add_filter('ninja_forms_action_formychat_settings', function ( $settings ) {
-    $settings['formychat_message']['help'] = 'dsfdfdf';
-    return $settings;
-});
+add_filter(
+    'ninja_forms_action_formychat_settings', function ( $settings ) {
+        $settings['formychat_message']['help'] = 'dsfdfdf';
+        return $settings;
+    }
+);

@@ -505,10 +505,58 @@ msgid "WhatsApp number"
 msgstr ""
 
 #: includes/class-strings.php:88
-msgid "Choose how you prefer to display your widget"
+msgid "Send to"
 msgstr ""
 
 #: includes/class-strings.php:89
+msgid "WhatsApp Group"
+msgstr ""
+
+#: includes/class-strings.php:90
+msgid "Send messages to any phone number."
+msgstr ""
+
+#: includes/class-strings.php:91
+msgid "Send messages to a WhatsApp group."
+msgstr ""
+
+#: includes/class-strings.php:94
+msgid "WhatsApp Group URL or Code"
+msgstr ""
+
+#: includes/class-strings.php:95
+msgid "Paste group invite link or code (e.g. https://chat.whatsapp.com/ABC123)"
+msgstr ""
+
+#: includes/class-strings.php:97
+msgid "Paste the full WhatsApp group invite URL or just the invite code"
+msgstr ""
+
+#: includes/class-strings.php:98
+msgid "Enter your WhatsApp number with country code"
+msgstr ""
+
+#: includes/class-strings.php:99
+msgid "Choose how you prefer to display your widget"
+msgstr ""
+
+#: includes/class-strings.php:100
+msgid "Single"
+msgstr ""
+
+#: includes/class-strings.php:101
+msgid "Multi-agents"
+msgstr ""
+
+#: includes/class-strings.php:102
+msgid "Display widget for one agent."
+msgstr ""
+
+#: includes/class-strings.php:103
+msgid "Display widget for multiple agents."
+msgstr ""
+
+#: includes/class-strings.php:104
 msgid "Example: John Doe"
 msgstr ""
 
@@ -2875,4 +2923,96 @@ msgstr ""
 
 #: public/js/frontend.min.js:32
 msgid "formychat_form_submitted"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Single"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Multi-agents"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Select an option"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Ultimate"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "New"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Simple"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Wave"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Whatsapp"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Keyboard Shortcuts: CTRL/CMD + B, I, S"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Insert"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "All"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "CRM & Marketing"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Email & Newsletters"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Automation & Webhooks"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "File Storage & Cloud"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Analytics & Tracking"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Communication"
+msgstr ""
+
+#: includes/class-strings.php
+msgid "Others"
+msgstr ""
+
+#: includes/admin/class-integrations.php
+msgid "Connect your Form leads to FluentCRM and instantly add new contacts when a form is submitted. Perfect for automated email campaigns and segmented marketing."
+msgstr ""
+
+#: includes/admin/class-integrations.php
+msgid "Create Mailchimp newsletter signups directly from your form submissions. Automatically grow your audience and engage your subscribers."
+msgstr ""
+
+#: includes/admin/class-integrations.php
+msgid "Sync form submissions directly to Google Sheets in real time. Perfect for reporting, analytics, or team collaboration without manual data entry."
+msgstr ""
+
+#: includes/admin/class-integrations.php
+msgid "Add subscribers to your MailPoet mailing lists as soon as they submit a form. Automate your newsletter growth and keep your audience engaged."
+msgstr ""
+
+#: includes/class-strings.php
+msgid "INSTALL"
 msgstr ""

@@ -3,203 +3,221 @@
  * Widget model.
  *
  * @package FormyChat
- * @since 1.0.0
+ * @since   1.0.0
  */
 
 // Namespace .
 namespace FormyChat\Models;
 
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+defined('ABSPATH') || exit();
 
 
-if ( ! class_exists( __NAMESPACE__ . '\Widget') ) {
-	/**
-	 * Widget model.
-	 *
-	 * @package FormyChat
-	 * @since 1.0.0
-	 */
-	class Widget {
+if ( ! class_exists(__NAMESPACE__ . '\Widget') ) {
+    /**
+     * Widget model.
+     *
+     * @package FormyChat
+     * @since   1.0.0
+     */
+    class Widget {
 
-		/**
-		 * Get all widgets.
-		 *
-		 * @return array
-		 */
-		public static function get_all() {
-			global $wpdb;
 
-			$widgets = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}scf_widgets WHERE `deleted_at` IS NULL ORDER BY id DESC" ); // db call ok; no-cache ok.
+        /**
+         * Get all widgets.
+         *
+         * @return array
+         */
+        public static function get_all() {
+            global $wpdb;
 
-			if ( $widgets && ! empty( $widgets ) ) {
-				foreach ( $widgets as $widget ) {
-					$widget = self::wrap( $widget );
-				}
+            $widgets = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}scf_widgets WHERE `deleted_at` IS NULL ORDER BY id DESC"); // db call ok; no-cache ok.
 
-				return $widgets;
-			}
+            if ( $widgets && ! empty($widgets) ) {
+                foreach ( $widgets as $widget ) {
+                    $widget = self::wrap($widget);
+                }
 
-			return [];
-		}
+                return $widgets;
+            }
 
-		/**
-		 * Active widgets.
-		 */
-		public static function get_active_widgets() {
-			global $wpdb;
-			$active_widgets = $wpdb->get_results( "SELECT `id`, `name`, `config` FROM {$wpdb->prefix}scf_widgets WHERE `is_active` IS TRUE AND `deleted_at` IS NULL" );  // db call ok; no-cache ok.
+            return [];
+        }
 
-			// Bail if no active widgets.
-			if ( ! $active_widgets ) {
-				return;
-			}
+        /**
+         * Active widgets.
+         */
+        public static function get_active_widgets() {
+            global $wpdb;
+            $active_widgets = $wpdb->get_results("SELECT `id`, `name`, `config` FROM {$wpdb->prefix}scf_widgets WHERE `is_active` IS TRUE AND `deleted_at` IS NULL");  // db call ok; no-cache ok.
 
-			// Format widget data.
-			$widgets = [];
-			foreach ( $active_widgets as $widget ) {
-				$config = json_decode( $widget->config );
+            // Bail if no active widgets.
+            if ( ! $active_widgets ) {
+                return;
+            }
 
-				$widgets[] = [
+            // Format widget data.
+            $widgets = [];
+            foreach ( $active_widgets as $widget ) {
+                $config = json_decode($widget->config, true);
+                if ( ! is_array($config) ) {
+                    $config = [];
+                }
+                $config = \FormyChat\App::sanitize_whatsapp_message_templates($config);
+
+                $widgets[] = [
 					'id' => intval($widget->id),
 					'name' => $widget->name,
-					'config' => $config,
-				];
-			}
+					'config' => json_decode(wp_json_encode($config)),
+                ];
+            }
 
-			return $widgets;
-		}
+            return $widgets;
+        }
 
-		/**
-		 * Get names.
-		 *
-		 * @return array
-		 */
-		public static function get_names() {
-			global $wpdb;
+        /**
+         * Get names.
+         *
+         * @return array
+         */
+        public static function get_names() {
+            global $wpdb;
 
-			$widgets = $wpdb->get_results( "SELECT `id`, `name` FROM {$wpdb->prefix}scf_widgets WHERE `deleted_at` IS NULL ORDER BY id DESC" ); // db call ok; no-cache ok.
+            $widgets = $wpdb->get_results("SELECT `id`, `name` FROM {$wpdb->prefix}scf_widgets WHERE `deleted_at` IS NULL ORDER BY id DESC"); // db call ok; no-cache ok.
 
-			if ( $widgets && ! empty( $widgets ) ) {
-				return $widgets;
-			}
+            if ( $widgets && ! empty($widgets) ) {
+                return $widgets;
+            }
 
-			return [];
-		}
+            return [];
+        }
 
-		/**
-		 * Find lead.
-		 */
-		public static function find( $id ) {
-			global $wpdb;
+        /**
+         * Find lead.
+         */
+        public static function find( $id ) {
+            global $wpdb;
 
-			$widget = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}scf_widgets WHERE id = %d", $id ) ); // db call ok; no-cache ok.
+            $widget = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}scf_widgets WHERE id = %d", $id)); // db call ok; no-cache ok.
 
-			if ( $widget ) {
-				$widget = self::wrap($widget);
+            if ( $widget ) {
+                $widget = self::wrap($widget);
 
-				return $widget;
-			}
+                return $widget;
+            }
 
-			return null;
-		}
+            return null;
+        }
 
-		/**
-		 * Wrapper for get.
-		 */
-		public static function wrap( $object ) {
+        /**
+         * Wrapper for get.
+         */
+        public static function wrap( $object ) {
 
-			// Int id.
-			$object->id = (int) $object->id;
+            // Int id.
+            $object->id = (int) $object->id;
 
-			// Is active.
-			$object->is_active = wp_validate_boolean( $object->is_active );
+            // Is active.
+            $object->is_active = wp_validate_boolean($object->is_active);
 
-			// Decode config.
-			$object->config = empty( $object->config ) ? [] : json_decode( $object->config, true );
+            // Decode config.
+            $object->config = empty($object->config) ? [] : json_decode($object->config, true);
+            if ( is_array($object->config) ) {
+                $object->config = \FormyChat\App::sanitize_whatsapp_message_templates($object->config);
+            }
 
-			return $object;
-		}
+            return $object;
+        }
 
-		/**
-		 * Get widget count.
-		 *
-		 * @return mixed
-		 */
-		public static function total() {
-			global $wpdb;
+        /**
+         * Get widget count.
+         *
+         * @return mixed
+         */
+        public static function total() {
+            global $wpdb;
 
-			return $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}scf_widgets WHERE `deleted_at` IS NULL" ); // db call ok; no-cache ok.
-		}
+            return $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}scf_widgets WHERE `deleted_at` IS NULL"); // db call ok; no-cache ok.
+        }
 
 
-		/**
-		 * Create widget.
-		 *
-		 * @param array $data Data.
-		 */
-		public static function create( $data ) {
-			global $wpdb;
+        /**
+         * Create widget.
+         *
+         * @param array $data Data.
+         */
+        public static function create( $data ) {
+            global $wpdb;
 
-			$data = wp_parse_args( $data, [
-				'name' => 'Untitled',
-				'is_active' => 1,
-				'config' => [],
-			] );
+            $data = wp_parse_args(
+                $data, [
+					'name' => 'Untitled',
+					'is_active' => 1,
+					'config' => [],
+                ]
+            );
 
-			$data['config'] = wp_json_encode($data['config']);
-			$data['updated_at'] = current_time( 'mysql' );
+            if ( isset($data['config']) && is_array($data['config']) ) {
+                $data['config'] = \FormyChat\App::sanitize_whatsapp_message_templates($data['config']);
+            }
 
-			$wpdb->insert( $wpdb->prefix . 'scf_widgets', $data ); // db call ok; no-cache ok.
+            $data['config'] = wp_json_encode($data['config']);
+            $data['updated_at'] = current_time('mysql');
 
-			return $wpdb->insert_id;
-		}
+            $wpdb->insert($wpdb->prefix . 'scf_widgets', $data); // db call ok; no-cache ok.
 
-		/**
-		 * Update widget.
-		 *
-		 * @param int $id ID.
-		 * @param array $data Data.
-		 */
-		public static function update( $id, $data ) {
-			global $wpdb;
+            return $wpdb->insert_id;
+        }
 
-			$data['updated_at'] = current_time( 'mysql' );
+        /**
+         * Update widget.
+         *
+         * @param int   $id   ID.
+         * @param array $data Data.
+         */
+        public static function update( $id, $data ) {
+            global $wpdb;
 
-			$allowed = [ 'name', 'is_active', 'config' ];
+            $data['updated_at'] = current_time('mysql');
 
-			foreach ( $data as $key => $value ) {
-				if ( in_array( $key, $allowed ) ) {
-					$data[ $key ] = $value;
+            $allowed = [ 'name', 'is_active', 'config' ];
 
-					if ( 'config' === $key ) {
-						$data[ $key ] = wp_json_encode( $value );
-					}
-				}
-			}
+            foreach ( $data as $key => $value ) {
+                if ( in_array($key, $allowed, true) ) {
+                    if ( 'config' === $key && is_array($value) ) {
+                        $value = \FormyChat\App::sanitize_whatsapp_message_templates($value);
+                    }
+                    $data[ $key ] = $value;
 
-			$wpdb->update( $wpdb->prefix . 'scf_widgets', $data, [ 'id' => $id ] ); // db call ok; no-cache ok.
+                    if ( 'config' === $key ) {
+                        $data[ $key ] = wp_json_encode($value);
+                    }
+                }
+            }
 
-			return $wpdb->rows_affected;
-		}
+            $wpdb->update($wpdb->prefix . 'scf_widgets', $data, [ 'id' => $id ]); // db call ok; no-cache ok.
 
-		/**
-		 * Delete widget.
-		 *
-		 * @param int $id ID.
-		 */
-		public static function delete( $ids ) {
-			global $wpdb;
+            return $wpdb->rows_affected;
+        }
 
-			$wpdb->query(
-				$wpdb->prepare(
-					"UPDATE {$wpdb->prefix}scf_widgets SET `deleted_at` = %s WHERE id IN (" . implode( ',', array_fill( 0, count( $ids ), '%d' ) ) . ')',
-					array_merge( [ current_time( 'mysql' ) ], $ids )
-				)
-			); // db call ok; no-cache ok.
+        /**
+         * Delete widget.
+         *
+         * @param int $id ID.
+         */
+        public static function delete( $ids ) {
+            global $wpdb;
 
-			return $wpdb->rows_affected;
-		}
-	}
+            $wpdb->query(
+                $wpdb->prepare(
+                    "UPDATE {$wpdb->prefix}scf_widgets SET `deleted_at` = %s WHERE id IN (" . implode(',', array_fill(0, count($ids), '%d')) . ')',
+                    array_merge([ current_time('mysql') ], $ids)
+                )
+            ); // db call ok; no-cache ok.
+
+            return $wpdb->rows_affected;
+        }
+    }
 
 }

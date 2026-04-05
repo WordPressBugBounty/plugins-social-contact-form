@@ -4,7 +4,7 @@ Tags: whatsapp chat, woocommerce whatsapp, click to chat, whatsapp business, liv
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 2.15.1
+Stable tag: 2.15.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -269,6 +269,10 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 == Changelog ==
 
+= 2.15.2 - 5 Apr, 2026 =
+* **New:** Added option to send form leads to WhatsApp groups.
+* **New:** Introduced multilingual support for popular languages using .po and .mo files.
+
 = 2.15.1 - 9 Feb, 2026 =
 * **New:** Added POT file & made the entire plugin text translatable.
 * **Improvement:** Enhance security and minor bug fixing.
@@ -287,12 +291,5 @@ Added responsive display options for the floating widget. You can now **choose w
 = 2.13.0 - 25 Nov, 2025 =
 * **New:** Added MailChimp integration with FormyChat.
 * **Improvement:** Enhanced MailChimp and FluentCRM field mapping to avoid map-conflicts.
-
-= 2.12.0 - 11 Nov, 2025 =
-* **New:** Added Custom CSS feature.
-
-= 2.11.0 - 3 Nov, 2025 =
-* **New:** Added FluentCRM integration with FormyChat.
-* **Improvement:** Moved Google Analytics Integration to Triggers & Targets page.
 
 For older changelog entries, please see the [additional changelog.txt file](https://plugins.svn.wordpress.org/social-contact-form/trunk/changelog.txt) delivered with the plugin.

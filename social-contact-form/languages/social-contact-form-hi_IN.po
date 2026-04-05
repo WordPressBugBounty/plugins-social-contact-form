@@ -1,0 +1,3134 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-02-09 11:37+0600\n"
+"PO-Revision-Date: 2026-03-12 00:31:19\n"
+"Last-Translator: FormyChat <noreply@formychat.com>\n"
+"Language-Team: \n"
+"Language: hi_IN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;esc_html;esc_html_e;_e;esc_attr;esc_attr_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: .agent\n"
+"X-Poedit-SearchPathExcluded-1: .claude\n"
+"X-Poedit-SearchPathExcluded-2: .git\n"
+"X-Poedit-SearchPathExcluded-3: .github\n"
+"X-Poedit-SearchPathExcluded-4: .wordpress-org\n"
+"X-Poedit-SearchPathExcluded-5: docs\n"
+"X-Poedit-SearchPathExcluded-6: node_modules\n"
+"X-Poedit-SearchPathExcluded-7: src/assets\n"
+"x-generator: generate-po-translations.js\n"
+
+#: includes/addons/woocommerce/class-admin.php:51
+#: includes/addons/woocommerce/class-admin.php:52
+#: includes/class-strings.php:210
+msgid "WooCommerce"
+msgstr "Woocommerce"
+
+#: includes/addons/woocommerce/class-admin.php:207
+#: includes/addons/woocommerce/class-admin.php:257
+msgid "No settings provided."
+msgstr "कोई सेटिंग प्रदान नहीं की गई."
+
+#: includes/addons/woocommerce/class-admin.php:220
+#: includes/addons/woocommerce/class-admin.php:270
+msgid "Settings saved successfully."
+msgstr "सेटिंग्स सफलतापूर्वक सहेजी गईं."
+
+#: includes/addons/woocommerce/class-admin.php:283
+msgid "Product Name"
+msgstr "प्रोडक्ट का नाम"
+
+#: includes/addons/woocommerce/class-admin.php:284
+msgid "Product Slug"
+msgstr "उत्पाद स्लग"
+
+#: includes/addons/woocommerce/class-admin.php:285
+msgid "Product SKU"
+msgstr "उत्पाद SKU"
+
+#: includes/addons/woocommerce/class-admin.php:286
+msgid "Product Price"
+msgstr "उत्पाद की कीमत"
+
+#: includes/addons/woocommerce/class-admin.php:287
+msgid "Regular Price"
+msgstr "नियमित रूप से मूल्य"
+
+#: includes/addons/woocommerce/class-admin.php:288
+msgid "Sale Price"
+msgstr "विक्रय कीमत"
+
+#: includes/addons/woocommerce/class-admin.php:289
+msgid "Stock Status"
+msgstr "स्टॉक की अवस्था"
+
+#: includes/addons/woocommerce/class-admin.php:290
+msgid "Current URL"
+msgstr "वर्तमान यूआरएल"
+
+#: includes/addons/woocommerce/class-admin.php:291
+msgid "Current Page Title"
+msgstr "वर्तमान पृष्ठ शीर्षक"
+
+#: includes/addons/woocommerce/class-admin.php:292
+msgid "Site Title"
+msgstr "घटनास्थल शीर्षक"
+
+#: includes/addons/woocommerce/class-admin.php:293
+msgid "Site URL"
+msgstr "साइट URL"
+
+#: includes/addons/woocommerce/class-admin.php:294
+msgid "Site Email"
+msgstr "साइट ईमेल"
+
+#: includes/addons/woocommerce/class-admin.php:295
+msgid "Current Date"
+msgstr "वर्तमान तिथि"
+
+#: includes/addons/woocommerce/class-admin.php:296
+msgid "Current Time"
+msgstr "वर्तमान समय"
+
+#: includes/admin/class-admin-hooks.php:77
+#: includes/admin/class-admin-hooks.php:78 includes/class-strings.php:777
+#: includes/forms/contact-form/class-cf7-admin.php:114
+msgid "FormyChat"
+msgstr "फॉर्मीचैट"
+
+#: includes/admin/class-admin-hooks.php:88
+#: includes/admin/class-admin-hooks.php:89 includes/class-strings.php:39
+msgid "Floating Widgets"
+msgstr "फ़्लोटिंग विजेट"
+
+#: includes/admin/class-admin-hooks.php:98
+#: includes/admin/class-admin-hooks.php:99 includes/class-strings.php:271
+msgid "Custom CSS"
+msgstr "कस्टम सीएसएस"
+
+#: includes/admin/class-admin-hooks.php:107 includes/class-strings.php:579
+msgid "FormyChat Leads"
+msgstr "फॉर्मीचैट लीड्स"
+
+#: includes/admin/class-admin-hooks.php:108 includes/class-strings.php:199
+msgid "Leads"
+msgstr "सुराग"
+
+#: includes/admin/class-admin-hooks.php:116
+#: includes/admin/class-admin-hooks.php:117 includes/class-strings.php:190
+msgid "Integrations"
+msgstr "एकीकरण"
+
+#: includes/admin/class-admin-hooks.php:171 includes/class-strings.php:276
+#: includes/class-strings.php:531
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+#: includes/admin/class-admin-hooks.php:173
+msgid "Upgrade"
+msgstr "उन्नत करना"
+
+#: includes/admin/class-admin-rest.php:187
+#: includes/admin/class-admin-rest.php:238
+msgid "Widget not found."
+msgstr "विजेट नहीं मिला."
+
+#: includes/admin/class-admin-rest.php:220
+msgid "Widget not created."
+msgstr "विजेट नहीं बनाया गया."
+
+#: includes/admin/class-admin-rest.php:258
+msgid "No data to update."
+msgstr "अपडेट करने के लिए कोई डेटा नहीं."
+
+#: includes/admin/class-admin-rest.php:273
+msgid "Widget not updated."
+msgstr "विजेट अद्यतन नहीं है."
+
+#: includes/admin/class-admin-rest.php:288
+msgid "No widget ID provided."
+msgstr "कोई विजेट आईडी प्रदान नहीं की गई."
+
+#: includes/admin/class-admin-rest.php:303
+msgid "Widget deleted."
+msgstr "विजेट हटा दिया गया."
+
+#: includes/admin/class-admin-rest.php:309
+msgid "Widget not deleted."
+msgstr "विजेट हटाया नहीं गया."
+
+#: includes/admin/class-admin-rest.php:325
+msgid "Action not found."
+msgstr "कार्रवाई नहीं मिली."
+
+#: includes/admin/class-admin-rest.php:377
+msgid "Plugin not found."
+msgstr "प्लगइन नहीं मिला."
+
+#: includes/admin/class-admin-rest.php:403
+#: includes/admin/class-integrations.php:739
+msgid "Could not access filesystem."
+msgstr "फ़ाइल सिस्टम तक नहीं पहुंच सका."
+
+#: includes/admin/class-admin-rest.php:464
+msgid "No country code provided."
+msgstr "कोई देश कोड प्रदान नहीं किया गया."
+
+#: includes/admin/class-admin-rest.php:474
+msgid "Country code saved."
+msgstr "देश कोड सहेजा गया."
+
+#: includes/admin/class-admin-rest.php:540
+msgid "No lead ID provided."
+msgstr "कोई लीड आईडी प्रदान नहीं की गई."
+
+#: includes/admin/class-admin-rest.php:555
+msgid "Leads deleted."
+msgstr "लीड हटा दी गईं."
+
+#: includes/admin/class-admin-rest.php:860 includes/class-strings.php:221
+msgid "Name"
+msgstr "नाम"
+
+#: includes/admin/class-admin-rest.php:861 includes/class-strings.php:222
+msgid "Email"
+msgstr "ईमेल"
+
+#: includes/admin/class-admin-rest.php:862 includes/class-strings.php:223
+msgid "Phone"
+msgstr "फ़ोन"
+
+#: includes/admin/class-admin-rest.php:863 includes/class-strings.php:224
+msgid "Message"
+msgstr "संदेश"
+
+#: includes/admin/class-admin-rest.php:1180
+msgid "No CSS provided."
+msgstr "कोई सीएसएस प्रदान नहीं किया गया."
+
+#: includes/admin/class-admin-rest.php:1193
+msgid "Custom CSS saved successfully."
+msgstr "कस्टम सीएसएस सफलतापूर्वक सहेजा गया."
+
+#: includes/admin/class-google-sheets-api.php:42
+#: includes/admin/class-integrations.php:265
+#: includes/admin/class-integrations.php:293
+msgid "Google Sheets is not connected."
+msgstr "Google शीट कनेक्ट नहीं है."
+
+#: includes/admin/class-google-sheets-api.php:46
+msgid "No access token available."
+msgstr "कोई एक्सेस टोकन उपलब्ध नहीं है."
+
+#: includes/admin/class-google-sheets-api.php:54
+msgid "Access token expired and refresh failed."
+msgstr "एक्सेस टोकन समाप्त हो गया और रीफ्रेश विफल रहा।"
+
+#: includes/admin/class-google-sheets-api.php:106
+msgid "API request failed."
+msgstr "एपीआई अनुरोध विफल रहा."
+
+#: includes/admin/class-google-sheets-cron.php:75
+#: includes/admin/class-google-sheets-cron.php:104
+msgid "Every 15 minutes"
+msgstr "हर 15 मिनट में"
+
+#: includes/admin/class-google-sheets-cron.php:79
+#: includes/admin/class-google-sheets-cron.php:108
+msgid "Every 30 minutes"
+msgstr "हर 30 मिनट में"
+
+#: includes/admin/class-google-sheets-cron.php:83
+#: includes/admin/class-google-sheets-cron.php:116
+msgid "Every 6 hours"
+msgstr "हर 6 घंटे में"
+
+#: includes/admin/class-google-sheets-cron.php:112
+msgid "Every hour"
+msgstr "हर घंटे"
+
+#: includes/admin/class-google-sheets-cron.php:120
+msgid "Daily"
+msgstr "दैनिक"
+
+#: includes/admin/class-google-sheets-sync.php:286
+msgid "Google Sheets integration is disabled."
+msgstr "Google शीट एकीकरण अक्षम है."
+
+#: includes/admin/class-google-sheets-sync.php:296
+msgid "No spreadsheet selected."
+msgstr "कोई स्प्रेडशीट चयनित नहीं."
+
+#: includes/admin/class-google-sheets-sync.php:307
+msgid "Free tier limit reached. Upgrade to sync more leads."
+msgstr "निःशुल्क स्तर की सीमा पूरी हो गई. अधिक लीड सिंक करने के लिए अपग्रेड करें।"
+
+#: includes/admin/class-integrations.php:251
+msgid "Google Sheets disconnected successfully."
+msgstr "Google शीट सफलतापूर्वक डिस्कनेक्ट हो गई."
+
+#: includes/admin/class-integrations.php:342
+msgid "Spreadsheet title is required."
+msgstr "स्प्रेडशीट शीर्षक आवश्यक है."
+
+#: includes/admin/class-integrations.php:546
+msgid "Integration updated successfully."
+msgstr "एकीकरण सफलतापूर्वक अद्यतन किया गया."
+
+#: includes/admin/class-integrations.php:652
+msgid "Integration ID is required."
+msgstr "एकीकरण आईडी आवश्यक है."
+
+#: includes/admin/class-integrations.php:667
+msgid "Integration not found."
+msgstr "एकीकरण नहीं मिला."
+
+#: includes/admin/class-integrations.php:672
+msgid "This integration cannot be installed automatically."
+msgstr "यह एकीकरण स्वचालित रूप से स्थापित नहीं किया जा सकता."
+
+#: includes/admin/class-integrations.php:744
+msgid "Plugins directory is not writable."
+msgstr "प्लगइन्स निर्देशिका लिखने योग्य नहीं है."
+
+#: includes/admin/class-integrations.php:760
+msgid "Plugin download link not found."
+msgstr "प्लगइन डाउनलोड लिंक नहीं मिला."
+
+#: includes/admin/class-integrations.php:820
+msgid "Plugin installation failed."
+msgstr "प्लगइन इंस्टालेशन विफल रहा."
+
+#: includes/admin/class-integrations.php:829
+msgid "Plugin file not found after installation."
+msgstr "इंस्टालेशन के बाद प्लगइन फ़ाइल नहीं मिली."
+
+#: includes/admin/class-integrations.php:850
+#, php-format
+msgid "%s has been installed and activated successfully."
+msgstr "P14 स्थापित और सफलतापूर्वक सक्रिय कर दिया गया है।"
+
+#: includes/admin/class-integrations.php:866
+#, php-format
+msgid "%s is already installed and activated."
+msgstr "P14 पहले से ही स्थापित और सक्रिय है."
+
+#: includes/admin/class-integrations.php:877
+msgid "Invalid action requested."
+msgstr "अमान्य कार्रवाई का अनुरोध किया गया."
+
+#: includes/class-strings.php:38
+msgid "Widget name"
+msgstr "विजेट नाम"
+
+#: includes/class-strings.php:40 includes/class-strings.php:578
+msgid "Create new"
+msgstr "नया निर्माण"
+
+#: includes/class-strings.php:41
+msgid "Upgrade now"
+msgstr "अभी अपग्रेड करें"
+
+#: includes/class-strings.php:42
+msgid "Please wait while we load your widgets."
+msgstr "जब तक हम आपके विजेट लोड कर रहे हैं कृपया प्रतीक्षा करें।"
+
+#: includes/class-strings.php:43
+msgid "Please wait while we load your widget"
+msgstr "जब तक हम आपका विजेट लोड कर रहे हैं कृपया प्रतीक्षा करें"
+
+#: includes/class-strings.php:44
+msgid "Form mode"
+msgstr "फॉर्म मोड"
+
+#: includes/class-strings.php:45
+msgid "Created at"
+msgstr "पर बनाया गया"
+
+#: includes/class-strings.php:46
+msgid "Untitled widget"
+msgstr "शीर्षक रहित विजेट"
+
+#: includes/class-strings.php:47
+msgid "Duplicate Widget?"
+msgstr "डुप्लिकेट विजेट?"
+
+#: includes/class-strings.php:48
+msgid "Please select a name for your new duplicated widget"
+msgstr "कृपया अपने नए डुप्लिकेट विजेट के लिए एक नाम चुनें"
+
+#: includes/class-strings.php:49
+msgid "Creating"
+msgstr "बनाना"
+
+#: includes/class-strings.php:50
+msgid "Create Widget"
+msgstr "विजेट बनाएं"
+
+#: includes/class-strings.php:51
+msgid "Edit Widget"
+msgstr "विजेट संपादित करें"
+
+#: includes/class-strings.php:52
+msgid "Delete Widget"
+msgstr "विजेट हटाएँ"
+
+#: includes/class-strings.php:53
+msgid "Duplicate Widget"
+msgstr "डुप्लिकेट विजेट"
+
+#: includes/class-strings.php:54
+msgid "Widget List"
+msgstr "विजेट सूची"
+
+#: includes/class-strings.php:55
+msgid "No widgets found"
+msgstr "कोई विजेट नहीं मिला"
+
+#: includes/class-strings.php:56
+msgid "Widgets"
+msgstr "विजेट"
+
+#: includes/class-strings.php:57
+msgid "FormyChat Widgets"
+msgstr "फॉर्मीचैट विजेट"
+
+#: includes/class-strings.php:58
+msgid "Get Started with FormyChat"
+msgstr "FormyChat के साथ आरंभ करें"
+
+#: includes/class-strings.php:61
+msgid "Save"
+msgstr "बचाना"
+
+#: includes/class-strings.php:62 includes/class-strings.php:326
+#: includes/class-strings.php:478 includes/class-strings.php:780
+msgid "Save Changes"
+msgstr "परिवर्तनों को सुरक्षित करें"
+
+#: includes/class-strings.php:63 includes/class-strings.php:481
+msgid "Cancel"
+msgstr "रद्द करना"
+
+#: includes/class-strings.php:64
+msgid "Delete"
+msgstr "मिटाना"
+
+#: includes/class-strings.php:65
+msgid "Edit"
+msgstr "संपादन करना"
+
+#: includes/class-strings.php:66 includes/class-strings.php:699
+msgid "Close"
+msgstr "बंद करना"
+
+#: includes/class-strings.php:67
+msgid "Confirm"
+msgstr "पुष्टि करना"
+
+#: includes/class-strings.php:68
+msgid "Back"
+msgstr "पीछे"
+
+#: includes/class-strings.php:69
+msgid "Next"
+msgstr "अगला"
+
+#: includes/class-strings.php:70
+msgid "Next →"
+msgstr "अगला →"
+
+#: includes/class-strings.php:71
+msgid "← Prev"
+msgstr "← पिछला"
+
+#: includes/class-strings.php:72 includes/class-strings.php:548
+msgid "Step"
+msgstr "कदम"
+
+#: includes/class-strings.php:73 includes/class-strings.php:549
+msgid "Create"
+msgstr "बनाएं"
+
+#: includes/class-strings.php:74
+msgid "Continue"
+msgstr "जारी रखना"
+
+#: includes/class-strings.php:75
+msgid "Duplicate"
+msgstr "डुप्लिकेट"
+
+#: includes/class-strings.php:76
+msgid "Copy"
+msgstr "प्रतिलिपि"
+
+#: includes/class-strings.php:77
+msgid "Add"
+msgstr "जोड़ना"
+
+#: includes/class-strings.php:78 includes/class-strings.php:517
+msgid "Remove"
+msgstr "निकालना"
+
+#: includes/class-strings.php:79
+msgid "Update"
+msgstr "अद्यतन"
+
+#: includes/class-strings.php:80
+msgid "Apply"
+msgstr "आवेदन करना"
+
+#: includes/class-strings.php:81 includes/class-strings.php:461
+msgid "Reset"
+msgstr "रीसेट करें"
+
+#: includes/class-strings.php:84
+msgid "Agent Name"
+msgstr "एजेंट का नाम"
+
+#: includes/class-strings.php:85
+msgid "Agent {number}"
+msgstr "एजेंट पी2"
+
+#: includes/class-strings.php:86 includes/class-strings.php:452
+#: includes/forms/contact-form/class-cf7-admin.php:146
+msgid "WhatsApp Number"
+msgstr "व्हाट्सएप नंबर"
+
+#: includes/class-strings.php:87
+msgid "WhatsApp number"
+msgstr "व्हाट्सएप नंबर"
+
+#: includes/class-strings.php:88
+msgid "Send to"
+msgstr "भेजना"
+
+#: includes/class-strings.php:89
+msgid "WhatsApp Group"
+msgstr "व्हाट्सएप ग्रुप"
+
+#: includes/class-strings.php:90
+msgid "Send messages to any phone number."
+msgstr "एक ही फ़ोन नंबर पर संदेश भेजें."
+
+#: includes/class-strings.php:91
+msgid "Send messages to a WhatsApp group."
+msgstr "व्हाट्सएप ग्रुप में संदेश भेजें।"
+
+#: includes/class-strings.php:94
+msgid "WhatsApp Group URL or Code"
+msgstr "व्हाट्सएप ग्रुप यूआरएल या कोड"
+
+#: includes/class-strings.php:95
+msgid "Paste group invite link or code (e.g. https://chat.whatsapp.com/ABC123)"
+msgstr "समूह आमंत्रण लिंक या कोड चिपकाएँ (उदा. https://chat.whatsapp.com/ABC123)"
+
+#: includes/class-strings.php:97
+msgid "Paste the full WhatsApp group invite URL or just the invite code"
+msgstr "संपूर्ण व्हाट्सएप ग्रुप आमंत्रण URL या केवल आमंत्रण कोड चिपकाएँ"
+
+#: includes/class-strings.php:98
+msgid "Enter your WhatsApp number with country code"
+msgstr "देश कोड के साथ अपना व्हाट्सएप नंबर दर्ज करें"
+
+#: includes/class-strings.php:98
+msgid "WhatsApp messaging"
+msgstr "व्हाट्सऐप मैसेजिंग"
+
+#: includes/class-strings.php:99
+msgid "Send message to WhatsApp"
+msgstr "व्हाट्सऐप पर संदेश भेजें"
+
+#: includes/class-strings.php:100
+msgid ""
+"When enabled, visitors are redirected to WhatsApp to send the message after "
+"submit. When disabled, the lead is stored in FormyChat only—no WhatsApp "
+"redirect."
+msgstr "सक्षम होने पर, सबमिट के बाद संदेश भेजने के लिए आगंतुकों को व्हाट्सऐप पर भेजा जाता है। अक्षम होने पर, लीड केवल FormyChat में संग्रहीत होती है—कोई व्हाट्सऐप रीडायरेक्ट नहीं।"
+
+
+#: includes/class-strings.php:99
+msgid "Choose how you prefer to display your widget"
+msgstr "चुनें कि आप अपना विजेट किस प्रकार प्रदर्शित करना चाहते हैं"
+
+#: includes/class-strings.php
+msgid "Single"
+msgstr "अकेला"
+
+#: includes/class-strings.php
+msgid "Multi-agents"
+msgstr "बहु-एजेंट"
+
+#: includes/class-strings.php:102
+msgid "Display widget for one agent."
+msgstr "एक एजेंट के लिए विजेट प्रदर्शित करें."
+
+#: includes/class-strings.php:103
+msgid "Display widget for multiple agents."
+msgstr "एकाधिक एजेंटों के लिए विजेट प्रदर्शित करें।"
+
+#: includes/class-strings.php:104
+msgid "Example: John Doe"
+msgstr "उदाहरण: जॉन डो"
+
+#: includes/class-strings.php:90
+msgid "Subtitle / Designation"
+msgstr "उपशीर्षक/पदनाम"
+
+#: includes/class-strings.php:91
+msgid "Example: Technical Support Executive"
+msgstr "उदाहरण: तकनीकी सहायता कार्यकारी"
+
+#: includes/class-strings.php:92
+msgid "Agent WhatsApp number"
+msgstr "एजेंट व्हाट्सएप नंबर"
+
+#: includes/class-strings.php:93
+msgid "Move up"
+msgstr "बढ़ाना"
+
+#: includes/class-strings.php:94
+msgid "Move down"
+msgstr "नीचे की ओर"
+
+#: includes/class-strings.php:95
+msgid "Please add at least one agent"
+msgstr "कृपया कम से कम एक एजेंट जोड़ें"
+
+#: includes/class-strings.php:96
+msgid "Add new agent"
+msgstr "नया एजेंट जोड़ें"
+
+#: includes/class-strings.php:97
+msgid "Behaviors"
+msgstr "व्यवहार"
+
+#: includes/class-strings.php:98 includes/class-strings.php:470
+#: includes/class-strings.php:747
+msgid "Open WhatsApp in a new tab"
+msgstr "व्हाट्सएप को एक नए टैब में खोलें"
+
+#: includes/class-strings.php:99
+msgid ""
+"Open the WhatsApp link in a new tab on Desktop. <br/><b>Note:</b> In "
+"Safari, WhatsApp will be opened in current tab."
+msgstr ""
+"डेस्कटॉप पर एक नए टैब में व्हाट्सएप लिंक खोलें। <br/><b>नोट:</b> सफारी में, "
+"व्हाट्सएप करंट टैब में खुलेगा।"
+
+#: includes/class-strings.php:100
+msgid "Navigate to WhatsApp Web from desktop"
+msgstr "डेस्कटॉप से ​​व्हाट्सएप वेब पर नेविगेट करें"
+
+#: includes/class-strings.php:101
+msgid ""
+"By enabling this feature, WhatsApp will be automatically opened on your web "
+"browser when accessed from a laptop/PC."
+msgstr ""
+"इस सुविधा को सक्षम करने से, लैपटॉप/पीसी से एक्सेस करने पर व्हाट्सएप आपके "
+"वेब ब्राउज़र पर स्वचालित रूप से खुल जाएगा।"
+
+#: includes/class-strings.php:102
+msgid "On click Agent"
+msgstr "एजेंट पर क्लिक करें"
+
+#: includes/class-strings.php:103
+msgid "Agent Photo"
+msgstr "एजेंट फोटो"
+
+#: includes/class-strings.php:104
+msgid "Add Agent"
+msgstr "एजेंट जोड़ें"
+
+#: includes/class-strings.php:105
+msgid "Delete Agent"
+msgstr "एजेंट हटाएँ"
+
+#: includes/class-strings.php:106
+msgid "Agent Title"
+msgstr "एजेंट शीर्षक"
+
+#: includes/class-strings.php:107
+msgid "Agents"
+msgstr "एजेंटों"
+
+#: includes/class-strings.php:108
+msgid "Agent Designation"
+msgstr "एजेंट पदनाम"
+
+#: includes/class-strings.php:111 includes/class-strings.php:545
+msgid "Customize"
+msgstr "अनुकूलित करें"
+
+#: includes/class-strings.php:112 includes/class-strings.php:546
+msgid "Greetings"
+msgstr "अभिवादन"
+
+#: includes/class-strings.php:113
+msgid "Triggers"
+msgstr "चलाता है"
+
+#: includes/class-strings.php:114 includes/class-strings.php:544
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: includes/class-strings.php:115
+msgid "Header"
+msgstr "हैडर"
+
+#: includes/class-strings.php:116
+msgid "Preview"
+msgstr "पूर्व दर्शन"
+
+#: includes/class-strings.php:119 includes/class-strings.php:406
+msgid "Greeting Message"
+msgstr "शुभकामना संदेश"
+
+#: includes/class-strings.php:120
+msgid "Welcome Message"
+msgstr "स्वागत संदेश"
+
+#: includes/class-strings.php:121
+msgid "Offline Message"
+msgstr "ऑफ़लाइन संदेश"
+
+#: includes/class-strings.php:122
+msgid "Online Message"
+msgstr "ऑनलाइन संदेश"
+
+#: includes/class-strings.php:123
+msgid "Reply Time"
+msgstr "उत्तर देने का समय"
+
+#: includes/class-strings.php:126
+msgid "Widget Style"
+msgstr "विजेट शैली"
+
+#: includes/class-strings.php:127
+msgid "Widget Position"
+msgstr "विजेट स्थिति"
+
+#: includes/class-strings.php:128
+msgid "Button Color"
+msgstr "बटन का रंग"
+
+#: includes/class-strings.php:129
+msgid "Text Color"
+msgstr "पाठ का रंग"
+
+#: includes/class-strings.php:130
+msgid "Background Color"
+msgstr "पृष्ठभूमि का रंग"
+
+#: includes/class-strings.php:131
+msgid "Header Color"
+msgstr "हेडर का रंग"
+
+#: includes/class-strings.php:132
+msgid "Border Radius"
+msgstr "सीमा त्रिज्या"
+
+#: includes/class-strings.php:133
+msgid "Widget Size"
+msgstr "विजेट का आकार"
+
+#: includes/class-strings.php:136
+msgid "Trigger Settings"
+msgstr "ट्रिगर सेटिंग्स"
+
+#: includes/class-strings.php:137
+msgid "Show on Pages"
+msgstr "पेजों पर दिखाएँ"
+
+#: includes/class-strings.php:138
+msgid "Hide on Pages"
+msgstr "पेजों पर छिपाएँ"
+
+#: includes/class-strings.php:139
+msgid "Show After"
+msgstr "बाद दिखाएँ"
+
+#: includes/class-strings.php:140
+msgid "Hide After"
+msgstr "बाद में छुपाएं"
+
+#: includes/class-strings.php:141
+msgid "Display Rules"
+msgstr "प्रदर्शन नियम"
+
+#: includes/class-strings.php:142
+msgid "Activate Widget"
+msgstr "विजेट सक्रिय करें"
+
+#: includes/class-strings.php:143
+msgid "Time delay"
+msgstr "समय विलंब"
+
+#: includes/class-strings.php:144
+msgid "Page Scroll"
+msgstr "पेज स्क्रॉल"
+
+#: includes/class-strings.php:145
+msgid "Exit Intent"
+msgstr "इरादे से बाहर निकलें"
+
+#: includes/class-strings.php:146
+msgid "Display after"
+msgstr "बाद में प्रदर्शित करें"
+
+#: includes/class-strings.php:147
+msgid "seconds when page is loaded"
+msgstr "पेज लोड होने पर सेकंड"
+
+#: includes/class-strings.php:148
+msgid "scrolling on the page"
+msgstr "पेज पर स्क्रॉल करना"
+
+#: includes/class-strings.php:149
+msgid "Display when visitor is about to leave"
+msgstr "जब आगंतुक जाने वाला हो तब प्रदर्शित करें"
+
+#: includes/class-strings.php:150
+msgid "Widget turned off"
+msgstr "विजेट बंद कर दिया गया"
+
+#: includes/class-strings.php:151
+msgid ""
+"This floating widget is currently turned off, would you like to turn it ON "
+"and save to show it on your site?"
+msgstr ""
+"यह फ़्लोटिंग विजेट वर्तमान में बंद है, क्या आप इसे चालू करना चाहेंगे और इसे "
+"अपनी साइट पर दिखाने के लिए सहेजना चाहेंगे?"
+
+#: includes/class-strings.php:152
+msgid "Save & Show on my site"
+msgstr "सहेजें और मेरी साइट पर दिखाएं"
+
+#: includes/class-strings.php:153
+msgid "Just save and keep it off"
+msgstr "बस सहेजें और इसे बंद रखें"
+
+#: includes/class-strings.php:154
+msgid "Targets"
+msgstr "लक्ष्यों को"
+
+#: includes/class-strings.php:155
+msgid "Exclude pages"
+msgstr "पेजों को बाहर निकालें"
+
+#: includes/class-strings.php:156
+msgid "Exclude all pages excepts:"
+msgstr "सिवाय सभी पेजों को बाहर निकालें:"
+
+#: includes/class-strings.php:157
+msgid "FluentCRM Settings"
+msgstr "फ़्लुएंटसीआरएम सेटिंग्स"
+
+#: includes/class-strings.php:158
+msgid "Send leads to FluentCRM"
+msgstr "फ़्लुएंटसीआरएम को लीड भेजें"
+
+#: includes/class-strings.php:159
+msgid "Send leads to Mailchimp"
+msgstr "मेलचिम्प को लीड भेजें"
+
+#: includes/class-strings.php:162
+msgid "Successfully saved!"
+msgstr "सफलतापूर्वक सहेजा गया!"
+
+#: includes/class-strings.php:163
+msgid "Successfully updated!"
+msgstr "सफलतापूर्वक अपडेट किया गया!"
+
+#: includes/class-strings.php:164
+msgid "Successfully deleted!"
+msgstr "सफलतापूर्वक हटा दिया गया!"
+
+#: includes/class-strings.php:165
+msgid "Successfully duplicated!"
+msgstr "सफलतापूर्वक दोहराया गया!"
+
+#: includes/class-strings.php:166
+msgid "Error saving changes"
+msgstr "परिवर्तन सहेजने में त्रुटि"
+
+#: includes/class-strings.php:167
+msgid "Error deleting item"
+msgstr "आइटम हटाने में त्रुटि"
+
+#: includes/class-strings.php:168
+msgid "An error occurred"
+msgstr "एक त्रुटि पाई गई"
+
+#: includes/class-strings.php:171
+msgid "Are you sure you want to delete this?"
+msgstr "क्या आप वाकई इसे हटाना चाहते हैं?"
+
+#: includes/class-strings.php:172
+msgid "Untitled Page"
+msgstr "शीर्षकहीन पृष्ठ"
+
+#: includes/class-strings.php:173
+msgid "Are you sure you want to delete this widget?"
+msgstr "क्या आप वाकई इस विजेट को हटाना चाहते हैं?"
+
+#: includes/class-strings.php:174
+msgid ""
+"Deleting this will remove the widget permanently from your site. Are you "
+"sure you want to delete this widget permanently?"
+msgstr ""
+"इसे हटाने से विजेट आपकी साइट से स्थायी रूप से हट जाएगा। क्या आप वाकई इस "
+"विजेट को स्थायी रूप से हटाना चाहते हैं?"
+
+#: includes/class-strings.php:175
+msgid "This widget is currently in use!"
+msgstr "यह विजेट वर्तमान में उपयोग में है!"
+
+#: includes/class-strings.php:176
+msgid "Are you sure you want to delete this agent?"
+msgstr "क्या आप वाकई इस एजेंट को हटाना चाहते हैं?"
+
+#: includes/class-strings.php:177
+msgid "This action cannot be undone."
+msgstr "इस एक्शन को वापस नहीं किया जा सकता।"
+
+#: includes/class-strings.php:178
+msgid "Widget deleted successfully"
+msgstr "विजेट सफलतापूर्वक हटा दिया गया"
+
+#: includes/class-strings.php:179
+msgid "Copy of {name}"
+msgstr "प0 की प्रति"
+
+#: includes/class-strings.php:182
+msgid "Upgrade to Pro"
+msgstr "प्रो में अपग्रेड"
+
+#: includes/class-strings.php:183
+msgid "This is a Pro feature"
+msgstr "यह एक प्रो फीचर है"
+
+#: includes/class-strings.php:184
+msgid "Try all the premium features for free."
+msgstr "सभी प्रीमियम सुविधाएँ निःशुल्क आज़माएँ।"
+
+#: includes/class-strings.php:185
+msgid "Unlock this feature"
+msgstr "इस सुविधा को अनलॉक करें"
+
+#: includes/class-strings.php:186
+msgid "Premium Only"
+msgstr "केवल प्रीमियम"
+
+#: includes/class-strings.php:187
+msgid "Get Pro"
+msgstr "प्रो प्राप्त करें"
+
+#: includes/class-strings.php:191
+msgid "Integration Settings"
+msgstr "एकीकरण सेटिंग्स"
+
+#: includes/class-strings.php:192 includes/class-strings.php:515
+msgid "Connect"
+msgstr "जोड़ना"
+
+#: includes/class-strings.php:193
+msgid "Disconnect"
+msgstr "डिस्कनेक्ट"
+
+#: includes/class-strings.php:194
+msgid "Connected"
+msgstr "जुड़े हुए"
+
+#: includes/class-strings.php:195 includes/class-strings.php:642
+msgid "Not Connected"
+msgstr "जुड़े नहीं हैं"
+
+#: includes/class-strings.php:196
+msgid "Configure"
+msgstr "कॉन्फ़िगर"
+
+#: includes/class-strings.php:200
+msgid "Lead Name"
+msgstr "लीड नाम"
+
+#: includes/class-strings.php:201
+msgid "Lead Email"
+msgstr "लीड ईमेल"
+
+#: includes/class-strings.php:202
+msgid "Lead Phone"
+msgstr "लीड फ़ोन"
+
+#: includes/class-strings.php:203
+msgid "Lead Message"
+msgstr "लीड संदेश"
+
+#: includes/class-strings.php:204
+msgid "No leads found"
+msgstr "कोई सुराग नहीं मिला"
+
+#: includes/class-strings.php:205
+msgid "Total Leads"
+msgstr "कुल लीड"
+
+#: includes/class-strings.php:206
+msgid "View Lead"
+msgstr "लीड देखें"
+
+#: includes/class-strings.php:207 includes/class-strings.php:310
+msgid "Delete Lead"
+msgstr "लीड हटाएँ"
+
+#: includes/class-strings.php:211 includes/class-strings.php:378
+msgid "Product Page"
+msgstr "उत्पाद पृष्ठ"
+
+#: includes/class-strings.php:212 includes/class-strings.php:379
+msgid "Cart Page"
+msgstr "कार्ट पेज"
+
+#: includes/class-strings.php:213 includes/class-strings.php:380
+msgid "Checkout Page"
+msgstr "चेकआउट पेज"
+
+#: includes/class-strings.php:214 includes/class-strings.php:377
+msgid "Shop Page"
+msgstr "दुकान पृष्ठ"
+
+#: includes/class-strings.php:215
+msgid "Enable on Product Pages"
+msgstr "उत्पाद पृष्ठों पर सक्षम करें"
+
+#: includes/class-strings.php:216
+msgid "Enable on Cart Page"
+msgstr "कार्ट पेज पर सक्षम करें"
+
+#: includes/class-strings.php:217
+msgid "Enable on Checkout Page"
+msgstr "चेकआउट पृष्ठ पर सक्षम करें"
+
+#: includes/class-strings.php:220
+msgid "Contact Form 7"
+msgstr "संपर्क प्रपत्र 7"
+
+#: includes/class-strings.php:225
+msgid "Subject"
+msgstr "विषय"
+
+#: includes/class-strings.php:226
+msgid "Title"
+msgstr "शीर्षक"
+
+#: includes/class-strings.php:227
+msgid "Description"
+msgstr "विवरण"
+
+#: includes/class-strings.php:228
+msgid "Status"
+msgstr "स्थिति"
+
+#: includes/class-strings.php:229
+msgid "Date"
+msgstr "तारीख"
+
+#: includes/class-strings.php:230
+msgid "Actions"
+msgstr "कार्रवाई"
+
+#: includes/class-strings.php:233
+msgid "Active"
+msgstr "सक्रिय"
+
+#: includes/class-strings.php:234
+msgid "Inactive"
+msgstr "निष्क्रिय"
+
+#: includes/class-strings.php:235
+msgid "Enabled"
+msgstr "सक्रिय"
+
+#: includes/class-strings.php:236
+msgid "Disabled"
+msgstr "अक्षम"
+
+#: includes/class-strings.php:237
+msgid "Online"
+msgstr "ऑनलाइन"
+
+#: includes/class-strings.php:238
+msgid "Offline"
+msgstr "ऑफलाइन"
+
+#: includes/class-strings.php:239 includes/class-strings.php:535
+msgid "Loading..."
+msgstr "लोड हो रहा है..."
+
+#: includes/class-strings.php:240 includes/class-strings.php:583
+msgid "Saving..."
+msgstr "सहेजा जा रहा है..."
+
+#: includes/class-strings.php:243
+msgid "Previous"
+msgstr "पहले का"
+
+#: includes/class-strings.php:244
+msgid "First"
+msgstr "पहला"
+
+#: includes/class-strings.php:245 includes/class-strings.php:555
+msgid "Last"
+msgstr "अंतिम"
+
+#: includes/class-strings.php:246 includes/class-strings.php:439
+msgid "Showing"
+msgstr "दिखा"
+
+#: includes/class-strings.php:247
+msgid "of"
+msgstr "का"
+
+#: includes/class-strings.php:248
+msgid "results"
+msgstr "परिणाम"
+
+#: includes/class-strings.php:249
+msgid "per page"
+msgstr "प्रति पृष्ठ"
+
+#: includes/class-strings.php:252
+msgid "Search"
+msgstr "खोज"
+
+#: includes/class-strings.php:253
+msgid "Filter"
+msgstr "फ़िल्टर"
+
+#: includes/class-strings.php:254
+msgid "Sort by"
+msgstr "इसके अनुसार क्रमबद्ध करें"
+
+#: includes/class-strings.php:255
+msgid "Search widgets..."
+msgstr "विजेट खोजें..."
+
+#: includes/class-strings.php:256
+msgid "Search leads..."
+msgstr "खोज लीड..."
+
+#: includes/class-strings.php:257
+msgid "No results found"
+msgstr "कोई परिणाम नहीं मिला"
+
+#: includes/class-strings.php:258
+msgid "Small"
+msgstr "छोटा"
+
+#: includes/class-strings.php:259
+msgid "Medium"
+msgstr "मध्यम"
+
+#: includes/class-strings.php:260
+msgid "Large"
+msgstr "बड़ा"
+
+#: includes/class-strings.php:261
+msgid "Custom"
+msgstr "रिवाज़"
+
+#: includes/class-strings.php:262
+msgid "Position"
+msgstr "पद"
+
+#: includes/class-strings.php:265
+msgid "Help"
+msgstr "मदद"
+
+#: includes/class-strings.php:266
+msgid "Learn more"
+msgstr "और अधिक जानें"
+
+#: includes/class-strings.php:267 includes/class-strings.php:634
+msgid "Documentation"
+msgstr "प्रलेखन"
+
+#: includes/class-strings.php:268
+msgid "Support"
+msgstr "सहायता"
+
+#: includes/class-strings.php:272
+msgid "Add Custom CSS"
+msgstr "कस्टम सीएसएस जोड़ें"
+
+#: includes/class-strings.php:273
+msgid "CSS saved successfully"
+msgstr "सीएसएस सफलतापूर्वक सहेजा गया"
+
+#: includes/class-strings.php:277
+msgid "General"
+msgstr "सामान्य"
+
+#: includes/class-strings.php:278 includes/class-strings.php:476
+msgid "Advanced"
+msgstr "विकसित"
+
+#: includes/class-strings.php:279
+msgid "Appearance"
+msgstr "उपस्थिति"
+
+#: includes/class-strings.php:280
+msgid "Behavior"
+msgstr "व्यवहार"
+
+#: includes/class-strings.php:281
+msgid "Display"
+msgstr "प्रदर्शन"
+
+#: includes/class-strings.php:282
+msgid "Options"
+msgstr "विकल्प"
+
+#: includes/class-strings.php:283 includes/class-strings.php:538
+msgid "Select"
+msgstr "चुनना"
+
+#: includes/class-strings.php:284
+msgid "Choose"
+msgstr "चुनना"
+
+#: includes/class-strings.php:285
+msgid "Upload"
+msgstr "अपलोड करें"
+
+#: includes/class-strings.php:286
+msgid "Upload Image"
+msgstr "तस्विर अपलोड करना"
+
+#: includes/class-strings.php:287
+msgid "Remove Image"
+msgstr "छवि हटाएँ"
+
+#: includes/class-strings.php:288
+msgid "Change Image"
+msgstr "छवि बदलें"
+
+#: includes/class-strings.php:291
+msgid "Let's create your first widget and bring your dashboard to life!"
+msgstr "आइए अपना पहला विजेट बनाएं और अपने डैशबोर्ड को जीवंत बनाएं!"
+
+#: includes/class-strings.php:292 includes/class-strings.php:507
+msgid "Watch Tutorial"
+msgstr "शैक्षणिक - कार्यक्रम देखें"
+
+#: includes/class-strings.php:293
+msgid "Create Floating Widget"
+msgstr "फ़्लोटिंग विजेट बनाएं"
+
+#: includes/class-strings.php:296
+msgid "Not found"
+msgstr "नहीं मिला"
+
+#: includes/class-strings.php:299
+msgid "FormyChat Modules"
+msgstr "फॉर्मीचैट मॉड्यूल"
+
+#: includes/class-strings.php:300
+msgid "Integrate your favorite modules and supercharge your workflow"
+msgstr "अपने पसंदीदा मॉड्यूल को एकीकृत करें और अपने वर्कफ़्लो को सुपरचार्ज करें"
+
+#: includes/class-strings.php:301 includes/class-strings.php:633
+msgid "Tutorial"
+msgstr "ट्यूटोरियल"
+
+#: includes/class-strings.php:302 includes/class-strings.php:635
+msgid "Review Us"
+msgstr "हमारी समीक्षा करें"
+
+#: includes/class-strings.php:303
+msgid "Search Modules"
+msgstr "मॉड्यूल खोजें"
+
+#: includes/class-strings.php:304
+msgid "Don't see your tool?"
+msgstr "क्या आपको अपना टूल नहीं दिख रहा?"
+
+#: includes/class-strings.php:305
+msgid ""
+"Your favorite tool could be our next big integration. Don't miss the chance "
+"to get it added!"
+msgstr ""
+"आपका पसंदीदा टूल हमारा अगला बड़ा एकीकरण हो सकता है। इसे जोड़ने का मौका न "
+"चूकें!"
+
+#: includes/class-strings.php:306
+msgid "Suggest Now"
+msgstr "अभी सुझाव दें"
+
+#: includes/class-strings.php:309
+msgid "Contact Form Leads"
+msgstr "संपर्क फ़ॉर्म लीड्स"
+
+#: includes/class-strings.php:311
+msgid "Delete selected {count} Leads"
+msgstr "चयनित P1 लीड हटाएँ"
+
+#: includes/class-strings.php:312
+msgid "Are you sure you want to delete this lead?"
+msgstr "क्या आप वाकई इस लीड को हटाना चाहते हैं?"
+
+#: includes/class-strings.php:313
+msgid "Are you sure you want to delete selected {count} leads?"
+msgstr "क्या आप वाकई चयनित P1 लीड को हटाना चाहते हैं?"
+
+#: includes/class-strings.php:314
+msgid "Export"
+msgstr "निर्यात"
+
+#: includes/class-strings.php:315
+msgid "Select Source"
+msgstr "स्रोत चुनें"
+
+#: includes/class-strings.php:316
+msgid "Select Widget"
+msgstr "विजेट चुनें"
+
+#: includes/class-strings.php:317
+msgid "Select Form"
+msgstr "फॉर्म का चयन करें"
+
+#: includes/class-strings.php:318
+msgid "to"
+msgstr "को"
+
+#: includes/class-strings.php:319
+msgid "Please wait while we load your leads."
+msgstr "जब तक हम आपके लीड लोड कर रहे हैं कृपया प्रतीक्षा करें।"
+
+#: includes/class-strings.php:320
+msgid "Widget"
+msgstr "विजेट"
+
+#: includes/class-strings.php:321
+msgid "Sync"
+msgstr "साथ-साथ करना"
+
+#: includes/class-strings.php:322
+msgid "No leads found."
+msgstr "कोई सुराग नहीं मिला."
+
+#: includes/class-strings.php:325
+msgid "Custom CSS Editor"
+msgstr "कस्टम सीएसएस संपादक"
+
+#: includes/class-strings.php:327 includes/class-strings.php:338
+msgid "Add custom CSS to customize your site's appearance"
+msgstr "अपनी साइट के स्वरूप को अनुकूलित करने के लिए कस्टम सीएसएस जोड़ें"
+
+#: includes/class-strings.php:328
+msgid "CSS Styling Guide"
+msgstr "सीएसएस स्टाइलिंग गाइड"
+
+#: includes/class-strings.php:329
+msgid "lines"
+msgstr "पंक्तियां"
+
+#: includes/class-strings.php:330
+msgid "characters"
+msgstr "अक्षर"
+
+#: includes/class-strings.php:331
+msgid "Target all widgets"
+msgstr "सभी विजेट्स को लक्षित करें"
+
+#: includes/class-strings.php:332
+msgid "Target specific widget"
+msgstr "विशिष्ट विजेट को लक्षित करें"
+
+#: includes/class-strings.php:333
+msgid "Tip"
+msgstr "बख्शीश"
+
+#: includes/class-strings.php:334 includes/class-strings.php:339
+msgid ""
+"Use browser developer tools to inspect widget elements and find the exact "
+"selectors you need."
+msgstr ""
+"विजेट तत्वों का निरीक्षण करने और आपके लिए आवश्यक सटीक चयनकर्ताओं को ढूंढने "
+"के लिए ब्राउज़र डेवलपर टूल का उपयोग करें।"
+
+#: includes/class-strings.php:335 includes/class-strings.php:340
+msgid "/** Enter your custom CSS here */"
+msgstr "/** अपना कस्टम सीएसएस यहां दर्ज करें */"
+
+#: includes/class-strings.php:336
+msgid "Custom CSS saved successfully!"
+msgstr "कस्टम सीएसएस सफलतापूर्वक सहेजा गया!"
+
+#: includes/class-strings.php:337
+msgid "Error saving CSS. Please try again."
+msgstr "सीएसएस सहेजने में त्रुटि. कृपया पुन: प्रयास करें।"
+
+#: includes/class-strings.php:341
+msgid "Failed to save CSS"
+msgstr "सीएसएस सहेजने में विफल"
+
+#: includes/class-strings.php:344
+msgid "Customize Icon"
+msgstr "आइकन अनुकूलित करें"
+
+#: includes/class-strings.php:345
+msgid "Custom Icon"
+msgstr "कस्टम चिह्न"
+
+#: includes/class-strings.php:346
+msgid "Icon Size"
+msgstr "चिह्न का आकार"
+
+#: includes/class-strings.php:347 includes/class-strings.php:659
+msgid "Select the size of the icon"
+msgstr "आइकन का आकार चुनें"
+
+#: includes/class-strings.php:348
+msgid "Custom Icon Size"
+msgstr "कस्टम चिह्न आकार"
+
+#: includes/class-strings.php:349
+msgid "Icon Position"
+msgstr "चिह्न स्थिति"
+
+#: includes/class-strings.php:350
+msgid "Select the position of the icon"
+msgstr "आइकन की स्थिति का चयन करें"
+
+#: includes/class-strings.php:351
+msgid "Custom Icon Position"
+msgstr "कस्टम चिह्न स्थिति"
+
+#: includes/class-strings.php:352
+msgid "Display floating widget on"
+msgstr "फ़्लोटिंग विजेट चालू करें"
+
+#: includes/class-strings.php:353
+msgid "Choose where the floating widget will be visible - Desktop or Mobile."
+msgstr "चुनें कि फ़्लोटिंग विजेट कहाँ दिखाई देगा - डेस्कटॉप या मोबाइल।"
+
+#: includes/class-strings.php:354 includes/class-strings.php:473
+#: includes/class-strings.php:745
+msgid "Desktop"
+msgstr "डेस्कटॉप"
+
+#: includes/class-strings.php:355 includes/class-strings.php:474
+#: includes/class-strings.php:746
+msgid "Mobile"
+msgstr "गतिमान"
+
+#: includes/class-strings.php:356
+msgid "Call to action"
+msgstr "कार्यवाई के लिए बुलावा"
+
+#: includes/class-strings.php:357
+msgid "Show Call to action"
+msgstr "कॉल टू एक्शन दिखाएँ"
+
+#: includes/class-strings.php:358
+msgid "Call to action text"
+msgstr "कॉल टू एक्शन टेक्स्ट"
+
+#: includes/class-strings.php:359
+msgid "Customize Form"
+msgstr "फ़ॉर्म को अनुकूलित करें"
+
+#: includes/class-strings.php:360
+msgid "Choose the source through which you want to send message to WhatsApp"
+msgstr "वह स्रोत चुनें जिसके माध्यम से आप व्हाट्सएप पर संदेश भेजना चाहते हैं"
+
+#: includes/class-strings.php:361 includes/class-strings.php:753
+msgid "Select a form"
+msgstr "एक फॉर्म चुनें"
+
+#: includes/class-strings.php:362
+msgid "Message Template"
+msgstr "संदेश टेम्पलेट"
+
+#: includes/class-strings.php:363
+msgid "Message template which will be sent to WhatsApp."
+msgstr "मैसेज टेम्प्लेट जो व्हाट्सएप पर भेजा जाएगा।"
+
+#: includes/class-strings.php:366
+msgid "Synced"
+msgstr "सिंक किया गया"
+
+#: includes/class-strings.php:367
+msgid "Pending"
+msgstr "लंबित"
+
+#: includes/class-strings.php:368
+msgid "Form Submitted data"
+msgstr "फॉर्म सबमिट किया गया डेटा"
+
+#: includes/class-strings.php:369
+msgid "Others Information"
+msgstr "अन्य जानकारी"
+
+#: includes/class-strings.php:370
+msgid "− Show less"
+msgstr "− कम दिखाओ"
+
+#: includes/class-strings.php:371
+msgid "+ Show more"
+msgstr "+ और दिखाएँ"
+
+#: includes/class-strings.php:374
+msgid "FormyChat WooCommerce Buttons"
+msgstr "फॉर्मीचैट WooCommerce बटन"
+
+#: includes/class-strings.php:375
+msgid ""
+"Connect your WooCommerce store with WhatsApp to enable one-click product "
+"inquiries and instant order requests."
+msgstr ""
+"एक-क्लिक उत्पाद पूछताछ और त्वरित ऑर्डर अनुरोधों को सक्षम करने के लिए अपने "
+"WooCommerce स्टोर को व्हाट्सएप से कनेक्ट करें।"
+
+#: includes/class-strings.php:376
+msgid "Menu"
+msgstr "मेनू"
+
+#: includes/class-strings.php:383 includes/class-strings.php:730
+msgid "Create your first agent"
+msgstr "अपना पहला एजेंट बनाएं"
+
+#: includes/class-strings.php:386
+msgid "days"
+msgstr "दिन"
+
+#: includes/class-strings.php:387
+msgid "hours"
+msgstr "घंटे"
+
+#: includes/class-strings.php:388
+msgid "minutes"
+msgstr "मिनट"
+
+#: includes/class-strings.php:389
+msgid "seconds"
+msgstr "सेकंड"
+
+#: includes/class-strings.php:390
+msgid "Try a free demo"
+msgstr "निःशुल्क डेमो आज़माएँ"
+
+#: includes/class-strings.php:393
+msgid "Display Greeting Popup"
+msgstr "ग्रीटिंग पॉपअप प्रदर्शित करें"
+
+#: includes/class-strings.php:394
+msgid "Choose Greetings Template"
+msgstr "अभिवादन टेम्पलेट चुनें"
+
+#: includes/class-strings.php:395
+msgid "Customize Greetings"
+msgstr "अभिवादन अनुकूलित करें"
+
+#: includes/class-strings.php:396
+msgid "Greeting Heading"
+msgstr "अभिवादन शीर्षक"
+
+#: includes/class-strings.php:397
+msgid "Heading Size"
+msgstr "शीर्षक का आकार"
+
+#: includes/class-strings.php:398
+msgid "Custom Heading Size"
+msgstr "कस्टम शीर्षक आकार"
+
+#: includes/class-strings.php:399
+msgid "Message Size"
+msgstr "संदेश का आकार"
+
+#: includes/class-strings.php:400
+msgid "Custom Message Size"
+msgstr "कस्टम संदेश आकार"
+
+#: includes/class-strings.php:401
+msgid "Greeting Colors"
+msgstr "नमस्कार रंग"
+
+#: includes/class-strings.php:402
+msgid "Heading Color"
+msgstr "शीर्षक का रंग"
+
+#: includes/class-strings.php:403
+msgid "Message Color"
+msgstr "संदेश का रंग"
+
+#: includes/class-strings.php:404
+msgid "Greetings Font Family"
+msgstr "अभिवादन फ़ॉन्ट परिवार"
+
+#: includes/class-strings.php:405
+msgid "Show Main Content"
+msgstr "मुख्य सामग्री दिखाएँ"
+
+#: includes/class-strings.php:407
+msgid "Greeting Font Family"
+msgstr "अभिवादन फ़ॉन्ट परिवार"
+
+#: includes/class-strings.php:408
+msgid "Show Greetings CTA"
+msgstr "अभिवादन सीटीए दिखाएँ"
+
+#: includes/class-strings.php:409
+msgid "Greeting CTA Text"
+msgstr "अभिवादन सीटीए पाठ"
+
+#: includes/class-strings.php:410
+msgid "CTA Icon"
+msgstr "सीटीए चिह्न"
+
+#: includes/class-strings.php:411
+msgid "CTA Style"
+msgstr "सीटीए शैली"
+
+#: includes/class-strings.php:412
+msgid "Show Greeting CTA"
+msgstr "ग्रीटिंग सीटीए दिखाएं"
+
+#: includes/class-strings.php:413
+msgid "Greeting CTA Heading"
+msgstr "नमस्ते सीटीए शीर्षक"
+
+#: includes/class-strings.php:414
+msgid "CTA Heading Size"
+msgstr "सीटीए शीर्षक आकार"
+
+#: includes/class-strings.php:415
+msgid "Custom CTA Heading Size"
+msgstr "कस्टम CTA शीर्षक आकार"
+
+#: includes/class-strings.php:416
+msgid "Greeting CTA Message"
+msgstr "शुभकामना सीटीए संदेश"
+
+#: includes/class-strings.php:417
+msgid "CTA Message Size"
+msgstr "सीटीए संदेश का आकार"
+
+#: includes/class-strings.php:418
+msgid "Custom CTA Message Size"
+msgstr "कस्टम सीटीए संदेश का आकार"
+
+#: includes/class-strings.php:419
+msgid "CTA Colors"
+msgstr "सीटीए रंग"
+
+#: includes/class-strings.php:420
+msgid "Greeting Behavior"
+msgstr "अभिवादन व्यवहार"
+
+#: includes/class-strings.php:421
+msgid "On click Action"
+msgstr "एक्शन पर क्लिक करें"
+
+#: includes/class-strings.php:422
+msgid "Enable Greetings"
+msgstr "अभिवादन सक्षम करें"
+
+#: includes/class-strings.php:423
+msgid "Before Heading"
+msgstr "शीर्षक से पहले"
+
+#: includes/class-strings.php:424
+msgid "After Heading"
+msgstr "शीर्षक के बाद"
+
+#: includes/class-strings.php:425
+msgid "After Message"
+msgstr "संदेश के बाद"
+
+#: includes/class-strings.php:426
+msgid "Before CTA"
+msgstr "सीटीए से पहले"
+
+#: includes/class-strings.php:427
+msgid "After CTA"
+msgstr "सीटीए के बाद"
+
+#: includes/class-strings.php:428
+msgid "Style {number}"
+msgstr "शैली पी2"
+
+#: includes/class-strings.php:429
+msgid "Load The Selected Form"
+msgstr "चयनित फॉर्म लोड करें"
+
+#: includes/class-strings.php:430
+msgid "Redirected to WhatsApp directly"
+msgstr "सीधे व्हाट्सएप पर रीडायरेक्ट किया गया"
+
+#: includes/class-strings.php:431
+msgid "CTA Text Color"
+msgstr "सीटीए टेक्स्ट रंग"
+
+#: includes/class-strings.php:432
+msgid "CTA Background Color"
+msgstr "सीटीए पृष्ठभूमि रंग"
+
+#: includes/class-strings.php:433
+msgid "Left"
+msgstr "बाएं"
+
+#: includes/class-strings.php:434
+msgid "Right"
+msgstr "सही"
+
+#: includes/class-strings.php:435
+msgid "Top"
+msgstr "शीर्ष"
+
+#: includes/class-strings.php:436
+msgid "Bottom"
+msgstr "तल"
+
+#: includes/class-strings.php:442
+msgid "Coming Soon"
+msgstr "जल्द आ रहा है"
+
+#: includes/class-strings.php:443
+msgid "Cart Page Button"
+msgstr "कार्ट पेज बटन"
+
+#: includes/class-strings.php:444
+msgid "Checkout Page Button"
+msgstr "चेकआउट पेज बटन"
+
+#: includes/class-strings.php:445
+msgid ""
+"We're working on WhatsApp integration for the cart page. Stay tuned for "
+"updates!"
+msgstr ""
+"हम कार्ट पेज के लिए व्हाट्सएप एकीकरण पर काम कर रहे हैं। अपडेट के लिए बने "
+"रहें!"
+
+#: includes/class-strings.php:446
+msgid ""
+"We're working on WhatsApp integration for the checkout page. Stay tuned for "
+"updates!"
+msgstr ""
+"हम चेकआउट पेज के लिए व्हाट्सएप एकीकरण पर काम कर रहे हैं। अपडेट के लिए बने "
+"रहें!"
+
+#: includes/class-strings.php:449
+msgid "WhatsApp Button for Shop Page"
+msgstr "शॉप पेज के लिए व्हाट्सएप बटन"
+
+#: includes/class-strings.php:450
+msgid ""
+"Let customers contact you or place orders via WhatsApp directly from the "
+"shop page."
+msgstr ""
+"ग्राहकों को सीधे दुकान पृष्ठ से व्हाट्सएप के माध्यम से आपसे संपर्क करने या "
+"ऑर्डर देने दें।"
+
+#: includes/class-strings.php:451
+msgid "Show WhatsApp Button on Shop Page"
+msgstr "शॉप पेज पर व्हाट्सएप बटन दिखाएं"
+
+#: includes/class-strings.php:453
+msgid "Please enter a valid WhatsApp number (7-15 digits)"
+msgstr "कृपया एक वैध व्हाट्सएप नंबर दर्ज करें (7-15 अंक)"
+
+#: includes/class-strings.php:454
+msgid "Button Position"
+msgstr "बटन की स्थिति"
+
+#: includes/class-strings.php:455
+msgid "Button Text"
+msgstr "बटन पाठ"
+
+#: includes/class-strings.php:456
+msgid "Buy on WhatsApp"
+msgstr "व्हाट्सएप पर खरीदें"
+
+#: includes/class-strings.php:457
+msgid "Pre-filled Message"
+msgstr "पहले से भरा हुआ संदेश"
+
+#: includes/class-strings.php:458
+msgid "Customize what message customers send when they click."
+msgstr "कस्टमाइज़ करें कि ग्राहक क्लिक करने पर क्या संदेश भेजते हैं।"
+
+#: includes/class-strings.php:459
+msgid "Button Style"
+msgstr "बटन शैली"
+
+#: includes/class-strings.php:460
+msgid "Customize the WhatsApp button appearance however you want."
+msgstr "व्हाट्सएप बटन के स्वरूप को अपनी इच्छानुसार अनुकूलित करें।"
+
+#: includes/class-strings.php:462
+msgid "Background color"
+msgstr "पृष्ठभूमि का रंग"
+
+#: includes/class-strings.php:463 includes/class-strings.php:742
+msgid "Default button background color"
+msgstr "डिफ़ॉल्ट बटन पृष्ठभूमि रंग"
+
+#: includes/class-strings.php:464
+msgid "Background hover color"
+msgstr "पृष्ठभूमि होवर रंग"
+
+#: includes/class-strings.php:465
+msgid "Button background color on hover"
+msgstr "होवर पर बटन पृष्ठभूमि रंग"
+
+#: includes/class-strings.php:466
+msgid "Button text color"
+msgstr "बटन पाठ का रंग"
+
+#: includes/class-strings.php:467
+msgid "Text hover color"
+msgstr "टेक्स्ट होवर रंग"
+
+#: includes/class-strings.php:468
+msgid "Button text color on hover"
+msgstr "होवर पर बटन टेक्स्ट का रंग"
+
+#: includes/class-strings.php:469
+msgid "Button Border Radius"
+msgstr "बटन सीमा त्रिज्या"
+
+#: includes/class-strings.php:471 includes/class-strings.php:743
+msgid "Hide \"Add to Cart\" button"
+msgstr "\"कार्ट में जोड़ें\" बटन छिपाएँ"
+
+#: includes/class-strings.php:472 includes/class-strings.php:744
+msgid "Display button on"
+msgstr "डिस्प्ले बटन चालू करें"
+
+#: includes/class-strings.php:475
+msgid "Less"
+msgstr "कम"
+
+#: includes/class-strings.php:477 includes/class-strings.php:781
+msgid "Discard"
+msgstr "खारिज करना"
+
+#: includes/class-strings.php:479
+msgid "Reset Colors"
+msgstr "रंग रीसेट करें"
+
+#: includes/class-strings.php:480
+msgid "Are you sure you want to reset all colors to default?"
+msgstr "क्या आप वाकई सभी रंगों को डिफ़ॉल्ट पर रीसेट करना चाहते हैं?"
+
+#: includes/class-strings.php:482
+msgid "Above \"Add to Cart\" button"
+msgstr "ऊपर \"कार्ट में जोड़ें\" बटन"
+
+#: includes/class-strings.php:483
+msgid "Below \"Add to Cart\" button"
+msgstr "नीचे \"कार्ट में जोड़ें\" बटन"
+
+#: includes/class-strings.php:486
+msgid "WhatsApp Button for Single Product Page"
+msgstr "एकल उत्पाद पृष्ठ के लिए व्हाट्सएप बटन"
+
+#: includes/class-strings.php:487
+msgid ""
+"Let customers contact you or place orders via WhatsApp directly from the "
+"single product page."
+msgstr ""
+"ग्राहकों को सीधे एकल उत्पाद पृष्ठ से व्हाट्सएप के माध्यम से आपसे संपर्क "
+"करने या ऑर्डर देने दें।"
+
+#: includes/class-strings.php:488
+msgid "Show WhatsApp Button on Single Product Page"
+msgstr "एकल उत्पाद पृष्ठ पर व्हाट्सएप बटन दिखाएं"
+
+#: includes/class-strings.php:489
+msgid "Advance"
+msgstr "अग्रिम"
+
+#: includes/class-strings.php:490
+msgid "After product meta"
+msgstr "उत्पाद मेटा के बाद"
+
+#: includes/class-strings.php:491
+msgid "After product short description"
+msgstr "उत्पाद के संक्षिप्त विवरण के बाद"
+
+#: includes/class-strings.php:494
+msgid "Available Variables"
+msgstr "उपलब्ध चर"
+
+#: includes/class-strings.php:495
+msgid "WooCommerce Vars:"
+msgstr "WooCommerce संस्करण:"
+
+#: includes/class-strings.php:496
+msgid "Conditional Blocks:"
+msgstr "सशर्त ब्लॉक:"
+
+#: includes/class-strings.php:497
+msgid "Global Vars:"
+msgstr "वैश्विक संस्करण:"
+
+#: includes/class-strings.php:500
+msgid ""
+"No extra setup needed. Just keep it enabled, and you can instantly connect "
+"any FormyChat widget with FluentCRM."
+msgstr ""
+"किसी अतिरिक्त सेटअप की आवश्यकता नहीं है. बस इसे सक्षम रखें, और आप किसी भी "
+"FormyChat विजेट को फ़्लुएंटसीआरएम से तुरंत कनेक्ट कर सकते हैं।"
+
+#: includes/class-strings.php:501
+msgid "Instructions:"
+msgstr "निर्देश:"
+
+#: includes/class-strings.php:502
+msgid "Create or edit a FormyChat widget."
+msgstr "FormyChat विजेट बनाएं या संपादित करें।"
+
+#: includes/class-strings.php:503
+msgid "Go to {step} stepper."
+msgstr "P8 स्टेपर पर जाएँ."
+
+#: includes/class-strings.php:504
+msgid "Search for \"{option}\" and {action} it."
+msgstr "इसे \" P9 \" और P7 खोजें।"
+
+#: includes/class-strings.php:505
+msgid "Then setup with your preferred lists, tags, and other options."
+msgstr "फिर अपनी पसंदीदा सूचियों, टैग और अन्य विकल्पों के साथ सेटअप करें।"
+
+#: includes/class-strings.php:506
+msgid "🎉 That's it - your leads will start flowing directly into FluentCRM!"
+msgstr "🎉 बस इतना ही - आपकी लीड सीधे फ़्लुएंटसीआरएम में प्रवाहित होने लगेंगी!"
+
+#: includes/class-strings.php:510
+msgid "Connect Mailchimp"
+msgstr "मेलचिम्प कनेक्ट करें"
+
+#: includes/class-strings.php:511
+msgid "Login to your {account} to get your API key."
+msgstr "अपनी एपीआई कुंजी प्राप्त करने के लिए अपने P10 में लॉगिन करें।"
+
+#: includes/class-strings.php:512
+msgid "API Key"
+msgstr "एपीआई कुंजी"
+
+#: includes/class-strings.php:513
+msgid "Get your API key from Mailchimp profile > Extras > API keys"
+msgstr ""
+"अपनी एपीआई कुंजी Mailchimp प्रोफ़ाइल > अतिरिक्त > एपीआई कुंजी से प्राप्त "
+"करें"
+
+#: includes/class-strings.php:514
+msgid "Get your API key from Mailchimp profile > Extras > API keys. {link}"
+msgstr ""
+"अपनी एपीआई कुंजी Mailchimp प्रोफ़ाइल > अतिरिक्त > एपीआई कुंजी से प्राप्त "
+"करें। पी4"
+
+#: includes/class-strings.php:516
+msgid "Connecting..."
+msgstr "कनेक्ट हो रहा है..."
+
+#: includes/class-strings.php:518
+msgid "Connected successfully"
+msgstr "सफलतापूर्वक कनेक्ट हुआ"
+
+#: includes/class-strings.php:519
+msgid "Connection failed. Please check your API key."
+msgstr "कनेक्शन विफल। कृपया अपनी एपीआई कुंजी जांचें।"
+
+#: includes/class-strings.php:520
+msgid "Remove API Key"
+msgstr "एपीआई कुंजी हटाएँ"
+
+#: includes/class-strings.php:521
+msgid ""
+"Are you sure you want to remove the API key? This will disconnect your "
+"integration."
+msgstr "क्या आप वाकई एपीआई कुंजी हटाना चाहते हैं? इससे आपका एकीकरण विच्छेद हो जाएगा."
+
+#: includes/class-strings.php:522
+msgid "Yes, remove it!"
+msgstr "हाँ, इसे हटाओ!"
+
+#: includes/class-strings.php:523
+msgid "Removing..."
+msgstr "हटाया जा रहा है..."
+
+#: includes/class-strings.php:526
+msgid "Default WhatsApp Message"
+msgstr "डिफ़ॉल्ट व्हाट्सएप संदेश"
+
+#: includes/class-strings.php:529
+msgid "Google Sheets Sync"
+msgstr "गूगल शीट्स सिंक"
+
+#: includes/class-strings.php:530
+msgid ""
+"Please connect your Google account in the <a "
+"href=\"admin.php?page=formychat-integrations\" class=\"text-blue-600 "
+"hover:underline font-medium\">Integrations</a> page first."
+msgstr ""
+"कृपया पहले अपने Google खाते को <a "
+"href='admin.php?page=formychat-integrations' class='text-blue-600 "
+"hover:underlinefont-medium'>Integrations</a> पेज से कनेक्ट करें।"
+
+#: includes/class-strings.php:532
+msgid "Spreadsheet"
+msgstr "स्प्रेडशीट"
+
+#: includes/class-strings.php:533
+msgid "Open"
+msgstr "खुला"
+
+#: includes/class-strings.php:534
+msgid "Change"
+msgstr "परिवर्तन"
+
+#: includes/class-strings.php:536
+msgid "Select a spreadsheet"
+msgstr "एक स्प्रेडशीट चुनें"
+
+#: includes/class-strings.php:537
+msgid "Setting up..."
+msgstr "की स्थापना..."
+
+#: includes/class-strings.php:539 includes/class-strings.php:576
+msgid "Note: Selecting a sheet will clear its existing data."
+msgstr "नोट: किसी शीट का चयन करने से उसका मौजूदा डेटा साफ़ हो जाएगा।"
+
+#: includes/class-strings.php:540
+msgid "+ Create a new spreadsheet"
+msgstr "+ एक नई स्प्रेडशीट बनाएं"
+
+#: includes/class-strings.php:541
+msgid "Enter spreadsheet name"
+msgstr "स्प्रेडशीट नाम दर्ज करें"
+
+#: includes/class-strings.php:542
+msgid "Creating..."
+msgstr "बनाया जा रहा है..."
+
+#: includes/class-strings.php:543
+msgid "✔ Save"
+msgstr "✔ सहेजें"
+
+#: includes/class-strings.php:547
+msgid "Triggers & Targeting"
+msgstr "ट्रिगर और लक्ष्यीकरण"
+
+#: includes/class-strings.php:550
+msgid "Or select from existing spreadsheets"
+msgstr "या मौजूदा स्प्रैडशीट्स में से चयन करें"
+
+#: includes/class-strings.php:551
+msgid "Sync Frequency"
+msgstr "सिंक आवृत्ति"
+
+#: includes/class-strings.php:552
+msgid "Sync Interval"
+msgstr "अंतराल सिंक करना"
+
+#: includes/class-strings.php:553
+msgid "More settings \\u2192"
+msgstr "अधिक सेटिंग्स \\u2192"
+
+#: includes/class-strings.php:554
+msgid "synced"
+msgstr "सिंक किया गया"
+
+#: includes/class-strings.php:556
+msgid "Syncing..."
+msgstr "सिंक हो रहा है..."
+
+#: includes/class-strings.php:557
+msgid "Synced!"
+msgstr "समन्वयित!"
+
+#: includes/class-strings.php:558
+msgid "Sync Now"
+msgstr "अभी सिंक करें"
+
+#: includes/class-strings.php:559
+msgid "Free version limit reached ({limit} rows). Upgrade to sync unlimited leads."
+msgstr ""
+"मुफ़्त संस्करण की सीमा पूरी हो गई (P3 पंक्तियाँ)। असीमित लीड को सिंक करने "
+"के लिए अपग्रेड करें।"
+
+#: includes/class-strings.php:560
+msgid "Full Resync"
+msgstr "पूर्ण पुनः समन्वयन"
+
+#: includes/class-strings.php:561
+msgid ""
+"This will clear all existing data in the spreadsheet and re-sync all leads "
+"from scratch."
+msgstr ""
+"यह स्प्रैडशीट में सभी मौजूदा डेटा को साफ़ कर देगा और स्क्रैच से सभी लीड को "
+"फिर से सिंक कर देगा।"
+
+#: includes/class-strings.php:562
+msgid "Please backup your spreadsheet before proceeding."
+msgstr "कृपया आगे बढ़ने से पहले अपनी स्प्रैडशीट का बैकअप ले लें।"
+
+#: includes/class-strings.php:563
+msgid "Yes, resync!"
+msgstr "हाँ, पुनः समन्वयित करें!"
+
+#: includes/class-strings.php:566
+msgid "Connect Google Sheets"
+msgstr "Google शीट कनेक्ट करें"
+
+#: includes/class-strings.php:567
+msgid ""
+"Automatically sync your leads to Google Sheets in real-time. Keep track of "
+"all conversations in one place."
+msgstr ""
+"वास्तविक समय में अपने लीड को स्वचालित रूप से Google शीट में सिंक करें। सभी "
+"वार्तालापों का एक ही स्थान पर ट्रैक रखें."
+
+#: includes/class-strings.php:568
+msgid "Continue with Google"
+msgstr "Google के साथ जारी रखें"
+
+#: includes/class-strings.php:569
+msgid "<strong>{account}</strong> connection expired. Please reconnect."
+msgstr "<strong> P10 </strong> कनेक्शन समाप्त हो गया. कृपया पुनः कनेक्ट करें."
+
+#: includes/class-strings.php:570
+msgid "Your account"
+msgstr "आपका खाता"
+
+#: includes/class-strings.php:571
+msgid "You'll be redirected to Google to authorize access to your spreadsheets"
+msgstr ""
+"आपको अपनी स्प्रैडशीट्स तक पहुंच अधिकृत करने के लिए Google पर पुनः निर्देशित "
+"किया जाएगा"
+
+#: includes/class-strings.php:572
+msgid "Account connected 🎉"
+msgstr "खाता जुड़ा 🎉"
+
+#: includes/class-strings.php:573
+msgid "- choose one -"
+msgstr "- एक का चयन -"
+
+#: includes/class-strings.php:574
+msgid "Search spreadsheets..."
+msgstr "स्प्रैडशीट खोजें..."
+
+#: includes/class-strings.php:575
+msgid "No spreadsheets found"
+msgstr "कोई स्प्रैडशीट नहीं मिली"
+
+#: includes/class-strings.php:577
+msgid "Or"
+msgstr "या"
+
+#: includes/class-strings.php:580
+msgid "select existing"
+msgstr "मौजूदा का चयन करें"
+
+#: includes/class-strings.php:581
+msgid "Select sync mode"
+msgstr "सिंक मोड का चयन करें"
+
+#: includes/class-strings.php:582
+msgid "Select interval"
+msgstr "अंतराल का चयन करें"
+
+#: includes/class-strings.php:584
+msgid "Save & Sync"
+msgstr "सहेजें और सिंक करें"
+
+#: includes/class-strings.php:585
+msgid "Connection failed. Please try again."
+msgstr "कनेक्शन विफल। कृपया पुन: प्रयास करें।"
+
+#: includes/class-strings.php:586
+msgid "Disconnect Google Account"
+msgstr "Google खाता डिस्कनेक्ट करें"
+
+#: includes/class-strings.php:587
+msgid ""
+"Are you sure you want to disconnect? This will stop syncing form "
+"submissions to Google Sheets."
+msgstr ""
+"क्या आप वाकई डिस्कनेक्ट करना चाहते हैं? इससे फ़ॉर्म सबमिशन Google शीट में "
+"समन्वयित होना बंद हो जाएगा."
+
+#: includes/class-strings.php:588
+msgid "Yes, disconnect!"
+msgstr "हाँ, डिस्कनेक्ट करें!"
+
+#: includes/class-strings.php:589
+msgid "Disconnecting..."
+msgstr "डिस्कनेक्ट हो रहा है..."
+
+#: includes/class-strings.php:590
+msgid "Google Sheets"
+msgstr "गूगल शीट्स"
+
+#: includes/class-strings.php:591
+msgid ""
+"Connect your Google account to sync all form submissions directly to {link} "
+"in real time."
+msgstr ""
+"सभी फ़ॉर्म सबमिशन को वास्तविक समय में सीधे P4 पर सिंक करने के लिए अपने "
+"Google खाते से कनेक्ट करें।"
+
+#: includes/class-strings.php:592
+msgid "Choose Spreadsheet"
+msgstr "स्प्रेडशीट चुनें"
+
+#: includes/class-strings.php:593
+msgid "Scheduled (Recommended)"
+msgstr "अनुसूचित (अनुशंसित)"
+
+#: includes/class-strings.php:594
+msgid "Real-time"
+msgstr "रियल टाइम"
+
+#: includes/class-strings.php:595
+msgid "Manual"
+msgstr "नियमावली"
+
+#: includes/class-strings.php:596
+msgid "Never"
+msgstr "कभी नहीं"
+
+#: includes/class-strings.php:597
+msgid "Just now"
+msgstr "बस अब"
+
+#: includes/class-strings.php:598
+msgid "1 minute ago"
+msgstr "1 मिनट पहले"
+
+#: includes/class-strings.php:599
+msgid "{minutes} minutes ago"
+msgstr "P11 मिनट पहले"
+
+#: includes/class-strings.php:600
+msgid "Failed to load Google Sheets status"
+msgstr "Google शीट स्थिति लोड करने में विफल"
+
+#: includes/class-strings.php:601
+msgid "Failed to disconnect."
+msgstr "डिस्कनेक्ट करने में विफल."
+
+#: includes/class-strings.php:602
+msgid "Failed to setup spreadsheet."
+msgstr "स्प्रैडशीट सेटअप करने में विफल."
+
+#: includes/class-strings.php:603
+msgid ""
+"Failed to load spreadsheets. Please disconnect and reconnect your Google "
+"account."
+msgstr ""
+"स्प्रैडशीट लोड करने में विफल. कृपया अपना Google खाता डिस्कनेक्ट करें और "
+"पुनः कनेक्ट करें।"
+
+#: includes/class-strings.php:604
+msgid "Failed to create spreadsheet."
+msgstr "स्प्रेडशीट बनाने में विफल."
+
+#: includes/class-strings.php:605
+msgid "Settings saved successfully!"
+msgstr "सेटिंग्स सफलतापूर्वक सहेजी गईं!"
+
+#: includes/class-strings.php:606
+msgid "Failed to save settings."
+msgstr "सेटिंग्स सहेजने में विफल."
+
+#: includes/class-strings.php:607
+msgid "Spreadsheet \"{name}\" initialized and {count} lead(s) synced!"
+msgstr "स्प्रेडशीट \" P0 \" प्रारंभ किया गया और P1 लीड समन्वयित किया गया!"
+
+#: includes/class-strings.php:608
+msgid "Spreadsheet \"{name}\" created and {count} lead(s) synced!"
+msgstr "स्प्रेडशीट \" P0 \" बनाया गया और P1 लीड समन्वयित किया गया!"
+
+#: includes/class-strings.php:609
+msgid "Settings saved!"
+msgstr "सेटिंग्स को सहेजा गया!"
+
+#: includes/class-strings.php:610
+msgid "Full resync complete! Synced {count} lead(s)."
+msgstr "पूर्ण पुन: समन्वयन पूर्ण! समन्वयित P1 लीड।"
+
+#: includes/class-strings.php:611
+msgid "Sync failed."
+msgstr "समन्वयन विफल."
+
+#: includes/class-strings.php:612
+msgid "Resync failed."
+msgstr "पुनः समन्वयन विफल."
+
+#: includes/class-strings.php:613
+msgid "Failed to load spreadsheets"
+msgstr "स्प्रैडशीट लोड करने में विफल"
+
+#: includes/class-strings.php:616
+msgid "Mailchimp module is not active."
+msgstr "मेलचिम्प मॉड्यूल सक्रिय नहीं है."
+
+#: includes/class-strings.php:617
+msgid "To connect your leads with Mailchimp, please activate the module first."
+msgstr "अपने लीड को Mailchimp से जोड़ने के लिए, कृपया पहले मॉड्यूल को सक्रिय करें।"
+
+#: includes/class-strings.php:618
+msgid "Activate Mailchimp \\u2192"
+msgstr "Mailchimp सक्रिय करें \\u2192"
+
+#: includes/class-strings.php:619
+msgid "Mailchimp API key is not connected."
+msgstr "Mailchimp API कुंजी कनेक्ट नहीं है."
+
+#: includes/class-strings.php:620
+msgid ""
+"Please connect your Mailchimp account by adding your API key in the "
+"integrations page."
+msgstr ""
+"कृपया एकीकरण पृष्ठ में अपनी एपीआई कुंजी जोड़कर अपना मेलचिम्प खाता कनेक्ट "
+"करें।"
+
+#: includes/class-strings.php:621
+msgid "Go to Mailchimp Module \\u2192"
+msgstr "मेलचिम्प मॉड्यूल \\u2192 पर जाएं"
+
+#: includes/class-strings.php:622
+msgid "FluentCRM is not installed."
+msgstr "फ़्लुएंटसीआरएम स्थापित नहीं है."
+
+#: includes/class-strings.php:623
+msgid ""
+"To connect your leads with FluentCRM, please install and activate the "
+"plugin first."
+msgstr ""
+"अपने लीड को फ़्लुएंटसीआरएम से जोड़ने के लिए, कृपया पहले प्लगइन इंस्टॉल और "
+"सक्रिय करें।"
+
+#: includes/class-strings.php:624
+msgid "Install FluentCRM \\u2192"
+msgstr "फ़्लुएंटसीआरएम स्थापित करें \\u2192"
+
+#: includes/class-strings.php:625
+msgid "FluentCRM is not active."
+msgstr "फ़्लुएंटसीआरएम सक्रिय नहीं है."
+
+#: includes/class-strings.php:626
+msgid "Please activate the FluentCRM plugin to send leads directly from FormyChat."
+msgstr "कृपया FormyChat से सीधे लीड भेजने के लिए फ़्लुएंटसीआरएम प्लगइन सक्रिय करें।"
+
+#: includes/class-strings.php:627
+msgid "Activate FluentCRM \\u2192"
+msgstr "फ़्लुएंटसीआरएम सक्रिय करें \\u2192"
+
+#: includes/class-strings.php:628
+msgid "FluentCRM is not enabled."
+msgstr "फ़्लुएंटसीआरएम सक्षम नहीं है."
+
+#: includes/class-strings.php:629
+msgid ""
+"Please enable the FluentCRM integration to send leads directly from "
+"FormyChat."
+msgstr "कृपया FormyChat से सीधे लीड भेजने के लिए फ़्लुएंटसीआरएम एकीकरण सक्षम करें।"
+
+#: includes/class-strings.php:630
+msgid "Enable FluentCRM \\u2192"
+msgstr "फ़्लुएंटसीआरएम सक्षम करें \\u2192"
+
+#: includes/class-strings.php:639
+msgid "Upcoming"
+msgstr "आगामी"
+
+#: includes/class-strings.php:640
+msgid "Installing..."
+msgstr "स्थापित किया जा रहा है..."
+
+#: includes/class-strings.php:641
+msgid "Activating..."
+msgstr "सक्रिय किया जा रहा है..."
+
+#: includes/class-strings.php:643
+msgid "Activate"
+msgstr "सक्रिय करें"
+
+#: includes/class-strings.php:644
+msgid "Install"
+msgstr "स्थापित करना"
+
+#: includes/class-strings.php:647
+msgid "GET PREMIUM"
+msgstr "प्रीमियम प्राप्त करें"
+
+#: includes/class-strings.php:650
+msgid "Reset Message Template"
+msgstr "संदेश टेम्पलेट रीसेट करें"
+
+#: includes/class-strings.php:651
+msgid "Are you sure you want to reset the message template?"
+msgstr "क्या आप वाकई संदेश टेम्पलेट रीसेट करना चाहते हैं?"
+
+#: includes/class-strings.php:652
+msgid "Yes, reset!"
+msgstr "हाँ, रीसेट करें!"
+
+#: includes/class-strings.php:653
+msgid "Toggle Preview of Preset Message"
+msgstr "प्रीसेट संदेश का पूर्वावलोकन टॉगल करें"
+
+#: includes/class-strings.php:654
+msgid "Keyboard Shortcuts"
+msgstr "कुंजीपटल अल्प मार्ग"
+
+#: includes/class-strings.php:655
+msgid "Some formatting rules are not supported in the WhatsApp Windows"
+msgstr "व्हाट्सएप विंडोज़ में कुछ फ़ॉर्मेटिंग नियम समर्थित नहीं हैं"
+
+#: includes/class-strings.php:656
+msgid "Preview Message"
+msgstr "संदेश का पूर्वावलोकन करें"
+
+#: includes/class-strings.php:660
+msgid "Call to action style"
+msgstr "कॉल टू एक्शन शैली"
+
+#: includes/class-strings.php:661
+msgid "Text Size"
+msgstr "टेक्स्ट का साइज़"
+
+#: includes/class-strings.php:662
+msgid "Custom Text Size"
+msgstr "कस्टम टेक्स्ट आकार"
+
+#: includes/class-strings.php:665
+msgid ""
+"Enable this option to receive all lead information to your given email "
+"address"
+msgstr ""
+"आपके दिए गए ईमेल पते पर सभी लीड जानकारी प्राप्त करने के लिए इस विकल्प को "
+"सक्षम करें"
+
+#: includes/class-strings.php:666
+msgid "Receive leads via email"
+msgstr "ईमेल के माध्यम से लीड प्राप्त करें"
+
+#: includes/class-strings.php:667
+msgid "Use admin email to receive leads"
+msgstr "लीड प्राप्त करने के लिए व्यवस्थापक ईमेल का उपयोग करें"
+
+#: includes/class-strings.php:668
+msgid "Enter email address"
+msgstr "ईमेल पता दर्ज करें"
+
+#: includes/class-strings.php:669
+msgid "FluentSMTP"
+msgstr "फ़्लुएंटएसएमटीपी"
+
+#: includes/class-strings.php:670 includes/class-strings.php:683
+msgid "plugin to receive mail."
+msgstr "मेल प्राप्त करने के लिए प्लगइन."
+
+#: includes/class-strings.php:671
+msgid "Form Size"
+msgstr "प्रपत्र का आकार"
+
+#: includes/class-strings.php:672
+msgid "Custom Form Size"
+msgstr "कस्टम फॉर्म आकार"
+
+#: includes/class-strings.php:673
+msgid "Form Title"
+msgstr "प्रपत्र शीर्षक"
+
+#: includes/class-strings.php:674
+msgid "Form Title (Ex: Contact via WhatsApp)"
+msgstr "फॉर्म शीर्षक (उदा: व्हाट्सएप के माध्यम से संपर्क करें)"
+
+#: includes/class-strings.php:675
+msgid "Leave blank to disable"
+msgstr "अक्षम करने के लिए खाली छोड़ दें"
+
+#: includes/class-strings.php:676
+msgid "Header Text"
+msgstr "शीर्षलेख पाठ"
+
+#: includes/class-strings.php:677
+msgid "Header Text (Ex: Please fill up the fields below)"
+msgstr "हेडर टेक्स्ट (उदाहरण: कृपया नीचे दिए गए फ़ील्ड भरें)"
+
+#: includes/class-strings.php:678
+msgid "Footer Text"
+msgstr "पादलेख पाठ"
+
+#: includes/class-strings.php:679
+msgid "Footer Text (Ex: Powered by FormyChat)"
+msgstr "पादलेख पाठ (उदा: FormyChat द्वारा संचालित)"
+
+#: includes/class-strings.php:680
+msgid "Submit Button Text"
+msgstr "बटन टेक्स्ट सबमिट करें"
+
+#: includes/class-strings.php:681
+msgid "Button Text (Ex: Send on WhatsApp)"
+msgstr "बटन टेक्स्ट (उदाहरण: व्हाट्सएप पर भेजें)"
+
+#: includes/class-strings.php:682
+msgid "Please configure any SMTP e.g."
+msgstr "कृपया किसी भी SMTP को कॉन्फ़िगर करें उदा."
+
+#: includes/class-strings.php:684
+msgid "or"
+msgstr "या"
+
+#: includes/class-strings.php:685
+msgid ""
+"Please configure any SMTP e.g. {wp_mail_smtp} or {fluent_smtp} plugin to "
+"receive mail."
+msgstr ""
+"कृपया किसी भी SMTP को कॉन्फ़िगर करें उदा. मेल प्राप्त करने के लिए P12 या "
+"P13 प्लगइन।"
+
+#: includes/class-strings.php:688
+msgid ""
+"{plugin} is not {status}! Please {action} it first to send unlimited "
+"messages through any of your {plugin} forms"
+msgstr ""
+"P5, P6 नहीं है! कृपया अपने किसी भी P5 फॉर्म के माध्यम से असीमित संदेश भेजने "
+"के लिए इसे पहले P7 करें"
+
+#: includes/class-strings.php:689
+msgid "Install & Activate"
+msgstr "इंस्टॉल करें और सक्रिय करें"
+
+#: includes/class-strings.php:690
+msgid "installed"
+msgstr "इंस्टॉल किया"
+
+#: includes/class-strings.php:691
+msgid "activated"
+msgstr "सक्रिय"
+
+#: includes/class-strings.php:692
+msgid ""
+"{plugin} is not {status}! Please activate it first to send unlimited "
+"messages through any of your {plugin} forms"
+msgstr ""
+"P5, P6 नहीं है! कृपया अपने किसी भी P5 फॉर्म के माध्यम से असीमित संदेश भेजने "
+"के लिए पहले इसे सक्रिय करें"
+
+#: includes/class-strings.php:693
+msgid "This will add country code with number to choose."
+msgstr "यह चुनने के लिए नंबर के साथ देश कोड जोड़ देगा।"
+
+#: includes/class-strings.php:694
+msgid "Allow users to select"
+msgstr "उपयोगकर्ताओं को चयन करने दें"
+
+#: includes/class-strings.php:695
+msgid "country code"
+msgstr "कंट्री कोड"
+
+#: includes/class-strings.php:696
+msgid "Open the form by default when the page is loaded."
+msgstr "पेज लोड होने पर फॉर्म को डिफ़ॉल्ट रूप से खोलें।"
+
+#: includes/class-strings.php:697
+msgid "Open by default"
+msgstr "डिफ़ॉल्ट रूप से खोलें"
+
+#: includes/class-strings.php:698
+msgid "Close the form after a successful submission."
+msgstr "सफलतापूर्वक सबमिट करने के बाद फॉर्म को बंद कर दें।"
+
+#: includes/class-strings.php:700
+msgid "on Submit"
+msgstr "सबमिट पर"
+
+#: includes/class-strings.php:701
+msgid "Select form"
+msgstr "फॉर्म का चयन करें"
+
+#: includes/class-strings.php:702
+msgid "Select country"
+msgstr "देश चुनें"
+
+#: includes/class-strings.php:703
+msgid "Select font"
+msgstr "फ़ॉन्ट चुनें"
+
+#: includes/class-strings.php:706
+msgid "Google Analytics"
+msgstr "गूगल एनालिटिक्स"
+
+#: includes/class-strings.php:707
+msgid "Enable this option to track form submissions with Google Analytics."
+msgstr ""
+"Google Analytics के साथ फ़ॉर्म सबमिशन को ट्रैक करने के लिए इस विकल्प को "
+"सक्षम करें।"
+
+#: includes/class-strings.php:708
+msgid ""
+"Automatically send form leads to FluentCRM for email marketing campaigns "
+"and customer relationship management."
+msgstr ""
+"ईमेल मार्केटिंग अभियानों और ग्राहक संबंध प्रबंधन के लिए फ़्लुएंटसीआरएम को "
+"स्वचालित रूप से फॉर्म लीड भेजें।"
+
+#: includes/class-strings.php:709
+msgid "Automatically send form leads to Mailchimp for email marketing campaigns."
+msgstr ""
+"ईमेल मार्केटिंग अभियानों के लिए स्वचालित रूप से फ़ॉर्म लीड को Mailchimp पर "
+"भेजें।"
+
+#: includes/class-strings.php:710
+msgid "- Select lists -"
+msgstr "- सूचियाँ चुनें -"
+
+#: includes/class-strings.php:711
+msgid "- Select tag -"
+msgstr "- टैग चुनें -"
+
+#: includes/class-strings.php:712
+msgid "Select field"
+msgstr "फ़ील्ड चुनें"
+
+#: includes/class-strings.php:713
+msgid "Select FluentCRM field"
+msgstr "फ़्लुएंटसीआरएम फ़ील्ड चुनें"
+
+#: includes/class-strings.php:714
+msgid "If enabled, existing contacts won't be updated/duplicated."
+msgstr "यदि सक्षम किया गया है, तो मौजूदा संपर्क अपडेट/डुप्लिकेट नहीं किए जाएंगे।"
+
+#: includes/class-strings.php:715
+msgid "Skip if contacts already exist in"
+msgstr "यदि संपर्क पहले से मौजूद हैं तो छोड़ें"
+
+#: includes/class-strings.php:716
+msgid "- Select audiences -"
+msgstr "- ऑडियंस का चयन करें -"
+
+#: includes/class-strings.php:717
+msgid "- Select tags -"
+msgstr "- टैग चुनें -"
+
+#: includes/class-strings.php:718
+msgid "Select Mailchimp field"
+msgstr "Mailchimp फ़ील्ड चुनें"
+
+#: includes/class-strings.php:721
+msgid "Hi! Have any queries?"
+msgstr "नमस्ते! क्या आपके कोई प्रश्न हैं?"
+
+#: includes/class-strings.php:724 includes/class-strings.php:725
+msgid "Contact via WhatsApp"
+msgstr "व्हाट्सएप के माध्यम से संपर्क करें"
+
+#: includes/class-strings.php:726
+msgid "Agent name"
+msgstr "एजेंट का नाम"
+
+#: includes/class-strings.php:727
+msgid "Agent subtitle"
+msgstr "एजेंट उपशीर्षक"
+
+#: includes/class-strings.php:728 includes/class-strings.php:729
+msgid "Enter your phone"
+msgstr "अपना फ़ोन दर्ज करें"
+
+#: includes/class-strings.php:733 includes/core/class-app.php:30
+msgid "Default"
+msgstr "गलती करना"
+
+#: includes/class-strings.php:734
+msgid "From"
+msgstr "से"
+
+#: includes/class-strings.php:735
+msgid "Ex: ca7*****************************-us14"
+msgstr "उदाहरण: ca7*****************************-us14"
+
+#: includes/class-strings.php:750
+msgid "You can"
+msgstr "तुम कर सकते हो"
+
+#: includes/class-strings.php:751
+msgid "disable email notifications"
+msgstr "ईमेल सूचनाएं अक्षम करें"
+
+#: includes/class-strings.php:752
+msgid "from the selected CF7 form."
+msgstr "चयनित CF7 प्रपत्र से."
+
+#: includes/class-strings.php:756
+msgid "FluentCRM List(s):"
+msgstr "फ़्लुएंटसीआरएम सूची:"
+
+#: includes/class-strings.php:757
+msgid "FluentCRM Tag(s):"
+msgstr "फ़्लुएंटसीआरएम टैग:"
+
+#: includes/class-strings.php:758
+msgid "Map Fields"
+msgstr "मानचित्र फ़ील्ड"
+
+#: includes/class-strings.php:759
+msgid "Please map your form's email field to FluentCRM Email before saving."
+msgstr ""
+"कृपया सहेजने से पहले अपने फॉर्म के ईमेल फ़ील्ड को फ़्लुएंटसीआरएम ईमेल पर "
+"मैप करें।"
+
+#: includes/class-strings.php:760
+msgid "Your Form Fields"
+msgstr "आपका फॉर्म फ़ील्ड"
+
+#: includes/class-strings.php:761
+msgid "FluentCRM field"
+msgstr "फ्लुएंटसीआरएम फ़ील्ड"
+
+#: includes/class-strings.php:764
+msgid "Mailchimp Settings"
+msgstr "मेलचिम्प सेटिंग्स"
+
+#: includes/class-strings.php:765
+msgid "Mailchimp Audience(s):"
+msgstr "मेलचिम्प श्रोता:"
+
+#: includes/class-strings.php:766
+msgid "Mailchimp Tag(s):"
+msgstr "मेलचिम्प टैग:"
+
+#: includes/class-strings.php:767
+msgid "Please map your form's email field to Mailchimp Email before saving."
+msgstr ""
+"कृपया सहेजने से पहले अपने फॉर्म के ईमेल फ़ील्ड को Mailchimp ईमेल पर मैप "
+"करें।"
+
+#: includes/class-strings.php:768
+msgid "Mailchimp field"
+msgstr "मेलचिम्प फ़ील्ड"
+
+#: includes/class-strings.php:769
+#: includes/forms/contact-form/class-cf7-admin.php:188
+#: includes/forms/contact-form/class-cf7-admin.php:237
+msgid "Note:"
+msgstr "टिप्पणी:"
+
+#: includes/class-strings.php:770
+msgid ""
+"Address will be added only when all of the required fields are mapped "
+"(Street Address, City, State, Postal Code)."
+msgstr ""
+"पता केवल तभी जोड़ा जाएगा जब सभी आवश्यक फ़ील्ड मैप किए जाएंगे (सड़क का पता, "
+"शहर, राज्य, पोस्टल कोड)।"
+
+#: includes/class-strings.php:771
+msgid "Skip if contacts already exist in Mailchimp"
+msgstr "यदि संपर्क पहले से ही Mailchimp में मौजूद हैं तो छोड़ें"
+
+#: includes/class-strings.php:774
+msgid "Setup Finished!"
+msgstr "सेटअप समाप्त!"
+
+#: includes/class-strings.php:775
+msgid "Widget Updated!"
+msgstr "विजेट अपडेट किया गया!"
+
+#: includes/class-strings.php:776
+msgid "Now you can use"
+msgstr "अब आप उपयोग कर सकते हैं"
+
+#: includes/class-strings.php:778
+msgid "Done"
+msgstr "हो गया"
+
+#: includes/class-strings.php:779
+msgid "Upgrade all features"
+msgstr "सभी सुविधाओं को अपग्रेड करें"
+
+#: includes/core/class-app.php:31
+msgid "Arial"
+msgstr "एरियल"
+
+#: includes/core/class-app.php:32
+msgid "Arial Black"
+msgstr "एरियल ब्लैक"
+
+#: includes/core/class-app.php:33
+msgid "Comic Sans MS"
+msgstr "कॉमिक सैंस एम.एस"
+
+#: includes/core/class-app.php:34
+msgid "Courier New"
+msgstr "कूरियर नया"
+
+#: includes/core/class-app.php:35
+msgid "Georgia"
+msgstr "जॉर्जिया"
+
+#: includes/core/class-app.php:36
+msgid "Lucida Console"
+msgstr "ल्यूसिडा कंसोल"
+
+#: includes/core/class-app.php:37
+msgid "Lucida Sans"
+msgstr "ल्यूसिडा संस"
+
+#: includes/core/class-app.php:38
+msgid "Tahoma"
+msgstr "ताहोमा"
+
+#: includes/core/class-app.php:39
+msgid "Times New Roman"
+msgstr "टाइम्स न्यू रोमन"
+
+#: includes/core/class-app.php:40
+msgid "Trebuchet"
+msgstr "ट्रेबुशेट"
+
+#: includes/core/class-app.php:41
+msgid "Verdana"
+msgstr "वर्दाना"
+
+#: includes/core/class-app.php:42
+msgid "Ubuntu"
+msgstr "उबंटू"
+
+#: includes/core/class-app.php:44
+msgid "Roboto"
+msgstr "रोबोटो"
+
+#: includes/core/class-app.php:45
+msgid "Roboto Condensed"
+msgstr "रोबोटो संघनित"
+
+#: includes/core/class-app.php:46
+msgid "Open Sans"
+msgstr "संस खोलें"
+
+#: includes/core/class-app.php:47
+msgid "Lato"
+msgstr "लाटो"
+
+#: includes/core/class-app.php:48
+msgid "Montserrat"
+msgstr "मोंटेसेराट"
+
+#: includes/core/class-app.php:49
+msgid "Raleway"
+msgstr "रेलवे"
+
+#: includes/core/class-app.php:50
+msgid "PT Sans"
+msgstr "पीटी संस"
+
+#: includes/core/class-app.php:51
+msgid "Roboto Slab"
+msgstr "रोबोटो स्लैब"
+
+#: includes/core/class-app.php:52
+msgid "Merriweather"
+msgstr "मेरिवेदर"
+
+#: includes/core/class-app.php:53
+msgid "Playfair Display"
+msgstr "प्लेफेयर डिस्प्ले"
+
+#: includes/core/class-app.php:54
+msgid "Source Sans Pro"
+msgstr "स्रोत संस प्रो"
+
+#: includes/core/class-app.php:55
+msgid "Noto Sans"
+msgstr "नोटो संस"
+
+#: includes/core/class-app.php:56
+msgid "Noto Serif"
+msgstr "नोटो सेरिफ़"
+
+#: includes/core/class-app.php:57
+msgid "Roboto Mono"
+msgstr "रोबोटो मोनो"
+
+#: includes/core/class-app.php:58
+msgid "Nunito"
+msgstr "नुनितो"
+
+#: includes/core/class-app.php:59
+msgid "Poppins"
+msgstr "पोप्पिंस"
+
+#: includes/core/class-app.php:60
+msgid "Rubik"
+msgstr "रूबिक"
+
+#: includes/core/class-app.php:1609
+msgid "Enter your Name"
+msgstr "अपना नाम दर्ज करें"
+
+#: includes/core/class-app.php:1619
+msgid "Enter your Email"
+msgstr "अपना ईमेल दर्ज करें"
+
+#: includes/core/class-app.php:1630
+msgid "Enter your Phone"
+msgstr "अपना फ़ोन दर्ज करें"
+
+#: includes/core/class-app.php:1643
+msgid "Enter your Message"
+msgstr "अपना संदेश दर्ज करें"
+
+#: includes/core/class-database.php:337
+msgid "My First Widget"
+msgstr "मेरा पहला विजेट"
+
+#: includes/forms/contact-form/class-cf7-admin.php:66
+#: includes/forms/formidable/class-formidable-admin.php:47
+#: includes/forms/gravity-forms/class-gf-admin.php:59
+msgid "WhatsApp (FormyChat)"
+msgstr "व्हाट्सएप (फॉर्मीचैट)"
+
+#: includes/forms/contact-form/class-cf7-admin.php:127
+msgid "Connect WhatsApp"
+msgstr "व्हाट्सएप कनेक्ट करें"
+
+#: includes/forms/contact-form/class-cf7-admin.php:138
+msgid "Enable to connect WhatsApp for this contact form."
+msgstr "इस संपर्क फ़ॉर्म के लिए व्हाट्सएप कनेक्ट करना सक्षम करें।"
+
+#: includes/forms/contact-form/class-cf7-admin.php:167
+msgid "WhatsApp message body"
+msgstr "व्हाट्सएप संदेश का मुख्य भाग"
+
+#: includes/forms/contact-form/class-cf7-admin.php:172
+msgid "Use these tags in the message body:"
+msgstr "संदेश के मुख्य भाग में इन टैग का उपयोग करें:"
+
+#: includes/forms/contact-form/class-cf7-admin.php:186
+msgid "Format your whatsapp message"
+msgstr "अपने व्हाट्सएप संदेश को प्रारूपित करें"
+
+#: includes/forms/contact-form/class-cf7-admin.php:189
+msgid "File Upload field will not support on WhatsApp message body."
+msgstr "फ़ाइल अपलोड फ़ील्ड व्हाट्सएप संदेश के मुख्य भाग पर समर्थन नहीं करेगा।"
+
+#: includes/forms/contact-form/class-cf7-admin.php:198
+msgid "Open in new tab"
+msgstr "वेब टेब में खोलें"
+
+#: includes/forms/contact-form/class-cf7-admin.php:208
+msgid "Enable to open whatsapp in new tab."
+msgstr "व्हाट्सएप को नए टैब में खोलने में सक्षम करें।"
+
+#: includes/forms/contact-form/class-cf7-admin.php:212
+msgid ""
+"Note: This option is for only desktop devices, It will be useful for "
+"WhatsApp web on desktop devices."
+msgstr ""
+"नोट: यह विकल्प केवल डेस्कटॉप डिवाइस के लिए है, यह डेस्कटॉप डिवाइस पर "
+"व्हाट्सएप वेब के लिए उपयोगी होगा।"
+
+#: includes/forms/contact-form/class-cf7-admin.php:222
+msgid "Disable email notifications"
+msgstr "ईमेल सूचनाएं अक्षम करें"
+
+#: includes/forms/contact-form/class-cf7-admin.php:234
+msgid "Enable this toggle to stop receiving email notifications from this form."
+msgstr ""
+"इस फ़ॉर्म से ईमेल सूचनाएं प्राप्त करना बंद करने के लिए इस टॉगल को सक्षम "
+"करें।"
+
+#: includes/forms/contact-form/class-cf7-admin.php:238
+msgid ""
+"With this function enabled, you can use this Contact Form 7 form without "
+"using any SMTP plugin."
+msgstr ""
+"इस फ़ंक्शन के सक्षम होने पर, आप किसी भी SMTP प्लगइन का उपयोग किए बिना इस "
+"संपर्क फ़ॉर्म 7 फ़ॉर्म का उपयोग कर सकते हैं।"
+
+#: includes/forms/fluentform/class-fluentform-admin.php:44
+msgid "Whatsapp (Formychat)"
+msgstr "व्हाट्सएप (फॉर्मीचैट)"
+
+#: includes/forms/formidable/class-formidable-frontend.php:146
+msgid "Missing form ID."
+msgstr "गुम फॉर्म आईडी."
+
+#: includes/forms/formidable/class-formidable-frontend.php:154
+msgid "Form not found."
+msgstr "फॉर्म नहीं मिला."
+
+#: includes/forms/formidable/class-formidable-frontend.php:163
+msgid "No recent form submission found."
+msgstr "हाल ही में जमा किया गया कोई फॉर्म नहीं मिला."
+
+#: includes/forms/formidable/class-formidable-frontend.php:185
+msgid "Entry not found."
+msgstr "प्रवेश नहीं मिला."
+
+#: includes/forms/wpforms/class-wpforms-admin.php:47
+msgid "FormyChat Settings"
+msgstr "फॉर्मीचैट सेटिंग्स"
+
+#: includes/forms/wpforms/class-wpforms-admin.php:124
+#, php-format
+msgid "Available tags: %s"
+msgstr "उपलब्ध टैग: P14"
+
+#: includes/others/functions.php:56
+msgid "Phone number"
+msgstr "फ़ोन नंबर"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_widget_opened"
+msgstr "formychat_widget_opened"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_widget_closed"
+msgstr "formychat_widget_closed"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_agent_selected"
+msgstr "formychat_agent_selected"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_form_loaded"
+msgstr "formychat_form_loaded"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_form_submitted"
+msgstr "formychat_form_submitted"
+
+#: includes/class-strings.php
+msgid "Select an option"
+msgstr "कोई विकल्प चुनें"
+
+#: includes/class-strings.php
+msgid "Ultimate"
+msgstr "अंतिम"
+
+#: includes/class-strings.php
+msgid "New"
+msgstr "नया"
+
+#: includes/class-strings.php
+msgid "Simple"
+msgstr "सरल"
+
+#: includes/class-strings.php
+msgid "Wave"
+msgstr "लहर"
+
+#: includes/class-strings.php
+msgid "Whatsapp"
+msgstr "Whatsapp"
+
+#: includes/class-strings.php
+msgid "Keyboard Shortcuts: CTRL/CMD + B, I, S"
+msgstr "कीबोर्ड शॉर्टकट: CTRL/CMD + B, I, S"
+
+#: includes/class-strings.php
+msgid "Insert"
+msgstr "डालना"
+
+#: includes/class-strings.php
+msgid "All"
+msgstr "सभी"
+
+#: includes/class-strings.php
+msgid "CRM & Marketing"
+msgstr "सीआरएम एवं मार्केटिंग"
+
+#: includes/class-strings.php
+msgid "Email & Newsletters"
+msgstr "ईमेल एवं समाचारपत्रिकाएँ"
+
+#: includes/class-strings.php
+msgid "Automation & Webhooks"
+msgstr "स्वचालन और वेबहुक"
+
+#: includes/class-strings.php
+msgid "File Storage & Cloud"
+msgstr "फ़ाइल संग्रहण और क्लाउड"
+
+#: includes/class-strings.php
+msgid "Analytics & Tracking"
+msgstr "विश्लेषिकी एवं ट्रैकिंग"
+
+#: includes/class-strings.php
+msgid "Communication"
+msgstr "संचार"
+
+#: includes/class-strings.php
+msgid "Others"
+msgstr "अन्य"
+
+#: includes/admin/class-integrations.php
+msgid ""
+"Connect your Form leads to FluentCRM and instantly add new contacts when a "
+"form is submitted. Perfect for automated email campaigns and segmented "
+"marketing."
+msgstr ""
+"अपने फ़ॉर्म लीड को फ़्लुएंटसीआरएम से कनेक्ट करें और फ़ॉर्म सबमिट होने पर "
+"तुरंत नए संपर्क जोड़ें। स्वचालित ईमेल अभियानों और खंडित विपणन के लिए "
+"बिल्कुल सही।"
+
+#: includes/admin/class-integrations.php
+msgid ""
+"Create Mailchimp newsletter signups directly from your form submissions. "
+"Automatically grow your audience and engage your subscribers."
+msgstr ""
+"सीधे अपने फॉर्म सबमिशन से मेलचिम्प न्यूज़लेटर साइनअप बनाएं। स्वचालित रूप से "
+"अपने दर्शकों को बढ़ाएं और अपने ग्राहकों को संलग्न करें।"
+
+#: includes/admin/class-integrations.php
+msgid ""
+"Sync form submissions directly to Google Sheets in real time. Perfect for "
+"reporting, analytics, or team collaboration without manual data entry."
+msgstr ""
+"फ़ॉर्म सबमिशन को वास्तविक समय में सीधे Google शीट में सिंक करें। मैन्युअल "
+"डेटा प्रविष्टि के बिना रिपोर्टिंग, विश्लेषण या टीम सहयोग के लिए बिल्कुल सही।"
+
+#: includes/admin/class-integrations.php
+msgid ""
+"Add subscribers to your MailPoet mailing lists as soon as they submit a "
+"form. Automate your newsletter growth and keep your audience engaged."
+msgstr ""
+"जैसे ही ग्राहक फ़ॉर्म सबमिट करें, उन्हें अपनी MailPoet मेलिंग सूची में "
+"जोड़ें। अपने न्यूज़लेटर विकास को स्वचालित करें और अपने दर्शकों को जोड़े "
+"रखें।"
+
+#: includes/class-strings.php
+msgid "Select pages"
+msgstr "पृष्ठ चुनें"
+
+#: includes/class-strings.php
+msgid "No page found"
+msgstr "कोई पृष्ठ नहीं मिला"
+
+#: includes/class-strings.php
+msgid "All Widgets"
+msgstr "सभी विजेट"
+
+#: includes/class-strings.php
+msgid "All Forms"
+msgstr "सभी फ़ॉर्म"
+
+
+#: includes/class-strings.php
+msgid "INSTALL"
+msgstr "स्थापित करना"

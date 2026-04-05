@@ -7,19 +7,21 @@
 if ( ! function_exists('formychat_phone_number_field') ) {
     function formychat_phone_number_field( $args = [] ) {
 
-        $args = wp_parse_args($args, [
-            'country_code' => '',
-            'number' => '',
-            'country_code_name' => 'formychat_country_code',
-            'number_name' => 'formychat_number',
-        ]);
-		?>
+        $args = wp_parse_args(
+            $args, [
+				'country_code' => '',
+				'number' => '',
+				'country_code_name' => 'formychat_country_code',
+				'number_name' => 'formychat_number',
+            ]
+        );
+        ?>
         <div class="formychat-phone-field" tabindex="1">
             <div class="formychat-dropdown">
                 <!-- input  -->
                 <input type="hidden" class="formychat-dropdown-input" 
-                name="<?php echo esc_attr( $args['country_code_name'] ); ?>"
-                    value="<?php echo esc_attr( $args['country_code'] ); ?>">
+                name="<?php echo esc_attr($args['country_code_name']); ?>"
+                    value="<?php echo esc_attr($args['country_code']); ?>">
 
                 <!-- placeholder  -->
                 <div class="formychat-dropdown-placeholder" tabindex="1">
@@ -39,14 +41,14 @@ if ( ! function_exists('formychat_phone_number_field') ) {
                         <?php
                         $countries = \FormyChat\App::countries();
                         foreach ( $countries as $country ) {
-							?>
+                            ?>
                             <div class="formychat-dropdown-content-item <?php echo $args['country_code'] === $country['code'] ? 'selected' : ''; ?>"
                                 data-placeholder="<?php echo wp_sprintf('%s +%s', esc_attr($country['flag']), esc_attr($country['code'])); ?>"
                                 data-value="<?php echo esc_attr($country['code']); ?>"
                                 data-tags="<?php echo wp_sprintf('%s %s', esc_attr($country['code']), esc_attr($country['name'])); ?>">
                                 <?php echo wp_sprintf('%s (+%s) - %s', esc_attr($country['flag']), esc_attr($country['code']), esc_html($country['name'])); ?>
                             </div>
-							<?php
+                            <?php
                         }
                         ?>
                     </div>
@@ -55,10 +57,37 @@ if ( ! function_exists('formychat_phone_number_field') ) {
             </div>
             <input type="text" value="<?php echo esc_attr($args['number']); ?>" name="<?php echo esc_attr($args['number_name']); ?>" class="formychat-input-text" pattern="[0-9{8,15}]" placeholder="<?php esc_html_e('Phone number', 'social-contact-form'); ?>">
         </div>
-		<?php
+        <?php
     }
 }
 
+/**
+ * Output group invite link field for WhatsApp group destination.
+ *
+ * @param array $args Field args: group_invite_code, name.
+ */
+if ( ! function_exists('formychat_group_invite_field') ) {
+    function formychat_group_invite_field( $args = [] ) {
+        $args = wp_parse_args(
+            $args, [
+				'group_invite_code' => '',
+				'name'              => 'formychat_group_invite_code',
+				'placeholder'       => 'https://chat.whatsapp.com/XXXXXXXXXX',
+            ]
+        );
+        ?>
+        <div class="formychat-group-invite-field">
+            <input type="text"
+                class="regular-text"
+                name="<?php echo esc_attr($args['name']); ?>"
+                value="<?php echo esc_attr($args['group_invite_code']); ?>"
+                placeholder="<?php echo esc_attr($args['placeholder']); ?>"
+            />
+            <p class="description"><?php esc_html_e('Paste the full group invite link or just the invite code.', 'social-contact-form'); ?></p>
+        </div>
+        <?php
+    }
+}
 
 // Build message.
 if ( ! function_exists('formychat_build_message') ) {

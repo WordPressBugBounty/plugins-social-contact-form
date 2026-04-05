@@ -5,6 +5,13 @@
 This file contains older changelog entries, so we can keep the size of the standard WordPress readme.txt file reasonable.
 For the latest changes, please see the "Changelog" section of the [readme.txt file](https://plugins.svn.wordpress.org/social-contact-form/trunk/readme.txt).
 
+= 2.12.0 - 11 Nov, 2025 =
+* **New:** Added Custom CSS feature.
+
+= 2.11.0 - 3 Nov, 2025 =
+* **New:** Added FluentCRM integration with FormyChat.
+* **Improvement:** Moved Google Analytics Integration to Triggers & Targets page.
+
 = 2.10.8 - 21 AUG 2025 =
 * **New:** Added **Google Analytics** and **Google Tag Manager** integration.
 * **Fix:** Fixed FluentForm Multi-fields and column fields support.

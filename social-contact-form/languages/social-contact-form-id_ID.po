@@ -1,0 +1,3141 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-02-09 11:37+0600\n"
+"PO-Revision-Date: 2026-03-12 00:33:32\n"
+"Last-Translator: FormyChat <noreply@formychat.com>\n"
+"Language-Team: \n"
+"Language: id_ID\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;esc_html;esc_html_e;_e;esc_attr;esc_attr_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: .agent\n"
+"X-Poedit-SearchPathExcluded-1: .claude\n"
+"X-Poedit-SearchPathExcluded-2: .git\n"
+"X-Poedit-SearchPathExcluded-3: .github\n"
+"X-Poedit-SearchPathExcluded-4: .wordpress-org\n"
+"X-Poedit-SearchPathExcluded-5: docs\n"
+"X-Poedit-SearchPathExcluded-6: node_modules\n"
+"X-Poedit-SearchPathExcluded-7: src/assets\n"
+"x-generator: generate-po-translations.js\n"
+
+#: includes/addons/woocommerce/class-admin.php:51
+#: includes/addons/woocommerce/class-admin.php:52
+#: includes/class-strings.php:210
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: includes/addons/woocommerce/class-admin.php:207
+#: includes/addons/woocommerce/class-admin.php:257
+msgid "No settings provided."
+msgstr "Tidak ada pengaturan yang disediakan."
+
+#: includes/addons/woocommerce/class-admin.php:220
+#: includes/addons/woocommerce/class-admin.php:270
+msgid "Settings saved successfully."
+msgstr "Pengaturan berhasil disimpan."
+
+#: includes/addons/woocommerce/class-admin.php:283
+msgid "Product Name"
+msgstr "Nama Produk"
+
+#: includes/addons/woocommerce/class-admin.php:284
+msgid "Product Slug"
+msgstr "Siput Produk"
+
+#: includes/addons/woocommerce/class-admin.php:285
+msgid "Product SKU"
+msgstr "SKU Produk"
+
+#: includes/addons/woocommerce/class-admin.php:286
+msgid "Product Price"
+msgstr "Harga Produk"
+
+#: includes/addons/woocommerce/class-admin.php:287
+msgid "Regular Price"
+msgstr "Harga Reguler"
+
+#: includes/addons/woocommerce/class-admin.php:288
+msgid "Sale Price"
+msgstr "Harga penjualan"
+
+#: includes/addons/woocommerce/class-admin.php:289
+msgid "Stock Status"
+msgstr "Status Stok"
+
+#: includes/addons/woocommerce/class-admin.php:290
+msgid "Current URL"
+msgstr "URL saat ini"
+
+#: includes/addons/woocommerce/class-admin.php:291
+msgid "Current Page Title"
+msgstr "Judul Halaman Saat Ini"
+
+#: includes/addons/woocommerce/class-admin.php:292
+msgid "Site Title"
+msgstr "Judul Situs"
+
+#: includes/addons/woocommerce/class-admin.php:293
+msgid "Site URL"
+msgstr "URL situs"
+
+#: includes/addons/woocommerce/class-admin.php:294
+msgid "Site Email"
+msgstr "Email Situs"
+
+#: includes/addons/woocommerce/class-admin.php:295
+msgid "Current Date"
+msgstr "Tanggal Saat Ini"
+
+#: includes/addons/woocommerce/class-admin.php:296
+msgid "Current Time"
+msgstr "Waktu Saat Ini"
+
+#: includes/admin/class-admin-hooks.php:77
+#: includes/admin/class-admin-hooks.php:78 includes/class-strings.php:777
+#: includes/forms/contact-form/class-cf7-admin.php:114
+msgid "FormyChat"
+msgstr "Obrolan Formy"
+
+#: includes/admin/class-admin-hooks.php:88
+#: includes/admin/class-admin-hooks.php:89 includes/class-strings.php:39
+msgid "Floating Widgets"
+msgstr "Widget Mengambang"
+
+#: includes/admin/class-admin-hooks.php:98
+#: includes/admin/class-admin-hooks.php:99 includes/class-strings.php:271
+msgid "Custom CSS"
+msgstr "CSS khusus"
+
+#: includes/admin/class-admin-hooks.php:107 includes/class-strings.php:579
+msgid "FormyChat Leads"
+msgstr "Prospek FormyChat"
+
+#: includes/admin/class-admin-hooks.php:108 includes/class-strings.php:199
+msgid "Leads"
+msgstr "Memimpin"
+
+#: includes/admin/class-admin-hooks.php:116
+#: includes/admin/class-admin-hooks.php:117 includes/class-strings.php:190
+msgid "Integrations"
+msgstr "Integrasi"
+
+#: includes/admin/class-admin-hooks.php:171 includes/class-strings.php:276
+#: includes/class-strings.php:531
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: includes/admin/class-admin-hooks.php:173
+msgid "Upgrade"
+msgstr "Meningkatkan"
+
+#: includes/admin/class-admin-rest.php:187
+#: includes/admin/class-admin-rest.php:238
+msgid "Widget not found."
+msgstr "Widget tidak ditemukan."
+
+#: includes/admin/class-admin-rest.php:220
+msgid "Widget not created."
+msgstr "Widget tidak dibuat."
+
+#: includes/admin/class-admin-rest.php:258
+msgid "No data to update."
+msgstr "Tidak ada data untuk diperbarui."
+
+#: includes/admin/class-admin-rest.php:273
+msgid "Widget not updated."
+msgstr "Widget tidak diperbarui."
+
+#: includes/admin/class-admin-rest.php:288
+msgid "No widget ID provided."
+msgstr "Tidak ada ID widget yang disediakan."
+
+#: includes/admin/class-admin-rest.php:303
+msgid "Widget deleted."
+msgstr "Widget dihapus."
+
+#: includes/admin/class-admin-rest.php:309
+msgid "Widget not deleted."
+msgstr "Widget tidak dihapus."
+
+#: includes/admin/class-admin-rest.php:325
+msgid "Action not found."
+msgstr "Tindakan tidak ditemukan."
+
+#: includes/admin/class-admin-rest.php:377
+msgid "Plugin not found."
+msgstr "Pengaya tidak ditemukan."
+
+#: includes/admin/class-admin-rest.php:403
+#: includes/admin/class-integrations.php:739
+msgid "Could not access filesystem."
+msgstr "Tidak dapat mengakses sistem file."
+
+#: includes/admin/class-admin-rest.php:464
+msgid "No country code provided."
+msgstr "Tidak ada kode negara yang diberikan."
+
+#: includes/admin/class-admin-rest.php:474
+msgid "Country code saved."
+msgstr "Kode negara disimpan."
+
+#: includes/admin/class-admin-rest.php:540
+msgid "No lead ID provided."
+msgstr "Tidak ada ID prospek yang diberikan."
+
+#: includes/admin/class-admin-rest.php:555
+msgid "Leads deleted."
+msgstr "Prospek dihapus."
+
+#: includes/admin/class-admin-rest.php:860 includes/class-strings.php:221
+msgid "Name"
+msgstr "Nama"
+
+#: includes/admin/class-admin-rest.php:861 includes/class-strings.php:222
+msgid "Email"
+msgstr "E-mail"
+
+#: includes/admin/class-admin-rest.php:862 includes/class-strings.php:223
+msgid "Phone"
+msgstr "Telepon"
+
+#: includes/admin/class-admin-rest.php:863 includes/class-strings.php:224
+msgid "Message"
+msgstr "Pesan"
+
+#: includes/admin/class-admin-rest.php:1180
+msgid "No CSS provided."
+msgstr "Tidak ada CSS yang disediakan."
+
+#: includes/admin/class-admin-rest.php:1193
+msgid "Custom CSS saved successfully."
+msgstr "CSS khusus berhasil disimpan."
+
+#: includes/admin/class-google-sheets-api.php:42
+#: includes/admin/class-integrations.php:265
+#: includes/admin/class-integrations.php:293
+msgid "Google Sheets is not connected."
+msgstr "Google Spreadsheet tidak terhubung."
+
+#: includes/admin/class-google-sheets-api.php:46
+msgid "No access token available."
+msgstr "Tidak ada token akses yang tersedia."
+
+#: includes/admin/class-google-sheets-api.php:54
+msgid "Access token expired and refresh failed."
+msgstr "Token akses kedaluwarsa dan penyegaran gagal."
+
+#: includes/admin/class-google-sheets-api.php:106
+msgid "API request failed."
+msgstr "Permintaan API gagal."
+
+#: includes/admin/class-google-sheets-cron.php:75
+#: includes/admin/class-google-sheets-cron.php:104
+msgid "Every 15 minutes"
+msgstr "Setiap 15 menit"
+
+#: includes/admin/class-google-sheets-cron.php:79
+#: includes/admin/class-google-sheets-cron.php:108
+msgid "Every 30 minutes"
+msgstr "Setiap 30 menit"
+
+#: includes/admin/class-google-sheets-cron.php:83
+#: includes/admin/class-google-sheets-cron.php:116
+msgid "Every 6 hours"
+msgstr "Setiap 6 jam"
+
+#: includes/admin/class-google-sheets-cron.php:112
+msgid "Every hour"
+msgstr "Setiap jam"
+
+#: includes/admin/class-google-sheets-cron.php:120
+msgid "Daily"
+msgstr "Sehari-hari"
+
+#: includes/admin/class-google-sheets-sync.php:286
+msgid "Google Sheets integration is disabled."
+msgstr "Integrasi Google Spreadsheet dinonaktifkan."
+
+#: includes/admin/class-google-sheets-sync.php:296
+msgid "No spreadsheet selected."
+msgstr "Tidak ada spreadsheet yang dipilih."
+
+#: includes/admin/class-google-sheets-sync.php:307
+msgid "Free tier limit reached. Upgrade to sync more leads."
+msgstr ""
+"Batas tingkat gratis tercapai. Tingkatkan versi untuk menyinkronkan lebih "
+"banyak prospek."
+
+#: includes/admin/class-integrations.php:251
+msgid "Google Sheets disconnected successfully."
+msgstr "Sambungan Google Spreadsheet berhasil diputus."
+
+#: includes/admin/class-integrations.php:342
+msgid "Spreadsheet title is required."
+msgstr "Judul spreadsheet wajib diisi."
+
+#: includes/admin/class-integrations.php:546
+msgid "Integration updated successfully."
+msgstr "Integrasi berhasil diperbarui."
+
+#: includes/admin/class-integrations.php:652
+msgid "Integration ID is required."
+msgstr "ID integrasi diperlukan."
+
+#: includes/admin/class-integrations.php:667
+msgid "Integration not found."
+msgstr "Integrasi tidak ditemukan."
+
+#: includes/admin/class-integrations.php:672
+msgid "This integration cannot be installed automatically."
+msgstr "Integrasi ini tidak dapat diinstal secara otomatis."
+
+#: includes/admin/class-integrations.php:744
+msgid "Plugins directory is not writable."
+msgstr "Direktori plugin tidak dapat ditulisi."
+
+#: includes/admin/class-integrations.php:760
+msgid "Plugin download link not found."
+msgstr "Tautan unduhan plugin tidak ditemukan."
+
+#: includes/admin/class-integrations.php:820
+msgid "Plugin installation failed."
+msgstr "Instalasi plugin gagal."
+
+#: includes/admin/class-integrations.php:829
+msgid "Plugin file not found after installation."
+msgstr "File plugin tidak ditemukan setelah instalasi."
+
+#: includes/admin/class-integrations.php:850
+#, php-format
+msgid "%s has been installed and activated successfully."
+msgstr "P14 telah berhasil diinstal dan diaktifkan."
+
+#: includes/admin/class-integrations.php:866
+#, php-format
+msgid "%s is already installed and activated."
+msgstr "P14 sudah diinstal dan diaktifkan."
+
+#: includes/admin/class-integrations.php:877
+msgid "Invalid action requested."
+msgstr "Tindakan yang diminta tidak valid."
+
+#: includes/class-strings.php:38
+msgid "Widget name"
+msgstr "Nama widget"
+
+#: includes/class-strings.php:40 includes/class-strings.php:578
+msgid "Create new"
+msgstr "Buat yang baru"
+
+#: includes/class-strings.php:41
+msgid "Upgrade now"
+msgstr "Tingkatkan sekarang"
+
+#: includes/class-strings.php:42
+msgid "Please wait while we load your widgets."
+msgstr "Harap tunggu sementara kami memuat widget Anda."
+
+#: includes/class-strings.php:43
+msgid "Please wait while we load your widget"
+msgstr "Harap tunggu sementara kami memuat widget Anda"
+
+#: includes/class-strings.php:44
+msgid "Form mode"
+msgstr "Modus formulir"
+
+#: includes/class-strings.php:45
+msgid "Created at"
+msgstr "Dibuat di"
+
+#: includes/class-strings.php:46
+msgid "Untitled widget"
+msgstr "Widget tanpa judul"
+
+#: includes/class-strings.php:47
+msgid "Duplicate Widget?"
+msgstr "Widget Duplikat?"
+
+#: includes/class-strings.php:48
+msgid "Please select a name for your new duplicated widget"
+msgstr "Silakan pilih nama untuk widget duplikat baru Anda"
+
+#: includes/class-strings.php:49
+msgid "Creating"
+msgstr "Menciptakan"
+
+#: includes/class-strings.php:50
+msgid "Create Widget"
+msgstr "Buat Widget"
+
+#: includes/class-strings.php:51
+msgid "Edit Widget"
+msgstr "Sunting Widget"
+
+#: includes/class-strings.php:52
+msgid "Delete Widget"
+msgstr "Hapus Widget"
+
+#: includes/class-strings.php:53
+msgid "Duplicate Widget"
+msgstr "Widget Duplikat"
+
+#: includes/class-strings.php:54
+msgid "Widget List"
+msgstr "Daftar Widget"
+
+#: includes/class-strings.php:55
+msgid "No widgets found"
+msgstr "Tidak ada widget yang ditemukan"
+
+#: includes/class-strings.php:56
+msgid "Widgets"
+msgstr "Widget"
+
+#: includes/class-strings.php:57
+msgid "FormyChat Widgets"
+msgstr "Widget FormyChat"
+
+#: includes/class-strings.php:58
+msgid "Get Started with FormyChat"
+msgstr "Memulai dengan FormyChat"
+
+#: includes/class-strings.php:61
+msgid "Save"
+msgstr "Menyimpan"
+
+#: includes/class-strings.php:62 includes/class-strings.php:326
+#: includes/class-strings.php:478 includes/class-strings.php:780
+msgid "Save Changes"
+msgstr "Simpan Perubahan"
+
+#: includes/class-strings.php:63 includes/class-strings.php:481
+msgid "Cancel"
+msgstr "Membatalkan"
+
+#: includes/class-strings.php:64
+msgid "Delete"
+msgstr "Menghapus"
+
+#: includes/class-strings.php:65
+msgid "Edit"
+msgstr "Sunting"
+
+#: includes/class-strings.php:66 includes/class-strings.php:699
+msgid "Close"
+msgstr "Menutup"
+
+#: includes/class-strings.php:67
+msgid "Confirm"
+msgstr "Mengonfirmasi"
+
+#: includes/class-strings.php:68
+msgid "Back"
+msgstr "Kembali"
+
+#: includes/class-strings.php:69
+msgid "Next"
+msgstr "Berikutnya"
+
+#: includes/class-strings.php:70
+msgid "Next →"
+msgstr "Selanjutnya →"
+
+#: includes/class-strings.php:71
+msgid "← Prev"
+msgstr "← Sebelumnya"
+
+#: includes/class-strings.php:72 includes/class-strings.php:548
+msgid "Step"
+msgstr "Melangkah"
+
+#: includes/class-strings.php:73 includes/class-strings.php:549
+msgid "Create"
+msgstr "Membuat"
+
+#: includes/class-strings.php:74
+msgid "Continue"
+msgstr "Melanjutkan"
+
+#: includes/class-strings.php:75
+msgid "Duplicate"
+msgstr "Duplikat"
+
+#: includes/class-strings.php:76
+msgid "Copy"
+msgstr "Menyalin"
+
+#: includes/class-strings.php:77
+msgid "Add"
+msgstr "Menambahkan"
+
+#: includes/class-strings.php:78 includes/class-strings.php:517
+msgid "Remove"
+msgstr "Menghapus"
+
+#: includes/class-strings.php:79
+msgid "Update"
+msgstr "Memperbarui"
+
+#: includes/class-strings.php:80
+msgid "Apply"
+msgstr "Menerapkan"
+
+#: includes/class-strings.php:81 includes/class-strings.php:461
+msgid "Reset"
+msgstr "Mengatur ulang"
+
+#: includes/class-strings.php:84
+msgid "Agent Name"
+msgstr "Nama Agen"
+
+#: includes/class-strings.php:85
+msgid "Agent {number}"
+msgstr "Agen P2"
+
+#: includes/class-strings.php:86 includes/class-strings.php:452
+#: includes/forms/contact-form/class-cf7-admin.php:146
+msgid "WhatsApp Number"
+msgstr "Nomor WhatsApp"
+
+#: includes/class-strings.php:87
+msgid "WhatsApp number"
+msgstr "Nomor WhatsApp"
+
+#: includes/class-strings.php:88
+msgid "Send to"
+msgstr "Kirim ke"
+
+#: includes/class-strings.php:89
+msgid "WhatsApp Group"
+msgstr "Grup WhatsApp"
+
+#: includes/class-strings.php:90
+msgid "Send messages to any phone number."
+msgstr "Kirim pesan ke satu nomor telepon."
+
+#: includes/class-strings.php:91
+msgid "Send messages to a WhatsApp group."
+msgstr "Kirim pesan ke grup WhatsApp."
+
+#: includes/class-strings.php:94
+msgid "WhatsApp Group URL or Code"
+msgstr "URL atau Kode Grup WhatsApp"
+
+#: includes/class-strings.php:95
+msgid "Paste group invite link or code (e.g. https://chat.whatsapp.com/ABC123)"
+msgstr ""
+"Tempel tautan atau kode undangan grup (misalnya "
+"https://chat.whatsapp.com/ABC123)"
+
+#: includes/class-strings.php:97
+msgid "Paste the full WhatsApp group invite URL or just the invite code"
+msgstr "Tempelkan URL undangan grup WhatsApp lengkap atau kode undangan saja"
+
+#: includes/class-strings.php:98
+msgid "Enter your WhatsApp number with country code"
+msgstr "Masukkan nomor WhatsApp Anda dengan kode negara"
+
+#: includes/class-strings.php:98
+msgid "WhatsApp messaging"
+msgstr "Pesan WhatsApp"
+
+#: includes/class-strings.php:99
+msgid "Send message to WhatsApp"
+msgstr "Kirim pesan ke WhatsApp"
+
+#: includes/class-strings.php:100
+msgid ""
+"When enabled, visitors are redirected to WhatsApp to send the message after "
+"submit. When disabled, the lead is stored in FormyChat only—no WhatsApp "
+"redirect."
+msgstr "Jika diaktifkan, pengunjung diarahkan ke WhatsApp untuk mengirim pesan setelah mengirim. Jika dinonaktifkan, prospek hanya disimpan di FormyChat—tanpa pengalihan WhatsApp."
+
+
+#: includes/class-strings.php:99
+msgid "Choose how you prefer to display your widget"
+msgstr "Pilih bagaimana Anda ingin menampilkan widget Anda"
+
+#: includes/class-strings.php
+msgid "Single"
+msgstr "Lajang"
+
+#: includes/class-strings.php
+msgid "Multi-agents"
+msgstr "Multi-agen"
+
+#: includes/class-strings.php:102
+msgid "Display widget for one agent."
+msgstr "Tampilkan widget untuk satu agen."
+
+#: includes/class-strings.php:103
+msgid "Display widget for multiple agents."
+msgstr "Tampilkan widget untuk banyak agen."
+
+#: includes/class-strings.php:104
+msgid "Example: John Doe"
+msgstr "Contoh: John Doe"
+
+#: includes/class-strings.php:90
+msgid "Subtitle / Designation"
+msgstr "Subjudul / Penunjukan"
+
+#: includes/class-strings.php:91
+msgid "Example: Technical Support Executive"
+msgstr "Contoh: Eksekutif Dukungan Teknis"
+
+#: includes/class-strings.php:92
+msgid "Agent WhatsApp number"
+msgstr "Nomor Agen WhatsApp"
+
+#: includes/class-strings.php:93
+msgid "Move up"
+msgstr "Naik"
+
+#: includes/class-strings.php:94
+msgid "Move down"
+msgstr "Pindah ke bawah"
+
+#: includes/class-strings.php:95
+msgid "Please add at least one agent"
+msgstr "Harap tambahkan setidaknya satu agen"
+
+#: includes/class-strings.php:96
+msgid "Add new agent"
+msgstr "Tambahkan agen baru"
+
+#: includes/class-strings.php:97
+msgid "Behaviors"
+msgstr "Perilaku"
+
+#: includes/class-strings.php:98 includes/class-strings.php:470
+#: includes/class-strings.php:747
+msgid "Open WhatsApp in a new tab"
+msgstr "Buka WhatsApp di tab baru"
+
+#: includes/class-strings.php:99
+msgid ""
+"Open the WhatsApp link in a new tab on Desktop. <br/><b>Note:</b> In "
+"Safari, WhatsApp will be opened in current tab."
+msgstr ""
+"Buka tautan WhatsApp di tab baru di Desktop. <br/><b>Catatan:</b> Di "
+"Safari, WhatsApp akan dibuka di tab saat ini."
+
+#: includes/class-strings.php:100
+msgid "Navigate to WhatsApp Web from desktop"
+msgstr "Navigasi ke WhatsApp Web dari desktop"
+
+#: includes/class-strings.php:101
+msgid ""
+"By enabling this feature, WhatsApp will be automatically opened on your web "
+"browser when accessed from a laptop/PC."
+msgstr ""
+"Dengan mengaktifkan fitur ini, WhatsApp akan otomatis terbuka di web "
+"browser Anda ketika diakses dari laptop/PC."
+
+#: includes/class-strings.php:102
+msgid "On click Agent"
+msgstr "Di klik Agen"
+
+#: includes/class-strings.php:103
+msgid "Agent Photo"
+msgstr "Foto Agen"
+
+#: includes/class-strings.php:104
+msgid "Add Agent"
+msgstr "Tambahkan Agen"
+
+#: includes/class-strings.php:105
+msgid "Delete Agent"
+msgstr "Hapus Agen"
+
+#: includes/class-strings.php:106
+msgid "Agent Title"
+msgstr "Judul Agen"
+
+#: includes/class-strings.php:107
+msgid "Agents"
+msgstr "Agen"
+
+#: includes/class-strings.php:108
+msgid "Agent Designation"
+msgstr "Penunjukan Agen"
+
+#: includes/class-strings.php:111 includes/class-strings.php:545
+msgid "Customize"
+msgstr "Sesuaikan"
+
+#: includes/class-strings.php:112 includes/class-strings.php:546
+msgid "Greetings"
+msgstr "Salam"
+
+#: includes/class-strings.php:113
+msgid "Triggers"
+msgstr "Pemicu"
+
+#: includes/class-strings.php:114 includes/class-strings.php:544
+msgid "WhatsApp"
+msgstr "Ada apa"
+
+#: includes/class-strings.php:115
+msgid "Header"
+msgstr "Tajuk"
+
+#: includes/class-strings.php:116
+msgid "Preview"
+msgstr "Pratinjau"
+
+#: includes/class-strings.php:119 includes/class-strings.php:406
+msgid "Greeting Message"
+msgstr "Pesan Ucapan"
+
+#: includes/class-strings.php:120
+msgid "Welcome Message"
+msgstr "Pesan Selamat Datang"
+
+#: includes/class-strings.php:121
+msgid "Offline Message"
+msgstr "Pesan Offline"
+
+#: includes/class-strings.php:122
+msgid "Online Message"
+msgstr "Pesan Daring"
+
+#: includes/class-strings.php:123
+msgid "Reply Time"
+msgstr "Waktu Balasan"
+
+#: includes/class-strings.php:126
+msgid "Widget Style"
+msgstr "Gaya Widget"
+
+#: includes/class-strings.php:127
+msgid "Widget Position"
+msgstr "Posisi Widget"
+
+#: includes/class-strings.php:128
+msgid "Button Color"
+msgstr "Warna Tombol"
+
+#: includes/class-strings.php:129
+msgid "Text Color"
+msgstr "Warna Teks"
+
+#: includes/class-strings.php:130
+msgid "Background Color"
+msgstr "Warna Latar Belakang"
+
+#: includes/class-strings.php:131
+msgid "Header Color"
+msgstr "Warna Tajuk"
+
+#: includes/class-strings.php:132
+msgid "Border Radius"
+msgstr "Radius Perbatasan"
+
+#: includes/class-strings.php:133
+msgid "Widget Size"
+msgstr "Ukuran Widget"
+
+#: includes/class-strings.php:136
+msgid "Trigger Settings"
+msgstr "Pengaturan Pemicu"
+
+#: includes/class-strings.php:137
+msgid "Show on Pages"
+msgstr "Tampilkan di Halaman"
+
+#: includes/class-strings.php:138
+msgid "Hide on Pages"
+msgstr "Sembunyikan di Halaman"
+
+#: includes/class-strings.php:139
+msgid "Show After"
+msgstr "Tunjukkan Setelahnya"
+
+#: includes/class-strings.php:140
+msgid "Hide After"
+msgstr "Sembunyikan Setelahnya"
+
+#: includes/class-strings.php:141
+msgid "Display Rules"
+msgstr "Aturan Tampilan"
+
+#: includes/class-strings.php:142
+msgid "Activate Widget"
+msgstr "Aktifkan Widget"
+
+#: includes/class-strings.php:143
+msgid "Time delay"
+msgstr "Penundaan waktu"
+
+#: includes/class-strings.php:144
+msgid "Page Scroll"
+msgstr "Gulir Halaman"
+
+#: includes/class-strings.php:145
+msgid "Exit Intent"
+msgstr "Keluar dari Niat"
+
+#: includes/class-strings.php:146
+msgid "Display after"
+msgstr "Tampilan setelahnya"
+
+#: includes/class-strings.php:147
+msgid "seconds when page is loaded"
+msgstr "detik saat halaman dimuat"
+
+#: includes/class-strings.php:148
+msgid "scrolling on the page"
+msgstr "bergulir di halaman"
+
+#: includes/class-strings.php:149
+msgid "Display when visitor is about to leave"
+msgstr "Tampilan saat pengunjung hendak pergi"
+
+#: includes/class-strings.php:150
+msgid "Widget turned off"
+msgstr "Widget dimatikan"
+
+#: includes/class-strings.php:151
+msgid ""
+"This floating widget is currently turned off, would you like to turn it ON "
+"and save to show it on your site?"
+msgstr ""
+"Widget mengambang ini saat ini dinonaktifkan, apakah Anda ingin "
+"MENGAKTIFKANnya dan menyimpannya untuk ditampilkan di situs Anda?"
+
+#: includes/class-strings.php:152
+msgid "Save & Show on my site"
+msgstr "Simpan & Tampilkan di situs saya"
+
+#: includes/class-strings.php:153
+msgid "Just save and keep it off"
+msgstr "Simpan saja dan matikan"
+
+#: includes/class-strings.php:154
+msgid "Targets"
+msgstr "Target"
+
+#: includes/class-strings.php:155
+msgid "Exclude pages"
+msgstr "Kecualikan halaman"
+
+#: includes/class-strings.php:156
+msgid "Exclude all pages excepts:"
+msgstr "Kecualikan semua halaman kecuali:"
+
+#: includes/class-strings.php:157
+msgid "FluentCRM Settings"
+msgstr "Pengaturan CRM Lancar"
+
+#: includes/class-strings.php:158
+msgid "Send leads to FluentCRM"
+msgstr "Kirim prospek ke FluentCRM"
+
+#: includes/class-strings.php:159
+msgid "Send leads to Mailchimp"
+msgstr "Kirim prospek ke Mailchimp"
+
+#: includes/class-strings.php:162
+msgid "Successfully saved!"
+msgstr "Berhasil disimpan!"
+
+#: includes/class-strings.php:163
+msgid "Successfully updated!"
+msgstr "Berhasil diperbarui!"
+
+#: includes/class-strings.php:164
+msgid "Successfully deleted!"
+msgstr "Berhasil dihapus!"
+
+#: includes/class-strings.php:165
+msgid "Successfully duplicated!"
+msgstr "Berhasil diduplikasi!"
+
+#: includes/class-strings.php:166
+msgid "Error saving changes"
+msgstr "Terjadi kesalahan saat menyimpan perubahan"
+
+#: includes/class-strings.php:167
+msgid "Error deleting item"
+msgstr "Terjadi kesalahan saat menghapus item"
+
+#: includes/class-strings.php:168
+msgid "An error occurred"
+msgstr "Terjadi kesalahan"
+
+#: includes/class-strings.php:171
+msgid "Are you sure you want to delete this?"
+msgstr "Apakah Anda yakin ingin menghapus ini?"
+
+#: includes/class-strings.php:172
+msgid "Untitled Page"
+msgstr "Halaman Tanpa Judul"
+
+#: includes/class-strings.php:173
+msgid "Are you sure you want to delete this widget?"
+msgstr "Apakah Anda yakin ingin menghapus widget ini?"
+
+#: includes/class-strings.php:174
+msgid ""
+"Deleting this will remove the widget permanently from your site. Are you "
+"sure you want to delete this widget permanently?"
+msgstr ""
+"Menghapus ini akan menghapus widget secara permanen dari situs Anda. Apakah "
+"Anda yakin ingin menghapus widget ini secara permanen?"
+
+#: includes/class-strings.php:175
+msgid "This widget is currently in use!"
+msgstr "Widget ini sedang digunakan!"
+
+#: includes/class-strings.php:176
+msgid "Are you sure you want to delete this agent?"
+msgstr "Apakah Anda yakin ingin menghapus agen ini?"
+
+#: includes/class-strings.php:177
+msgid "This action cannot be undone."
+msgstr "Tindakan ini tidak dapat dibatalkan."
+
+#: includes/class-strings.php:178
+msgid "Widget deleted successfully"
+msgstr "Widget berhasil dihapus"
+
+#: includes/class-strings.php:179
+msgid "Copy of {name}"
+msgstr "Salinan P0"
+
+#: includes/class-strings.php:182
+msgid "Upgrade to Pro"
+msgstr "Tingkatkan ke Pro"
+
+#: includes/class-strings.php:183
+msgid "This is a Pro feature"
+msgstr "Ini adalah fitur Pro"
+
+#: includes/class-strings.php:184
+msgid "Try all the premium features for free."
+msgstr "Coba semua fitur premium secara gratis."
+
+#: includes/class-strings.php:185
+msgid "Unlock this feature"
+msgstr "Buka kunci fitur ini"
+
+#: includes/class-strings.php:186
+msgid "Premium Only"
+msgstr "Hanya Premium"
+
+#: includes/class-strings.php:187
+msgid "Get Pro"
+msgstr "Dapatkan Pro"
+
+#: includes/class-strings.php:191
+msgid "Integration Settings"
+msgstr "Pengaturan Integrasi"
+
+#: includes/class-strings.php:192 includes/class-strings.php:515
+msgid "Connect"
+msgstr "Menghubungkan"
+
+#: includes/class-strings.php:193
+msgid "Disconnect"
+msgstr "Memutuskan"
+
+#: includes/class-strings.php:194
+msgid "Connected"
+msgstr "Terhubung"
+
+#: includes/class-strings.php:195 includes/class-strings.php:642
+msgid "Not Connected"
+msgstr "Tidak Terhubung"
+
+#: includes/class-strings.php:196
+msgid "Configure"
+msgstr "Konfigurasikan"
+
+#: includes/class-strings.php:200
+msgid "Lead Name"
+msgstr "Nama Pemimpin"
+
+#: includes/class-strings.php:201
+msgid "Lead Email"
+msgstr "Email Utama"
+
+#: includes/class-strings.php:202
+msgid "Lead Phone"
+msgstr "Telepon Utama"
+
+#: includes/class-strings.php:203
+msgid "Lead Message"
+msgstr "Pesan Utama"
+
+#: includes/class-strings.php:204
+msgid "No leads found"
+msgstr "Tidak ada petunjuk yang ditemukan"
+
+#: includes/class-strings.php:205
+msgid "Total Leads"
+msgstr "Total Prospek"
+
+#: includes/class-strings.php:206
+msgid "View Lead"
+msgstr "Lihat Prospek"
+
+#: includes/class-strings.php:207 includes/class-strings.php:310
+msgid "Delete Lead"
+msgstr "Hapus Prospek"
+
+#: includes/class-strings.php:211 includes/class-strings.php:378
+msgid "Product Page"
+msgstr "Halaman Produk"
+
+#: includes/class-strings.php:212 includes/class-strings.php:379
+msgid "Cart Page"
+msgstr "Halaman Keranjang"
+
+#: includes/class-strings.php:213 includes/class-strings.php:380
+msgid "Checkout Page"
+msgstr "Halaman Pembayaran"
+
+#: includes/class-strings.php:214 includes/class-strings.php:377
+msgid "Shop Page"
+msgstr "Halaman Toko"
+
+#: includes/class-strings.php:215
+msgid "Enable on Product Pages"
+msgstr "Aktifkan di Halaman Produk"
+
+#: includes/class-strings.php:216
+msgid "Enable on Cart Page"
+msgstr "Aktifkan di Halaman Keranjang"
+
+#: includes/class-strings.php:217
+msgid "Enable on Checkout Page"
+msgstr "Aktifkan di Halaman Checkout"
+
+#: includes/class-strings.php:220
+msgid "Contact Form 7"
+msgstr "Formulir Kontak 7"
+
+#: includes/class-strings.php:225
+msgid "Subject"
+msgstr "Subjek"
+
+#: includes/class-strings.php:226
+msgid "Title"
+msgstr "Judul"
+
+#: includes/class-strings.php:227
+msgid "Description"
+msgstr "Keterangan"
+
+#: includes/class-strings.php:228
+msgid "Status"
+msgstr "Status"
+
+#: includes/class-strings.php:229
+msgid "Date"
+msgstr "Tanggal"
+
+#: includes/class-strings.php:230
+msgid "Actions"
+msgstr "Tindakan"
+
+#: includes/class-strings.php:233
+msgid "Active"
+msgstr "Aktif"
+
+#: includes/class-strings.php:234
+msgid "Inactive"
+msgstr "Tidak aktif"
+
+#: includes/class-strings.php:235
+msgid "Enabled"
+msgstr "Diaktifkan"
+
+#: includes/class-strings.php:236
+msgid "Disabled"
+msgstr "Dengan disabilitas"
+
+#: includes/class-strings.php:237
+msgid "Online"
+msgstr "On line"
+
+#: includes/class-strings.php:238
+msgid "Offline"
+msgstr "Luring"
+
+#: includes/class-strings.php:239 includes/class-strings.php:535
+msgid "Loading..."
+msgstr "Memuat..."
+
+#: includes/class-strings.php:240 includes/class-strings.php:583
+msgid "Saving..."
+msgstr "Penghematan..."
+
+#: includes/class-strings.php:243
+msgid "Previous"
+msgstr "Sebelumnya"
+
+#: includes/class-strings.php:244
+msgid "First"
+msgstr "Pertama"
+
+#: includes/class-strings.php:245 includes/class-strings.php:555
+msgid "Last"
+msgstr "Terakhir"
+
+#: includes/class-strings.php:246 includes/class-strings.php:439
+msgid "Showing"
+msgstr "Menampilkan"
+
+#: includes/class-strings.php:247
+msgid "of"
+msgstr "dari"
+
+#: includes/class-strings.php:248
+msgid "results"
+msgstr "hasil"
+
+#: includes/class-strings.php:249
+msgid "per page"
+msgstr "per halaman"
+
+#: includes/class-strings.php:252
+msgid "Search"
+msgstr "Mencari"
+
+#: includes/class-strings.php:253
+msgid "Filter"
+msgstr "Menyaring"
+
+#: includes/class-strings.php:254
+msgid "Sort by"
+msgstr "Urutkan berdasarkan"
+
+#: includes/class-strings.php:255
+msgid "Search widgets..."
+msgstr "Cari widget..."
+
+#: includes/class-strings.php:256
+msgid "Search leads..."
+msgstr "Cari petunjuk..."
+
+#: includes/class-strings.php:257
+msgid "No results found"
+msgstr "Tidak ada hasil yang ditemukan"
+
+#: includes/class-strings.php:258
+msgid "Small"
+msgstr "Kecil"
+
+#: includes/class-strings.php:259
+msgid "Medium"
+msgstr "Sedang"
+
+#: includes/class-strings.php:260
+msgid "Large"
+msgstr "Besar"
+
+#: includes/class-strings.php:261
+msgid "Custom"
+msgstr "Kebiasaan"
+
+#: includes/class-strings.php:262
+msgid "Position"
+msgstr "Posisi"
+
+#: includes/class-strings.php:265
+msgid "Help"
+msgstr "Membantu"
+
+#: includes/class-strings.php:266
+msgid "Learn more"
+msgstr "Pelajari lebih lanjut"
+
+#: includes/class-strings.php:267 includes/class-strings.php:634
+msgid "Documentation"
+msgstr "Dokumentasi"
+
+#: includes/class-strings.php:268
+msgid "Support"
+msgstr "Mendukung"
+
+#: includes/class-strings.php:272
+msgid "Add Custom CSS"
+msgstr "Tambahkan CSS Khusus"
+
+#: includes/class-strings.php:273
+msgid "CSS saved successfully"
+msgstr "CSS berhasil disimpan"
+
+#: includes/class-strings.php:277
+msgid "General"
+msgstr "Umum"
+
+#: includes/class-strings.php:278 includes/class-strings.php:476
+msgid "Advanced"
+msgstr "Canggih"
+
+#: includes/class-strings.php:279
+msgid "Appearance"
+msgstr "Penampilan"
+
+#: includes/class-strings.php:280
+msgid "Behavior"
+msgstr "Perilaku"
+
+#: includes/class-strings.php:281
+msgid "Display"
+msgstr "Menampilkan"
+
+#: includes/class-strings.php:282
+msgid "Options"
+msgstr "Pilihan"
+
+#: includes/class-strings.php:283 includes/class-strings.php:538
+msgid "Select"
+msgstr "Memilih"
+
+#: includes/class-strings.php:284
+msgid "Choose"
+msgstr "Memilih"
+
+#: includes/class-strings.php:285
+msgid "Upload"
+msgstr "Mengunggah"
+
+#: includes/class-strings.php:286
+msgid "Upload Image"
+msgstr "Unggah Gambar"
+
+#: includes/class-strings.php:287
+msgid "Remove Image"
+msgstr "Hapus Gambar"
+
+#: includes/class-strings.php:288
+msgid "Change Image"
+msgstr "Ubah Gambar"
+
+#: includes/class-strings.php:291
+msgid "Let's create your first widget and bring your dashboard to life!"
+msgstr "Mari buat widget pertama Anda dan hidupkan dasbor Anda!"
+
+#: includes/class-strings.php:292 includes/class-strings.php:507
+msgid "Watch Tutorial"
+msgstr "Tonton Tutorialnya"
+
+#: includes/class-strings.php:293
+msgid "Create Floating Widget"
+msgstr "Buat Widget Mengambang"
+
+#: includes/class-strings.php:296
+msgid "Not found"
+msgstr "Tidak ditemukan"
+
+#: includes/class-strings.php:299
+msgid "FormyChat Modules"
+msgstr "Modul FormyChat"
+
+#: includes/class-strings.php:300
+msgid "Integrate your favorite modules and supercharge your workflow"
+msgstr "Integrasikan modul favorit Anda dan tingkatkan alur kerja Anda"
+
+#: includes/class-strings.php:301 includes/class-strings.php:633
+msgid "Tutorial"
+msgstr "tutorial"
+
+#: includes/class-strings.php:302 includes/class-strings.php:635
+msgid "Review Us"
+msgstr "Tinjau Kami"
+
+#: includes/class-strings.php:303
+msgid "Search Modules"
+msgstr "Modul Pencarian"
+
+#: includes/class-strings.php:304
+msgid "Don't see your tool?"
+msgstr "Tidak melihat alat Anda?"
+
+#: includes/class-strings.php:305
+msgid ""
+"Your favorite tool could be our next big integration. Don't miss the chance "
+"to get it added!"
+msgstr ""
+"Alat favorit Anda bisa menjadi integrasi besar kami berikutnya. Jangan "
+"lewatkan kesempatan untuk menambahkannya!"
+
+#: includes/class-strings.php:306
+msgid "Suggest Now"
+msgstr "Sarankan Sekarang"
+
+#: includes/class-strings.php:309
+msgid "Contact Form Leads"
+msgstr "Pemimpin Formulir Kontak"
+
+#: includes/class-strings.php:311
+msgid "Delete selected {count} Leads"
+msgstr "Hapus Prospek P1 yang dipilih"
+
+#: includes/class-strings.php:312
+msgid "Are you sure you want to delete this lead?"
+msgstr "Apakah Anda yakin ingin menghapus prospek ini?"
+
+#: includes/class-strings.php:313
+msgid "Are you sure you want to delete selected {count} leads?"
+msgstr "Apakah Anda yakin ingin menghapus prospek P1 yang dipilih?"
+
+#: includes/class-strings.php:314
+msgid "Export"
+msgstr "Ekspor"
+
+#: includes/class-strings.php:315
+msgid "Select Source"
+msgstr "Pilih Sumber"
+
+#: includes/class-strings.php:316
+msgid "Select Widget"
+msgstr "Pilih Widget"
+
+#: includes/class-strings.php:317
+msgid "Select Form"
+msgstr "Pilih Formulir"
+
+#: includes/class-strings.php:318
+msgid "to"
+msgstr "ke"
+
+#: includes/class-strings.php:319
+msgid "Please wait while we load your leads."
+msgstr "Harap tunggu sementara kami memuat prospek Anda."
+
+#: includes/class-strings.php:320
+msgid "Widget"
+msgstr "Widget"
+
+#: includes/class-strings.php:321
+msgid "Sync"
+msgstr "Sinkronisasi"
+
+#: includes/class-strings.php:322
+msgid "No leads found."
+msgstr "Tidak ada petunjuk yang ditemukan."
+
+#: includes/class-strings.php:325
+msgid "Custom CSS Editor"
+msgstr "Editor CSS Khusus"
+
+#: includes/class-strings.php:327 includes/class-strings.php:338
+msgid "Add custom CSS to customize your site's appearance"
+msgstr "Tambahkan CSS khusus untuk menyesuaikan tampilan situs Anda"
+
+#: includes/class-strings.php:328
+msgid "CSS Styling Guide"
+msgstr "Panduan Penataan Gaya CSS"
+
+#: includes/class-strings.php:329
+msgid "lines"
+msgstr "garis"
+
+#: includes/class-strings.php:330
+msgid "characters"
+msgstr "karakter"
+
+#: includes/class-strings.php:331
+msgid "Target all widgets"
+msgstr "Targetkan semua widget"
+
+#: includes/class-strings.php:332
+msgid "Target specific widget"
+msgstr "Targetkan widget tertentu"
+
+#: includes/class-strings.php:333
+msgid "Tip"
+msgstr "Tip"
+
+#: includes/class-strings.php:334 includes/class-strings.php:339
+msgid ""
+"Use browser developer tools to inspect widget elements and find the exact "
+"selectors you need."
+msgstr ""
+"Gunakan alat pengembang browser untuk memeriksa elemen widget dan menemukan "
+"penyeleksi tepat yang Anda perlukan."
+
+#: includes/class-strings.php:335 includes/class-strings.php:340
+msgid "/** Enter your custom CSS here */"
+msgstr "/** Masukkan CSS khusus Anda di sini */"
+
+#: includes/class-strings.php:336
+msgid "Custom CSS saved successfully!"
+msgstr "CSS khusus berhasil disimpan!"
+
+#: includes/class-strings.php:337
+msgid "Error saving CSS. Please try again."
+msgstr "Terjadi kesalahan saat menyimpan CSS. Silakan coba lagi."
+
+#: includes/class-strings.php:341
+msgid "Failed to save CSS"
+msgstr "Gagal menyimpan CSS"
+
+#: includes/class-strings.php:344
+msgid "Customize Icon"
+msgstr "Sesuaikan Ikon"
+
+#: includes/class-strings.php:345
+msgid "Custom Icon"
+msgstr "Ikon Kustom"
+
+#: includes/class-strings.php:346
+msgid "Icon Size"
+msgstr "Ukuran Ikon"
+
+#: includes/class-strings.php:347 includes/class-strings.php:659
+msgid "Select the size of the icon"
+msgstr "Pilih ukuran ikon"
+
+#: includes/class-strings.php:348
+msgid "Custom Icon Size"
+msgstr "Ukuran Ikon Khusus"
+
+#: includes/class-strings.php:349
+msgid "Icon Position"
+msgstr "Posisi Ikon"
+
+#: includes/class-strings.php:350
+msgid "Select the position of the icon"
+msgstr "Pilih posisi ikon"
+
+#: includes/class-strings.php:351
+msgid "Custom Icon Position"
+msgstr "Posisi Ikon Kustom"
+
+#: includes/class-strings.php:352
+msgid "Display floating widget on"
+msgstr "Tampilkan widget mengambang aktif"
+
+#: includes/class-strings.php:353
+msgid "Choose where the floating widget will be visible - Desktop or Mobile."
+msgstr "Pilih di mana widget mengambang akan terlihat - Desktop atau Seluler."
+
+#: includes/class-strings.php:354 includes/class-strings.php:473
+#: includes/class-strings.php:745
+msgid "Desktop"
+msgstr "Desktop"
+
+#: includes/class-strings.php:355 includes/class-strings.php:474
+#: includes/class-strings.php:746
+msgid "Mobile"
+msgstr "Seluler"
+
+#: includes/class-strings.php:356
+msgid "Call to action"
+msgstr "Ajakan untuk bertindak"
+
+#: includes/class-strings.php:357
+msgid "Show Call to action"
+msgstr "Tampilkan Ajakan bertindak"
+
+#: includes/class-strings.php:358
+msgid "Call to action text"
+msgstr "Teks ajakan bertindak"
+
+#: includes/class-strings.php:359
+msgid "Customize Form"
+msgstr "Sesuaikan Formulir"
+
+#: includes/class-strings.php:360
+msgid "Choose the source through which you want to send message to WhatsApp"
+msgstr "Pilih sumber yang ingin Anda gunakan untuk mengirim pesan ke WhatsApp"
+
+#: includes/class-strings.php:361 includes/class-strings.php:753
+msgid "Select a form"
+msgstr "Pilih formulir"
+
+#: includes/class-strings.php:362
+msgid "Message Template"
+msgstr "Templat Pesan"
+
+#: includes/class-strings.php:363
+msgid "Message template which will be sent to WhatsApp."
+msgstr "Templat pesan yang akan dikirim ke WhatsApp."
+
+#: includes/class-strings.php:366
+msgid "Synced"
+msgstr "Disinkronkan"
+
+#: includes/class-strings.php:367
+msgid "Pending"
+msgstr "Tertunda"
+
+#: includes/class-strings.php:368
+msgid "Form Submitted data"
+msgstr "Formulir Data yang diserahkan"
+
+#: includes/class-strings.php:369
+msgid "Others Information"
+msgstr "Informasi Lainnya"
+
+#: includes/class-strings.php:370
+msgid "− Show less"
+msgstr "− Tunjukkan lebih sedikit"
+
+#: includes/class-strings.php:371
+msgid "+ Show more"
+msgstr "+ Tampilkan lebih banyak"
+
+#: includes/class-strings.php:374
+msgid "FormyChat WooCommerce Buttons"
+msgstr "Tombol FormyChat WooCommerce"
+
+#: includes/class-strings.php:375
+msgid ""
+"Connect your WooCommerce store with WhatsApp to enable one-click product "
+"inquiries and instant order requests."
+msgstr ""
+"Hubungkan toko WooCommerce Anda dengan WhatsApp untuk mengaktifkan "
+"pertanyaan produk sekali klik dan permintaan pesanan instan."
+
+#: includes/class-strings.php:376
+msgid "Menu"
+msgstr "Menu"
+
+#: includes/class-strings.php:383 includes/class-strings.php:730
+msgid "Create your first agent"
+msgstr "Buat agen pertama Anda"
+
+#: includes/class-strings.php:386
+msgid "days"
+msgstr "hari"
+
+#: includes/class-strings.php:387
+msgid "hours"
+msgstr "jam"
+
+#: includes/class-strings.php:388
+msgid "minutes"
+msgstr "menit"
+
+#: includes/class-strings.php:389
+msgid "seconds"
+msgstr "detik"
+
+#: includes/class-strings.php:390
+msgid "Try a free demo"
+msgstr "Coba demo gratis"
+
+#: includes/class-strings.php:393
+msgid "Display Greeting Popup"
+msgstr "Tampilkan Popup Ucapan"
+
+#: includes/class-strings.php:394
+msgid "Choose Greetings Template"
+msgstr "Pilih Templat Ucapan"
+
+#: includes/class-strings.php:395
+msgid "Customize Greetings"
+msgstr "Sesuaikan Salam"
+
+#: includes/class-strings.php:396
+msgid "Greeting Heading"
+msgstr "Judul Salam"
+
+#: includes/class-strings.php:397
+msgid "Heading Size"
+msgstr "Ukuran Judul"
+
+#: includes/class-strings.php:398
+msgid "Custom Heading Size"
+msgstr "Ukuran Judul Khusus"
+
+#: includes/class-strings.php:399
+msgid "Message Size"
+msgstr "Ukuran Pesan"
+
+#: includes/class-strings.php:400
+msgid "Custom Message Size"
+msgstr "Ukuran Pesan Khusus"
+
+#: includes/class-strings.php:401
+msgid "Greeting Colors"
+msgstr "Warna Salam"
+
+#: includes/class-strings.php:402
+msgid "Heading Color"
+msgstr "Warna Judul"
+
+#: includes/class-strings.php:403
+msgid "Message Color"
+msgstr "Warna Pesan"
+
+#: includes/class-strings.php:404
+msgid "Greetings Font Family"
+msgstr "Salam Keluarga Font"
+
+#: includes/class-strings.php:405
+msgid "Show Main Content"
+msgstr "Tampilkan Konten Utama"
+
+#: includes/class-strings.php:407
+msgid "Greeting Font Family"
+msgstr "Keluarga Font Salam"
+
+#: includes/class-strings.php:408
+msgid "Show Greetings CTA"
+msgstr "Tampilkan Salam CTA"
+
+#: includes/class-strings.php:409
+msgid "Greeting CTA Text"
+msgstr "Salam Teks CTA"
+
+#: includes/class-strings.php:410
+msgid "CTA Icon"
+msgstr "Ikon CTA"
+
+#: includes/class-strings.php:411
+msgid "CTA Style"
+msgstr "Gaya CTA"
+
+#: includes/class-strings.php:412
+msgid "Show Greeting CTA"
+msgstr "Tampilkan CTA Ucapan"
+
+#: includes/class-strings.php:413
+msgid "Greeting CTA Heading"
+msgstr "Salam Judul CTA"
+
+#: includes/class-strings.php:414
+msgid "CTA Heading Size"
+msgstr "Ukuran Judul CTA"
+
+#: includes/class-strings.php:415
+msgid "Custom CTA Heading Size"
+msgstr "Ukuran Judul CTA Khusus"
+
+#: includes/class-strings.php:416
+msgid "Greeting CTA Message"
+msgstr "Salam Pesan CTA"
+
+#: includes/class-strings.php:417
+msgid "CTA Message Size"
+msgstr "Ukuran Pesan CTA"
+
+#: includes/class-strings.php:418
+msgid "Custom CTA Message Size"
+msgstr "Ukuran Pesan CTA Khusus"
+
+#: includes/class-strings.php:419
+msgid "CTA Colors"
+msgstr "Warna CTA"
+
+#: includes/class-strings.php:420
+msgid "Greeting Behavior"
+msgstr "Perilaku Menyapa"
+
+#: includes/class-strings.php:421
+msgid "On click Action"
+msgstr "Saat klik Tindakan"
+
+#: includes/class-strings.php:422
+msgid "Enable Greetings"
+msgstr "Aktifkan Salam"
+
+#: includes/class-strings.php:423
+msgid "Before Heading"
+msgstr "Sebelum Menuju"
+
+#: includes/class-strings.php:424
+msgid "After Heading"
+msgstr "Setelah Menuju"
+
+#: includes/class-strings.php:425
+msgid "After Message"
+msgstr "Setelah Pesan"
+
+#: includes/class-strings.php:426
+msgid "Before CTA"
+msgstr "Sebelum CTA"
+
+#: includes/class-strings.php:427
+msgid "After CTA"
+msgstr "Setelah CTA"
+
+#: includes/class-strings.php:428
+msgid "Style {number}"
+msgstr "Gaya P2"
+
+#: includes/class-strings.php:429
+msgid "Load The Selected Form"
+msgstr "Muat Formulir yang Dipilih"
+
+#: includes/class-strings.php:430
+msgid "Redirected to WhatsApp directly"
+msgstr "Dialihkan ke WhatsApp secara langsung"
+
+#: includes/class-strings.php:431
+msgid "CTA Text Color"
+msgstr "Warna Teks CTA"
+
+#: includes/class-strings.php:432
+msgid "CTA Background Color"
+msgstr "Warna Latar Belakang CTA"
+
+#: includes/class-strings.php:433
+msgid "Left"
+msgstr "Kiri"
+
+#: includes/class-strings.php:434
+msgid "Right"
+msgstr "Benar"
+
+#: includes/class-strings.php:435
+msgid "Top"
+msgstr "Atas"
+
+#: includes/class-strings.php:436
+msgid "Bottom"
+msgstr "Dasar"
+
+#: includes/class-strings.php:442
+msgid "Coming Soon"
+msgstr "Segera hadir"
+
+#: includes/class-strings.php:443
+msgid "Cart Page Button"
+msgstr "Tombol Halaman Keranjang"
+
+#: includes/class-strings.php:444
+msgid "Checkout Page Button"
+msgstr "Tombol Halaman Checkout"
+
+#: includes/class-strings.php:445
+msgid ""
+"We're working on WhatsApp integration for the cart page. Stay tuned for "
+"updates!"
+msgstr ""
+"Kami sedang mengerjakan integrasi WhatsApp untuk halaman keranjang. "
+"Nantikan pembaruannya!"
+
+#: includes/class-strings.php:446
+msgid ""
+"We're working on WhatsApp integration for the checkout page. Stay tuned for "
+"updates!"
+msgstr ""
+"Kami sedang mengerjakan integrasi WhatsApp untuk halaman checkout. Nantikan "
+"pembaruannya!"
+
+#: includes/class-strings.php:449
+msgid "WhatsApp Button for Shop Page"
+msgstr "Tombol WhatsApp untuk Halaman Toko"
+
+#: includes/class-strings.php:450
+msgid ""
+"Let customers contact you or place orders via WhatsApp directly from the "
+"shop page."
+msgstr ""
+"Biarkan pelanggan menghubungi Anda atau memesan melalui WhatsApp langsung "
+"dari halaman toko."
+
+#: includes/class-strings.php:451
+msgid "Show WhatsApp Button on Shop Page"
+msgstr "Tampilkan Tombol WhatsApp di Halaman Toko"
+
+#: includes/class-strings.php:453
+msgid "Please enter a valid WhatsApp number (7-15 digits)"
+msgstr "Silakan masukkan nomor WhatsApp yang valid (7-15 digit)"
+
+#: includes/class-strings.php:454
+msgid "Button Position"
+msgstr "Posisi Tombol"
+
+#: includes/class-strings.php:455
+msgid "Button Text"
+msgstr "Teks Tombol"
+
+#: includes/class-strings.php:456
+msgid "Buy on WhatsApp"
+msgstr "Beli di WhatsApp"
+
+#: includes/class-strings.php:457
+msgid "Pre-filled Message"
+msgstr "Pesan yang sudah diisi sebelumnya"
+
+#: includes/class-strings.php:458
+msgid "Customize what message customers send when they click."
+msgstr "Sesuaikan pesan yang dikirim pelanggan saat mereka mengklik."
+
+#: includes/class-strings.php:459
+msgid "Button Style"
+msgstr "Gaya Tombol"
+
+#: includes/class-strings.php:460
+msgid "Customize the WhatsApp button appearance however you want."
+msgstr "Sesuaikan tampilan tombol WhatsApp sesuka Anda."
+
+#: includes/class-strings.php:462
+msgid "Background color"
+msgstr "Warna latar belakang"
+
+#: includes/class-strings.php:463 includes/class-strings.php:742
+msgid "Default button background color"
+msgstr "Warna latar belakang tombol default"
+
+#: includes/class-strings.php:464
+msgid "Background hover color"
+msgstr "Warna latar belakang melayang"
+
+#: includes/class-strings.php:465
+msgid "Button background color on hover"
+msgstr "Warna latar belakang tombol saat mengarahkan kursor"
+
+#: includes/class-strings.php:466
+msgid "Button text color"
+msgstr "Warna teks tombol"
+
+#: includes/class-strings.php:467
+msgid "Text hover color"
+msgstr "Warna teks melayang"
+
+#: includes/class-strings.php:468
+msgid "Button text color on hover"
+msgstr "Warna teks tombol saat mengarahkan kursor"
+
+#: includes/class-strings.php:469
+msgid "Button Border Radius"
+msgstr "Radius Batas Tombol"
+
+#: includes/class-strings.php:471 includes/class-strings.php:743
+msgid "Hide \"Add to Cart\" button"
+msgstr "Sembunyikan tombol \"Tambahkan ke Keranjang\"."
+
+#: includes/class-strings.php:472 includes/class-strings.php:744
+msgid "Display button on"
+msgstr "Tombol tampilan aktif"
+
+#: includes/class-strings.php:475
+msgid "Less"
+msgstr "Lebih sedikit"
+
+#: includes/class-strings.php:477 includes/class-strings.php:781
+msgid "Discard"
+msgstr "Membuang"
+
+#: includes/class-strings.php:479
+msgid "Reset Colors"
+msgstr "Atur Ulang Warna"
+
+#: includes/class-strings.php:480
+msgid "Are you sure you want to reset all colors to default?"
+msgstr "Apakah Anda yakin ingin mengatur ulang semua warna ke default?"
+
+#: includes/class-strings.php:482
+msgid "Above \"Add to Cart\" button"
+msgstr "Di atas tombol \"Tambahkan ke Keranjang\"."
+
+#: includes/class-strings.php:483
+msgid "Below \"Add to Cart\" button"
+msgstr "Di bawah tombol \"Tambahkan ke Keranjang\"."
+
+#: includes/class-strings.php:486
+msgid "WhatsApp Button for Single Product Page"
+msgstr "Tombol WhatsApp untuk Halaman Produk Tunggal"
+
+#: includes/class-strings.php:487
+msgid ""
+"Let customers contact you or place orders via WhatsApp directly from the "
+"single product page."
+msgstr ""
+"Biarkan pelanggan menghubungi Anda atau memesan melalui WhatsApp langsung "
+"dari satu halaman produk."
+
+#: includes/class-strings.php:488
+msgid "Show WhatsApp Button on Single Product Page"
+msgstr "Tampilkan Tombol WhatsApp di Halaman Produk Tunggal"
+
+#: includes/class-strings.php:489
+msgid "Advance"
+msgstr "Maju"
+
+#: includes/class-strings.php:490
+msgid "After product meta"
+msgstr "Setelah meta produk"
+
+#: includes/class-strings.php:491
+msgid "After product short description"
+msgstr "Setelah deskripsi singkat produk"
+
+#: includes/class-strings.php:494
+msgid "Available Variables"
+msgstr "Variabel yang Tersedia"
+
+#: includes/class-strings.php:495
+msgid "WooCommerce Vars:"
+msgstr "Variasi WooCommerce:"
+
+#: includes/class-strings.php:496
+msgid "Conditional Blocks:"
+msgstr "Blok Bersyarat:"
+
+#: includes/class-strings.php:497
+msgid "Global Vars:"
+msgstr "Variasi Global:"
+
+#: includes/class-strings.php:500
+msgid ""
+"No extra setup needed. Just keep it enabled, and you can instantly connect "
+"any FormyChat widget with FluentCRM."
+msgstr ""
+"Tidak diperlukan pengaturan tambahan. Tetap aktifkan saja, dan Anda dapat "
+"langsung menghubungkan widget FormyChat apa pun dengan FluentCRM."
+
+#: includes/class-strings.php:501
+msgid "Instructions:"
+msgstr "Petunjuk:"
+
+#: includes/class-strings.php:502
+msgid "Create or edit a FormyChat widget."
+msgstr "Buat atau edit widget FormyChat."
+
+#: includes/class-strings.php:503
+msgid "Go to {step} stepper."
+msgstr "Pergi ke langkah P8."
+
+#: includes/class-strings.php:504
+msgid "Search for \"{option}\" and {action} it."
+msgstr "Cari \"P9\" dan P7 itu."
+
+#: includes/class-strings.php:505
+msgid "Then setup with your preferred lists, tags, and other options."
+msgstr "Kemudian atur dengan daftar pilihan Anda, tag, dan opsi lainnya."
+
+#: includes/class-strings.php:506
+msgid "🎉 That's it - your leads will start flowing directly into FluentCRM!"
+msgstr "🎉 Selesai - prospek Anda akan mulai mengalir langsung ke FluentCRM!"
+
+#: includes/class-strings.php:510
+msgid "Connect Mailchimp"
+msgstr "Hubungkan Mailchimp"
+
+#: includes/class-strings.php:511
+msgid "Login to your {account} to get your API key."
+msgstr "Masuk ke P10 Anda untuk mendapatkan kunci API Anda."
+
+#: includes/class-strings.php:512
+msgid "API Key"
+msgstr "Kunci API"
+
+#: includes/class-strings.php:513
+msgid "Get your API key from Mailchimp profile > Extras > API keys"
+msgstr "Dapatkan kunci API Anda dari profil Mailchimp > Ekstra > Kunci API"
+
+#: includes/class-strings.php:514
+msgid "Get your API key from Mailchimp profile > Extras > API keys. {link}"
+msgstr "Dapatkan kunci API Anda dari profil Mailchimp > Ekstra > Kunci API. hal4"
+
+#: includes/class-strings.php:516
+msgid "Connecting..."
+msgstr "Menghubungkan..."
+
+#: includes/class-strings.php:518
+msgid "Connected successfully"
+msgstr "Berhasil terhubung"
+
+#: includes/class-strings.php:519
+msgid "Connection failed. Please check your API key."
+msgstr "Koneksi gagal. Silakan periksa kunci API Anda."
+
+#: includes/class-strings.php:520
+msgid "Remove API Key"
+msgstr "Hapus Kunci API"
+
+#: includes/class-strings.php:521
+msgid ""
+"Are you sure you want to remove the API key? This will disconnect your "
+"integration."
+msgstr ""
+"Apakah Anda yakin ingin menghapus kunci API? Ini akan memutuskan integrasi "
+"Anda."
+
+#: includes/class-strings.php:522
+msgid "Yes, remove it!"
+msgstr "Ya, hapus!"
+
+#: includes/class-strings.php:523
+msgid "Removing..."
+msgstr "Menghapus..."
+
+#: includes/class-strings.php:526
+msgid "Default WhatsApp Message"
+msgstr "Pesan WhatsApp Bawaan"
+
+#: includes/class-strings.php:529
+msgid "Google Sheets Sync"
+msgstr "Sinkronisasi Google Spreadsheet"
+
+#: includes/class-strings.php:530
+msgid ""
+"Please connect your Google account in the <a "
+"href=\"admin.php?page=formychat-integrations\" class=\"text-blue-600 "
+"hover:underline font-medium\">Integrations</a> page first."
+msgstr ""
+"Harap sambungkan akun Google Anda di halaman <a "
+"href=\"admin.php?page=formychat-integrations\" class=\"text-blue-600 "
+"hover:underline font-medium\">Integrasi</a> terlebih dahulu."
+
+#: includes/class-strings.php:532
+msgid "Spreadsheet"
+msgstr "lembar bentang"
+
+#: includes/class-strings.php:533
+msgid "Open"
+msgstr "Membuka"
+
+#: includes/class-strings.php:534
+msgid "Change"
+msgstr "Mengubah"
+
+#: includes/class-strings.php:536
+msgid "Select a spreadsheet"
+msgstr "Pilih spreadsheet"
+
+#: includes/class-strings.php:537
+msgid "Setting up..."
+msgstr "Menyiapkan..."
+
+#: includes/class-strings.php:539 includes/class-strings.php:576
+msgid "Note: Selecting a sheet will clear its existing data."
+msgstr "Catatan: Memilih sheet akan menghapus data yang ada."
+
+#: includes/class-strings.php:540
+msgid "+ Create a new spreadsheet"
+msgstr "+ Buat spreadsheet baru"
+
+#: includes/class-strings.php:541
+msgid "Enter spreadsheet name"
+msgstr "Masukkan nama spreadsheet"
+
+#: includes/class-strings.php:542
+msgid "Creating..."
+msgstr "Membuat..."
+
+#: includes/class-strings.php:543
+msgid "✔ Save"
+msgstr "✔ Simpan"
+
+#: includes/class-strings.php:547
+msgid "Triggers & Targeting"
+msgstr "Pemicu & Penargetan"
+
+#: includes/class-strings.php:550
+msgid "Or select from existing spreadsheets"
+msgstr "Atau pilih dari spreadsheet yang ada"
+
+#: includes/class-strings.php:551
+msgid "Sync Frequency"
+msgstr "Frekuensi Sinkronisasi"
+
+#: includes/class-strings.php:552
+msgid "Sync Interval"
+msgstr "Interval Sinkronisasi"
+
+#: includes/class-strings.php:553
+msgid "More settings \\u2192"
+msgstr "Pengaturan lainnya \\u2192"
+
+#: includes/class-strings.php:554
+msgid "synced"
+msgstr "disinkronkan"
+
+#: includes/class-strings.php:556
+msgid "Syncing..."
+msgstr "Menyinkronkan..."
+
+#: includes/class-strings.php:557
+msgid "Synced!"
+msgstr "Disinkronkan!"
+
+#: includes/class-strings.php:558
+msgid "Sync Now"
+msgstr "Sinkronkan Sekarang"
+
+#: includes/class-strings.php:559
+msgid "Free version limit reached ({limit} rows). Upgrade to sync unlimited leads."
+msgstr ""
+"Batas versi gratis tercapai (baris P3). Tingkatkan versi untuk "
+"menyinkronkan prospek tanpa batas."
+
+#: includes/class-strings.php:560
+msgid "Full Resync"
+msgstr "Sinkronisasi Ulang Penuh"
+
+#: includes/class-strings.php:561
+msgid ""
+"This will clear all existing data in the spreadsheet and re-sync all leads "
+"from scratch."
+msgstr ""
+"Ini akan menghapus semua data yang ada di spreadsheet dan menyinkronkan "
+"ulang semua prospek dari awal."
+
+#: includes/class-strings.php:562
+msgid "Please backup your spreadsheet before proceeding."
+msgstr "Harap buat cadangan spreadsheet Anda sebelum melanjutkan."
+
+#: includes/class-strings.php:563
+msgid "Yes, resync!"
+msgstr "Ya, sinkronkan ulang!"
+
+#: includes/class-strings.php:566
+msgid "Connect Google Sheets"
+msgstr "Hubungkan Google Spreadsheet"
+
+#: includes/class-strings.php:567
+msgid ""
+"Automatically sync your leads to Google Sheets in real-time. Keep track of "
+"all conversations in one place."
+msgstr ""
+"Sinkronkan prospek Anda secara otomatis ke Google Spreadsheet secara "
+"real-time. Lacak semua percakapan di satu tempat."
+
+#: includes/class-strings.php:568
+msgid "Continue with Google"
+msgstr "Lanjutkan dengan Google"
+
+#: includes/class-strings.php:569
+msgid "<strong>{account}</strong> connection expired. Please reconnect."
+msgstr "Koneksi <strong> P10 </strong> berakhir. Harap sambungkan kembali."
+
+#: includes/class-strings.php:570
+msgid "Your account"
+msgstr "Akun Anda"
+
+#: includes/class-strings.php:571
+msgid "You'll be redirected to Google to authorize access to your spreadsheets"
+msgstr ""
+"Anda akan diarahkan ke Google untuk memberi otorisasi akses ke spreadsheet "
+"Anda"
+
+#: includes/class-strings.php:572
+msgid "Account connected 🎉"
+msgstr "Akun terhubung 🎉"
+
+#: includes/class-strings.php:573
+msgid "- choose one -"
+msgstr "- pilih salah satu -"
+
+#: includes/class-strings.php:574
+msgid "Search spreadsheets..."
+msgstr "Telusuri spreadsheet..."
+
+#: includes/class-strings.php:575
+msgid "No spreadsheets found"
+msgstr "Tidak ada spreadsheet yang ditemukan"
+
+#: includes/class-strings.php:577
+msgid "Or"
+msgstr "Atau"
+
+#: includes/class-strings.php:580
+msgid "select existing"
+msgstr "pilih yang ada"
+
+#: includes/class-strings.php:581
+msgid "Select sync mode"
+msgstr "Pilih mode sinkronisasi"
+
+#: includes/class-strings.php:582
+msgid "Select interval"
+msgstr "Pilih interval"
+
+#: includes/class-strings.php:584
+msgid "Save & Sync"
+msgstr "Simpan & Sinkronkan"
+
+#: includes/class-strings.php:585
+msgid "Connection failed. Please try again."
+msgstr "Koneksi gagal. Silakan coba lagi."
+
+#: includes/class-strings.php:586
+msgid "Disconnect Google Account"
+msgstr "Putuskan sambungan Akun Google"
+
+#: includes/class-strings.php:587
+msgid ""
+"Are you sure you want to disconnect? This will stop syncing form "
+"submissions to Google Sheets."
+msgstr ""
+"Apakah Anda yakin ingin memutuskan sambungan? Tindakan ini akan "
+"menghentikan sinkronisasi pengiriman formulir ke Google Spreadsheet."
+
+#: includes/class-strings.php:588
+msgid "Yes, disconnect!"
+msgstr "Ya, putuskan sambungan!"
+
+#: includes/class-strings.php:589
+msgid "Disconnecting..."
+msgstr "Memutuskan sambungan..."
+
+#: includes/class-strings.php:590
+msgid "Google Sheets"
+msgstr "Google Spreadsheet"
+
+#: includes/class-strings.php:591
+msgid ""
+"Connect your Google account to sync all form submissions directly to {link} "
+"in real time."
+msgstr ""
+"Hubungkan akun Google Anda untuk menyinkronkan semua pengiriman formulir "
+"langsung ke P4 secara real time."
+
+#: includes/class-strings.php:592
+msgid "Choose Spreadsheet"
+msgstr "Pilih Lembar Bentang"
+
+#: includes/class-strings.php:593
+msgid "Scheduled (Recommended)"
+msgstr "Terjadwal (Disarankan)"
+
+#: includes/class-strings.php:594
+msgid "Real-time"
+msgstr "Waktu nyata"
+
+#: includes/class-strings.php:595
+msgid "Manual"
+msgstr "petunjuk"
+
+#: includes/class-strings.php:596
+msgid "Never"
+msgstr "Tidak pernah"
+
+#: includes/class-strings.php:597
+msgid "Just now"
+msgstr "Baru saja"
+
+#: includes/class-strings.php:598
+msgid "1 minute ago"
+msgstr "1 menit yang lalu"
+
+#: includes/class-strings.php:599
+msgid "{minutes} minutes ago"
+msgstr "P11 menit yang lalu"
+
+#: includes/class-strings.php:600
+msgid "Failed to load Google Sheets status"
+msgstr "Gagal memuat status Google Spreadsheet"
+
+#: includes/class-strings.php:601
+msgid "Failed to disconnect."
+msgstr "Gagal memutuskan sambungan."
+
+#: includes/class-strings.php:602
+msgid "Failed to setup spreadsheet."
+msgstr "Gagal menyiapkan spreadsheet."
+
+#: includes/class-strings.php:603
+msgid ""
+"Failed to load spreadsheets. Please disconnect and reconnect your Google "
+"account."
+msgstr ""
+"Gagal memuat spreadsheet. Harap putuskan sambungan dan sambungkan kembali "
+"akun Google Anda."
+
+#: includes/class-strings.php:604
+msgid "Failed to create spreadsheet."
+msgstr "Gagal membuat spreadsheet."
+
+#: includes/class-strings.php:605
+msgid "Settings saved successfully!"
+msgstr "Pengaturan berhasil disimpan!"
+
+#: includes/class-strings.php:606
+msgid "Failed to save settings."
+msgstr "Gagal menyimpan pengaturan."
+
+#: includes/class-strings.php:607
+msgid "Spreadsheet \"{name}\" initialized and {count} lead(s) synced!"
+msgstr "Spreadsheet \" P0 \" diinisialisasi dan prospek P1 disinkronkan!"
+
+#: includes/class-strings.php:608
+msgid "Spreadsheet \"{name}\" created and {count} lead(s) synced!"
+msgstr "Spreadsheet \" P0 \" dibuat dan prospek P1 disinkronkan!"
+
+#: includes/class-strings.php:609
+msgid "Settings saved!"
+msgstr "Pengaturan disimpan!"
+
+#: includes/class-strings.php:610
+msgid "Full resync complete! Synced {count} lead(s)."
+msgstr "Sinkronisasi ulang penuh selesai! Prospek P1 yang disinkronkan."
+
+#: includes/class-strings.php:611
+msgid "Sync failed."
+msgstr "Sinkronisasi gagal."
+
+#: includes/class-strings.php:612
+msgid "Resync failed."
+msgstr "Sinkronisasi ulang gagal."
+
+#: includes/class-strings.php:613
+msgid "Failed to load spreadsheets"
+msgstr "Gagal memuat spreadsheet"
+
+#: includes/class-strings.php:616
+msgid "Mailchimp module is not active."
+msgstr "Modul Mailchimp tidak aktif."
+
+#: includes/class-strings.php:617
+msgid "To connect your leads with Mailchimp, please activate the module first."
+msgstr ""
+"Untuk menghubungkan lead Anda dengan Mailchimp, silahkan aktifkan modulnya "
+"terlebih dahulu."
+
+#: includes/class-strings.php:618
+msgid "Activate Mailchimp \\u2192"
+msgstr "Aktifkan Mailchimp \\u2192"
+
+#: includes/class-strings.php:619
+msgid "Mailchimp API key is not connected."
+msgstr "Kunci API Mailchimp tidak terhubung."
+
+#: includes/class-strings.php:620
+msgid ""
+"Please connect your Mailchimp account by adding your API key in the "
+"integrations page."
+msgstr ""
+"Harap sambungkan akun Mailchimp Anda dengan menambahkan kunci API Anda di "
+"halaman integrasi."
+
+#: includes/class-strings.php:621
+msgid "Go to Mailchimp Module \\u2192"
+msgstr "Buka Modul Mailchimp \\u2192"
+
+#: includes/class-strings.php:622
+msgid "FluentCRM is not installed."
+msgstr "FluentCRM tidak diinstal."
+
+#: includes/class-strings.php:623
+msgid ""
+"To connect your leads with FluentCRM, please install and activate the "
+"plugin first."
+msgstr ""
+"Untuk menghubungkan lead Anda dengan FluentCRM, silahkan install dan "
+"aktifkan pluginnya terlebih dahulu."
+
+#: includes/class-strings.php:624
+msgid "Install FluentCRM \\u2192"
+msgstr "Instal FluentCRM \\u2192"
+
+#: includes/class-strings.php:625
+msgid "FluentCRM is not active."
+msgstr "FluentCRM tidak aktif."
+
+#: includes/class-strings.php:626
+msgid "Please activate the FluentCRM plugin to send leads directly from FormyChat."
+msgstr ""
+"Silakan aktifkan plugin FluentCRM untuk mengirim lead langsung dari "
+"FormyChat."
+
+#: includes/class-strings.php:627
+msgid "Activate FluentCRM \\u2192"
+msgstr "Aktifkan FluentCRM \\u2192"
+
+#: includes/class-strings.php:628
+msgid "FluentCRM is not enabled."
+msgstr "FluentCRM tidak diaktifkan."
+
+#: includes/class-strings.php:629
+msgid ""
+"Please enable the FluentCRM integration to send leads directly from "
+"FormyChat."
+msgstr ""
+"Harap aktifkan integrasi FluentCRM untuk mengirim prospek langsung dari "
+"FormyChat."
+
+#: includes/class-strings.php:630
+msgid "Enable FluentCRM \\u2192"
+msgstr "Aktifkan FluentCRM \\u2192"
+
+#: includes/class-strings.php:639
+msgid "Upcoming"
+msgstr "Mendatang"
+
+#: includes/class-strings.php:640
+msgid "Installing..."
+msgstr "Memasang..."
+
+#: includes/class-strings.php:641
+msgid "Activating..."
+msgstr "Mengaktifkan..."
+
+#: includes/class-strings.php:643
+msgid "Activate"
+msgstr "Mengaktifkan"
+
+#: includes/class-strings.php:644
+msgid "Install"
+msgstr "Memasang"
+
+#: includes/class-strings.php:647
+msgid "GET PREMIUM"
+msgstr "DAPATKAN PREMIUM"
+
+#: includes/class-strings.php:650
+msgid "Reset Message Template"
+msgstr "Atur Ulang Templat Pesan"
+
+#: includes/class-strings.php:651
+msgid "Are you sure you want to reset the message template?"
+msgstr "Apakah Anda yakin ingin menyetel ulang templat pesan?"
+
+#: includes/class-strings.php:652
+msgid "Yes, reset!"
+msgstr "Ya, setel ulang!"
+
+#: includes/class-strings.php:653
+msgid "Toggle Preview of Preset Message"
+msgstr "Alihkan Pratinjau Pesan Preset"
+
+#: includes/class-strings.php:654
+msgid "Keyboard Shortcuts"
+msgstr "Pintasan Papan Ketik"
+
+#: includes/class-strings.php:655
+msgid "Some formatting rules are not supported in the WhatsApp Windows"
+msgstr "Beberapa aturan pemformatan tidak didukung di WhatsApp Windows"
+
+#: includes/class-strings.php:656
+msgid "Preview Message"
+msgstr "Pratinjau Pesan"
+
+#: includes/class-strings.php:660
+msgid "Call to action style"
+msgstr "Gaya ajakan bertindak"
+
+#: includes/class-strings.php:661
+msgid "Text Size"
+msgstr "Ukuran Teks"
+
+#: includes/class-strings.php:662
+msgid "Custom Text Size"
+msgstr "Ukuran Teks Khusus"
+
+#: includes/class-strings.php:665
+msgid ""
+"Enable this option to receive all lead information to your given email "
+"address"
+msgstr ""
+"Aktifkan opsi ini untuk menerima semua informasi prospek ke alamat email "
+"yang Anda berikan"
+
+#: includes/class-strings.php:666
+msgid "Receive leads via email"
+msgstr "Terima prospek melalui email"
+
+#: includes/class-strings.php:667
+msgid "Use admin email to receive leads"
+msgstr "Gunakan email admin untuk menerima prospek"
+
+#: includes/class-strings.php:668
+msgid "Enter email address"
+msgstr "Masukkan alamat email"
+
+#: includes/class-strings.php:669
+msgid "FluentSMTP"
+msgstr "SMTP Lancar"
+
+#: includes/class-strings.php:670 includes/class-strings.php:683
+msgid "plugin to receive mail."
+msgstr "plugin untuk menerima email."
+
+#: includes/class-strings.php:671
+msgid "Form Size"
+msgstr "Ukuran Formulir"
+
+#: includes/class-strings.php:672
+msgid "Custom Form Size"
+msgstr "Ukuran Formulir Khusus"
+
+#: includes/class-strings.php:673
+msgid "Form Title"
+msgstr "Judul Formulir"
+
+#: includes/class-strings.php:674
+msgid "Form Title (Ex: Contact via WhatsApp)"
+msgstr "Judul Formulir (Contoh: Kontak melalui WhatsApp)"
+
+#: includes/class-strings.php:675
+msgid "Leave blank to disable"
+msgstr "Biarkan kosong untuk menonaktifkan"
+
+#: includes/class-strings.php:676
+msgid "Header Text"
+msgstr "Teks Tajuk"
+
+#: includes/class-strings.php:677
+msgid "Header Text (Ex: Please fill up the fields below)"
+msgstr "Teks Header (Contoh: Silakan isi kolom di bawah)"
+
+#: includes/class-strings.php:678
+msgid "Footer Text"
+msgstr "Teks Catatan Kaki"
+
+#: includes/class-strings.php:679
+msgid "Footer Text (Ex: Powered by FormyChat)"
+msgstr "Teks Footer (Contoh: Didukung oleh FormyChat)"
+
+#: includes/class-strings.php:680
+msgid "Submit Button Text"
+msgstr "Kirim Teks Tombol"
+
+#: includes/class-strings.php:681
+msgid "Button Text (Ex: Send on WhatsApp)"
+msgstr "Teks Tombol (Contoh: Kirim di WhatsApp)"
+
+#: includes/class-strings.php:682
+msgid "Please configure any SMTP e.g."
+msgstr "Harap konfigurasikan SMTP apa pun, mis."
+
+#: includes/class-strings.php:684
+msgid "or"
+msgstr "atau"
+
+#: includes/class-strings.php:685
+msgid ""
+"Please configure any SMTP e.g. {wp_mail_smtp} or {fluent_smtp} plugin to "
+"receive mail."
+msgstr ""
+"Harap konfigurasikan SMTP apa pun, mis. Plugin P12 atau P13 untuk menerima "
+"email."
+
+#: includes/class-strings.php:688
+msgid ""
+"{plugin} is not {status}! Please {action} it first to send unlimited "
+"messages through any of your {plugin} forms"
+msgstr ""
+"P5 bukan P6! Silakan P7 terlebih dahulu untuk mengirim pesan tanpa batas "
+"melalui formulir P5 Anda"
+
+#: includes/class-strings.php:689
+msgid "Install & Activate"
+msgstr "Instal & Aktifkan"
+
+#: includes/class-strings.php:690
+msgid "installed"
+msgstr "dipasang"
+
+#: includes/class-strings.php:691
+msgid "activated"
+msgstr "diaktifkan"
+
+#: includes/class-strings.php:692
+msgid ""
+"{plugin} is not {status}! Please activate it first to send unlimited "
+"messages through any of your {plugin} forms"
+msgstr ""
+"P5 bukan P6! Silakan aktifkan terlebih dahulu untuk mengirim pesan tanpa "
+"batas melalui formulir P5 Anda"
+
+#: includes/class-strings.php:693
+msgid "This will add country code with number to choose."
+msgstr "Ini akan menambahkan kode negara dengan nomor untuk dipilih."
+
+#: includes/class-strings.php:694
+msgid "Allow users to select"
+msgstr "Izinkan pengguna untuk memilih"
+
+#: includes/class-strings.php:695
+msgid "country code"
+msgstr "kode negara"
+
+#: includes/class-strings.php:696
+msgid "Open the form by default when the page is loaded."
+msgstr "Buka formulir secara default saat halaman dimuat."
+
+#: includes/class-strings.php:697
+msgid "Open by default"
+msgstr "Buka secara default"
+
+#: includes/class-strings.php:698
+msgid "Close the form after a successful submission."
+msgstr "Tutup formulir setelah pengiriman berhasil."
+
+#: includes/class-strings.php:700
+msgid "on Submit"
+msgstr "pada Kirim"
+
+#: includes/class-strings.php:701
+msgid "Select form"
+msgstr "Pilih formulir"
+
+#: includes/class-strings.php:702
+msgid "Select country"
+msgstr "Pilih negara"
+
+#: includes/class-strings.php:703
+msgid "Select font"
+msgstr "Pilih font"
+
+#: includes/class-strings.php:706
+msgid "Google Analytics"
+msgstr "Google Analitik"
+
+#: includes/class-strings.php:707
+msgid "Enable this option to track form submissions with Google Analytics."
+msgstr "Aktifkan opsi ini untuk melacak pengiriman formulir dengan Google Analytics."
+
+#: includes/class-strings.php:708
+msgid ""
+"Automatically send form leads to FluentCRM for email marketing campaigns "
+"and customer relationship management."
+msgstr ""
+"Kirim prospek formulir secara otomatis ke FluentCRM untuk kampanye "
+"pemasaran email dan manajemen hubungan pelanggan."
+
+#: includes/class-strings.php:709
+msgid "Automatically send form leads to Mailchimp for email marketing campaigns."
+msgstr ""
+"Kirim prospek formulir secara otomatis ke Mailchimp untuk kampanye "
+"pemasaran email."
+
+#: includes/class-strings.php:710
+msgid "- Select lists -"
+msgstr "- Pilih daftar -"
+
+#: includes/class-strings.php:711
+msgid "- Select tag -"
+msgstr "- Pilih tanda -"
+
+#: includes/class-strings.php:712
+msgid "Select field"
+msgstr "Pilih bidang"
+
+#: includes/class-strings.php:713
+msgid "Select FluentCRM field"
+msgstr "Pilih bidang FluentCRM"
+
+#: includes/class-strings.php:714
+msgid "If enabled, existing contacts won't be updated/duplicated."
+msgstr "Jika diaktifkan, kontak yang ada tidak akan diperbarui/diduplikasi."
+
+#: includes/class-strings.php:715
+msgid "Skip if contacts already exist in"
+msgstr "Lewati jika kontak sudah ada di"
+
+#: includes/class-strings.php:716
+msgid "- Select audiences -"
+msgstr "- Pilih audiens -"
+
+#: includes/class-strings.php:717
+msgid "- Select tags -"
+msgstr "- Pilih tag -"
+
+#: includes/class-strings.php:718
+msgid "Select Mailchimp field"
+msgstr "Pilih bidang Mailchimp"
+
+#: includes/class-strings.php:721
+msgid "Hi! Have any queries?"
+msgstr "Hai! Ada pertanyaan?"
+
+#: includes/class-strings.php:724 includes/class-strings.php:725
+msgid "Contact via WhatsApp"
+msgstr "Hubungi melalui WhatsApp"
+
+#: includes/class-strings.php:726
+msgid "Agent name"
+msgstr "Nama agen"
+
+#: includes/class-strings.php:727
+msgid "Agent subtitle"
+msgstr "Subjudul agen"
+
+#: includes/class-strings.php:728 includes/class-strings.php:729
+msgid "Enter your phone"
+msgstr "Masukkan telepon Anda"
+
+#: includes/class-strings.php:733 includes/core/class-app.php:30
+msgid "Default"
+msgstr "Bawaan"
+
+#: includes/class-strings.php:734
+msgid "From"
+msgstr "Dari"
+
+#: includes/class-strings.php:735
+msgid "Ex: ca7*****************************-us14"
+msgstr "Contoh: ca7******************************-us14"
+
+#: includes/class-strings.php:750
+msgid "You can"
+msgstr "Anda bisa"
+
+#: includes/class-strings.php:751
+msgid "disable email notifications"
+msgstr "nonaktifkan notifikasi email"
+
+#: includes/class-strings.php:752
+msgid "from the selected CF7 form."
+msgstr "dari formulir CF7 yang dipilih."
+
+#: includes/class-strings.php:756
+msgid "FluentCRM List(s):"
+msgstr "Daftar FluentCRM:"
+
+#: includes/class-strings.php:757
+msgid "FluentCRM Tag(s):"
+msgstr "Tag CRM Lancar:"
+
+#: includes/class-strings.php:758
+msgid "Map Fields"
+msgstr "Bidang Peta"
+
+#: includes/class-strings.php:759
+msgid "Please map your form's email field to FluentCRM Email before saving."
+msgstr ""
+"Harap petakan bidang email formulir Anda ke Email FluentCRM sebelum "
+"menyimpannya."
+
+#: includes/class-strings.php:760
+msgid "Your Form Fields"
+msgstr "Bidang Formulir Anda"
+
+#: includes/class-strings.php:761
+msgid "FluentCRM field"
+msgstr "Bidang CRM Lancar"
+
+#: includes/class-strings.php:764
+msgid "Mailchimp Settings"
+msgstr "Pengaturan Mailchimp"
+
+#: includes/class-strings.php:765
+msgid "Mailchimp Audience(s):"
+msgstr "Pemirsa Mailchimp:"
+
+#: includes/class-strings.php:766
+msgid "Mailchimp Tag(s):"
+msgstr "Tag Mailchimp:"
+
+#: includes/class-strings.php:767
+msgid "Please map your form's email field to Mailchimp Email before saving."
+msgstr ""
+"Harap petakan bidang email formulir Anda ke Email Mailchimp sebelum "
+"menyimpannya."
+
+#: includes/class-strings.php:768
+msgid "Mailchimp field"
+msgstr "Bidang simpanan surat"
+
+#: includes/class-strings.php:769
+#: includes/forms/contact-form/class-cf7-admin.php:188
+#: includes/forms/contact-form/class-cf7-admin.php:237
+msgid "Note:"
+msgstr "Catatan:"
+
+#: includes/class-strings.php:770
+msgid ""
+"Address will be added only when all of the required fields are mapped "
+"(Street Address, City, State, Postal Code)."
+msgstr ""
+"Alamat akan ditambahkan hanya ketika semua bidang yang diperlukan telah "
+"dipetakan (Alamat Jalan, Kota, Negara Bagian, Kode Pos)."
+
+#: includes/class-strings.php:771
+msgid "Skip if contacts already exist in Mailchimp"
+msgstr "Lewati jika kontak sudah ada di Mailchimp"
+
+#: includes/class-strings.php:774
+msgid "Setup Finished!"
+msgstr "Penyiapan Selesai!"
+
+#: includes/class-strings.php:775
+msgid "Widget Updated!"
+msgstr "Widget Diperbarui!"
+
+#: includes/class-strings.php:776
+msgid "Now you can use"
+msgstr "Sekarang Anda dapat menggunakan"
+
+#: includes/class-strings.php:778
+msgid "Done"
+msgstr "Selesai"
+
+#: includes/class-strings.php:779
+msgid "Upgrade all features"
+msgstr "Tingkatkan semua fitur"
+
+#: includes/core/class-app.php:31
+msgid "Arial"
+msgstr "Arial"
+
+#: includes/core/class-app.php:32
+msgid "Arial Black"
+msgstr "Arial Hitam"
+
+#: includes/core/class-app.php:33
+msgid "Comic Sans MS"
+msgstr "Komik Sans MS"
+
+#: includes/core/class-app.php:34
+msgid "Courier New"
+msgstr "Kurir Baru"
+
+#: includes/core/class-app.php:35
+msgid "Georgia"
+msgstr "Georgia"
+
+#: includes/core/class-app.php:36
+msgid "Lucida Console"
+msgstr "Konsol Lucida"
+
+#: includes/core/class-app.php:37
+msgid "Lucida Sans"
+msgstr "Lucida Sans"
+
+#: includes/core/class-app.php:38
+msgid "Tahoma"
+msgstr "Tahoma"
+
+#: includes/core/class-app.php:39
+msgid "Times New Roman"
+msgstr "Times New Roman"
+
+#: includes/core/class-app.php:40
+msgid "Trebuchet"
+msgstr "Trebuchet"
+
+#: includes/core/class-app.php:41
+msgid "Verdana"
+msgstr "Verdana"
+
+#: includes/core/class-app.php:42
+msgid "Ubuntu"
+msgstr "Ubuntu"
+
+#: includes/core/class-app.php:44
+msgid "Roboto"
+msgstr "robot"
+
+#: includes/core/class-app.php:45
+msgid "Roboto Condensed"
+msgstr "Roboto Terkondensasi"
+
+#: includes/core/class-app.php:46
+msgid "Open Sans"
+msgstr "Buka San"
+
+#: includes/core/class-app.php:47
+msgid "Lato"
+msgstr "Lato"
+
+#: includes/core/class-app.php:48
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: includes/core/class-app.php:49
+msgid "Raleway"
+msgstr "jalan raya"
+
+#: includes/core/class-app.php:50
+msgid "PT Sans"
+msgstr "PT Sans"
+
+#: includes/core/class-app.php:51
+msgid "Roboto Slab"
+msgstr "lempengan robot"
+
+#: includes/core/class-app.php:52
+msgid "Merriweather"
+msgstr "cuaca gembira"
+
+#: includes/core/class-app.php:53
+msgid "Playfair Display"
+msgstr "Tampilan Playfair"
+
+#: includes/core/class-app.php:54
+msgid "Source Sans Pro"
+msgstr "Sumber Sans Pro"
+
+#: includes/core/class-app.php:55
+msgid "Noto Sans"
+msgstr "Noto Sans"
+
+#: includes/core/class-app.php:56
+msgid "Noto Serif"
+msgstr "Noto Serif"
+
+#: includes/core/class-app.php:57
+msgid "Roboto Mono"
+msgstr "Robot Mono"
+
+#: includes/core/class-app.php:58
+msgid "Nunito"
+msgstr "Nunito"
+
+#: includes/core/class-app.php:59
+msgid "Poppins"
+msgstr "Poppin"
+
+#: includes/core/class-app.php:60
+msgid "Rubik"
+msgstr "Rubik"
+
+#: includes/core/class-app.php:1609
+msgid "Enter your Name"
+msgstr "Masukkan Nama Anda"
+
+#: includes/core/class-app.php:1619
+msgid "Enter your Email"
+msgstr "Masukkan Email Anda"
+
+#: includes/core/class-app.php:1630
+msgid "Enter your Phone"
+msgstr "Masukkan Telepon Anda"
+
+#: includes/core/class-app.php:1643
+msgid "Enter your Message"
+msgstr "Masukkan Pesan Anda"
+
+#: includes/core/class-database.php:337
+msgid "My First Widget"
+msgstr "Widget Pertama Saya"
+
+#: includes/forms/contact-form/class-cf7-admin.php:66
+#: includes/forms/formidable/class-formidable-admin.php:47
+#: includes/forms/gravity-forms/class-gf-admin.php:59
+msgid "WhatsApp (FormyChat)"
+msgstr "WhatsApp (FormyChat)"
+
+#: includes/forms/contact-form/class-cf7-admin.php:127
+msgid "Connect WhatsApp"
+msgstr "Hubungkan WhatsApp"
+
+#: includes/forms/contact-form/class-cf7-admin.php:138
+msgid "Enable to connect WhatsApp for this contact form."
+msgstr "Aktifkan untuk menghubungkan WhatsApp untuk formulir kontak ini."
+
+#: includes/forms/contact-form/class-cf7-admin.php:167
+msgid "WhatsApp message body"
+msgstr "Badan pesan WhatsApp"
+
+#: includes/forms/contact-form/class-cf7-admin.php:172
+msgid "Use these tags in the message body:"
+msgstr "Gunakan tag ini di badan pesan:"
+
+#: includes/forms/contact-form/class-cf7-admin.php:186
+msgid "Format your whatsapp message"
+msgstr "Format pesan whatsapp Anda"
+
+#: includes/forms/contact-form/class-cf7-admin.php:189
+msgid "File Upload field will not support on WhatsApp message body."
+msgstr "Bidang Unggah File tidak akan mendukung badan pesan WhatsApp."
+
+#: includes/forms/contact-form/class-cf7-admin.php:198
+msgid "Open in new tab"
+msgstr "Buka di tab baru"
+
+#: includes/forms/contact-form/class-cf7-admin.php:208
+msgid "Enable to open whatsapp in new tab."
+msgstr "Aktifkan untuk membuka whatsapp di tab baru."
+
+#: includes/forms/contact-form/class-cf7-admin.php:212
+msgid ""
+"Note: This option is for only desktop devices, It will be useful for "
+"WhatsApp web on desktop devices."
+msgstr ""
+"Catatan: Opsi ini hanya untuk perangkat desktop, Ini akan berguna untuk web "
+"WhatsApp di perangkat desktop."
+
+#: includes/forms/contact-form/class-cf7-admin.php:222
+msgid "Disable email notifications"
+msgstr "Nonaktifkan notifikasi email"
+
+#: includes/forms/contact-form/class-cf7-admin.php:234
+msgid "Enable this toggle to stop receiving email notifications from this form."
+msgstr ""
+"Aktifkan tombol ini untuk berhenti menerima pemberitahuan email dari "
+"formulir ini."
+
+#: includes/forms/contact-form/class-cf7-admin.php:238
+msgid ""
+"With this function enabled, you can use this Contact Form 7 form without "
+"using any SMTP plugin."
+msgstr ""
+"Dengan mengaktifkan fungsi ini, Anda dapat menggunakan formulir Formulir "
+"Kontak 7 ini tanpa menggunakan plugin SMTP apa pun."
+
+#: includes/forms/fluentform/class-fluentform-admin.php:44
+msgid "Whatsapp (Formychat)"
+msgstr "Whatsapp (Formychat)"
+
+#: includes/forms/formidable/class-formidable-frontend.php:146
+msgid "Missing form ID."
+msgstr "ID formulir tidak ada."
+
+#: includes/forms/formidable/class-formidable-frontend.php:154
+msgid "Form not found."
+msgstr "Formulir tidak ditemukan."
+
+#: includes/forms/formidable/class-formidable-frontend.php:163
+msgid "No recent form submission found."
+msgstr "Tidak ditemukan pengiriman formulir terbaru."
+
+#: includes/forms/formidable/class-formidable-frontend.php:185
+msgid "Entry not found."
+msgstr "Entri tidak ditemukan."
+
+#: includes/forms/wpforms/class-wpforms-admin.php:47
+msgid "FormyChat Settings"
+msgstr "Pengaturan FormyChat"
+
+#: includes/forms/wpforms/class-wpforms-admin.php:124
+#, php-format
+msgid "Available tags: %s"
+msgstr "Tag yang tersedia: P14"
+
+#: includes/others/functions.php:56
+msgid "Phone number"
+msgstr "Nomor telepon"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_widget_opened"
+msgstr "formychat_widget_opened"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_widget_closed"
+msgstr "formychat_widget_closed"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_agent_selected"
+msgstr "formychat_agent_selected"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_form_loaded"
+msgstr "formychat_form_loaded"
+
+#: public/js/frontend.min.js:32
+msgid "formychat_form_submitted"
+msgstr "formychat_form_dikirim"
+
+#: includes/class-strings.php
+msgid "Select an option"
+msgstr "Pilih sebuah opsi"
+
+#: includes/class-strings.php
+msgid "Ultimate"
+msgstr "Terakhir"
+
+#: includes/class-strings.php
+msgid "New"
+msgstr "Baru"
+
+#: includes/class-strings.php
+msgid "Simple"
+msgstr "Sederhana"
+
+#: includes/class-strings.php
+msgid "Wave"
+msgstr "Melambai"
+
+#: includes/class-strings.php
+msgid "Whatsapp"
+msgstr "ada apa"
+
+#: includes/class-strings.php
+msgid "Keyboard Shortcuts: CTRL/CMD + B, I, S"
+msgstr "Pintasan Keyboard: CTRL/CMD + B, I, S"
+
+#: includes/class-strings.php
+msgid "Insert"
+msgstr "Menyisipkan"
+
+#: includes/class-strings.php
+msgid "All"
+msgstr "Semua"
+
+#: includes/class-strings.php
+msgid "CRM & Marketing"
+msgstr "CRM & Pemasaran"
+
+#: includes/class-strings.php
+msgid "Email & Newsletters"
+msgstr "Email & Buletin"
+
+#: includes/class-strings.php
+msgid "Automation & Webhooks"
+msgstr "Otomatisasi & Webhook"
+
+#: includes/class-strings.php
+msgid "File Storage & Cloud"
+msgstr "Penyimpanan File & Awan"
+
+#: includes/class-strings.php
+msgid "Analytics & Tracking"
+msgstr "Analisis & Pelacakan"
+
+#: includes/class-strings.php
+msgid "Communication"
+msgstr "Komunikasi"
+
+#: includes/class-strings.php
+msgid "Others"
+msgstr "Yang lain"
+
+#: includes/admin/class-integrations.php
+msgid ""
+"Connect your Form leads to FluentCRM and instantly add new contacts when a "
+"form is submitted. Perfect for automated email campaigns and segmented "
+"marketing."
+msgstr ""
+"Hubungkan prospek Formulir Anda ke FluentCRM dan langsung tambahkan kontak "
+"baru saat formulir dikirimkan. Sempurna untuk kampanye email otomatis dan "
+"pemasaran tersegmentasi."
+
+#: includes/admin/class-integrations.php
+msgid ""
+"Create Mailchimp newsletter signups directly from your form submissions. "
+"Automatically grow your audience and engage your subscribers."
+msgstr ""
+"Buat pendaftaran buletin Mailchimp langsung dari pengiriman formulir Anda. "
+"Kembangkan pemirsa Anda secara otomatis dan libatkan pelanggan Anda."
+
+#: includes/admin/class-integrations.php
+msgid ""
+"Sync form submissions directly to Google Sheets in real time. Perfect for "
+"reporting, analytics, or team collaboration without manual data entry."
+msgstr ""
+"Sinkronkan pengiriman formulir langsung ke Google Spreadsheet secara real "
+"time. Sempurna untuk pelaporan, analitik, atau kolaborasi tim tanpa entri "
+"data manual."
+
+#: includes/admin/class-integrations.php
+msgid ""
+"Add subscribers to your MailPoet mailing lists as soon as they submit a "
+"form. Automate your newsletter growth and keep your audience engaged."
+msgstr ""
+"Tambahkan pelanggan ke milis MailPoet Anda segera setelah mereka "
+"mengirimkan formulir. Otomatiskan pertumbuhan buletin Anda dan pertahankan "
+"keterlibatan audiens Anda."
+
+#: includes/class-strings.php
+msgid "Select pages"
+msgstr "Pilih halaman"
+
+#: includes/class-strings.php
+msgid "No page found"
+msgstr "Halaman tidak ditemukan"
+
+#: includes/class-strings.php
+msgid "All Widgets"
+msgstr "Semua widget"
+
+#: includes/class-strings.php
+msgid "All Forms"
+msgstr "Semua formulir"
+
+
+#: includes/class-strings.php
+msgid "INSTALL"
+msgstr "MEMASANG"

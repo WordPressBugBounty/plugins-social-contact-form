@@ -9,9 +9,11 @@
 namespace FormyChat\Forms\WPForms;
 
 // Exit if accessed directly.
-defined('ABSPATH') || exit;
+// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+defined('ABSPATH') || exit();
 
 class Frontend extends \FormyChat\Base {
+
 
 
     /**
@@ -32,8 +34,8 @@ class Frontend extends \FormyChat\Base {
     public function submit_success_response( $output, $form_id, $form_data ) {
 
         // Check nonce.
-        if ( isset( $_REQUEST['wpforms'] ) && isset( $_REQUEST['wpforms']['nonce'] ) ) {
-            if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['wpforms']['nonce'] ) ), 'wpforms::form_' . $form_id ) ) {
+        if ( isset($_REQUEST['wpforms']) && isset($_REQUEST['wpforms']['nonce']) ) {
+            if ( ! wp_verify_nonce(sanitize_text_field(wp_unslash($_REQUEST['wpforms']['nonce'])), 'wpforms::form_' . $form_id) ) {
                 return $output;
             }
         }
@@ -42,7 +44,7 @@ class Frontend extends \FormyChat\Base {
 
         $message = array_key_exists('formychat_message', $settings) ? $settings['formychat_message'] : '';
 
-        if ( isset( $_POST['wpforms']['complete'] ) && ! empty( $_POST['wpforms']['complete'] ) ) {
+        if ( isset($_POST['wpforms']['complete']) && ! empty($_POST['wpforms']['complete']) ) {
             foreach ( $_POST['wpforms']['complete'] as $field ) { // phpcs:ignore
                 // If found {field->name} replace with the value
                 $message = str_replace('{' . $field['name'] . '}', $field['value'], $message);
@@ -51,6 +53,8 @@ class Frontend extends \FormyChat\Base {
 
         $formychat = [
             'status' => array_key_exists('formychat_status', $settings) ? $settings['formychat_status'] : false,
+            'destination_type' => array_key_exists('formychat_destination_type', $settings) ? $settings['formychat_destination_type'] : 'phone',
+            'group_invite_code' => array_key_exists('formychat_group_invite_code', $settings) ? $settings['formychat_group_invite_code'] : '',
             'whatsapp_number' => ( array_key_exists('formychat_country_code', $settings) ? $settings['formychat_country_code'] : '' ) . ( array_key_exists('formychat_number', $settings) ? $settings['formychat_number'] : '' ),
             'new_tab' => array_key_exists('formychat_new_tab', $settings) ? $settings['formychat_new_tab'] : false,
             'message' => array_key_exists('formychat_message', $settings) ? $settings['formychat_message'] : '',

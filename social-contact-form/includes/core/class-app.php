@@ -3,74 +3,76 @@
  * App class.
  *
  * @package FormyChat
- * @since 1.0.0
+ * @since   1.0.0
  */
 // Namespace .
 namespace FormyChat;
 
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
+defined('ABSPATH') || exit();
 
-if ( ! class_exists( __NAMESPACE__ . '\App' ) ) {
-	/**
-	 * App class.
-	 *
-	 * @package FormyChat
-	 * @since 1.0.0
-	 */
-	class App {
+if ( ! class_exists(__NAMESPACE__ . '\App') ) {
+    /**
+     * App class.
+     *
+     * @package FormyChat
+     * @since   1.0.0
+     */
+    class App {
 
-		/**
-		 * Returns the default fonts.
-		 *
-		 * @return array
-		 */
-		public static function fonts() {
-			$fonts = [
-				'sans-serif'       => __( 'Default', 'social-contact-form' ),
-				'Arial'            => __( 'Arial', 'social-contact-form' ),
-				'Arial Black'      => __( 'Arial Black', 'social-contact-form' ),
-				'Comic Sans'       => __( 'Comic Sans MS', 'social-contact-form' ),
-				'Courier New'      => __( 'Courier New', 'social-contact-form' ),
-				'Georgia'          => __( 'Georgia', 'social-contact-form' ),
-				'Lucida Console'   => __( 'Lucida Console', 'social-contact-form' ),
-				'Lucida Sans'      => __( 'Lucida Sans', 'social-contact-form' ),
-				'Tahoma'           => __( 'Tahoma', 'social-contact-form' ),
-				'Times New Roman'  => __( 'Times New Roman', 'social-contact-form' ),
-				'Trebuchet'        => __( 'Trebuchet', 'social-contact-form' ),
-				'Verdana'          => __( 'Verdana', 'social-contact-form' ),
-				'Ubuntu'           => __( 'Ubuntu', 'social-contact-form' ),
 
-				'Roboto'           => __( 'Roboto', 'social-contact-form' ),
-				'Roboto Condensed' => __( 'Roboto Condensed', 'social-contact-form' ),
-				'Open Sans'        => __( 'Open Sans', 'social-contact-form' ),
-				'Lato'             => __( 'Lato', 'social-contact-form' ),
-				'Montserrat'       => __( 'Montserrat', 'social-contact-form' ),
-				'Raleway'          => __( 'Raleway', 'social-contact-form' ),
-				'PT Sans'          => __( 'PT Sans', 'social-contact-form' ),
-				'Roboto Slab'      => __( 'Roboto Slab', 'social-contact-form' ),
-				'Merriweather'     => __( 'Merriweather', 'social-contact-form' ),
-				'Playfair Display' => __( 'Playfair Display', 'social-contact-form' ),
-				'Source Sans Pro'  => __( 'Source Sans Pro', 'social-contact-form' ),
-				'Noto Sans'        => __( 'Noto Sans', 'social-contact-form' ),
-				'Noto Serif'       => __( 'Noto Serif', 'social-contact-form' ),
-				'Roboto Mono'      => __( 'Roboto Mono', 'social-contact-form' ),
-				'Nunito'           => __( 'Nunito', 'social-contact-form' ),
-				'Poppins'          => __( 'Poppins', 'social-contact-form' ),
-				'Rubik'            => __( 'Rubik', 'social-contact-form' ),
+        /**
+         * Returns the default fonts.
+         *
+         * @return array
+         */
+        public static function fonts() {
+            $fonts = [
+				'sans-serif'       => __('Default', 'social-contact-form'),
+				'Arial'            => __('Arial', 'social-contact-form'),
+				'Arial Black'      => __('Arial Black', 'social-contact-form'),
+				'Comic Sans'       => __('Comic Sans MS', 'social-contact-form'),
+				'Courier New'      => __('Courier New', 'social-contact-form'),
+				'Georgia'          => __('Georgia', 'social-contact-form'),
+				'Lucida Console'   => __('Lucida Console', 'social-contact-form'),
+				'Lucida Sans'      => __('Lucida Sans', 'social-contact-form'),
+				'Tahoma'           => __('Tahoma', 'social-contact-form'),
+				'Times New Roman'  => __('Times New Roman', 'social-contact-form'),
+				'Trebuchet'        => __('Trebuchet', 'social-contact-form'),
+				'Verdana'          => __('Verdana', 'social-contact-form'),
+				'Ubuntu'           => __('Ubuntu', 'social-contact-form'),
 
-			];
+				'Roboto'           => __('Roboto', 'social-contact-form'),
+				'Roboto Condensed' => __('Roboto Condensed', 'social-contact-form'),
+				'Open Sans'        => __('Open Sans', 'social-contact-form'),
+				'Lato'             => __('Lato', 'social-contact-form'),
+				'Montserrat'       => __('Montserrat', 'social-contact-form'),
+				'Raleway'          => __('Raleway', 'social-contact-form'),
+				'PT Sans'          => __('PT Sans', 'social-contact-form'),
+				'Roboto Slab'      => __('Roboto Slab', 'social-contact-form'),
+				'Merriweather'     => __('Merriweather', 'social-contact-form'),
+				'Playfair Display' => __('Playfair Display', 'social-contact-form'),
+				'Source Sans Pro'  => __('Source Sans Pro', 'social-contact-form'),
+				'Noto Sans'        => __('Noto Sans', 'social-contact-form'),
+				'Noto Serif'       => __('Noto Serif', 'social-contact-form'),
+				'Roboto Mono'      => __('Roboto Mono', 'social-contact-form'),
+				'Nunito'           => __('Nunito', 'social-contact-form'),
+				'Poppins'          => __('Poppins', 'social-contact-form'),
+				'Rubik'            => __('Rubik', 'social-contact-form'),
 
-			return apply_filters( 'formychat_fonts', $fonts );
-		}
+            ];
 
-		/**
-		 * Returns the default countries.
-		 *
-		 * @return array
-		 */
-		public static function countries() {
-			$countries = [
+            return apply_filters('formychat_fonts', $fonts);
+        }
+
+        /**
+         * Returns the default countries.
+         *
+         * @return array
+         */
+        public static function countries() {
+            $countries = [
 				[
 					'name' => 'Afghanistan',
 					'code' => '93',
@@ -1321,62 +1323,64 @@ if ( ! class_exists( __NAMESPACE__ . '\App' ) ) {
 					'code' => '263',
 					'flag' => '🇿🇼',
 				],
-			];
+            ];
 
-			// map only name, phone_code, emoji.
-			$countries = array_map( function ( $country ) {
-				return [
-					'name' => isset( $country['name'] ) ? $country['name'] : '',
-					'code'  => isset( $country['code'] ) ? $country['code'] : '',
-					'flag'  => isset( $country['flag'] ) ? $country['flag'] : '',
-				];
-			}, $countries );
+            // map only name, phone_code, emoji.
+            $countries = array_map(
+                function ( $country ) {
+                    return [
+						'name' => isset($country['name']) ? $country['name'] : '',
+						'code'  => isset($country['code']) ? $country['code'] : '',
+						'flag'  => isset($country['flag']) ? $country['flag'] : '',
+                    ];
+                }, $countries
+            );
 
-			return apply_filters( 'formychat_countries', $countries );
-		}
+            return apply_filters('formychat_countries', $countries);
+        }
 
-		/**
-		 * Embed fonts.
-		 *
-		 * @since 1.0.0
-		 * @return mixed
-		 */
-		public static function embed_fonts() {
-			$fonts = self::fonts();
+        /**
+         * Embed fonts.
+         *
+         * @since  1.0.0
+         * @return mixed
+         */
+        public static function embed_fonts() {
+            $fonts = self::fonts();
 
-			$css = '';
+            $css = '';
 
-			if ( $fonts && ! empty( $fonts ) ) {
-				foreach ( $fonts as $font_family => $label ) {
-					$path = FORMYCHAT_PUBLIC . '/fonts/' . str_replace( ' ', '+', $font_family );
-					$css .= "@font-face {
+            if ( $fonts && ! empty($fonts) ) {
+                foreach ( $fonts as $font_family => $label ) {
+                    $path = FORMYCHAT_PUBLIC . '/fonts/' . str_replace(' ', '+', $font_family);
+                    $css .= "@font-face {
 						font-family: '{$font_family}';
 						src: url('{$path}.ttf') format('truetype');
 					}";
-				}
-			}
+                }
+            }
 
-			$css = apply_filters( 'formychat_fonts_css', $css );
-			return $css;
-		}
+            $css = apply_filters('formychat_fonts_css', $css);
+            return $css;
+        }
 
-		/**
-		 * Widget Configuration blueprint.
-		 *
-		 * @since 1.0.0
-		 * @return array
-		 */
-		public static function widget_config() {
-			$configuration = [
+        /**
+         * Widget Configuration blueprint.
+         *
+         * @since  1.0.0
+         * @return array
+         */
+        public static function widget_config() {
+            $configuration = [
 				'whatsapp' => [
 					'web_version' => true,
 					'country_code' => '',
 					'number' => '',
 					'message_template' =>
-						'Name: {name}
+					'Name: {name}
 Email: {email}
 Phone: {phone}
-Message: 
+Message:
 {message}',
 					'cf7_message_template' => '',
 					'fluentform_message_template' => '',
@@ -1389,6 +1393,8 @@ Message:
 					'agent_mode' => 'single',
 					'agents' => [],
 					'on_click_agent' => 'show_form',
+					'destination_type' => 'phone',
+					'group_invite_code' => '',
 				],
 				'icon' => [
 					'has_delay' => false,
@@ -1508,41 +1514,41 @@ Message:
 				'integrations' => [
 					'fluent-crm' => [
 						'enabled' => false,
-						'lists' => get_option( 'formychat_integration_fluent-crm_lists', [] ),
-						'tags' => get_option( 'formychat_integration_fluent-crm_tags', [] ),
-						'fields_mapping' => get_option( 'formychat_integration_fluent-crm_fields_mapping', [] ),
+						'lists' => get_option('formychat_integration_fluent-crm_lists', []),
+						'tags' => get_option('formychat_integration_fluent-crm_tags', []),
+						'fields_mapping' => get_option('formychat_integration_fluent-crm_fields_mapping', []),
 					],
 				],
-			];
+            ];
 
-			return apply_filters( 'formychat_widget_configuration', $configuration );
-		}
+            return apply_filters('formychat_widget_configuration', $configuration);
+        }
 
-		/**
-		 * Custom Tags.
-		 *
-		 * @since 1.0.0
-		 * @return array
-		 */
-		public static function custom_tags() {
-			$tags = [
-				'site_name' => get_bloginfo( 'name' ),
+        /**
+         * Custom Tags.
+         *
+         * @since  1.0.0
+         * @return array
+         */
+        public static function custom_tags() {
+            $tags = [
+				'site_name' => get_bloginfo('name'),
 				'site_url' => get_site_url(),
 				'user_id' => get_current_user_id(),
 				'page_url' => '',
 				'page_id' => get_the_ID(),
-			];
+            ];
 
-			return apply_filters( 'formychat_custom_tags', $tags );
-		}
+            return apply_filters('formychat_custom_tags', $tags);
+        }
 
-		/**
-		 * Get all forms.
-		 *
-		 * @return array
-		 */
-		public static function get_forms() {
-			$forms = [
+        /**
+         * Get all forms.
+         *
+         * @return array
+         */
+        public static function get_forms() {
+            $forms = [
 				'formychat' => [
 					'label' => 'FormyChat',
 					'logo' => FORMYCHAT_PUBLIC . '/images/forms/formychat.png',
@@ -1576,47 +1582,47 @@ Message:
 					'label' => 'Ninja Forms',
 					'logo' => FORMYCHAT_PUBLIC . '/images/forms/ninja-forms.png',
 				],
-			];
+            ];
 
-			return apply_filters( 'formychat_forms', $forms );
-		}
+            return apply_filters('formychat_forms', $forms);
+        }
 
 
 
-		/**
-		 * FormyChat Form Fields.
-		 *
-		 * @since 1.0.0
-		 */
-		public static function form_fields() {
+        /**
+         * FormyChat Form Fields.
+         *
+         * @since 1.0.0
+         */
+        public static function form_fields() {
 
-			$user = wp_get_current_user();
-			$default_values = [];
+            $user = wp_get_current_user();
+            $default_values = [];
 
-			if ( $user->exists() ) {
-				$default_values['name'] = $user->display_name;
-				$default_values['email'] = $user->user_email;
-				$default_values['phone'] = get_user_meta( $user->ID, 'billing_phone', true );
-			}
+            if ( $user->exists() ) {
+                $default_values['name'] = $user->display_name;
+                $default_values['email'] = $user->user_email;
+                $default_values['phone'] = get_user_meta($user->ID, 'billing_phone', true);
+            }
 
-			$fields = [
+            $fields = [
 				[
 					'name' => 'name',
 					'type' => 'text',
-					'default' => array_key_exists( 'name', $default_values ) ? $default_values['name'] : '',
+					'default' => array_key_exists('name', $default_values) ? $default_values['name'] : '',
 					'help_text' => '',
 					'attributes' => [
-						'placeholder' => __( 'Enter your Name', 'social-contact-form' ),
+						'placeholder' => __('Enter your Name', 'social-contact-form'),
 						'required' => true,
 					],
 				],
 				[
 					'name' => 'email',
 					'type' => 'email',
-					'default' => array_key_exists( 'email', $default_values ) ? $default_values['email'] : '',
+					'default' => array_key_exists('email', $default_values) ? $default_values['email'] : '',
 					'help_text' => '',
 					'attributes' => [
-						'placeholder' => __( 'Enter your Email', 'social-contact-form' ),
+						'placeholder' => __('Enter your Email', 'social-contact-form'),
 						'required' => true,
 					],
 					'condition' => 'name != ""',
@@ -1624,10 +1630,10 @@ Message:
 				[
 					'name' => 'phone',
 					'type' => 'phone',
-					'default' => array_key_exists( 'phone', $default_values ) ? $default_values['phone'] : '',
+					'default' => array_key_exists('phone', $default_values) ? $default_values['phone'] : '',
 					'help_text' => '',
 					'attributes' => [
-						'placeholder' => __( 'Enter your Phone', 'social-contact-form' ),
+						'placeholder' => __('Enter your Phone', 'social-contact-form'),
 						'required' => true,
 						'minlength' => 7,
 						'maxlength' => 15,
@@ -1640,29 +1646,76 @@ Message:
 					'type' => 'textarea',
 					'help_text' => '',
 					'attributes' => [
-						'placeholder' => __( 'Enter your Message', 'social-contact-form' ),
+						'placeholder' => __('Enter your Message', 'social-contact-form'),
 						'required' => false,
 					],
 				],
-			];
+            ];
 
-			return apply_filters( 'formychat_form_fields', $fields );
-		}
-	}
+            return apply_filters('formychat_form_fields', $fields);
+        }
+
+        /**
+         * Remove legacy custom-dropdown lines from message template text (e.g. Dropdown: {custom_select}).
+         *
+         * @param  string $text Template text.
+         * @return string
+         */
+        public static function strip_legacy_dropdown_template_lines( $text ) {
+            if ( ! is_string($text) || '' === $text ) {
+                return $text;
+            }
+            $lines = preg_split('/\R/u', $text);
+            $out   = [];
+            foreach ( $lines as $line ) {
+                if ( preg_match('/^\s*Dropdown:\s*\{[^}]+\}\s*$/u', $line) ) {
+                    continue;
+                }
+                if ( preg_match('/^\s*\{custom_select\}\s*$/u', $line) ) {
+                    continue;
+                }
+                $out[] = $line;
+            }
+            $joined = implode("\n", $out);
+            $joined = preg_replace('/\{custom_select\}/u', '', $joined);
+            return preg_replace("/\n{3,}/u", "\n\n", $joined);
+        }
+
+        /**
+         * Strip legacy dropdown placeholders from WhatsApp template fields in widget config.
+         *
+         * @param  array $config Widget config.
+         * @return array
+         */
+        public static function sanitize_whatsapp_message_templates( $config ) {
+            if ( ! is_array($config) || empty($config['whatsapp']) || ! is_array($config['whatsapp']) ) {
+                return $config;
+            }
+            foreach ( $config['whatsapp'] as $key => $val ) {
+                if ( ! is_string($val) ) {
+                    continue;
+                }
+                if ( 'message_template' === $key || ( is_string($key) && preg_match('/_message_template$/', $key) ) ) {
+                    $config['whatsapp'][ $key ] = self::strip_legacy_dropdown_template_lines($val);
+                }
+            }
+            return $config;
+        }
+    }
 }
 
 
 
 // If function formychat() doesn't exist, create it.
-if ( ! function_exists( '\formychat' ) ) {
-	/**
-	 * FormyChat function.
-	 *
-	 * @since 1.0.0
-	 * @return mixed
-	 */
-	function formychat() {
-		// Get the instance of the FormyChat class.
-		return new \FormyChat\App();
-	}
+if ( ! function_exists('\formychat') ) {
+    /**
+     * FormyChat function.
+     *
+     * @since  1.0.0
+     * @return mixed
+     */
+    function formychat() {
+        // Get the instance of the FormyChat class.
+        return new \FormyChat\App();
+    }
 }
