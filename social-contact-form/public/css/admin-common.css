@@ -308,16 +308,12 @@ input.formychat-input-text {
   gap: 10px;
 }
 
-.formychat-pro-badge {
-  display: inline-block;
-  font-size: 10px;
-  padding: 2px 6px;
-  margin-left: 4px;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  color: #fff;
-  border-radius: 4px;
-  font-weight: 600;
-  vertical-align: middle;
+.formychat-widget-form-select:has(> option[value=""]:checked) {
+  color: #9ca3af !important;
+}
+
+.formychat-widget-form-select option:not([value=""]) {
+  color: #374151 !important;
 }
 
 /*# sourceMappingURL=admin-common.css.map */

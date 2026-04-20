@@ -85,6 +85,18 @@ if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 				'form' => $request->has_param('form') ? $request->get_param('form') : 'formychat',
 			];
 
+			// Verify spam protection (reCAPTCHA / Turnstile) for built-in FormyChat form submissions.
+			if ( 'formychat' === $form_data['form'] ) {
+				$spam_check = $this->verify_formychat_spam_protection( $request );
+				if ( true !== $spam_check ) {
+					wp_send_json_error(
+						[ 'message' => $spam_check ],
+						400
+					);
+					wp_die();
+				}
+			}
+
 			do_action('formychat_form_submitted', $form_data, $request);
 
 			$form_data = apply_filters('formychat_lead_data', $form_data, $request);
@@ -99,6 +111,105 @@ if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 				]
 			);
 			wp_die();
+		}
+
+		/**
+		 * Verify spam protection token (Turnstile or reCAPTCHA) for FormyChat form submissions.
+		 * Returns true on success (or when no protection is configured), an error message string otherwise.
+		 *
+		 * @param \WP_REST_Request $request
+		 * @return true|string
+		 */
+		private function verify_formychat_spam_protection( \WP_REST_Request $request ) {
+			$turnstile_enabled    = wp_validate_boolean( get_option( 'formychat_turnstile_enabled', false ) );
+			$turnstile_secret_key = get_option( 'formychat_turnstile_secret_key', '' );
+			$recaptcha_enabled    = wp_validate_boolean( get_option( 'formychat_recaptcha_enabled', false ) );
+			$recaptcha_secret_key = get_option( 'formychat_recaptcha_secret_key', '' );
+
+			// Turnstile takes precedence.
+			if ( $turnstile_enabled && ! empty( $turnstile_secret_key ) ) {
+				$token = $request->get_param( 'turnstile_token' ) ? $request->get_param( 'turnstile_token' ) : ( $request->get_param( 'cf-turnstile-response' ) ? $request->get_param( 'cf-turnstile-response' ) : '' );
+				if ( empty( $token ) ) {
+					return __( 'Security verification token is missing. Please complete the Cloudflare Turnstile check.', 'social-contact-form' );
+				}
+				return $this->verify_turnstile( $token, $turnstile_secret_key );
+			}
+
+			// Fall back to reCAPTCHA.
+			if ( $recaptcha_enabled && ! empty( $recaptcha_secret_key ) ) {
+				$token = $request->get_param( 'recaptcha_token' ) ? $request->get_param( 'recaptcha_token' ) : '';
+				if ( empty( $token ) ) {
+					return __( 'Security verification token is missing. Please complete the reCAPTCHA.', 'social-contact-form' );
+				}
+				return $this->verify_recaptcha( $token, $recaptcha_secret_key );
+			}
+
+			// No protection configured — allow.
+			return true;
+		}
+
+		/**
+		 * Verify a Cloudflare Turnstile token server-side.
+		 *
+		 * @param string $token
+		 * @param string $secret_key
+		 * @return true|string
+		 */
+		private function verify_turnstile( $token, $secret_key ) {
+			$response = wp_remote_post(
+				'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+				[
+					'timeout' => 10,
+					'body'    => [
+						'secret'   => $secret_key,
+						'response' => $token,
+					],
+				]
+			);
+
+			if ( is_wp_error( $response ) ) {
+				return __( 'Unable to verify security token. Please try again.', 'social-contact-form' );
+			}
+
+			$body = json_decode( wp_remote_retrieve_body( $response ), true );
+
+			if ( ! empty( $body['success'] ) ) {
+				return true;
+			}
+
+			return __( 'Security verification failed. Please complete the Cloudflare Turnstile check again.', 'social-contact-form' );
+		}
+
+		/**
+		 * Verify a Google reCAPTCHA token server-side.
+		 *
+		 * @param string $token
+		 * @param string $secret_key
+		 * @return true|string
+		 */
+		private function verify_recaptcha( $token, $secret_key ) {
+			$response = wp_remote_post(
+				'https://www.google.com/recaptcha/api/siteverify',
+				[
+					'timeout' => 10,
+					'body'    => [
+						'secret'   => $secret_key,
+						'response' => $token,
+					],
+				]
+			);
+
+			if ( is_wp_error( $response ) ) {
+				return __( 'Unable to verify security token. Please try again.', 'social-contact-form' );
+			}
+
+			$body = json_decode( wp_remote_retrieve_body( $response ), true );
+
+			if ( ! empty( $body['success'] ) ) {
+				return true;
+			}
+
+			return __( 'Security verification failed. Please complete the reCAPTCHA again.', 'social-contact-form' );
 		}
 
 		/**

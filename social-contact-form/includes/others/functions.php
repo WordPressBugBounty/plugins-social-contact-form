@@ -55,7 +55,7 @@ if ( ! function_exists('formychat_phone_number_field') ) {
 
                 </div>
             </div>
-            <input type="text" value="<?php echo esc_attr($args['number']); ?>" name="<?php echo esc_attr($args['number_name']); ?>" class="formychat-input-text" pattern="[0-9{8,15}]" placeholder="<?php esc_html_e('Phone number', 'social-contact-form'); ?>">
+            <input type="text" value="<?php echo esc_attr($args['number']); ?>" name="<?php echo esc_attr($args['number_name']); ?>" class="formychat-input-text formychat-no-validate" placeholder="<?php esc_html_e('Phone number', 'social-contact-form'); ?>">
         </div>
         <?php
     }

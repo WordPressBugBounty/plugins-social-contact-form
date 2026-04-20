@@ -129,6 +129,19 @@ if ( ! class_exists(__NAMESPACE__ . '\Assets') ) {
 								'ninja_leads' => Lead::total_from('ninja'),
 							],
 
+							'recaptcha' => [
+								'enabled'              => wp_validate_boolean( get_option( 'formychat_recaptcha_enabled', false ) ),
+								'site_key'             => get_option( 'formychat_recaptcha_site_key', '' ),
+								'version'              => get_option( 'formychat_recaptcha_version', 'v2' ),
+								'secret_key_configured' => ! empty( get_option( 'formychat_recaptcha_secret_key', '' ) ),
+							],
+
+							'turnstile' => [
+								'enabled'              => wp_validate_boolean( get_option( 'formychat_turnstile_enabled', false ) ),
+								'site_key'             => get_option( 'formychat_turnstile_site_key', '' ),
+								'secret_key_configured' => ! empty( get_option( 'formychat_turnstile_secret_key', '' ) ),
+							],
+
 							'data' => [
 								'widget_config' => App::widget_config(),
 								'total_widgets' => Widget::total(),

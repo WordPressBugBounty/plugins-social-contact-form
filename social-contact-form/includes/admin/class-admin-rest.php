@@ -216,14 +216,19 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
             );
 
             if ( $widget_id ) {
+                $this->save_spam_protection_options( $request );
+
                 $widget = apply_filters('formychat_get_widget', Widget::find($widget_id));
 
                 return new \WP_REST_Response(
-                    [
-						'success' => true,
-						'id' => $widget_id,
-						'data' => $widget,
-                    ]
+                    array_merge(
+                        [
+							'success' => true,
+							'id' => $widget_id,
+							'data' => $widget,
+                        ],
+                        $this->get_spam_protection_admin_vars()
+                    )
                 );
             }
 
@@ -280,11 +285,16 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
             $updated = Widget::update($widget_id, $data);
 
             if ( $updated ) {
+                $this->save_spam_protection_options( $request );
+
                 return new \WP_REST_Response(
-                    [
-						'success' => true,
-						'data' => apply_filters('formychat_get_widget', Widget::find($widget_id), $widget_id),
-                    ]
+                    array_merge(
+                        [
+							'success' => true,
+							'data' => apply_filters('formychat_get_widget', Widget::find($widget_id), $widget_id),
+                        ],
+                        $this->get_spam_protection_admin_vars()
+                    )
                 );
             }
 
@@ -294,6 +304,71 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
 					'message' => __('Widget not updated.', 'social-contact-form'),
                 ]
             );
+        }
+
+        /**
+         * Persist reCAPTCHA and Turnstile options from the request body.
+         * Only runs when the widget form mode is "formychat".
+         */
+        private function save_spam_protection_options( \WP_REST_Request $request ) {
+            $config = $request->get_param('config');
+            $mode   = isset($config['form']['mode']) ? $config['form']['mode'] : '';
+
+            if ( 'formychat' !== $mode ) {
+                return;
+            }
+
+            // reCAPTCHA.
+            $rc = $request->get_param('recaptcha_options');
+            if ( is_array($rc) ) {
+                update_option( 'formychat_recaptcha_enabled', ! empty($rc['enabled']) ? '1' : '' );
+                if ( isset($rc['site_key']) ) {
+                    update_option( 'formychat_recaptcha_site_key', sanitize_text_field($rc['site_key']) );
+                }
+                if ( isset($rc['version']) ) {
+                    update_option( 'formychat_recaptcha_version', sanitize_text_field($rc['version']) );
+                }
+                // Only update secret key if a real value was supplied (not empty / mask).
+                if ( ! empty($rc['secret_key']) ) {
+                    update_option( 'formychat_recaptcha_secret_key', sanitize_text_field($rc['secret_key']) );
+                } elseif ( array_key_exists('secret_key', $rc) && '' === $rc['secret_key'] ) {
+                    // User explicitly cleared the key.
+                    update_option( 'formychat_recaptcha_secret_key', '' );
+                }
+            }
+
+            // Turnstile.
+            $ts = $request->get_param('turnstile_options');
+            if ( is_array($ts) ) {
+                update_option( 'formychat_turnstile_enabled', ! empty($ts['enabled']) ? '1' : '' );
+                if ( isset($ts['site_key']) ) {
+                    update_option( 'formychat_turnstile_site_key', sanitize_text_field($ts['site_key']) );
+                }
+                if ( ! empty($ts['secret_key']) ) {
+                    update_option( 'formychat_turnstile_secret_key', sanitize_text_field($ts['secret_key']) );
+                } elseif ( array_key_exists('secret_key', $ts) && '' === $ts['secret_key'] ) {
+                    update_option( 'formychat_turnstile_secret_key', '' );
+                }
+            }
+        }
+
+        /**
+         * Return updated recaptcha/turnstile admin vars to refresh the JS store after save.
+         */
+        private function get_spam_protection_admin_vars() {
+            return [
+                'recaptcha' => [
+                    'enabled'              => wp_validate_boolean( get_option( 'formychat_recaptcha_enabled', false ) ),
+                    'site_key'             => get_option( 'formychat_recaptcha_site_key', '' ),
+                    'version'              => get_option( 'formychat_recaptcha_version', 'v2' ),
+                    'secret_key_configured' => ! empty( get_option( 'formychat_recaptcha_secret_key', '' ) ),
+                ],
+                'turnstile' => [
+                    'enabled'              => wp_validate_boolean( get_option( 'formychat_turnstile_enabled', false ) ),
+                    'site_key'             => get_option( 'formychat_turnstile_site_key', '' ),
+                    'secret_key_configured' => ! empty( get_option( 'formychat_turnstile_secret_key', '' ) ),
+                ],
+            ];
         }
 
         /**
