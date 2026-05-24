@@ -2,9 +2,9 @@
 Contributors: wppool, azizultex, wpdarkmode, iamjafran, devsabbirahmed, shahreyar46, sharifdev
 Tags: whatsapp chat, woocommerce whatsapp, click to chat, whatsapp business, live chat
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 5.6
-Stable tag: 2.15.3
+Stable tag: 2.15.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -268,6 +268,9 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 
 == Changelog ==
+
+= 2.15.4 - 24 May, 2026 =
+* **Improvement:** Enhance security and minor bug fixing.
 
 = 2.15.3 - 20 Apr, 2026 =
 * **New:** Added an option to disable sending form leads to WhatsApp.

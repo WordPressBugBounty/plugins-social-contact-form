@@ -77,12 +77,15 @@ if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 		 * @return void
 		 */
 		public function handle_form_submission( $request ) {
+			$raw_field = $request->has_param('field') ? $request->get_param('field') : [];
+			$raw_meta  = $request->has_param('meta') ? $request->get_param('meta') : [];
+
 			$form_data = [
-				'field' => $request->has_param('field') ? $request->get_param('field') : [],
-				'meta' => $request->has_param('meta') ? $request->get_param('meta') : [],
-				'widget_id' => $request->has_param('widget_id') ? $request->get_param('widget_id') : 0,
-				'form_id' => $request->has_param('form_id') ? $request->get_param('form_id') : 0,
-				'form' => $request->has_param('form') ? $request->get_param('form') : 'formychat',
+				'field'     => $this->sanitize_lead_payload( $raw_field ),
+				'meta'      => $this->sanitize_lead_payload( $raw_meta ),
+				'widget_id' => $request->has_param('widget_id') ? absint( $request->get_param('widget_id') ) : 0,
+				'form_id'   => $request->has_param('form_id') ? absint( $request->get_param('form_id') ) : 0,
+				'form'      => $request->has_param('form') ? sanitize_key( $request->get_param('form') ) : 'formychat',
 			];
 
 			// Verify spam protection (reCAPTCHA / Turnstile) for built-in FormyChat form submissions.
@@ -101,6 +104,14 @@ if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 
 			$form_data = apply_filters('formychat_lead_data', $form_data, $request);
 
+			// Re-sanitize after the filter, in case third-party code re-injected unsafe data.
+			if ( isset( $form_data['field'] ) ) {
+				$form_data['field'] = $this->sanitize_lead_payload( $form_data['field'] );
+			}
+			if ( isset( $form_data['meta'] ) ) {
+				$form_data['meta'] = $this->sanitize_lead_payload( $form_data['meta'] );
+			}
+
 			$lead_id = Lead::create($form_data);
 
 			do_action('formychat_lead_created', $form_data, $lead_id, $request);
@@ -111,6 +122,40 @@ if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 				]
 			);
 			wp_die();
+		}
+
+		/**
+		 * Recursively sanitize an untrusted lead payload (field / meta).
+		 *
+		 * Strips all HTML and JS. The lead admin page renders values via Vue
+		 * `v-html`, so any HTML stored here would execute in the admin origin.
+		 *
+		 * @param  mixed $value
+		 * @return mixed
+		 */
+		private function sanitize_lead_payload( $value ) {
+			if ( is_array( $value ) ) {
+				$clean = [];
+				foreach ( $value as $k => $v ) {
+					$safe_key           = is_string( $k ) ? sanitize_text_field( $k ) : $k;
+					$clean[ $safe_key ] = $this->sanitize_lead_payload( $v );
+				}
+				return $clean;
+			}
+
+			if ( is_object( $value ) ) {
+				// Reject objects entirely — lead payloads are scalar/array only.
+				return '';
+			}
+
+			if ( is_bool( $value ) || is_int( $value ) || is_float( $value ) ) {
+				return $value;
+			}
+
+			// Strings: strip all tags and control chars. Preserve newlines for the
+			// message field so the admin UI can still display multi-line content.
+			$value = (string) $value;
+			return sanitize_textarea_field( $value );
 		}
 
 		/**
