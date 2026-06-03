@@ -4,7 +4,7 @@ Tags: whatsapp chat, woocommerce whatsapp, click to chat, whatsapp business, liv
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 5.6
-Stable tag: 2.15.4
+Stable tag: 2.15.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -268,6 +268,9 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 
 == Changelog ==
+
+= 2.15.5 - 03 Jun, 2026 =
+* **Enhancement:** Enhanced compatibility to support WordPress 7.0
 
 = 2.15.4 - 24 May, 2026 =
 * **Improvement:** Enhance security and minor bug fixing.
