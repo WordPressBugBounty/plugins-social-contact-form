@@ -198,8 +198,15 @@ if ( ! class_exists(__NAMESPACE__ . '\Hooks') ) {
             if ( function_exists('wppool_plugin_init') ) {
                 $bg_image = plugin_dir_url(FORMYCHAT_FILE) . '/includes/wppool/background-image.png';
                 $plugin = wppool_plugin_init('social_contact_form', $bg_image);
-                // $campaign_image = plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/black-friday.png';
-                // $plugin->set_campaign($campaign_image, '2025-11-17', '2025-12-4');
+
+                if ( $plugin && is_object( $plugin ) && method_exists( $plugin, 'set_campaign' ) ) {
+                    $campaign_image = plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/summer.png';
+                    $to             = '2026-07-14 23:59:00';
+                    $from           = '2026-06-24 17:00:00';
+                    $cta_text       = esc_html__( 'Save Now', 'formychat' );
+                    $button_link    = 'https://lnk.wppool.dev/5P9DXHz';
+                    $plugin->set_campaign( $campaign_image, $to, $from, $cta_text, $button_link );
+                }
             }
         }
     }
