@@ -131,16 +131,11 @@ class Google_Sheets_API {
             self::DRIVE_API_BASE
         );
 
-        error_log('FormyChat: Listing spreadsheets from URL: ' . $url);
-
         $result = $this->make_request($url);
 
         if ( is_wp_error($result) ) {
-            error_log('FormyChat: list_spreadsheets API error: ' . $result->get_error_message());
             return $result;
         }
-
-        error_log('FormyChat: list_spreadsheets result: ' . wp_json_encode($result));
 
         return $result['files'] ?? [];
     }

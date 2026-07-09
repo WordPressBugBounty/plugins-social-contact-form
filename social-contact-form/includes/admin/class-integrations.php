@@ -30,48 +30,24 @@ class Integrations extends Base {
 	 * Handle Google Sheets OAuth callback.
 	 */
 	public function handle_google_sheets_oauth_callback() {
-		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-		error_log( 'FormyChat: OAuth callback handler triggered' );
-
 		if ( ! isset( $_GET['formychat-action'] ) || 'authenticated' !== $_GET['formychat-action'] ) {
 			return;
 		}
-
-		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-		error_log( 'FormyChat: formychat-action=authenticated detected' );
 
 		if ( ! isset( $_GET['integration'] ) || 'googlesheets' !== $_GET['integration'] ) {
 			return;
 		}
 
-		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-		error_log( 'FormyChat: integration=googlesheets detected' );
-
 		if ( ! current_user_can( 'manage_options' ) ) {
-			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-			error_log( 'FormyChat: User does not have manage_options capability' );
 			return;
 		}
-
-		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-		error_log( 'FormyChat: User has manage_options capability' );
-
-		// Debug: Log all GET params to see what the auth service returns.
-		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log, WordPress.PHP.DevelopmentFunctions.error_log_print_r
-		error_log( 'FormyChat Google Sheets OAuth params: ' . print_r( $_GET, true ) );
 
 		$access_token  = isset( $_GET['access_token'] ) ? sanitize_text_field( wp_unslash( $_GET['access_token'] ) ) : '';
 		$refresh_token = isset( $_GET['refresh_token'] ) ? sanitize_text_field( wp_unslash( $_GET['refresh_token'] ) ) : '';
 		$expires_in    = isset( $_GET['expires_in'] ) ? intval( $_GET['expires_in'] ) : 0;
 		$email         = isset( $_GET['email'] ) ? sanitize_email( wp_unslash( $_GET['email'] ) ) : '';
 
-		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-		error_log( 'FormyChat: Parsed tokens - access_token: ' . ( $access_token ? 'present (' . strlen( $access_token ) . ' chars)' : 'empty' ) . ', refresh_token: ' . ( $refresh_token ? 'present (' . strlen( $refresh_token ) . ' chars)' : 'empty' ) . ', email: ' . $email );
-
 		if ( $access_token && $refresh_token ) {
-			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-			error_log( 'FormyChat: Tokens present, saving to database...' );
-
 			$data = [
 				'access_token'  => $access_token,
 				'refresh_token' => $refresh_token,
@@ -80,32 +56,18 @@ class Integrations extends Base {
 				'connected'     => true,
 			];
 
-			$saved = update_option( 'formychat_google_sheets', $data );
-			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-			error_log( 'FormyChat: update_option formychat_google_sheets result: ' . ( $saved ? 'true' : 'false' ) );
+			update_option( 'formychat_google_sheets', $data );
 
 			// Enable the integration.
-			$enabled = update_option( 'formychat_integration_google_sheets', true );
-			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-			error_log( 'FormyChat: update_option formychat_integration_google_sheets result: ' . ( $enabled ? 'true' : 'false' ) );
+			update_option( 'formychat_integration_google_sheets', true );
 
 			// Set transient to show success message in frontend.
 			set_transient( 'formychat_google_sheets_just_connected', true, 60 );
 
-			// Verify saved data.
-			$verify = get_option( 'formychat_google_sheets' );
-			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log, WordPress.PHP.DevelopmentFunctions.error_log_print_r
-			error_log( 'FormyChat: Verified saved data: ' . print_r( $verify, true ) );
-
 			// Redirect to clean URL.
-			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-			error_log( 'FormyChat: Redirecting to clean URL...' );
 			wp_safe_redirect( admin_url( 'admin.php?page=formychat-integrations' ) );
 			// phpcs:ignore Universal.PHP.DisallowExitDieParentheses.Found
 			exit();
-		} else {
-			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-			error_log( 'FormyChat: Missing tokens - access_token empty: ' . ( empty( $access_token ) ? 'yes' : 'no' ) . ', refresh_token empty: ' . ( empty( $refresh_token ) ? 'yes' : 'no' ) );
 		}
 	}
 

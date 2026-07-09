@@ -694,6 +694,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
 				'countries' => \FormyChat\App::countries(),
 				'fonts' => \FormyChat\App::fonts(),
 				'pages' => $this->get_pages(),
+				'posts' => $this->get_posts(),
 				'widgets' => Widget::get_names(),
 				'forms' => $this->get_forms(),
             ];
@@ -719,6 +720,29 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
             }
 
             return apply_filters('formychat_get_pages', $pages);
+        }
+
+        /**
+         * Get all posts.
+         *
+         * @return array
+         */
+        public function get_posts() {
+            global $wpdb;
+
+            $posts = $wpdb->get_results( // db call ok; no-cache ok.
+                $wpdb->prepare(
+                    "SELECT ID, post_title FROM {$wpdb->posts} WHERE post_type = %s AND post_status = %s ORDER BY post_date DESC",
+                    'post',
+                    'publish'
+                )
+            );
+
+            if ( empty( $posts ) ) {
+                return [];
+            }
+
+            return apply_filters( 'formychat_get_posts', $posts );
         }
 
         /**

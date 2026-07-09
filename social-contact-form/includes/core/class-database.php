@@ -331,6 +331,7 @@ class Database extends \FormyChat\Base {
 
         // Exclude all filter to boolean.
         $config['target']['exclude_all_pages'] = isset($config['target']['exclude_all_pages']) ? wp_validate_boolean($config['target']['exclude_all_pages']) : false;
+        $config['target']['exclude_all_posts'] = isset($config['target']['exclude_all_posts']) ? wp_validate_boolean($config['target']['exclude_all_posts']) : false;
 
         // Default fonts are set to sans-serif.
         $config['form']['font_family'] = 'default' === $config['form']['font_family'] ? 'sans-serif' : $config['form']['font_family'];

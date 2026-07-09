@@ -4,7 +4,7 @@ Tags: whatsapp chat, woocommerce whatsapp, click to chat, whatsapp business, liv
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 5.6
-Stable tag: 2.15.6
+Stable tag: 2.15.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -268,6 +268,11 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 
 == Changelog ==
+
+= 2.15.7 - 09 Jul, 2026 =
+* **New:** Added "Exclude Posts" targeting option — users can now exclude specific posts from showing the floating widget, mirroring the existing "Exclude Pages" behavior.
+* **New:** Added "Exclude all posts except" toggle — hide widget on all posts except a selected list.
+
 
 = 2.15.6 - 24 Jun, 2026 =
 * **Enhancement:** Minor bug fixes and enhancements.
