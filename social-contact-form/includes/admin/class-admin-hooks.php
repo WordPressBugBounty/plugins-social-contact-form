@@ -185,7 +185,17 @@ if ( ! class_exists(__NAMESPACE__ . '\Hooks') ) {
          */
         public function init_appsero() {
             if ( ! class_exists('\Appsero\Client') ) {
-                include_once FORMYCHAT_INCLUDES . '/appsero/src/Client.php';
+                $appsero_client = FORMYCHAT_INCLUDES . '/appsero/src/Client.php';
+
+                if ( ! file_exists($appsero_client) ) {
+                    return;
+                }
+
+                include_once $appsero_client;
+            }
+
+            if ( ! class_exists('\Appsero\Client') ) {
+                return;
             }
 
             add_filter('appsero_is_local', '__return_false');
