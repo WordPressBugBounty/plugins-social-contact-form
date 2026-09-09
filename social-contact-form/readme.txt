@@ -4,7 +4,7 @@ Tags: whatsapp chat, woocommerce whatsapp, click to chat, whatsapp business, liv
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 5.6
-Stable tag: 2.15.7
+Stable tag: 2.15.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,9 @@ Connect contact forms and WooCommerce to WhatsApp by live click to chat. Send fo
 
 == Description ==
 
-**FormyChat (WhatsApp Contact Form)** allows you to send WordPress contact form submissions directly to your WhatsApp or WhatsApp Business account. It also provides a quick and easy floating chat button that allows visitors to send form data instantly through WhatsApp.
+**FormyChat (WhatsApp Contact Form)** allows you to send WordPress contact form submissions directly to your WhatsApp, WhatsApp Business account, or WhatsApp group. It also provides a quick and easy floating chat button that allows visitors to send form data instantly through WhatsApp.
+
+Whether you run a small business or manage a full team, FormyChat keeps your live chat and lead flow in one place, without depending on email or logging into your WP dashboard.
 
 **Let’s grow, connect and thrive together!**
 
@@ -30,12 +32,24 @@ FormyChat connects your WordPress contact forms with WhatsApp to simplify lead c
 WhatsApp is a registered trademark of [Meta](https://www.meta.com/).
 
 == Quick and Easy Integration Between WhatsApp and WordPress ==
-FormyChat is a simple, powerful, easy-to-use, 100% beginner-friendly WordPress form integration plugin that connects your contact forms directly to WhatsApp and WhatsApp Business. It collects form submission data and sends it instantly to your chosen WhatsApp number.
+FormyChat is a simple, easy-to-use WordPress form integration plugin that connects your contact forms directly to WhatsApp and WhatsApp Business. It collects form submission data and sends it instantly to your chosen WhatsApp number.
 
 All form submissions sent through WhatsApp are also saved in your WordPress dashboard as leads. This allows you to track detailed message directories and maintain a full record of customer interactions. FormyChat works as a reliable WhatsApp notification plugin for WordPress sites.
 
 
-== Form Integrations ==
+== 🛒 WooCommerce WhatsApp Integration ==
+
+* **WhatsApp Button on WooCommerce Shop & Product Pages:**
+Display a WooCommerce WhatsApp button to your shop page and individual product pages. Customers can start a WhatsApp conversation directly from any product listing without leaving your store.
+
+* **Pre-filled Product Details in WhatsApp Messages:**
+When a customer clicks the WooCommerce WhatsApp button, their message is automatically populated with product name, SKU, price, stock status, and page URL using dynamic tags.
+
+* **Button Placement & Behavior Controls:**
+Position the WooCommerce WhatsApp button above or below Add to Cart, control visibility by device type, open WhatsApp in a new tab, or replace Add to Cart entirely for WhatsApp-only ordering. 
+
+
+== 🔗 Form Integrations ==
 FormyChat connects seamlessly with popular WordPress form and CRM plugins, which allows you to send form submissions directly to WhatsApp or WhatsApp Business. You can integrate forms in **two ways**:
 
 **1. Floating Chat Widget**
@@ -59,17 +73,16 @@ Embed any of your existing form and send submissions directly to WhatsApp or Wha
  * Gravity Forms
  * Ninja Forms
 
-== Additional Integrations ==
- FormyChat now includes **FluentCRM integration** which allows you to sync leads directly with your CRM system for follow-up and segmentation.
+== 🧩 Additional Integrations ==
+FormyChat includes **FluentCRM integration** to sync leads directly with your CRM for follow-up and segmentation. It also supports **MailChimp** and **Google Sheets** for real-time lead syncing.
 
 * **Upcoming integrations include**:
  * MailPoet (upcoming)
- * Google Sheets (upcoming)
  * Webhooks (upcoming)
 
 👁️ [View Demo](https://lnk.wppool.dev/X51U3qY) | 🚀 [Get ULTIMATE](https://lnk.wppool.dev/X9N1ZSn) | 🤝 [Join Our Facebook Community](https://lnk.wppool.dev/2vkSKvp)
 
-== Free Features ==
+== 🆓 Free Features ==
 * **Greetings popup (Welcome popup):** 
 Grab your visitor’s attention by welcoming them with a personalized greetings popup. You can choose your desired template, and customize the heading, popup message, heading size, message size, colors, font, and on-click action.
 
@@ -96,18 +109,22 @@ Use the built-in setup wizard to create your first floating contact form within 
 
 👁️ [View Demo](https://lnk.wppool.dev/X51U3qY) | 🚀 [Get ULTIMATE](https://lnk.wppool.dev/X9N1ZSn) | 🤝 [Join Our Facebook Community](https://lnk.wppool.dev/2vkSKvp)
 
-== Ultimate Features ==
+== 🔓 Ultimate Features ==
+* **Send Leads to a WhatsApp Group:**
+Instead of routing submissions to a single number, FormyChat now lets you send contact form leads directly to a WhatsApp group. This is useful when your sales, support, or operations team needs to see and respond to incoming WhatsApp chat messages together.
+
 * **Unlimited Widgets and Customization:**
 Create and manage multiple WhatsApp chat widgets across your website. Assign different chat buttons or widgets to specific pages to match your needs. You can also  easily duplicate an existing widget to create a new one with similar settings.
 
 * **Multi-Agent Live Chat:** 
 Create multiple agents with different WhatsApp (including WhatsApp Business) numbers in a popup dialog. Each agent can have a customized profile, including details like working hours, daily roster, avatar, and name tag (upcoming). You can even load the form when users click on an agent for seamless interaction.
-
+* **Cloudflare Turnstile & Google reCAPTCHA Support:**
+Reduce spam messages and bot submissions by enabling Cloudflare Turnstile or Google reCAPTCHA protection.
 * **Duplicate Widgets:**
 Efficiently duplicate existing widgets to create a new one. It's as easy as saying 1,2,3!
 
 
-== Smart Triggers & Targeting ==
+== ⚡ Smart Triggers & Targeting ==
 * **Time Delay:**
 Display the widget when a set amount of time is passed after the page is loaded. No pressure, just convenience.
 
@@ -138,8 +155,11 @@ Create and save preset message templates. Include line breaks and personalized c
 * **Country Code Selection:** 
 Allow users to select their country code before entering their phone number. This ensures accurate lead collection from international visitors.
 
+* **Custom Message Dropdown:**
+Add dropdown fields with custom options to collect visitor preferences and inquiry types. Use selected values dynamically in WhatsApp messages for more organized conversations. 
 
-== Widget Customization ==
+
+== 🎨 Widget Customization ==
 
 * **Custom Icon and Size:**
 Set any custom icon for your WhatsApp chat button and adjust its size to fit your site layout.
@@ -154,7 +174,7 @@ Modify **bubble text, color** and **background** to match your website’s theme
 Choose from a variety of **premium fonts** to customize your chat widget’s appearance. Adjust form size and dimensions to suit your layout.
 
 
-== Greetings popup customization ==
+== 👋 Greetings popup customization ==
 
 * **Premium Template Style**: 
 Access the premium popup templates and greet your visitors in style.
@@ -179,7 +199,7 @@ You can customize whether the popup will open the form on-click or redirect the 
   Download collected leads in CSV format for offline storage or reporting.
 
 == 📨 Email Notifications ==
-* Send contact form submissions to email alongside WhatsApp chat. Give yourself the luxury of receiving leads on multiple platforms and stay on top of your game.
+* Send contact form submissions to email alongside WhatsApp chat. Receive form submission notifications via both WhatsApp and email simultaneously.
 
 **👁️ [View Demo](https://lnk.wppool.dev/X51U3qY) | 🚀 [Get ULTIMATE](https://lnk.wppool.dev/X9N1ZSn) | 🤝 [Join Our Facebook Community](https://lnk.wppool.dev/2vkSKvp)**
 
@@ -224,7 +244,7 @@ Additionally read the WPPOOL [privacy policy](https://wppool.dev/privacy-policy/
 WhatsApp is a registered trademark and brand by Meta. 
 
 === Frequently Asked Questions ===
-= How to send WordPress form entries to WhatsApp? =
+= How to send WordPress form entries to WhatsApp using FormyChat? =
 Getting started with the plugin is extremely simple. Activate the plugin, provide your WhatsApp number, customize the widget, and activate the contact form to get started.
 
 = How to Connect Contact Form 7, WPForm, Gravity Form, Fluent Form, etc to WhatsApp and WhatsApp Business accounts? =
@@ -269,10 +289,12 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 == Changelog ==
 
+= 2.15.8 - 09 Sep, 2026 =
+* **Fix:** Fixed an unauthenticated information disclosure in the Gravity Forms integration.
+
 = 2.15.7 - 09 Jul, 2026 =
 * **New:** Added "Exclude Posts" targeting option — users can now exclude specific posts from showing the floating widget, mirroring the existing "Exclude Pages" behavior.
 * **New:** Added "Exclude all posts except" toggle — hide widget on all posts except a selected list.
-
 
 = 2.15.6 - 24 Jun, 2026 =
 * **Enhancement:** Minor bug fixes and enhancements.

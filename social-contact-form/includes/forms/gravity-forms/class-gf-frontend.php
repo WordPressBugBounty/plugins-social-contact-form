@@ -29,35 +29,157 @@ class Frontend extends \FormyChat\Base {
         add_action('wp_ajax_nopriv_formychat_get_gf_entry', [ $this, 'get_entry' ]);
 
         add_filter('gform_confirmation', [ $this, 'form_confirmation' ], 10, 3);
+
+        // Store the just-submitted entry, bound to the submitter's session, for secure retrieval.
+        add_action('gform_after_submission', [ $this, 'store_entry_for_retrieval' ], 10, 2);
     }
 
+    /**
+     * Unique-ish identifier for the current visitor.
+     *
+     * User ID when logged in, otherwise a salted hash of IP + User-Agent. Not full
+     * session management, just enough to bind a retrievable entry to the browser that
+     * actually submitted the form.
+     *
+     * @since 2.15.8
+     *
+     * @return string
+     */
+    private function get_session_identifier() {
+        if ( is_user_logged_in() ) {
+            return 'user_' . get_current_user_id();
+        }
+
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Used for hashing only.
+        $ip = isset($_SERVER['REMOTE_ADDR']) ? wp_unslash($_SERVER['REMOTE_ADDR']) : '';
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Used for hashing only.
+        $ua = isset($_SERVER['HTTP_USER_AGENT']) ? wp_unslash($_SERVER['HTTP_USER_AGENT']) : '';
+
+        return 'guest_' . md5($ip . '|' . $ua . '|' . wp_salt('auth'));
+    }
 
     /**
-     * Submit form.
+     * Transient key holding the retrievable entry for this visitor + form.
+     *
+     * @since 2.15.8
+     *
+     * @param  int $form_id Form ID.
+     * @return string
+     */
+    private function get_entry_transient_key( $form_id ) {
+        return 'formychat_gf_entry_' . md5($this->get_session_identifier() . '_' . absint($form_id));
+    }
+
+    /**
+     * HMAC binding an entry ID to a form ID, verifiable without storing a secret.
+     *
+     * @since 2.15.8
+     *
+     * @param  int $entry_id Entry ID.
+     * @param  int $form_id  Form ID.
+     * @return string
+     */
+    private function generate_entry_token( $entry_id, $form_id ) {
+        return hash_hmac('sha256', absint($entry_id) . '|' . absint($form_id), wp_salt('auth'));
+    }
+
+    /**
+     * Persist the just-submitted entry ID for one-time, session-bound retrieval.
+     *
+     * Hooked on gform_after_submission so it runs on the same request the visitor made,
+     * letting get_session_identifier() see their IP / User-Agent.
+     *
+     * @since 2.15.8
+     *
+     * @param  array $entry Gravity Forms entry.
+     * @param  array $form  Gravity Forms form.
+     * @return void
+     */
+    public function store_entry_for_retrieval( $entry, $form ) {
+        $form_id  = isset($form['id']) ? absint($form['id']) : 0;
+        $entry_id = isset($entry['id']) ? absint($entry['id']) : 0;
+
+        if ( ! $form_id || ! $entry_id ) {
+            return;
+        }
+
+        set_transient(
+            $this->get_entry_transient_key($form_id),
+            [
+                'entry_id' => $entry_id,
+                'token'    => $this->generate_entry_token($entry_id, $form_id),
+                'time'     => time(),
+            ],
+            60
+        );
+    }
+
+    /**
+     * AJAX: return the entry the current visitor just submitted.
+     *
+     * The requested form ID only locates the caller's own one-time transient; it is
+     * never used to fetch an arbitrary entry. Privileged users who can view entries
+     * (e.g. previewing from the GF admin) may read the latest entry directly.
      *
      * @return void
      */
     public function get_entry() {
 
-        if ( ! function_exists('rgget') ) {
+        if ( ! function_exists('rgget') || ! class_exists('\GFAPI') ) {
             wp_send_json_error();
-            wp_die();
         }
 
-        $form_id = rgget('id');
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Session-bound one-time token is verified below.
+        $form_id = isset($_REQUEST['id']) ? absint($_REQUEST['id']) : 0;
 
         if ( ! $form_id ) {
             wp_send_json_error();
-            wp_die();
         }
 
         $form = \GFAPI::get_form($form_id);
 
-        $entries = \GFAPI::get_entries($form_id);
-        $entry = count($entries) > 0 ? $entries[0] : null;
+        if ( ! $form || empty($form['fields']) ) {
+            wp_send_json_error();
+        }
+
+        // Privileged users (e.g. previewing from GF admin) may bypass the session gate.
+        $can_view_any = current_user_can('gravityforms_view_entries');
+
+        $entry = null;
+
+        if ( $can_view_any ) {
+            $entries = \GFAPI::get_entries($form_id);
+            $entry   = ( is_array($entries) && count($entries) > 0 ) ? $entries[0] : null;
+        } else {
+            $transient_key = $this->get_entry_transient_key($form_id);
+            $stored        = get_transient($transient_key);
+
+            // One-time use: remove regardless of outcome.
+            delete_transient($transient_key);
+
+            if ( ! is_array($stored) || empty($stored['entry_id']) ) {
+                wp_send_json_error([ 'message' => __('No recent form submission found.', 'social-contact-form') ]);
+            }
+
+            $entry_id       = absint($stored['entry_id']);
+            $expected_token = $this->generate_entry_token($entry_id, $form_id);
+
+            if ( ! isset($stored['token']) || ! hash_equals($expected_token, (string) $stored['token']) ) {
+                wp_send_json_error([ 'message' => __('Invalid retrieval token.', 'social-contact-form') ]);
+            }
+
+            $candidate = \GFAPI::get_entry($entry_id);
+
+            // Verify the stored entry really belongs to the requested form.
+            if ( is_wp_error($candidate) || ! isset($candidate['form_id']) || absint($candidate['form_id']) !== $form_id ) {
+                wp_send_json_error([ 'message' => __('Entry not found.', 'social-contact-form') ]);
+            }
+
+            $entry = $candidate;
+        }
 
         if ( ! $entry ) {
-            return;
+            wp_send_json_error([ 'message' => __('No entry available.', 'social-contact-form') ]);
         }
 
         // Merge entry value acc
@@ -65,8 +187,8 @@ class Frontend extends \FormyChat\Base {
 
         // Loop through the original array
         foreach ( $entry as $key => $value ) {
-            // Skip empty values
-            if ( trim($value) === '' ) {
+            // Skip non-scalar and empty values
+            if ( ! is_scalar($value) || trim( (string) $value ) === '' ) {
                 continue;
             }
 
@@ -75,9 +197,9 @@ class Frontend extends \FormyChat\Base {
 
             // Merge values with the same base key
             if ( ! isset($merged_entry[ $base_key ]) ) {
-                $merged_entry[ $base_key ] = $value;
+                $merged_entry[ $base_key ] = (string) $value;
             } else {
-                $merged_entry[ $base_key ] .= ' ' . $value;
+                $merged_entry[ $base_key ] .= ' ' . (string) $value;
             }
         }
 
@@ -89,11 +211,6 @@ class Frontend extends \FormyChat\Base {
             if ( array_key_exists($id, $merged_entry) ) {
                 $values[ $label ] = $merged_entry[ $id ];
             }
-        }
-
-        if ( ! $form ) {
-            wp_send_json_error();
-            wp_die();
         }
 
         wp_send_json_success(
