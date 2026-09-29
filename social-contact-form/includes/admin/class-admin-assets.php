@@ -68,6 +68,18 @@ if ( ! class_exists(__NAMESPACE__ . '\Assets') ) {
 
             // Enqueue admin-util.
             wp_enqueue_script('formychat-admin-common', FORMYCHAT_PUBLIC . '/js/admin.common.js', [ 'jquery' ], FORMYCHAT_VERSION, false);
+
+            // The country code lookup runs from this head script, which loads
+            // before formychat_admin_vars is localized onto the footer bundle,
+            // so it needs its own copy of the REST endpoint and nonce.
+            wp_localize_script(
+                'formychat-admin-common',
+                'formychat_common_vars',
+                [
+					'geo_endpoint' => rest_url('formychat/geo'),
+					'rest_nonce'   => wp_create_nonce('wp_rest'),
+                ]
+            );
             wp_enqueue_style('formychat-admin-common', FORMYCHAT_PUBLIC . '/css/admin-common.css', [], FORMYCHAT_VERSION);
 
             // Check if we are on a FormyChat page.
@@ -239,45 +251,35 @@ if ( ! class_exists(__NAMESPACE__ . '\Assets') ) {
             /**
              * Get Google Sheets data for localized script.
              *
+             * The entire Google Sheets module (OAuth, sync engine, cron) is
+             * a FormyChat Ultimate-only feature and no longer ships in the
+             * free plugin — `Google_Sheets_Sync` / `Google_Sheets_Cron` no
+             * longer exist here. When Ultimate is active with a valid
+             * license it registers its own REST routes
+             * (`integrations/google-sheets/*`) that the locked Vue UI calls
+             * directly; this stub only provides a safe "not connected"
+             * default so the locked card in free never fatals.
+             *
+             * @since 2.16.0
              * @return array
              */
         private function get_google_sheets_data() {
-            $data           = get_option('formychat_google_sheets', []);
-            $just_connected = (bool) get_transient('formychat_google_sheets_just_connected');
-
-            if ( $just_connected ) {
-                delete_transient('formychat_google_sheets_just_connected');
-            }
-
-            $is_revoked  = ! empty($data['revoked']);
-            $is_connected = ! empty($data['connected']) && ! $is_revoked;
-
-            // Get sync settings and stats.
-            $sync_settings = \FormyChat\Google_Sheets_Sync::get_settings();
-            $intervals     = \FormyChat\Google_Sheets_Cron::get_intervals_for_frontend();
-
-            // Get sync stats.
-            $sync_service = new \FormyChat\Google_Sheets_Sync();
-            $sync_stats   = [
-				'total'   => (int) Lead::total(),
-				'synced'  => Lead::count_synced(),
-				'pending' => Lead::count_pending_sync(),
-            ];
-            $free_limit = $sync_service->get_free_limit();
-
             return [
-				'is_enabled'     => wp_validate_boolean(get_option('formychat_integration_google_sheets', false)),
-				'just_connected' => $just_connected,
-				'connected'      => $is_connected,
-				'revoked'        => $is_revoked,
-				'email'          => $data['email'] ?? '',
-				'picture'        => $data['picture'] ?? '',
-				'access_token'   => $is_revoked ? '' : ( $data['access_token'] ?? '' ),
-				'refresh_token'  => $is_revoked ? '' : ( $data['refresh_token'] ?? '' ),
-				'sync_settings'  => $sync_settings,
-				'sync_stats'     => $sync_stats,
-				'intervals'      => $intervals,
-				'free_limit'     => $free_limit,
+				'is_enabled'     => false,
+				'just_connected' => false,
+				'connected'      => false,
+				'revoked'        => false,
+				'email'          => '',
+				'picture'        => '',
+				'access_token'   => '',
+				'refresh_token'  => '',
+				'sync_settings'  => [],
+				'sync_stats'     => [
+					'total'   => 0,
+					'synced'  => 0,
+					'pending' => 0,
+				],
+				'intervals'      => [],
             ];
         }
     }

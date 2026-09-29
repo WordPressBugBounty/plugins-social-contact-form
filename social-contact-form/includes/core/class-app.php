@@ -65,6 +65,227 @@ if ( ! class_exists( __NAMESPACE__ . '\App' ) ) {
 		}
 
 		/**
+		 * Resolve the admin's dial code from their IP, for use as a default.
+		 *
+		 * Runs server side because browsers can no longer call a geolocation
+		 * API directly: ipwhois.app answers cross origin requests with HTTP 403
+		 * ("CORS is not supported on the Free plan"). WordPress is not subject
+		 * to CORS, so the lookup happens here and is cached in a transient.
+		 *
+		 * A code saved explicitly through the settings always wins; this is only
+		 * consulted when nothing has been chosen yet.
+		 *
+		 * @param string $fallback Returned when detection is unavailable.
+		 * @return string Dial code without the leading plus.
+		 */
+		public static function default_country_code( $fallback = '44' ) {
+			$saved = get_option( 'formychat_country_code', '' );
+
+			if ( ! empty( $saved ) ) {
+				return (string) $saved;
+			}
+
+			$geo = self::geolocate();
+
+			return ! empty( $geo['dial_code'] ) ? $geo['dial_code'] : $fallback;
+		}
+
+		/**
+		 * Geolocate the current request and return the location payload.
+		 *
+		 * Cached per IP: a day on success, ten minutes on failure so a transient
+		 * outage does not pin an empty answer for a whole day.
+		 *
+		 * @return array Location payload; fields are empty when unresolved.
+		 */
+		public static function geolocate() {
+			$ip = self::client_ip();
+
+			$cache_key = 'formychat_geo_' . md5( $ip );
+			$cached    = get_transient( $cache_key );
+
+			if ( false !== $cached ) {
+				return $cached;
+			}
+
+			$payload = [
+				'country_code' => '',
+				'country'      => '',
+				'dial_code'    => '',
+				'city'         => '',
+				'region'       => '',
+				'timezone'     => '',
+				'currency'     => '',
+				'isp'          => '',
+				'org'          => '',
+				'latitude'     => 0,
+				'longitude'    => 0,
+				'ip'           => $ip,
+			];
+
+			$is_public_ip = ! empty( $ip ) && filter_var( $ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE );
+
+			// On a local or LAN install the caller's address is a loopback or
+			// private one, which carries no location. Querying with no IP makes
+			// the API geolocate the request's own source address, which on such
+			// a setup is the developer's real connection. Remote installs keep
+			// using the visitor's address.
+			$lookup_ip = $is_public_ip ? rawurlencode( $ip ) : '';
+
+			$fields = 'status,country,countryCode,region,regionName,city,timezone,currency,isp,org,lat,lon';
+
+			$response = wp_remote_get(
+				'http://ip-api.com/json/' . $lookup_ip . '?fields=' . $fields,
+				[
+					'timeout' => 5,
+				]
+			);
+
+			if ( ! is_wp_error( $response ) && 200 === wp_remote_retrieve_response_code( $response ) ) {
+				$body = json_decode( wp_remote_retrieve_body( $response ), true );
+
+				if ( is_array( $body ) && isset( $body['status'] ) && 'success' === $body['status'] ) {
+					$country_code = isset( $body['countryCode'] ) ? sanitize_text_field( $body['countryCode'] ) : '';
+					$country_name = isset( $body['country'] ) ? sanitize_text_field( $body['country'] ) : '';
+
+					$payload['country_code'] = $country_code;
+					$payload['country']      = $country_name;
+					$payload['dial_code']    = self::dial_code( $country_name, $country_code );
+					$payload['city']         = isset( $body['city'] ) ? sanitize_text_field( $body['city'] ) : '';
+					$payload['region']       = isset( $body['regionName'] ) ? sanitize_text_field( $body['regionName'] ) : '';
+					$payload['timezone']     = isset( $body['timezone'] ) ? sanitize_text_field( $body['timezone'] ) : '';
+					$payload['currency']     = isset( $body['currency'] ) ? sanitize_text_field( $body['currency'] ) : '';
+					$payload['isp']          = isset( $body['isp'] ) ? sanitize_text_field( $body['isp'] ) : '';
+					$payload['org']          = isset( $body['org'] ) ? sanitize_text_field( $body['org'] ) : '';
+					$payload['latitude']     = isset( $body['lat'] ) ? (float) $body['lat'] : 0;
+					$payload['longitude']    = isset( $body['lon'] ) ? (float) $body['lon'] : 0;
+				}
+			}
+
+			set_transient( $cache_key, $payload, empty( $payload['dial_code'] ) ? 10 * MINUTE_IN_SECONDS : DAY_IN_SECONDS );
+
+			return $payload;
+		}
+
+		/**
+		 * Resolve the client IP, honouring common proxy headers.
+		 *
+		 * @return string IP address, or an empty string when unavailable.
+		 */
+		public static function client_ip() {
+			$headers = [
+				'HTTP_CF_CONNECTING_IP',
+				'HTTP_X_FORWARDED_FOR',
+				'HTTP_X_REAL_IP',
+				'REMOTE_ADDR',
+			];
+
+			foreach ( $headers as $header ) {
+				if ( empty( $_SERVER[ $header ] ) ) {
+					continue;
+				}
+
+				$value = sanitize_text_field( wp_unslash( $_SERVER[ $header ] ) );
+
+				// X-Forwarded-For may hold a comma separated chain; the client
+				// is the first entry.
+				if ( false !== strpos( $value, ',' ) ) {
+					$parts = explode( ',', $value );
+					$value = trim( $parts[0] );
+				}
+
+				if ( filter_var( $value, FILTER_VALIDATE_IP ) ) {
+					return $value;
+				}
+			}
+
+			return '';
+		}
+
+		/**
+		 * Map a geolocated country to its dial code.
+		 *
+		 * Reuses the country table below, so there is one source of truth. That
+		 * table carries no ISO codes and merges some territories into a single
+		 * row (for example "United States / Canada"), so matching falls back
+		 * through a slash split and a small alias map for names the geo API
+		 * spells differently.
+		 *
+		 * @param string $country_name Country name as returned by the geo API.
+		 * @param string $country_code ISO 3166-1 alpha-2 code, used for aliases.
+		 * @return string Dial code without the leading plus, or an empty string.
+		 */
+		public static function dial_code( $country_name, $country_code = '' ) {
+			if ( empty( $country_name ) && empty( $country_code ) ) {
+				return '';
+			}
+
+			$aliases = [
+				'US' => '1',
+				'CA' => '1',
+				'GB' => '44',
+				'RU' => '7',
+				'KR' => '82',
+				'KP' => '850',
+				'VN' => '84',
+				'IR' => '98',
+				'SY' => '963',
+				'LA' => '856',
+				'TZ' => '255',
+				'VE' => '58',
+				'BO' => '591',
+				'MD' => '373',
+				'CZ' => '420',
+				'MK' => '389',
+				'PS' => '970',
+				'CD' => '243',
+				'CG' => '242',
+				'CI' => '225',
+				'CV' => '238',
+				'TL' => '670',
+				'BN' => '673',
+			];
+
+			$iso = strtoupper( trim( $country_code ) );
+
+			if ( ! empty( $iso ) && isset( $aliases[ $iso ] ) ) {
+				return $aliases[ $iso ];
+			}
+
+			$countries = self::countries();
+			$needle    = strtolower( trim( $country_name ) );
+
+			if ( empty( $needle ) ) {
+				return '';
+			}
+
+			foreach ( $countries as $country ) {
+				if ( ! isset( $country['name'], $country['code'] ) ) {
+					continue;
+				}
+
+				if ( strtolower( $country['name'] ) === $needle ) {
+					return ltrim( (string) $country['code'], '+' );
+				}
+			}
+
+			// Combined rows such as "United States / Canada": compare each half.
+			foreach ( $countries as $country ) {
+				if ( ! isset( $country['name'], $country['code'] ) || false === strpos( $country['name'], '/' ) ) {
+					continue;
+				}
+
+				foreach ( explode( '/', $country['name'] ) as $part ) {
+					if ( strtolower( trim( $part ) ) === $needle ) {
+						return ltrim( (string) $country['code'], '+' );
+					}
+				}
+			}
+
+			return '';
+		}
+
+		/**
 		 * Returns the default countries.
 		 *
 		 * @return array
@@ -1488,14 +1709,14 @@ Dropdown: {dropdown}',
 					'on_click' => 'show_form',
 					'templates' => [
 						'simple' => [
-							'heading' => '👋 Hi! Have any queries?',
+							'heading' => '👋 Hi! Need any help?',
 							'heading_size' => 'medium',
 							'heading_size_custom' => 16,
-							'heading_color' => '#828282',
-							'message' => 'Feel free to ask your queries here. We are always ready to assist you anytime.',
+							'heading_color' => '#111827',
+							'message' => "We're here if you have any questions.",
 							'message_size' => 'medium',
 							'message_size_custom' => 16,
-							'message_color' => '#4F4F4F',
+							'message_color' => '#6B7280',
 							'background_color' => '#FFFFFF',
 							'font_family' => 'sans-serif',
 						],
@@ -1582,6 +1803,7 @@ Dropdown: {dropdown}',
 				'gravity' => [
 					'label' => 'Gravity Forms',
 					'logo' => FORMYCHAT_PUBLIC . '/images/forms/gravity-forms.png',
+					'locked' => true,
 				],
 				'wpforms' => [
 					'label' => 'WP Forms',
@@ -1590,19 +1812,23 @@ Dropdown: {dropdown}',
 				'fluentform' => [
 					'label' => 'Fluent Forms',
 					'logo' => FORMYCHAT_PUBLIC . '/images/forms/fluent-form.png',
+					'locked' => true,
 				],
 				'forminator' => [
 					'label' => 'Forminator',
 					'logo' => FORMYCHAT_PUBLIC . '/images/forms/forminator.png',
+					'locked' => true,
 				],
 				'formidable' => [
 					'label' => 'Formidable',
 					'logo' => FORMYCHAT_PUBLIC . '/images/forms/formidable.png',
+					'locked' => true,
 				],
 
 				'ninja' => [
 					'label' => 'Ninja Forms',
 					'logo' => FORMYCHAT_PUBLIC . '/images/forms/ninja-forms.png',
+					'locked' => true,
 				],
 			];
 
@@ -1762,6 +1988,113 @@ Dropdown: {dropdown}',
 				'default_value' => $default_value,
 				'options'       => $options,
 			];
+		}
+
+		/**
+		 * Clamps "custom" style options in a widget config back to their defaults.
+		 *
+		 * Free supports only the preset style options (icon size/position, form
+		 * size, colors, greeting styles); "custom" values and free-form colors
+		 * are a FormyChat Ultimate feature. Registered on `formychat_widget_config`
+		 * so free's frontend and admin preview both receive already-clamped
+		 * config — FormyChat Ultimate returns the config un-clamped.
+		 *
+		 * @since 2.16.0
+		 * @param  array $config Widget config.
+		 * @return array
+		 */
+		public static function clamp_widget_config( $config ) {
+			if ( ! is_array($config) ) {
+				return $config;
+			}
+
+			// FormyChat Ultimate: return the config completely un-clamped.
+			$is_ultimate_active = apply_filters('formychat_is_ultimate', false) || apply_filters('is_scf_ultimate', false);
+			if ( $is_ultimate_active ) {
+				return $config;
+			}
+
+			$default = self::widget_config();
+
+			if ( isset($config['whatsapp']) ) {
+				$config['whatsapp']['web_version'] = $default['whatsapp']['web_version'];
+				$config['whatsapp']['message_template'] = $default['whatsapp']['message_template'];
+				// Multi-agent display is a FormyChat Ultimate feature.
+				$config['whatsapp']['agent_mode'] = $default['whatsapp']['agent_mode'];
+				// Group destination is a FormyChat Ultimate feature; never send
+				// 'group' (or its invite code) to a non-Ultimate site, regardless
+				// of what's stored - re-applies the moment Ultimate is activated.
+				$config['whatsapp']['destination_type'] = $default['whatsapp']['destination_type'];
+				$config['whatsapp']['group_invite_code'] = $default['whatsapp']['group_invite_code'];
+			}
+
+			if ( isset($config['target']) ) {
+				// Page/post targeting (Exclude Pages, Exclude Posts, and both
+				// "Show Only" allow-lists) is a FormyChat Ultimate feature.
+				$config['target'] = $default['target'];
+			}
+
+			if ( isset($config['icon']) ) {
+				$config['icon']['image_url'] = $default['icon']['image_url'];
+				$config['icon']['size'] = ( 'custom' === $config['icon']['size'] ) ? $default['icon']['size'] : $config['icon']['size'];
+				$config['icon']['position'] = ( 'custom' === $config['icon']['position'] ) ? $default['icon']['position'] : $config['icon']['position'];
+			}
+
+			if ( isset($config['cta']) ) {
+				$config['cta']['color'] = $default['cta']['color'];
+				$config['cta']['background_color'] = $default['cta']['background_color'];
+				$config['cta']['size'] = ( 'custom' === $config['cta']['size'] ) ? $default['cta']['size'] : $config['cta']['size'];
+			}
+
+			if ( isset($config['form']) ) {
+				$config['form']['size'] = ( 'custom' === $config['form']['size'] ) ? $default['form']['size'] : $config['form']['size'];
+				$config['form']['show_country_code_field'] = $default['form']['show_country_code_field'];
+				$config['form']['text_color'] = $default['form']['text_color'];
+				$config['form']['background_color'] = $default['form']['background_color'];
+			}
+
+			if ( isset($config['greetings']) ) {
+				$config['greetings']['style'] = $default['greetings']['style'];
+				$config['greetings']['on_click'] = $default['greetings']['on_click'];
+
+				// Wave greeting template is a FormyChat Ultimate feature.
+				if ( 'wave' === $config['greetings']['template'] ) {
+					$config['greetings']['template'] = $default['greetings']['template'];
+				}
+
+				if ( isset($config['greetings']['templates']['simple']) ) {
+					$simple = &$config['greetings']['templates']['simple'];
+					$default_simple = $default['greetings']['templates']['simple'];
+					$simple['heading_size'] = ( 'custom' === $simple['heading_size'] ) ? $default_simple['heading_size'] : $simple['heading_size'];
+					$simple['message_size'] = ( 'custom' === $simple['message_size'] ) ? $default_simple['message_size'] : $simple['message_size'];
+					// Greeting colors (row 53) are a FormyChat Ultimate feature.
+					$simple['heading_color'] = $default_simple['heading_color'];
+					$simple['message_color'] = $default_simple['message_color'];
+					$simple['background_color'] = $default_simple['background_color'];
+					unset($simple);
+				}
+
+				if ( isset($config['greetings']['templates']['wave']) ) {
+					$wave = &$config['greetings']['templates']['wave'];
+					$default_wave = $default['greetings']['templates']['wave'];
+					$wave['icon_url'] = $default_wave['icon_url'];
+					$wave['icon_position'] = $default_wave['icon_position'];
+					$wave['heading_size'] = ( 'custom' === $wave['heading_size'] ) ? $default_wave['heading_size'] : $wave['heading_size'];
+					$wave['message_size'] = ( 'custom' === $wave['message_size'] ) ? $default_wave['message_size'] : $wave['message_size'];
+					$wave['message_color'] = $default_wave['message_color'];
+					$wave['background_color'] = $default_wave['background_color'];
+					$wave['cta_icon_url'] = $default_wave['cta_icon_url'];
+					$wave['cta_text_color'] = $default_wave['cta_text_color'];
+					$wave['cta_background_color'] = $default_wave['cta_background_color'];
+					$wave['cta_heading_color'] = $default_wave['cta_heading_color'];
+					$wave['cta_message_color'] = $default_wave['cta_message_color'];
+					$wave['cta_heading_size'] = ( 'custom' === $wave['cta_heading_size'] ) ? $default_wave['cta_heading_size'] : $wave['cta_heading_size'];
+					$wave['cta_message_size'] = ( 'custom' === $wave['cta_message_size'] ) ? $default_wave['cta_message_size'] : $wave['cta_message_size'];
+					unset($wave);
+				}
+			}
+
+			return $config;
 		}
 
 		/**

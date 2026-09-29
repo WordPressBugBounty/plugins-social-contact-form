@@ -23,18 +23,35 @@ if ( ! class_exists(__NAMESPACE__ . '\Frontend') ) {
 
 
         /**
-         * Shop settings.
-         *
-         * @var array
-         */
-        private $shop_settings = [];
-
-        /**
          * Product settings.
          *
          * @var array
          */
         private $product_settings = [];
+
+        /**
+         * Advanced product-button fields that are FormyChat Ultimate only.
+         *
+         * Mirrors `Admin::PRODUCT_ADVANCED_FIELDS`, kept in sync so a
+         * value saved before this clamp existed never renders on the
+         * frontend either.
+         *
+         * @since 2.16.0
+         * @var   string[]
+         */
+        const PRODUCT_ADVANCED_FIELDS = [
+            'button_text',
+            'message_template',
+            'bg_color',
+            'bg_hover_color',
+            'text_color',
+            'text_hover_color',
+            'border_radius',
+            'open_new_tab',
+            'hide_add_to_cart',
+            'display_desktop',
+            'display_mobile',
+        ];
 
         /**
          * Constructor.
@@ -44,18 +61,14 @@ if ( ! class_exists(__NAMESPACE__ . '\Frontend') ) {
         public function hooks() {
             $this->load_settings();
 
-            // Only proceed if at least one feature is enabled.
-            if ( ! $this->shop_settings['enabled'] && ! $this->product_settings['enabled'] ) {
+            // NOTE: Shop Page (row 92) is a FormyChat Ultimate-only feature;
+            // this class now only ever handles the Product Page button.
+            if ( ! $this->product_settings['enabled'] ) {
                 return;
             }
 
             add_action('wp_enqueue_scripts', [ $this, 'enqueue_assets' ]);
             add_action('wp_head', [ $this, 'maybe_hide_add_to_cart' ]);
-
-            // Inject inline product data for shortcode products.
-            if ( $this->shop_settings['enabled'] ) {
-                add_action('woocommerce_after_shop_loop_item', [ $this, 'inject_product_data' ], 99);
-            }
         }
 
         /**
@@ -64,33 +77,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Frontend') ) {
          * @since 2.14.0
          */
         private function load_settings() {
-            $this->shop_settings    = $this->get_shop_settings();
             $this->product_settings = $this->get_product_settings();
-        }
-
-        /**
-         * Get default shop settings.
-         *
-         * @return array
-         */
-        private function get_default_shop_settings() {
-            return [
-				'enabled'          => false,
-				'country_code'     => get_option('formychat_country_code', '44'),
-				'whatsapp_number'  => '',
-				'button_position'  => 'below',
-				'button_text'      => 'Buy on WhatsApp',
-				'message_template' => 'Hello! I\'d like to ask about {product_name} (SKU: {product_sku}) on {site_title}.',
-				'bg_color'         => '#25D366',
-				'bg_hover_color'   => '#21bd5b',
-				'text_color'       => '#ffffff',
-				'text_hover_color' => '#ffffff',
-				'border_radius'    => 4,
-				'open_new_tab'     => false,
-				'hide_add_to_cart' => false,
-				'display_desktop'  => true,
-				'display_mobile'   => true,
-            ];
         }
 
         /**
@@ -101,7 +88,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Frontend') ) {
         private function get_default_product_settings() {
             return [
 				'enabled'          => false,
-				'country_code'     => get_option('formychat_country_code', '44'),
+				'country_code'     => \FormyChat\App::default_country_code(),
 				'whatsapp_number'  => '',
 				'button_position'  => 'after_add_to_cart',
 				'button_text'      => 'Buy on WhatsApp',
@@ -119,14 +106,30 @@ if ( ! class_exists(__NAMESPACE__ . '\Frontend') ) {
         }
 
         /**
-         * Get shop settings.
+         * Clamp WooCommerce product-button settings to the free tier.
          *
+         * Defense on read: even if a Pro value was saved to the option
+         * before this clamp existed (or via a direct request), it never
+         * reaches the frontend render.
+         *
+         * @since  2.16.0
+         * @param  array $settings Settings to clamp.
          * @return array
          */
-        private function get_shop_settings() {
-            $default  = $this->get_default_shop_settings();
-            $saved    = get_option('formychat_wc_shop', []);
-            return array_merge($default, $saved);
+        private function clamp_product_settings( $settings ) {
+            if ( ! is_array($settings) ) {
+                return $settings;
+            }
+
+            $default = $this->get_default_product_settings();
+
+            foreach ( self::PRODUCT_ADVANCED_FIELDS as $field ) {
+                if ( array_key_exists($field, $default) ) {
+                    $settings[ $field ] = $default[ $field ];
+                }
+            }
+
+            return $settings;
         }
 
         /**
@@ -137,7 +140,8 @@ if ( ! class_exists(__NAMESPACE__ . '\Frontend') ) {
         private function get_product_settings() {
             $default = $this->get_default_product_settings();
             $saved   = get_option('formychat_wc_product', []);
-            return array_merge($default, $saved);
+            $settings = array_merge($default, $saved);
+            return $this->clamp_product_settings($settings);
         }
 
         /**
@@ -146,12 +150,6 @@ if ( ! class_exists(__NAMESPACE__ . '\Frontend') ) {
          * @return bool
          */
         private function should_load_assets() {
-            // If shop is enabled, always load - products can appear anywhere via shortcodes/blocks.
-            // JS will detect and inject buttons only where products exist.
-            if ( $this->shop_settings['enabled'] ) {
-                return true;
-            }
-
             // Product page enabled and on single product.
             if ( $this->product_settings['enabled'] && is_product() ) {
                 return true;
@@ -237,7 +235,6 @@ if ( ! class_exists(__NAMESPACE__ . '\Frontend') ) {
          */
         private function get_js_vars() {
             return [
-				'shop'    => $this->shop_settings,
 				'product' => $this->product_settings,
 				'site'    => [
 					'title' => get_bloginfo('name'),
@@ -262,37 +259,14 @@ if ( ! class_exists(__NAMESPACE__ . '\Frontend') ) {
         }
 
         /**
-         * Inject inline product data JSON for shortcode products.
-         *
-         * @since 2.14.0
-         */
-        public function inject_product_data() {
-            global $product;
-
-            if ( ! $product || ! is_a($product, 'WC_Product') ) {
-                return;
-            }
-
-            $data = [
-				'id'            => $product->get_id(),
-				'name'          => $product->get_name(),
-				'price'         => html_entity_decode(wp_strip_all_tags(wc_price($product->get_price()))),
-				'regular_price' => html_entity_decode(wp_strip_all_tags(wc_price($product->get_regular_price()))),
-				'sale_price'    => $product->get_sale_price() ? html_entity_decode(wp_strip_all_tags(wc_price($product->get_sale_price()))) : '',
-				'sku'           => $product->get_sku(),
-				'stock_status'  => $product->get_stock_status(),
-				'url'           => get_permalink($product->get_id()),
-				'type'          => $product->get_type(),
-            ];
-
-            printf(
-                '<script type="application/json" class="formychat-product-data">%s</script>',
-                wp_json_encode($data)
-            );
-        }
-
-        /**
          * Maybe hide Add to Cart button via CSS.
+         *
+         * NOTE: `hide_add_to_cart` (row 105) is a FormyChat Ultimate-only
+         * feature; free's `product_settings` is always clamped to `false`
+         * for this field (see `clamp_product_settings()`), so this is a
+         * structural no-op for free installs. Kept as-is (rather than
+         * removed) so it continues to work unmodified once Ultimate
+         * supplies a real value through the same filter/option shape.
          *
          * @since 2.14.0
          */
@@ -301,26 +275,15 @@ if ( ! class_exists(__NAMESPACE__ . '\Frontend') ) {
                 return;
             }
 
-            $hide_shop    = $this->shop_settings['enabled'] && $this->shop_settings['hide_add_to_cart'];
             $hide_product = $this->product_settings['enabled'] && $this->product_settings['hide_add_to_cart'];
 
-            if ( ! $hide_shop && ! $hide_product ) {
+            if ( ! $hide_product ) {
                 return;
             }
 
             echo '<style id="formychat-woo-hide-atc">';
-
-            if ( $hide_shop ) {
-                echo '.products .add_to_cart_button,
-					  .wc-block-grid__product .add_to_cart_button,
-					  .wc-block-components-product-button { display: none !important; }';
-            }
-
-            if ( $hide_product ) {
-                echo '.single-product .single_add_to_cart_button,
-					  .single-product form.cart .button[type="submit"] { display: none !important; }';
-            }
-
+            echo '.single-product .single_add_to_cart_button,
+				  .single-product form.cart .button[type="submit"] { display: none !important; }';
             echo '</style>';
         }
     }

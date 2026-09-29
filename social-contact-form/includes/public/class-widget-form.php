@@ -53,11 +53,15 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
             // Form Shortcodes.
             add_action('formychat_form_cf7', [ $this, 'form_cf7' ], 10, 1);
             add_action('formychat_form_wpforms', [ $this, 'form_wpforms' ], 10, 1);
-            add_action('formychat_form_gravity', [ $this, 'form_gravity' ], 10, 1);
-            add_action('formychat_form_fluentform', [ $this, 'form_fluentform' ], 10, 1);
-            add_action('formychat_form_forminator', [ $this, 'form_forminator' ], 10, 1);
-            add_action('formychat_form_formidable', [ $this, 'form_formidable' ], 10, 1);
-            add_action('formychat_form_ninja', [ $this, 'form_ninja' ], 10, 1);
+
+            // Gravity, Fluent, Forminator, Formidable, Ninja: FormyChat Ultimate feature.
+            if ( $this->is_ultimate_active() ) {
+                add_action('formychat_form_gravity', [ $this, 'form_gravity' ], 10, 1);
+                add_action('formychat_form_fluentform', [ $this, 'form_fluentform' ], 10, 1);
+                add_action('formychat_form_forminator', [ $this, 'form_forminator' ], 10, 1);
+                add_action('formychat_form_formidable', [ $this, 'form_formidable' ], 10, 1);
+                add_action('formychat_form_ninja', [ $this, 'form_ninja' ], 10, 1);
+            }
         }
 
         /**
@@ -319,6 +323,11 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
          * @return void
          */
         public function print_custom_css() {
+            // Custom CSS is a FormyChat Ultimate feature.
+            if ( ! $this->is_ultimate_active() ) {
+                return;
+            }
+
             $custom_css = get_option('formychat_custom_css', '');
             $custom_css = apply_filters('formychat_custom_css', $custom_css);
             if ( ! empty($custom_css) ) {

@@ -66,6 +66,18 @@ if ( ! class_exists(__NAMESPACE__ . '\Widget') ) {
                 }
                 $config = \FormyChat\App::sanitize_whatsapp_message_templates($config);
 
+                /**
+                 * Filters a widget's config before it reaches the front end.
+                 *
+                 * Free clamps "custom" style options (icon size/position, form
+                 * size/colors, greeting styles) back to their defaults.
+                 * FormyChat Ultimate returns the config un-clamped.
+                 *
+                 * @since 2.16.0
+                 * @param array $config Widget config.
+                 */
+                $config = apply_filters('formychat_widget_config', $config);
+
                 $widgets[] = [
 					'id' => intval($widget->id),
 					'name' => $widget->name,

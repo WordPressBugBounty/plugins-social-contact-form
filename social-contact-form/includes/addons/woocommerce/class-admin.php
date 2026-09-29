@@ -43,6 +43,54 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
         }
 
         /**
+         * Advanced product-button fields that are FormyChat Ultimate only.
+         *
+         * Enable, whatsapp_number, country_code, and button_position stay
+         * free. Everything below is forced back to its free default here
+         * (not just hidden in the admin UI) so a value saved via a direct
+         * REST request cannot make a locked control take effect.
+         *
+         * @since 2.16.0
+         * @var   string[]
+         */
+        const PRODUCT_ADVANCED_FIELDS = [
+            'button_text',
+            'message_template',
+            'bg_color',
+            'bg_hover_color',
+            'text_color',
+            'text_hover_color',
+            'border_radius',
+            'open_new_tab',
+            'hide_add_to_cart',
+            'display_desktop',
+            'display_mobile',
+        ];
+
+        /**
+         * Clamp WooCommerce product-button settings to the free tier.
+         *
+         * @since  2.16.0
+         * @param  array $settings Settings to clamp.
+         * @return array
+         */
+        public function clamp_product_settings( $settings ) {
+            if ( ! is_array($settings) ) {
+                return $settings;
+            }
+
+            $default = $this->get_default_product_settings();
+
+            foreach ( self::PRODUCT_ADVANCED_FIELDS as $field ) {
+                if ( array_key_exists($field, $default) ) {
+                    $settings[ $field ] = $default[ $field ];
+                }
+            }
+
+            return $settings;
+        }
+
+        /**
          * Register admin menu.
          *
          * @return void
@@ -75,30 +123,9 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
          * @return void
          */
         public function register_routes() {
-            register_rest_route(
-                'formychat',
-                '/woocommerce/settings',
-                [
-					'methods'             => 'GET',
-					'callback'            => [ $this, 'get_settings' ],
-					'permission_callback' => function () {
-						return current_user_can('manage_options');
-					},
-                ]
-            );
-
-            register_rest_route(
-                'formychat',
-                '/woocommerce/settings',
-                [
-					'methods'             => 'POST',
-					'callback'            => [ $this, 'save_settings' ],
-					'permission_callback' => function () {
-						return current_user_can('manage_options');
-					},
-                ]
-            );
-
+            // NOTE: The Shop Page `/woocommerce/settings` REST routes are a
+            // FormyChat Ultimate-only feature (row 92) and are registered by
+            // Ultimate's own WooCommerce_Shop class, not here.
             register_rest_route(
                 'formychat',
                 '/woocommerce/product-settings',
@@ -125,31 +152,6 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
         }
 
         /**
-         * Get default shop settings.
-         *
-         * @return array
-         */
-        private function get_default_settings() {
-            return [
-				'enabled'          => false,
-				'country_code'     => get_option('formychat_country_code', '44'),
-				'whatsapp_number'  => '',
-				'button_position'  => 'below',
-				'button_text'      => 'Buy on WhatsApp',
-				'message_template' => 'Hello! I\'d like to ask about {product_name} (SKU: {product_sku}) on {site_title}.',
-				'bg_color'         => '#25D366',
-				'bg_hover_color'   => '#21bd5b',
-				'text_color'       => '#ffffff',
-				'text_hover_color' => '#ffffff',
-				'border_radius'    => 4,
-				'open_new_tab'     => false,
-				'hide_add_to_cart' => false,
-				'display_desktop'  => true,
-				'display_mobile'   => true,
-            ];
-        }
-
-        /**
          * Get default product settings.
          *
          * @return array
@@ -157,7 +159,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
         private function get_default_product_settings() {
             return [
 				'enabled'          => false,
-				'country_code'     => get_option('formychat_country_code', '44'),
+				'country_code'     => \FormyChat\App::default_country_code(),
 				'whatsapp_number'  => '',
 				'button_position'  => 'after_add_to_cart',
 				'button_text'      => 'Buy on WhatsApp',
@@ -175,56 +177,6 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
         }
 
         /**
-         * Get WooCommerce shop settings.
-         *
-         * @param  \WP_REST_Request $request Request object.
-         * @return \WP_REST_Response
-         */
-        public function get_settings( $request ) {
-            $default_settings = $this->get_default_settings();
-            $saved_settings = get_option('formychat_wc_shop', []);
-            $settings = array_merge($default_settings, $saved_settings);
-
-            return new \WP_REST_Response(
-                [
-					'success' => true,
-					'data'    => $settings,
-                ]
-            );
-        }
-
-        /**
-         * Save WooCommerce shop settings.
-         *
-         * @param  \WP_REST_Request $request Request object.
-         * @return \WP_REST_Response
-         */
-        public function save_settings( $request ) {
-            $settings = $request->get_param('settings');
-
-            if ( null === $settings ) {
-                return new \WP_REST_Response(
-                    [
-						'success' => false,
-						'message' => __('No settings provided.', 'social-contact-form'),
-                    ],
-                    400
-                );
-            }
-
-            update_option('formychat_wc_shop', $settings);
-
-            do_action('formychat_wc_shop_settings_saved', $settings);
-
-            return new \WP_REST_Response(
-                [
-					'success' => true,
-					'message' => __('Settings saved successfully.', 'social-contact-form'),
-                ]
-            );
-        }
-
-        /**
          * Get WooCommerce product settings.
          *
          * @param  \WP_REST_Request $request Request object.
@@ -234,6 +186,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
             $default_settings = $this->get_default_product_settings();
             $saved_settings   = get_option('formychat_wc_product', []);
             $settings         = array_merge($default_settings, $saved_settings);
+            $settings         = $this->clamp_product_settings($settings);
 
             return new \WP_REST_Response(
                 [
@@ -262,6 +215,8 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
                 );
             }
 
+            $settings = $this->clamp_product_settings($settings);
+
             update_option('formychat_wc_product', $settings);
 
             do_action('formychat_wc_product_settings_saved', $settings);
@@ -275,56 +230,21 @@ if ( ! class_exists(__NAMESPACE__ . '\Admin') ) {
         }
 
         /**
-         * Get product fields for message template placeholders.
-         *
-         * @since  2.14.0
-         * @return array
-         */
-        public function get_product_fields() {
-            $fields = [
-				'product_name'          => __('Product Name', 'social-contact-form'),
-				'product_slug'          => __('Product Slug', 'social-contact-form'),
-				'product_sku'           => __('Product SKU', 'social-contact-form'),
-				'product_price'         => __('Product Price', 'social-contact-form'),
-				'product_regular_price' => __('Regular Price', 'social-contact-form'),
-				'product_sale_price'    => __('Sale Price', 'social-contact-form'),
-				'product_stock_status'  => __('Stock Status', 'social-contact-form'),
-				'current_url'           => __('Current URL', 'social-contact-form'),
-				'current_title'         => __('Current Page Title', 'social-contact-form'),
-				'site_title'            => __('Site Title', 'social-contact-form'),
-				'site_url'              => __('Site URL', 'social-contact-form'),
-				'site_email'            => __('Site Email', 'social-contact-form'),
-				'date'                  => __('Current Date', 'social-contact-form'),
-				'time'                  => __('Current Time', 'social-contact-form'),
-            ];
-
-            /**
-             * Filter the product fields available for message templates.
-             *
-             * Developers can use this filter to add custom product fields.
-             *
-             * @since 2.14.0
-             * @param array $fields Key-value pairs of placeholder => label.
-             */
-            return apply_filters('formychat_woocommerce_product_fields', $fields);
-        }
-
-        /**
          * FormyChat admin vars.
          *
          * @param  array $vars
          * @return array
          */
         public function formychat_admin_vars( $vars ) {
-            $default_shop_settings    = $this->get_default_settings();
-            $saved_shop_settings      = get_option('formychat_wc_shop', []);
             $default_product_settings = $this->get_default_product_settings();
             $saved_product_settings   = get_option('formychat_wc_product', []);
+            $product_settings         = array_merge($default_product_settings, $saved_product_settings);
 
+            // NOTE: `shop_settings` and `product_fields` (the placeholder
+            // picker, row 99) are FormyChat Ultimate-only and are localized
+            // by Ultimate's own WooCommerce_Shop class, not here.
             $vars['woocommerce'] = [
-				'shop_settings'    => array_merge($default_shop_settings, $saved_shop_settings),
-				'product_settings' => array_merge($default_product_settings, $saved_product_settings),
-				'product_fields'   => $this->get_product_fields(),
+				'product_settings' => $this->clamp_product_settings($product_settings),
             ];
             return $vars;
         }

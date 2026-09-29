@@ -43,6 +43,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Hooks') ) {
             add_action('admin_init', [ $this, 'init_appsero' ], 0);
             add_action('admin_init', [ $this, 'handle_safe_redirection' ]);
             add_action('admin_menu', [ $this, 'register_admin_menu' ], 10);
+            add_action('admin_head', [ $this, 'admin_menu_styles' ]);
         }
 
         /**
@@ -123,7 +124,60 @@ if ( ! class_exists(__NAMESPACE__ . '\Hooks') ) {
                 [ $this, 'load_integrations_app' ]
             );
 
+            // Upgrade Now. Free only: the slug is an external URL, so
+            // WordPress renders it as a plain link instead of a settings page.
+            if ( ! $this->is_ultimate_active() ) {
+                add_submenu_page(
+                    'formychat',
+                    __('Upgrade Now', 'social-contact-form'),
+                    wp_sprintf(
+                        '<span class="formychat-upgrade-now">%s <svg width="14" height="11" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M5.2 0H2.8L0 3.6H4L5.2 0Z" fill="#7CFFCA"></path>
+					<path d="M14.4 3.6L11.6 0H9.19995L10.4 3.6H14.4Z" fill="#219D6B"></path>
+					<path d="M10.4 3.6H14.4L7.20001 12L10.4 3.6Z" fill="#24A973"></path>
+					<path d="M4 3.6H0L7.2 12L4 3.6ZM5.2 0L4 3.6H10.4L9.2 0H5.2Z" fill="#3BF5A9"></path>
+					<path d="M7.2 12L4 3.6H10.4L7.2 12Z" fill="#2BD08D"></path>
+					</svg></span>',
+                        __('Upgrade Now', 'social-contact-form')
+                    ),
+                    'manage_options',
+                    'https://wppool.dev/formychat-pricing/?utm_source=plugin&utm_medium=admin-menu&utm_campaign=formychat',
+                    '',
+                    40
+                );
+            }
+
             do_action('formychat_admin_menu');
+        }
+
+        /**
+         * Styles for the Upgrade Now menu item.
+         *
+         * @return void
+         */
+        public function admin_menu_styles() {
+            if ( $this->is_ultimate_active() ) {
+                return;
+            }
+            ?>
+            <style>
+                .formychat-upgrade-now {
+                    color: #34D399;
+                    text-transform: uppercase;
+                    font-size: 13px;
+                    line-height: 20px;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+                }
+
+                .formychat-upgrade-now svg {
+                    transform: translateY(1px);
+                }
+            </style>
+            <?php
         }
 
 
@@ -173,7 +227,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Hooks') ) {
             if ( $this->is_ultimate_active() ) {
                 $links[] = '<a href="' . admin_url('admin.php?page=formychat') . '">' . __('Settings', 'social-contact-form') . '</a>';
             } else {
-                $links[] = '<a href="https://go.wppool.dev/2rc7/?ref=' . esc_url(home_url()) . '" target="_blank" style="color: #b32d2e;">' . __('Upgrade', 'social-contact-form') . '</a>';
+                $links[] = '<a href="https://wppool.dev/formychat-pricing/?utm_source=plugin&utm_medium=plugin-list&utm_campaign=formychat&ref=' . rawurlencode(home_url()) . '" target="_blank" rel="noopener noreferrer" style="color: #b32d2e;">' . __('Upgrade', 'social-contact-form') . '</a>';
             }
             return $links;
         }
@@ -184,23 +238,15 @@ if ( ! class_exists(__NAMESPACE__ . '\Hooks') ) {
          * @return void
          */
         public function init_appsero() {
-            if ( ! class_exists('\Appsero\Client') ) {
-                $appsero_client = FORMYCHAT_INCLUDES . '/appsero/src/Client.php';
-
-                if ( ! file_exists($appsero_client) ) {
-                    return;
-                }
-
-                include_once $appsero_client;
-            }
-
-            if ( ! class_exists('\Appsero\Client') ) {
+            // The SDK ships via composer, namespaced to avoid collisions with
+            // other plugins bundling the same package; bail if unavailable.
+            if ( ! class_exists('\FormyChat\Appsero\Client') ) {
                 return;
             }
 
             add_filter('appsero_is_local', '__return_false');
 
-            $appsero = new \Appsero\Client('9b39bac1-3b27-41d1-aeec-18fbfd4a9977', 'FormyChat', FORMYCHAT_FILE);
+            $appsero = new \FormyChat\Appsero\Client('9b39bac1-3b27-41d1-aeec-18fbfd4a9977', 'FormyChat', FORMYCHAT_FILE);
 
             // Active insights.
             $appsero->insights()->init();

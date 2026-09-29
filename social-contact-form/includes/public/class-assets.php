@@ -90,6 +90,10 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets' ) ) {
 					'rest_url'    => rest_url( 'formychat/v1' ),
 					'rest_nonce'  => wp_create_nonce( 'wp_rest' ),
 
+					// Server side geolocation for location merge tags. Needed
+					// because browser calls to the geo API are blocked by CORS.
+					'geo_endpoint' => rest_url( 'formychat/geo' ),
+
 					'is_premium'      => $this->is_ultimate_active(),
 					'is_form_page'    => defined('FORMYCHAT_FORM_PAGE'),
 

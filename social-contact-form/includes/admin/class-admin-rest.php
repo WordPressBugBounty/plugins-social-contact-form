@@ -10,6 +10,9 @@
 // Namespace .
 namespace FormyChat\Admin;
 
+// Exit if accessed directly.
+defined('ABSPATH') || exit; // phpcs:ignore Universal.PHP.RequireExitDieParentheses.Missing
+
 // Load Widget Model.
 require_once FORMYCHAT_INCLUDES . '/models/class-widget.php';
 
@@ -55,12 +58,16 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
          */
         public function add_filters() {
             add_filter('formychat_form_fields_cf7', [ $this, 'formychat_form_fields_cf7' ], 10, 2);
-            add_filter('formychat_form_fields_gravity', [ $this, 'formychat_form_fields_gravity' ], 10, 2);
             add_filter('formychat_form_fields_wpforms', [ $this, 'formychat_form_fields_wpforms' ], 10, 2);
-            add_filter('formychat_form_fields_fluentform', [ $this, 'formychat_form_fields_fluentform' ], 10, 2);
-            add_filter('formychat_form_fields_forminator', [ $this, 'formychat_form_fields_forminator' ], 10, 2);
-            add_filter('formychat_form_fields_formidable', [ $this, 'formychat_form_fields_formidable' ], 10, 2);
-            add_filter('formychat_form_fields_ninja', [ $this, 'formychat_form_fields_ninja' ], 10, 2);
+
+            // Gravity, Fluent, Forminator, Formidable, Ninja: FormyChat Ultimate feature.
+            if ( $this->is_ultimate_active() ) {
+                add_filter('formychat_form_fields_gravity', [ $this, 'formychat_form_fields_gravity' ], 10, 2);
+                add_filter('formychat_form_fields_fluentform', [ $this, 'formychat_form_fields_fluentform' ], 10, 2);
+                add_filter('formychat_form_fields_forminator', [ $this, 'formychat_form_fields_forminator' ], 10, 2);
+                add_filter('formychat_form_fields_formidable', [ $this, 'formychat_form_fields_formidable' ], 10, 2);
+                add_filter('formychat_form_fields_ninja', [ $this, 'formychat_form_fields_ninja' ], 10, 2);
+            }
         }
 
         /**
@@ -108,6 +115,10 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
 						'methods' => 'GET',
 						'callback' => [ $this, 'get_contents' ],
 					],
+					'geo' => [
+						'methods' => 'GET',
+						'callback' => [ $this, 'get_geo' ],
+					],
 					'action' => [
 						[
 							'methods' => 'GET',
@@ -131,27 +142,48 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
                 ]
             );
 
+            // Routes readable without the admin capability. The geo lookup is
+            // also used by the public widget to fill location merge tags, and
+            // returns nothing but the caller's own coarse location.
+            $public_routes = [ 'geo' ];
+
             if ( ! empty($routes) ) {
                 foreach ( $routes as $route => $args ) {
+                    $is_public = in_array($route, $public_routes, true);
+
+                    $permission_callback = $is_public
+                        ? '__return_true'
+                        : function () {
+                            return current_user_can('manage_options');
+                        };
+
                     if ( isset($args[0]) ) {
                         foreach ( $args as $arg ) {
 
-                               $arg['permission_callback'] = function () {
-                                return current_user_can('manage_options');
-                               };
+                               $arg['permission_callback'] = $permission_callback;
 
                             register_rest_route('formychat', $route, $arg);
                         }
                     } else {
 
-                        $args['permission_callback'] = function () {
-                            return current_user_can('manage_options');
-                        };
+                        $args['permission_callback'] = $permission_callback;
 
                         register_rest_route('formychat', $route, $args);
                     }
                 }
             }
+        }
+
+        /**
+         * Detect the caller's country from their IP.
+         *
+         * The lookup itself lives on the App class so the admin pages, the
+         * WooCommerce defaults and this endpoint all share one implementation.
+         *
+         * @return \WP_REST_Response Location payload.
+         */
+        public function get_geo() {
+            return rest_ensure_response( \FormyChat\App::geolocate() );
         }
 
         /**
@@ -202,6 +234,16 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
          * @param \WP_REST_Request $request Request object.
          */
         public function create_widget( $request ) {
+
+            // Free is limited to 1 widget; FormyChat Ultimate allows unlimited.
+            if ( ! $this->is_ultimate_active() && Widget::total() >= 1 ) {
+                return new \WP_REST_Response(
+                    [
+						'success' => false,
+						'message' => __('Free plan is limited to 1 widget. Upgrade to FormyChat Ultimate for unlimited widgets.', 'social-contact-form'),
+                    ], 403
+                );
+            }
 
             $name = $request->get_param('name') ? $request->get_param('name') : 'Untitled';
             $is_active = $request->get_param('is_active') ? wp_validate_boolean($request->get_param('is_active')) : 1;
@@ -622,12 +664,20 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
                 $before = gmdate('Y-m-d 23:59:59', strtotime($before));
             }
 
+            // Whitelist order/orderby to prevent SQL injection via ORDER BY clause.
+            $requested_order = $request->has_param('order') ? strtoupper($request->get_param('order')) : 'DESC';
+            $order = in_array($requested_order, [ 'ASC', 'DESC' ], true) ? $requested_order : 'DESC';
+
+            $allowed_orderby = [ 'created_at', 'id', 'widget_id', 'form', 'form_id' ];
+            $requested_orderby = $request->has_param('order_by') ? $request->get_param('order_by') : 'created_at';
+            $orderby = in_array($requested_orderby, $allowed_orderby, true) ? $requested_orderby : 'created_at';
+
             $filter = [
 				'search' => $request->has_param('search') ? $request->get_param('search') : '',
-				'order' => $request->has_param('order') ? $request->get_param('order') : 'DESC',
+				'order' => $order,
 				'per_page' => $request->has_param('per_page') ? $request->get_param('per_page') : 10,
 				'page' => $request->has_param('page') ? intval($request->get_param('page')) : 1,
-				'order_by' => $request->has_param('order_by') ? $request->get_param('order_by') : 'created_at',
+				'orderby' => $orderby,
 				'widget_id' => $request->has_param('widget_id') ? $request->get_param('widget_id') : '',
 				'before' => $before,
 				'after' => $after,
@@ -753,13 +803,17 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
         public function get_forms() {
             $forms = [
 				'cf7'   => $this->get_cf7_forms(),
-				'gravity' => $this->get_gravity_forms(),
 				'wpforms' => $this->get_wpforms_forms(),
-				'fluentform' => $this->get_fluentform_forms(),
-				'forminator' => $this->get_forminator_forms(),
-				'formidable' => $this->get_formidable_forms(),
-				'ninja' => $this->get_ninja_forms(),
             ];
+
+            // Gravity, Fluent, Forminator, Formidable, Ninja: FormyChat Ultimate feature.
+            if ( $this->is_ultimate_active() ) {
+                $forms['gravity'] = $this->get_gravity_forms();
+                $forms['fluentform'] = $this->get_fluentform_forms();
+                $forms['forminator'] = $this->get_forminator_forms();
+                $forms['formidable'] = $this->get_formidable_forms();
+                $forms['ninja'] = $this->get_ninja_forms();
+            }
 
             return apply_filters('formychat_get_forms', $forms);
         }
@@ -1327,6 +1381,16 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
          * @return \WP_REST_Response
          */
         public function save_custom_css( $request ) {
+            // Custom CSS is a FormyChat Ultimate feature.
+            if ( ! $this->is_ultimate_active() ) {
+                return new \WP_REST_Response(
+                    [
+						'success' => false,
+						'message' => __('Custom CSS is a FormyChat Ultimate feature.', 'social-contact-form'),
+                    ], 403
+                );
+            }
+
             $custom_css = $request->get_param('custom_css');
 
             if ( null === $custom_css ) {

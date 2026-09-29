@@ -28,7 +28,6 @@ if ( ! class_exists(__NAMESPACE__ . '\Load') ) {
          * @since 2.14.0
          */
         public function hooks() {
-            include_once FORMYCHAT_INCLUDES . '/addons/woocommerce/class-settings.php';
             include_once FORMYCHAT_INCLUDES . '/addons/woocommerce/class-admin.php';
 
             // Load frontend class on non-admin pages.

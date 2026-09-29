@@ -4,6 +4,11 @@
  * Non-OOP Functions.
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // phpcs:ignore Universal.PHP.RequireExitDieParentheses.Missing
+}
+
 if ( ! function_exists('formychat_phone_number_field') ) {
     function formychat_phone_number_field( $args = [] ) {
 

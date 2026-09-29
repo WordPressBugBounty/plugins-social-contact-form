@@ -36,9 +36,6 @@ if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 		 */
 		public function actions() {
 			add_action('rest_api_init', [ $this, 'register_routes' ]);
-
-			// Submitted form.
-			add_action('formychat_lead_created', [ $this, 'formychat_lead_created' ], 10, 3);
 		}
 
 		/**
@@ -255,67 +252,6 @@ if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 			}
 
 			return __( 'Security verification failed. Please complete the reCAPTCHA again.', 'social-contact-form' );
-		}
-
-		/**
-		 * FormyChat Lead Created.
-		 *
-		 * @return void
-		 */
-		public function formychat_lead_created( $form_data, $lead_id, $request ) {
-			// Bail, if widget_id is not set.
-			if ( ! isset($form_data['widget_id']) ) {
-				return;
-			}
-
-			$widget = \FormyChat\Models\Widget::find($form_data['widget_id']);
-
-			// If widget is not found, return.
-			if ( ! $widget ) {
-				return;
-			}
-
-			$settings = $widget->config['email'];
-
-			// Bail, if email is not enabled.
-			if ( ! wp_validate_boolean($settings['enabled']) ) {
-				return;
-			}
-
-			$to = wp_validate_boolean($settings['admin_email']) ? get_option('admin_email') : $settings['address'];
-
-			// Bail, if email is not set.
-			if ( empty($to) ) {
-				return;
-			}
-
-			// Build data.
-			$data = implode('<br/>', array_map(function ( $key, $value ) {
-				return wp_sprintf('<strong>%s</strong>: %s', ucfirst($key), $value);
-			}, array_keys($form_data['field']), $form_data['field']));
-
-			// Build subject
-			$subject = apply_filters('formychat_email_subject', wp_sprintf('New Lead from %s', get_bloginfo('name')), $form_data, $lead_id, $request);
-
-			// Build body.
-			$body = apply_filters(
-				'formychat_email_body',
-				wp_sprintf('Hi,<br/><br/>You have received a new lead from %s. <br/><br/>Please check the details below:<br/> %s <br/><br/><br/>Sent at %s<br/>Thank you.', get_bloginfo('name'), $data, gmdate('Y-m-d H:i:s')),
-				$form_data,
-				$lead_id,
-				$request
-			);
-
-			$headers = apply_filters('formychat_email_headers', [
-				'Content-Type: text/html; charset=UTF-8',
-			], $form_data, $lead_id, $request);
-
-			// Send email.
-			try {
-				wp_mail($to, $subject, $body, $headers);
-			} catch (\Exception $e) { // phpcs:ignore
-				// Log error.
-			}
 		}
 	}
 

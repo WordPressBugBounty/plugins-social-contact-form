@@ -101,5 +101,49 @@ if ( ! class_exists(__NAMESPACE__ . 'Base') ) {
         public function is_ultimate_active() {
             return apply_filters('formychat_is_ultimate', false) || apply_filters('is_scf_ultimate', false);
         }
+
+        /**
+         * Resolves the effective WhatsApp destination type.
+         *
+         * Free supports only 'phone'. FormyChat Ultimate adds 'group'.
+         * Enforced here (not just in the admin UI) so a value saved by a
+         * direct request cannot make a locked destination take effect.
+         *
+         * @since 2.16.0
+         * @param string $saved_type Destination type from the widget config.
+         * @return string
+         */
+        public function resolve_destination_type( $saved_type ) {
+            /**
+             * Filters the effective WhatsApp destination type.
+             *
+             * @since 2.16.0
+             * @param string $type       Effective type. Free default: always 'phone'.
+             * @param string $saved_type The type stored in the widget config.
+             */
+            return apply_filters( 'formychat_destination_type', 'phone', $saved_type );
+        }
+
+        /**
+         * Resolves the effective WhatsApp target number.
+         *
+         * Free always returns the configured phone number. Ultimate returns
+         * the group invite code when the destination type is 'group'.
+         *
+         * @since 2.16.0
+         * @param string $phone_number Configured phone number.
+         * @param array  $config       Widget WhatsApp config.
+         * @return string
+         */
+        public function resolve_whatsapp_number( $phone_number, $config ) {
+            /**
+             * Filters the effective WhatsApp target (number or group invite code).
+             *
+             * @since 2.16.0
+             * @param string $number Effective target. Free default: the phone number.
+             * @param array  $config Widget WhatsApp config.
+             */
+            return apply_filters( 'formychat_whatsapp_number', $phone_number, $config );
+        }
     }
 }

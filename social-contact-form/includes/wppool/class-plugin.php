@@ -120,7 +120,7 @@ if ( ! class_exists( 'WPPOOL_Plugin' ) ) {
 			],
 			'social_contact_form' => [
 				'list_id' => 49,
-				'button_link' => 'https://go.wppool.dev/2rc7',
+				'button_link' => 'https://wppool.dev/formychat-pricing/?utm_source=plugin&utm_medium=promo-panel&utm_campaign=formychat',
 				'button_text' => 'Get Premium',
 				'color' => '#DC4FF3',
 			],
@@ -325,53 +325,53 @@ if ( ! class_exists( 'WPPOOL_Plugin' ) ) {
 						<!-- countdown  -->
 						<div class="_wppool-popup-countdown" style="display: none">
 							<span class="_wppool-popup-countdown-text">
-								<?php echo esc_html__( 'Deal Ends In', 'webinar-and-video-conference-with-jitsi-meet' ); ?>
+								<?php echo esc_html__( 'Deal Ends In', 'social-contact-form' ); ?>
 							</span>
 							<div class="_wppool-popup-countdown-time">
 								<div>
 									<span data-counter="days">
-										<?php echo esc_html__( '00', 'webinar-and-video-conference-with-jitsi-meet' ); ?>
+										<?php echo esc_html__( '00', 'social-contact-form' ); ?>
 									</span>
 									<span>
-										<?php echo esc_html__( 'Days', 'webinar-and-video-conference-with-jitsi-meet' ); ?>
+										<?php echo esc_html__( 'Days', 'social-contact-form' ); ?>
 									</span>
 								</div>
 								<span>:</span>
 								<div>
 									<span data-counter="hours">
-										<?php echo esc_html__( '00', 'webinar-and-video-conference-with-jitsi-meet' ); ?>
+										<?php echo esc_html__( '00', 'social-contact-form' ); ?>
 									</span>
 									<span>
-										<?php echo esc_html__( 'Hours', 'webinar-and-video-conference-with-jitsi-meet' ); ?>
+										<?php echo esc_html__( 'Hours', 'social-contact-form' ); ?>
 									</span>
 								</div>
 								<span>:</span>
 								<div>
 									<span data-counter="minutes">
-										<?php echo esc_html__( '00', 'webinar-and-video-conference-with-jitsi-meet' ); ?>
+										<?php echo esc_html__( '00', 'social-contact-form' ); ?>
 									</span>
 									<span>
-										<?php echo esc_html__( 'Minutes', 'webinar-and-video-conference-with-jitsi-meet' ); ?>
+										<?php echo esc_html__( 'Minutes', 'social-contact-form' ); ?>
 									</span>
 								</div>
 								<span>:</span>
 								<div>
 									<span data-counter="seconds">
-										<?php echo esc_html__( '00', 'webinar-and-video-conference-with-jitsi-meet' ); ?>
+										<?php echo esc_html__( '00', 'social-contact-form' ); ?>
 									</span>
 									<span>
-										<?php echo esc_html__( 'Seconds', 'webinar-and-video-conference-with-jitsi-meet' ); ?>
+										<?php echo esc_html__( 'Seconds', 'social-contact-form' ); ?>
 									</span>
 								</div>
 							</div>
 						</div>
 						<!-- button  -->
 						<a class="_wppool-popup-button">
-							<?php echo esc_html__( 'Upgrade to Pro', 'webinar-and-video-conference-with-jitsi-meet' ); ?>
+							<?php echo esc_html__( 'Upgrade to Pro', 'social-contact-form' ); ?>
 						</a>
 
 						<a target="_blank" class="_wppool-popup-demo-link" href="">
-							<?php echo esc_html__( 'Try a free demo', 'webinar-and-video-conference-with-jitsi-meet' ); ?>
+							<?php echo esc_html__( 'Try a free demo', 'social-contact-form' ); ?>
 						</a>
 					</div>
 				</div>

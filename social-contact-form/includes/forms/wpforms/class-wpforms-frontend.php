@@ -61,6 +61,15 @@ class Frontend extends \FormyChat\Base {
             'fields' => isset( $_POST['wpforms']['complete'] ) ? array_values( $_POST['wpforms']['complete'] ) : [], // phpcs:ignore
         ];
 
+        // Group destination is a FormyChat Ultimate feature; never send
+        // 'group' (or its invite code) to the browser for a non-Ultimate
+        // site, regardless of what's stored - the client-side send path
+        // trusts this value as-is.
+        if ( ! $this->is_ultimate_active() ) {
+            $formychat['destination_type'] = 'phone';
+            $formychat['group_invite_code'] = '';
+        }
+
         $output['formychat'] = $formychat;
 
         return $output;

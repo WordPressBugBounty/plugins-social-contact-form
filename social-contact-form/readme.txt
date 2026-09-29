@@ -2,9 +2,9 @@
 Contributors: wppool, azizultex, wpdarkmode, iamjafran, devsabbirahmed, shahreyar46, sharifdev
 Tags: whatsapp chat, woocommerce whatsapp, click to chat, whatsapp business, live chat
 Requires at least: 5.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 5.6
-Stable tag: 2.15.9
+Stable tag: 2.15.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -221,7 +221,31 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 
 Additionally read the WPPOOL [privacy policy](https://wppool.dev/privacy-policy/).
 
-WhatsApp is a registered trademark and brand by Meta. 
+WhatsApp is a registered trademark and brand by Meta.
+
+== External services ==
+
+This plugin connects to a few third-party/external services to provide certain features and diagnostics. Details of what is sent, and when, are listed below.
+
+**1. Appsero (usage tracking, opt-in only)**
+FormyChat uses the Appsero SDK to collect basic telemetry (server environment, WordPress/PHP version, active/inactive plugin counts, site URL, and your name/email) so we can troubleshoot problems and improve the plugin. This only starts after you click "Allow" on the in-dashboard consent notice — it is off by default and never runs without your explicit opt-in. When you opt in, your name and email are also added to WPPOOL's mailing list so we can send you product tips and occasional offers; you can unsubscribe at any time.
+Data is sent to `api.appsero.com` on plugin activation/deactivation and at most once a week thereafter, and to `icanhazip.com` (to detect the server's own outbound IP, included in the telemetry payload). Opting in also sends your name/email to WPPOOL's CRM at `fluent.wppool.dev`.
+[Appsero Privacy Policy](https://appsero.com/privacy-policy/) | [WPPOOL Privacy Policy](https://wppool.dev/privacy-policy/)
+
+**2. Cloudflare Turnstile (optional anti-spam)**
+If you enable Turnstile as your form's spam-protection method, the visitor's browser loads a verification widget from `challenges.cloudflare.com`, and the plugin verifies the resulting token server-side with Cloudflare on every form submission. Disabled by default; only active if you turn it on and configure a site key.
+[Cloudflare Terms of Service](https://www.cloudflare.com/website-terms/) | [Cloudflare Privacy Policy](https://www.cloudflare.com/privacypolicy/)
+
+**3. Google reCAPTCHA (optional anti-spam)**
+If you enable reCAPTCHA as your form's spam-protection method, the visitor's browser loads Google's script from `www.google.com/recaptcha/`, and the plugin verifies the resulting token server-side with Google on every form submission. Disabled by default; only active if you turn it on and configure a site key.
+[Google Terms of Service](https://policies.google.com/terms) | [Google Privacy Policy](https://policies.google.com/privacy)
+
+**4. ipwhois.app (visitor country/geolocation lookup)**
+To automatically pre-select the visitor's country calling code in the WhatsApp widget and personalize widget text (e.g. currency), the visitor's browser looks up its own public IP-based location via `ipwhois.app`. This runs client-side in the browser (once per day, cached locally) wherever the FormyChat widget is displayed, on both the live site and the widget editor preview in wp-admin.
+[ipwhois.app Terms/Privacy](https://ipwhois.io/privacy-policy)
+
+**5. WordPress.org Plugin API**
+When you click "Install" on an optional form-plugin integration (e.g. WPForms, Contact Form 7) from the Integrations tab, WordPress core's built-in plugin installer contacts `api.wordpress.org` to fetch that plugin's information — the same mechanism used by Plugins > Add New.
 
 === Frequently Asked Questions ===
 = How to send WordPress form entries to WhatsApp? =
@@ -234,7 +258,7 @@ There are two ways to send your preferred form leads directly to your WhatsApp a
 Yes, you can use your own icon as the floating button.
 
 = How many contact form submission leads can I access? =
-With the Free version, you can access up to 20 submissions from the Leads menu.
+You can access all of your submitted leads from the Leads menu.
 
 = Can I customize the contact form? =
 FormyChat Premium version allows tons of detailed customization features. You can edit different form information including header text, submit button text, and form size.
@@ -254,6 +278,17 @@ No coding knowledge is required for using this plugin.
 = Whom do I contact for any kind of support? =
 Please post your queries on WordPress Support thread (https://wordpress.org/support/plugin/social-contact-form/).
 
+== Build Instructions ==
+
+The JavaScript/Vue assets shipped in `/public/js` are compiled from source using Vite and Tailwind CSS. The full, human-readable source and build configuration are maintained in our public repository and are not included in the WordPress.org release package to keep it lightweight:
+
+[https://github.com/WPPOOL/formychat](https://github.com/WPPOOL/formychat)
+
+To build the assets yourself:
+
+1. Clone the repository above.
+2. Run `npm install`.
+3. Run `npm run admin` and `npm run frontend` to produce the compiled `/public/js` bundles (see `package.json` for the full list of build targets, including WooCommerce and Sass/Tailwind CSS scripts).
 
 == Screenshots ==
 1. FormyChat  
@@ -268,6 +303,13 @@ Please post your queries on WordPress Support thread (https://wordpress.org/supp
 
 
 == Changelog ==
+
+= 2.15.10 - 29 Sep, 2026 =
+* **Enhancement:** Updated the default greeting popup heading, message, and colors.
+* **Enhancement:** Added an "Upgrade Now" link to the FormyChat admin menu.
+* **Fix:** Fixed the country code not being auto detected on the widget and WooCommerce settings pages, and made it required before continuing.
+* **Fix:** Fixed the "Upgrade" links pointing to a page that no longer exists.
+* **Fix:** Fixed the "Custom Icon" selection not showing as selected by default under Customize Icon.
 
 = 2.15.9 - 09 Sep, 2026 =
 * **Fix:** Prevented a fatal error when the bundled Appsero SDK is missing.

@@ -67,6 +67,15 @@ if ( ! class_exists(__NAMESPACE__ . '\Boot') ) {
             include_once FORMYCHAT_INCLUDES . '/core/class-base.php';
             include_once FORMYCHAT_INCLUDES . '/core/class-app.php';
 
+            /**
+             * Clamp "custom" style options in widget config back to defaults.
+             * FormyChat Ultimate registers its own callback at a later priority
+             * to return the config un-clamped.
+             *
+             * @since 2.16.0
+             */
+            add_filter( 'formychat_widget_config', [ '\FormyChat\App', 'clamp_widget_config' ] );
+
             // Models.
             include_once FORMYCHAT_INCLUDES . '/core/class-database.php';
 
@@ -81,10 +90,16 @@ if ( ! class_exists(__NAMESPACE__ . '\Boot') ) {
 
             // Integrations.
             include_once FORMYCHAT_INCLUDES . '/admin/class-integrations.php';
-            include_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-token.php';
-            include_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-api.php';
-            include_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-sync.php';
-            include_once FORMYCHAT_INCLUDES . '/admin/class-google-sheets-cron.php';
+
+            /**
+             * The Google Sheets sync module (OAuth, API client, sync engine,
+             * cron) is a FormyChat Ultimate-only feature and no longer ships
+             * in the free plugin at all. FormyChat Ultimate loads its own
+             * verbatim copies of these classes only when its license is
+             * valid (see formychat-ultimate/includes/classes/class-hooks.php).
+             *
+             * @since 2.16.0
+             */
 
             // WooCommerce Addon.
             include_once FORMYCHAT_INCLUDES . '/addons/woocommerce/class-load.php';
@@ -114,19 +129,25 @@ if ( ! class_exists(__NAMESPACE__ . '\Boot') ) {
             // WPForms.
             include_once FORMYCHAT_INCLUDES . '/forms/wpforms/class-wpforms-admin.php';
 
-            // Gravity Forms.
-            include_once FORMYCHAT_INCLUDES . '/forms/gravity-forms/class-gf-admin.php';
-
-            // FluentForm.
-            include_once FORMYCHAT_INCLUDES . '/forms/fluentform/class-fluentform-admin.php';
-
-            // Formidable.
-            include_once FORMYCHAT_INCLUDES . '/forms/formidable/class-formidable-admin.php';
-
-            // Ninja.
-            if ( class_exists('\NF_Abstracts_Action') ) {
-                include_once FORMYCHAT_INCLUDES . '/forms/ninjaforms/class-ninjaforms-admin.php';
-            }
+            /**
+             * Fires after the free form integrations (Contact Form 7, WPForms) are
+             * loaded on the admin side. FormyChat Ultimate hooks this to load the
+             * additional form integrations (Gravity Forms, Fluent Forms, Forminator,
+             * Formidable Forms, Ninja Forms).
+             *
+             * Deferred to `plugins_loaded` (priority 20) because this file is
+             * required at raw plugin-load time, before any add_action() callback
+             * from a dependent plugin (e.g. FormyChat Ultimate) has had a chance
+             * to register — firing do_action() here directly would run before
+             * Ultimate ever hooks it.
+             *
+             * @since 2.16.0
+             */
+            add_action(
+                'plugins_loaded', function () {
+                    do_action( 'formychat_register_form_integrations_admin' );
+                }, 20
+            );
         }
 
         /**
@@ -143,14 +164,20 @@ if ( ! class_exists(__NAMESPACE__ . '\Boot') ) {
             // WPForms.
             include_once FORMYCHAT_INCLUDES . '/forms/wpforms/class-wpforms-frontend.php';
 
-            // Gravity Forms.
-            include_once FORMYCHAT_INCLUDES . '/forms/gravity-forms/class-gf-frontend.php';
-
-            // FluentForm.
-            include_once FORMYCHAT_INCLUDES . '/forms/fluentform/class-fluentform-frontend.php';
-
-            // Formidable.
-            include_once FORMYCHAT_INCLUDES . '/forms/formidable/class-formidable-frontend.php';
+            /**
+             * Fires after the free form integrations are loaded on the front end.
+             * FormyChat Ultimate hooks this to load its additional form integrations.
+             *
+             * Deferred to `plugins_loaded` (priority 20) — see the matching note
+             * in include_admin_files().
+             *
+             * @since 2.16.0
+             */
+            add_action(
+                'plugins_loaded', function () {
+                    do_action( 'formychat_register_form_integrations_public' );
+                }, 20
+            );
         }
     }
 

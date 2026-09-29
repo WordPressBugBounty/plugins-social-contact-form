@@ -146,9 +146,14 @@ if ( ! class_exists(__NAMESPACE__ . '\Lead') ) {
 
             $where = implode(' AND ', $where);
 
+            // Defense-in-depth: whitelist orderby/order again here, since this is raw SQL.
+            $allowed_orderby = [ 'created_at', 'id', 'widget_id', 'form', 'form_id' ];
+            $safe_orderby = in_array($filter['orderby'], $allowed_orderby, true) ? $filter['orderby'] : 'created_at';
+            $safe_order = in_array(strtoupper($filter['order']), [ 'ASC', 'DESC' ], true) ? strtoupper($filter['order']) : 'DESC';
+
             $leads = $wpdb->get_results(
                 $wpdb->prepare(
-           "SELECT * FROM {$wpdb->prefix}scf_leads WHERE {$where} ORDER BY {$filter['orderby']} {$filter['order']} LIMIT %d,%d", // phpcs:ignore
+           "SELECT * FROM {$wpdb->prefix}scf_leads WHERE {$where} ORDER BY {$safe_orderby} {$safe_order} LIMIT %d,%d", // phpcs:ignore
                     ( 'All' === $filter['per_page'] ) ? 1 : ( ( $filter['page'] - 1 ) * $filter['per_page'] ),
                     ( 'All' === $filter['per_page'] ) ? 99999999 : intval($filter['per_page'])
                 )
@@ -211,113 +216,6 @@ if ( ! class_exists(__NAMESPACE__ . '\Lead') ) {
         }
 
         /**
-         * Get leads pending Google Sheets sync.
-         *
-         * @param  int $limit 0 = no limit.
-         * @return array
-         */
-        public static function get_pending_sync( int $limit = 0 ): array {
-            global $wpdb;
-
-            $limit_sql = $limit > 0 ? $wpdb->prepare('LIMIT %d', $limit) : '';
-
-            $leads = $wpdb->get_results(
-                "SELECT * FROM {$wpdb->prefix}scf_leads
-				WHERE google_sheet_synced_at IS NULL
-				AND deleted_at IS NULL
-				ORDER BY created_at ASC
-				{$limit_sql}" // phpcs:ignore
-            ); // db call ok; no-cache ok.
-
-            if ( $leads ) {
-                foreach ( $leads as $lead ) {
-                    $lead->id        = intval($lead->id);
-                    $lead->widget_id = empty($lead->widget_id) ? 1 : intval($lead->widget_id);
-                    $lead->field     = empty($lead->field) ? [] : json_decode($lead->field);
-                    $lead->meta      = empty($lead->meta) ? [] : json_decode($lead->meta);
-                    $lead->note      = empty($lead->note) ? '' : $lead->note;
-                    $lead->form      = empty($lead->form) ? 'formychat' : $lead->form;
-                    $lead->form_id   = empty($lead->form_id) ? 0 : intval($lead->form_id);
-                }
-            }
-
-            return $leads ? $leads : [];
-        }
-
-        /**
-         * Mark leads as synced to Google Sheets.
-         *
-         * @param  array $ids Lead IDs.
-         * @return int Number of rows updated.
-         */
-        public static function mark_synced( array $ids ): int {
-            global $wpdb;
-
-            if ( empty($ids) ) {
-                return 0;
-            }
-
-            $placeholders = implode(',', array_fill(0, count($ids), '%d'));
-
-            $wpdb->query(
-                $wpdb->prepare(
-                    "UPDATE {$wpdb->prefix}scf_leads
-					SET google_sheet_synced_at = %s
-					WHERE id IN ({$placeholders})", // phpcs:ignore
-                    current_time('mysql'),
-                    ...$ids
-                )
-            ); // db call ok; no-cache ok.
-
-            return $wpdb->rows_affected;
-        }
-
-        /**
-         * Reset sync status for all leads.
-         *
-         * @return int Number of rows updated.
-         */
-        public static function reset_sync_status(): int {
-            global $wpdb;
-
-            $wpdb->query(
-                "UPDATE {$wpdb->prefix}scf_leads
-				SET google_sheet_synced_at = NULL
-				WHERE deleted_at IS NULL" // phpcs:ignore
-            ); // db call ok; no-cache ok.
-
-            return $wpdb->rows_affected;
-        }
-
-        /**
-         * Count synced leads.
-         *
-         * @return int
-         */
-        public static function count_synced(): int {
-            global $wpdb;
-            return (int) $wpdb->get_var(
-                "SELECT COUNT(*) FROM {$wpdb->prefix}scf_leads
-				WHERE google_sheet_synced_at IS NOT NULL
-				AND deleted_at IS NULL" // phpcs:ignore
-            ); // db call ok; no-cache ok.
-        }
-
-        /**
-         * Count pending sync leads.
-         *
-         * @return int
-         */
-        public static function count_pending_sync(): int {
-            global $wpdb;
-            return (int) $wpdb->get_var(
-                "SELECT COUNT(*) FROM {$wpdb->prefix}scf_leads
-				WHERE google_sheet_synced_at IS NULL
-				AND deleted_at IS NULL" // phpcs:ignore
-            ); // db call ok; no-cache ok.
-        }
-
-        /**
          * Get a single lead by ID.
          *
          * @param  int $id Lead ID.
@@ -344,33 +242,6 @@ if ( ! class_exists(__NAMESPACE__ . '\Lead') ) {
             }
 
             return $lead;
-        }
-
-        /**
-         * Get all unique field keys from all leads.
-         *
-         * @return array Unique field keys.
-         */
-        public static function get_all_field_keys(): array {
-            global $wpdb;
-
-            $fields = $wpdb->get_col(
-          "SELECT field FROM {$wpdb->prefix}scf_leads WHERE deleted_at IS NULL AND field IS NOT NULL AND field != ''" // phpcs:ignore
-            ); // db call ok; no-cache ok.
-
-            $keys = [];
-            foreach ( $fields as $field_json ) {
-                $field = json_decode($field_json, true);
-                if ( is_array($field) ) {
-                    foreach ( array_keys($field) as $key ) {
-                        if ( ! in_array($key, $keys, true) ) {
-                               $keys[] = $key;
-                        }
-                    }
-                }
-            }
-
-            return $keys;
         }
     }
 
