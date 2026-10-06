@@ -1221,9 +1221,18 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
                     // Get the field element type
                     $element = isset($field['element']) ? $field['element'] : '';
 
-                    // If the field has 'attributes' and a 'name', add it
+                    // If the field has 'attributes' and a 'name', add it with the editor label when available.
                     if ( isset($field['attributes']) && is_array($field['attributes']) && ! empty($field['attributes']['name']) ) {
-                        $fields[ $field['attributes']['name'] ] = $field['attributes']['name'];
+                        $name  = $field['attributes']['name'];
+                        $label = $name;
+
+                        if ( isset($field['settings']['label']) && is_string($field['settings']['label']) && '' !== $field['settings']['label'] ) {
+                            $label = $field['settings']['label'];
+                        } elseif ( isset($field['settings']['admin_field_label']) && is_string($field['settings']['admin_field_label']) && '' !== $field['settings']['admin_field_label'] ) {
+                            $label = $field['settings']['admin_field_label'];
+                        }
+
+                        $fields[ $name ] = $label;
                     }
 
                     // If the field has 'columns', recursively process each column's fields

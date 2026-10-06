@@ -4,7 +4,7 @@ Tags: whatsapp chat, woocommerce whatsapp, click to chat, whatsapp business, liv
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 5.6
-Stable tag: 2.15.10
+Stable tag: 2.15.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -303,6 +303,13 @@ To build the assets yourself:
 
 
 == Changelog ==
+
+= 2.15.11 - 06 Oct, 2026 =
+* **Fix:** Fixed incorrect checkbox labels in WhatsApp messages and updated frontend assets to apply the latest form formatting fixes.
+* **Fix:** Fixed name field formatting to preserve punctuation in submitted text.
+* **Fix:** Fixed selected Gravity Forms, Fluent Forms, Forminator, Formidable, and Ninja Forms not rendering inside the floating widget.
+* **Fix:** Fixed Fluent Forms checkbox selections not being included in WhatsApp message templates.
+* **Improvement:** Improved formatting of multi-value form fields in WhatsApp message templates.
 
 = 2.15.10 - 29 Sep, 2026 =
 * **Enhancement:** Updated the default greeting popup heading, message, and colors.

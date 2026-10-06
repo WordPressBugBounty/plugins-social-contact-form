@@ -1800,14 +1800,14 @@ Dropdown: {dropdown}',
 					'label' => 'Contact Form 7',
 					'logo' => FORMYCHAT_PUBLIC . '/images/forms/contact-form-7.png',
 				],
+				'wpforms' => [
+					'label' => 'WP Forms',
+					'logo' => FORMYCHAT_PUBLIC . '/images/forms/wp-forms.png',
+				],
 				'gravity' => [
 					'label' => 'Gravity Forms',
 					'logo' => FORMYCHAT_PUBLIC . '/images/forms/gravity-forms.png',
 					'locked' => true,
-				],
-				'wpforms' => [
-					'label' => 'WP Forms',
-					'logo' => FORMYCHAT_PUBLIC . '/images/forms/wp-forms.png',
 				],
 				'fluentform' => [
 					'label' => 'Fluent Forms',
