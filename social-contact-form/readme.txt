@@ -4,7 +4,7 @@ Tags: whatsapp chat, woocommerce whatsapp, click to chat, whatsapp business, liv
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 5.6
-Stable tag: 2.15.11
+Stable tag: 2.15.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -303,6 +303,12 @@ To build the assets yourself:
 
 
 == Changelog ==
+
+= 2.15.12 - 18 Oct, 2026 =
+* **New:** Added Ninja Forms integration to send submissions to WhatsApp numbers or groups, including forms embedded via shortcode.
+* **Fix:** Ninja Forms messages now show option labels and include date/time values.
+* **Fix:** Fixed missing Contact Form 7 fields in WhatsApp messages, including checkbox and multi-select values.
+* **Fix:** Fixed lead details not opening for submissions with checkbox or multi-select values.
 
 = 2.15.11 - 06 Oct, 2026 =
 * **Fix:** Fixed incorrect checkbox labels in WhatsApp messages and updated frontend assets to apply the latest form formatting fixes.
