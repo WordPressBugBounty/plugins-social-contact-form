@@ -256,12 +256,34 @@ if ( ! class_exists(__NAMESPACE__ . '\Hooks') ) {
                 $plugin = wppool_plugin_init('social_contact_form', $bg_image);
 
                 if ( $plugin && is_object( $plugin ) && method_exists( $plugin, 'set_campaign' ) ) {
-                    $campaign_image = plugin_dir_url( FORMYCHAT_FILE ) . '/includes/wppool/summer.png';
-                    $to             = '2026-07-14 23:59:00';
-                    $from           = '2026-06-24 17:00:00';
-                    $cta_text       = esc_html__( 'Save Now', 'formychat' );
-                    $button_link    = 'https://lnk.wppool.dev/5P9DXHz';
-                    $plugin->set_campaign( $campaign_image, $to, $from, $cta_text, $button_link );
+                    // BFCM 2026: 9 Nov 5 PM to 5 Dec 5 PM, Bangladesh Standard Time (UTC+6).
+                    $campaign_image = plugin_dir_url( FORMYCHAT_FILE ) . 'includes/wppool/bfcm-2026.jpg';
+                    $from           = '2026-11-09T17:00:00+06:00';
+                    $to             = '2026-12-05T17:00:00+06:00';
+                    $cta_text       = esc_html__( 'Claim The Deal →', 'formychat' );
+                    $button_link    = 'https://lnk.wppool.dev/3V1bPLj';
+                    $repeat         = 3 * DAY_IN_SECONDS; // Timer shows 3 days and restarts every 3 days until $to.
+                    $plugin->set_campaign( $campaign_image, $to, $from, $cta_text, $button_link, $repeat );
+
+                    $now = time();
+
+                    if ( $now >= strtotime( $from ) && $now <= strtotime( $to ) ) {
+                        // CTA button background (#FFD23F). The SDK also uses this color for the close icon.
+                        add_filter( 'wppool_plugins', function ( $plugins ) {
+                            $plugins['social_contact_form']['color'] = '#FFD23F';
+                            return $plugins;
+                        }, 20 );
+
+                        // CTA text color (#111111); SDK hardcodes white.
+                        add_action( 'admin_enqueue_scripts', function () {
+                            if ( ! wp_script_is( 'wppool-plugins', 'enqueued' ) ) {
+                                return;
+                            }
+
+                            $selector = '._wppool-popup[data-plugin="social_contact_form"] ._wppool-popup-button';
+                            wp_add_inline_style( 'wppool-plugins', $selector . ', ' . $selector . ':hover { color: #111111; }' );
+                        }, 20 );
+                    }
                 }
             }
         }

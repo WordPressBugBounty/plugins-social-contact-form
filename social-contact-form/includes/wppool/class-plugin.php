@@ -694,18 +694,33 @@ if ( ! class_exists( 'WPPOOL_Plugin' ) ) {
 					 * initCounter
 					 */
 					initCounter(last_date) {
-						const countdown = () => {
-		
-							// system time 
-							const now = new Date().getTime();
-		
-							// set end time to 11:59:59 PM 
+						const data = this.data;
+
+						const getEndTime = (now) => {
+							// recurring cycle: restart every data.repeat ms from data.from_ms, capped at data.to_ms
+							if (data.repeat && data.from_ms && data.to_ms) {
+								if (now < data.from_ms) {
+									return -1;
+								}
+								const cycles = Math.floor((now - data.from_ms) / data.repeat) + 1;
+								return Math.min(data.from_ms + cycles * data.repeat, data.to_ms);
+							}
+
+							// set end time to 11:59:59 PM
 							const endDate = new Date(last_date);
 							endDate.setHours(23);
 							endDate.setMinutes(59);
 							endDate.setSeconds(59);
-		
-							const seconds = Math.floor((endDate.getTime() - now) / 1000);
+
+							return endDate.getTime();
+						};
+
+						const countdown = () => {
+
+							// system time
+							const now = new Date().getTime();
+
+							const seconds = Math.floor((getEndTime(now) - now) / 1000);
 		
 							if (seconds < 0) {
 								return false;
@@ -790,7 +805,7 @@ if ( ! class_exists( 'WPPOOL_Plugin' ) ) {
 		
 				window.WPPOOL = WPPOOL;
 		
-			})(jQuery)';
+			})(jQuery);';
 		}
 
 		/**
@@ -1297,9 +1312,12 @@ if ( ! class_exists( 'WPPOOL_Plugin' ) ) {
 		 * @param string $to End date for the campaign.
 		 * @param string $from Start date for the campaign.
 		 * @param string $button_text The custom CTA text for the button.
+		 * @param string $button_link The CTA button link.
+		 * @param int    $repeat Optional. Countdown cycle length in seconds (e.g. 3 * DAY_IN_SECONDS).
+		 *                       Timer restarts every cycle from $from until $to. 0 counts down to $to.
 		 * @return mixed
 		 */
-		public function set_campaign( $image_url = null, $to = null, $from = null, $button_text = 'Get Premium', $button_link = 'https://go.wppool.dev/Rimc' ) {
+		public function set_campaign( $image_url = null, $to = null, $from = null, $button_text = 'Get Premium', $button_link = 'https://go.wppool.dev/Rimc', $repeat = 0 ) {
 			// Bailout if image url is not valid.
 			if ( ! $image_url ) {
 				return $this;
@@ -1325,6 +1343,19 @@ if ( ! class_exists( 'WPPOOL_Plugin' ) ) {
 
 				return $plugins;
 			} );
+
+			$repeat = absint( $repeat );
+
+			// Recurring countdown: timestamps in ms so JS does not parse date strings.
+			if ( $repeat ) {
+				add_filter( 'wppool_plugins', function ( $plugins ) use ( $repeat, $from_time, $to_time ) {
+					$plugins[ $this->plugin_id ]['repeat'] = $repeat * 1000;
+					$plugins[ $this->plugin_id ]['from_ms'] = $from_time * 1000;
+					$plugins[ $this->plugin_id ]['to_ms'] = $to_time * 1000;
+
+					return $plugins;
+				} );
+			}
 		}
 	}
 
