@@ -87,9 +87,41 @@ class Database extends \FormyChat\Base {
             $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD INDEX idx_google_sheet_sync (google_sheet_synced_at)"); // db call ok; no-cache ok.
         }
 
+        $this->add_lead_channel_column();
+
         do_action('formychat_lead_table_created');
     }
 
+
+    /**
+     * Add the nullable `channel` column to leads (WhatsApp, Telegram).
+     *
+     * Additive only: existing rows are not touched; NULL means WhatsApp.
+     * Runs once, guarded by the `formychat_leads_schema` option.
+     *
+     * @since 2.16.0
+     */
+    private function add_lead_channel_column() {
+        global $wpdb;
+
+        if ( absint(get_option('formychat_leads_schema', 0)) >= 2 ) {
+            return;
+        }
+
+        $column_exists = $wpdb->get_results("SHOW COLUMNS FROM {$wpdb->prefix}scf_leads LIKE 'channel'"); // db call ok; no-cache ok.
+        if ( empty($column_exists) ) {
+            $added = $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD COLUMN channel varchar(20) NULL DEFAULT NULL"); // db call ok; no-cache ok.
+
+            // Leave the option unset so the next request retries; leads keep working without the column.
+            if ( false === $added ) {
+                return;
+            }
+
+            $wpdb->query("ALTER TABLE {$wpdb->prefix}scf_leads ADD INDEX idx_channel (channel)"); // db call ok; no-cache ok.
+        }
+
+        update_option('formychat_leads_schema', 2, false);
+    }
 
     /**
      * Widget Table.

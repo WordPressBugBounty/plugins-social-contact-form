@@ -151,9 +151,17 @@ if ( ! class_exists(__NAMESPACE__ . '\WidgetForm') ) {
             do_action('formychat_head', $form, $form_id, $widget);
 
             $number = isset($_GET['number']) ? sanitize_text_field(wp_unslash($_GET['number'])) : '';
+
+            // Channel the visitor picked in the widget. Unknown values fall back to WhatsApp.
+            $channel = isset($_GET['channel']) ? sanitize_key(wp_unslash($_GET['channel'])) : 'whatsapp';
+            if ( ! in_array($channel, \FormyChat\App::CHANNELS, true) ) {
+                $channel = 'whatsapp';
+            }
+
             echo '<div class="formychat-custom-form" style="padding: 15px;"
 			data-whatsapp="' . esc_attr($number) . '"
 			data-widget="' . esc_attr($widget_id) . '"
+			data-channel="' . esc_attr($channel) . '"
 			>';
 
             // Before form.

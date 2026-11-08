@@ -101,6 +101,28 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets' ) ) {
 					'submission_success_title'     => __( 'Successfully Submitted!', 'social-contact-form' ),
 					'submission_success_btn'       => __( 'Done', 'social-contact-form' ),
 
+					// Channel picker and the "Opening Telegram" card.
+					'channel_strings' => [
+						/* translators: %s: chat app name, for example Telegram. */
+						'opening'      => __( 'Opening %s', 'social-contact-form' ),
+						'opening_hint' => __( 'If nothing opened, use the button below. Your message is ready to send.', 'social-contact-form' ),
+						/* translators: %s: chat app name, for example Telegram. */
+						'open_app'     => __( 'Open %s', 'social-contact-form' ),
+						'open_web'     => __( 'Open Telegram Web', 'social-contact-form' ),
+						'copy'         => __( 'Copy message', 'social-contact-form' ),
+						'copied'       => __( 'Copied', 'social-contact-form' ),
+						'back'         => __( 'Back', 'social-contact-form' ),
+						'close'        => __( 'Close', 'social-contact-form' ),
+						'open_list'    => __( 'Open contact options', 'social-contact-form' ),
+						'thank_you'    => __( 'Thank you for your message. It has been submitted.', 'social-contact-form' ),
+					],
+					'images' => [
+						'whatsapp'        => FORMYCHAT_PUBLIC . '/images/whatsapp.svg',
+						'whatsapp_glyph'  => FORMYCHAT_PUBLIC . '/images/whatsapp-glyph.svg',
+						'telegram'        => FORMYCHAT_PUBLIC . '/images/telegram.svg',
+						'telegram_glyph'  => FORMYCHAT_PUBLIC . '/images/telegram-glyph.svg',
+					],
+
 					'recaptcha' => [
 						'enabled' => $use_recaptcha_frontend,
 						'site_key' => $recaptcha_site_key,
@@ -123,6 +145,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Assets' ) ) {
 						'widgets'     => \FormyChat\Models\Widget::get_active_widgets(),
 						'default_config' => \FormyChat\App::widget_config(),
 						'form_fields' => \FormyChat\App::form_fields(),
+						'launcher_icons' => \FormyChat\App::launcher_icons(),
 					],
 					'site' => [
 						'url' => get_site_url(),

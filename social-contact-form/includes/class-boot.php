@@ -69,8 +69,8 @@ if ( ! class_exists(__NAMESPACE__ . '\Boot') ) {
 
             /**
              * Clamp "custom" style options in widget config back to defaults.
-             * FormyChat Ultimate registers its own callback at a later priority
-             * to return the config un-clamped.
+             * Only the frontend output is clamped; saved widgets keep their values.
+             * FormyChat Ultimate removes this callback.
              *
              * @since 2.16.0
              */

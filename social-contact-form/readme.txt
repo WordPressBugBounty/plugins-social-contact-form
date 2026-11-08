@@ -4,7 +4,7 @@ Tags: whatsapp chat, woocommerce whatsapp, click to chat, whatsapp business, liv
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 5.6
-Stable tag: 2.15.13
+Stable tag: 2.16.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -247,6 +247,10 @@ To automatically pre-select the visitor's country calling code in the WhatsApp w
 **5. WordPress.org Plugin API**
 When you click "Install" on an optional form-plugin integration (e.g. WPForms, Contact Form 7) from the Integrations tab, WordPress core's built-in plugin installer contacts `api.wordpress.org` to fetch that plugin's information — the same mechanism used by Plugins > Add New.
 
+**6. Telegram (only when you add Telegram as a channel)**
+When a visitor picks Telegram in the widget and sends the form, their browser opens `t.me` with your Telegram username or phone number and the message they typed, so they can send it to you in Telegram. On desktop the success card can also link to `web.telegram.org` with the same message. The plugin itself sends nothing to Telegram from your server; the visitor's browser opens these links only after the visitor submits the form or clicks the link.
+[Telegram Terms of Service](https://telegram.org/tos) | [Telegram Privacy Policy](https://telegram.org/privacy)
+
 === Frequently Asked Questions ===
 = How to send WordPress form entries to WhatsApp? =
 Getting started with the plugin is extremely simple. Activate the plugin, provide your WhatsApp number, customize the widget, and activate the contact form to get started.
@@ -268,6 +272,9 @@ The plugin automatically collects and sends the contact information from the for
 
 = How to add WhatsApp form to a WordPress page or post? =
 You can use our Contact Form 7 integration to do that. Once you enable WhatsApp redirection on your CF7 form, you can place the WhatsApp form on any page/post of your WordPress site.
+
+= Can visitors contact me on Telegram? =
+Yes. In the widget editor, open Channels and add Telegram next to WhatsApp (or on its own). Enter your Telegram username, and visitors can pick WhatsApp or Telegram from the widget. Their message opens in Telegram, ready to send, and the lead is saved in FormyChat with its channel.
 
 = How to solve the "Contact Form 7 forms not redirecting to WhatsApp" issue? =
 Please make sure that you have a proper SMTP setup on your website. WhatsApp redirection for CF7 forms does not work without an SMTP setup. 
@@ -303,6 +310,22 @@ To build the assets yourself:
 
 
 == Changelog ==
+
+= 2.16.0 - 08 Nov, 2026 =
+* **New:** Telegram channel. Add WhatsApp, Telegram or both to a widget; visitors pick a channel and their message opens in that app.
+* **New:** Channel list launcher with the Buttons style. More list styles and launcher icons are available with FormyChat Ultimate.
+* **New:** Redesigned launcher section: icon tiles with a live preview, each icon with its own default color.
+* **New:** "Redirect visitors to WhatsApp/Telegram" is now set per channel, with a clearer explanation.
+* **New:** Settings link on the Plugins screen, opening the All Widgets page.
+* **Improvement:** Widget list and leads show channel icons instead of phone numbers and text badges.
+* **Improvement:** Leads table headers, columns and filters are aligned and evenly spaced.
+* **Improvement:** Channel buttons line up with the center of the launcher in the editor preview, matching the live widget.
+* **New:** "Opening Telegram" card after submit with the message, a copy button and a Telegram Web link on desktop.
+* **New:** Leads show the channel, can be filtered by channel, and CSV export includes it.
+* **New:** Per-channel "Show on" desktop/mobile, list name and short line, and a test link for each channel.
+* **Improvement:** Existing widgets keep working exactly as before (WhatsApp only); nothing is changed in the database until you save a widget, and the first save keeps a backup of the old settings.
+* **Fix:** Contact Form 7 forms inside a widget failed to submit when the form had no FormyChat settings saved.
+* **Fix:** CSV export now keeps commas and line breaks inside their column.
 
 = 2.15.13 - 29 Oct, 2026 =
 * **Improvement:** Regular maintenance & enhancement update

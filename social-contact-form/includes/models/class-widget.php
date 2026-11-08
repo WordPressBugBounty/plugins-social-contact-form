@@ -65,6 +65,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Widget') ) {
                     $config = [];
                 }
                 $config = \FormyChat\App::sanitize_whatsapp_message_templates($config);
+                $config = \FormyChat\App::normalize_widget_config($config);
 
                 /**
                  * Filters a widget's config before it reaches the front end.
@@ -77,11 +78,14 @@ if ( ! class_exists(__NAMESPACE__ . '\Widget') ) {
                  * @param array $config Widget config.
                  */
                 $config = apply_filters('formychat_widget_config', $config);
+                $config = \FormyChat\App::resolve_launcher_color($config);
 
                 $widgets[] = [
 					'id' => intval($widget->id),
 					'name' => $widget->name,
 					'config' => json_decode(wp_json_encode($config)),
+					// Channel and launcher icons the site shows (2.16.0); the config above is unchanged.
+					'resolved' => \FormyChat\App::resolve_widget_icons($config),
                 ];
             }
 
@@ -139,6 +143,17 @@ if ( ! class_exists(__NAMESPACE__ . '\Widget') ) {
                 $object->config = \FormyChat\App::sanitize_whatsapp_message_templates($object->config);
             }
 
+            // Upgrade to the current schema in memory only; the stored row is not changed here.
+            $object->config = \FormyChat\App::normalize_widget_config($object->config);
+
+            /*
+             * The settings the site shows (2.16.0): `formychat_widget_config` (documented in
+             * get_active_widgets()) turns options this site does not offer back to their
+             * defaults. The editor shows these values; the saved config above is unchanged,
+             * so the saved choices come back as soon as the site offers them again.
+             */
+            $object->site_config = apply_filters('formychat_widget_config', $object->config);
+
             return $object;
         }
 
@@ -174,6 +189,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Widget') ) {
                 $data['config'] = \FormyChat\App::sanitize_whatsapp_message_templates($data['config']);
             }
 
+            $data['config'] = \FormyChat\App::normalize_widget_config($data['config']);
             $data['config'] = wp_json_encode($data['config']);
             $data['updated_at'] = current_time('mysql');
 
@@ -195,10 +211,15 @@ if ( ! class_exists(__NAMESPACE__ . '\Widget') ) {
 
             $allowed = [ 'name', 'is_active', 'config' ];
 
+            if ( array_key_exists('config', $data) ) {
+                self::backup_config_before_upgrade($id);
+            }
+
             foreach ( $data as $key => $value ) {
                 if ( in_array($key, $allowed, true) ) {
                     if ( 'config' === $key && is_array($value) ) {
                         $value = \FormyChat\App::sanitize_whatsapp_message_templates($value);
+                        $value = \FormyChat\App::normalize_widget_config($value);
                     }
                     $data[ $key ] = $value;
 
@@ -211,6 +232,38 @@ if ( ! class_exists(__NAMESPACE__ . '\Widget') ) {
             $wpdb->update($wpdb->prefix . 'scf_widgets', $data, [ 'id' => $id ]); // db call ok; no-cache ok.
 
             return $wpdb->rows_affected;
+        }
+
+        /**
+         * Keep a one-time copy of a widget's config as it was before its first save in the
+         * channels schema, so an upgrade can always be undone. Never overwritten.
+         *
+         * @since 2.16.0
+         * @param int $id Widget ID.
+         */
+        private static function backup_config_before_upgrade( $id ) {
+            global $wpdb;
+
+            $option = 'formychat_widget_' . absint($id) . '_config_backup';
+
+            if ( false !== get_option($option, false) ) {
+                return;
+            }
+
+            $raw = $wpdb->get_var($wpdb->prepare("SELECT config FROM {$wpdb->prefix}scf_widgets WHERE id = %d", $id)); // db call ok; no-cache ok.
+
+            if ( null === $raw ) {
+                return;
+            }
+
+            $stored = json_decode($raw, true);
+            $version = is_array($stored) && isset($stored['config_version']) ? absint($stored['config_version']) : 1;
+
+            if ( $version >= \FormyChat\App::CONFIG_VERSION ) {
+                return;
+            }
+
+            add_option($option, $raw, '', 'no');
         }
 
         /**

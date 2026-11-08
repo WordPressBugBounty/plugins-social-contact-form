@@ -160,6 +160,10 @@ if ( ! class_exists(__NAMESPACE__ . '\Assets') ) {
 								'custom_tags' => App::custom_tags(),
 								'forms' => $this->get_forms(),
 								'form_fields' => App::form_fields(),
+								'launcher_icons' => App::launcher_icons(),
+								'launcher_colors' => App::launcher_colors(),
+								'launcher_glyph_colors' => App::launcher_glyph_colors(),
+								'channel_list_styles' => App::channel_list_styles(),
 							],
 
 							'site' => [

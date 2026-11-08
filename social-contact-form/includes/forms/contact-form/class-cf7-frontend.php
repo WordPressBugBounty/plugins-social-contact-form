@@ -76,6 +76,11 @@ if ( ! class_exists(__NAMESPACE__ . '\Frontend') ) {
 
             $formychat = get_post_meta($response['contact_form_id'], '_formy_chat_configuration', true);
 
+            // Forms never saved with FormyChat settings have no meta (empty string).
+            if ( ! is_array($formychat) ) {
+                $formychat = [];
+            }
+
             $form_options = [
 				'status' => [ 'formy_chat_status', 'on' ],
 				'destination_type' => [ 'formy_chat_destination_type', 'phone' ],

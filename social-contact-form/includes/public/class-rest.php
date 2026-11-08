@@ -83,6 +83,7 @@ if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 				'widget_id' => $request->has_param('widget_id') ? absint( $request->get_param('widget_id') ) : 0,
 				'form_id'   => $request->has_param('form_id') ? absint( $request->get_param('form_id') ) : 0,
 				'form'      => $request->has_param('form') ? sanitize_key( $request->get_param('form') ) : 'formychat',
+				'channel'   => $this->sanitize_channel( $request->get_param('channel') ),
 			];
 
 			// Verify spam protection (reCAPTCHA / Turnstile) for built-in FormyChat form submissions.
@@ -108,6 +109,7 @@ if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 			if ( isset( $form_data['meta'] ) ) {
 				$form_data['meta'] = $this->sanitize_lead_payload( $form_data['meta'] );
 			}
+			$form_data['channel'] = $this->sanitize_channel( isset( $form_data['channel'] ) ? $form_data['channel'] : '' );
 
 			$lead_id = Lead::create($form_data);
 
@@ -119,6 +121,19 @@ if ( ! class_exists(__NAMESPACE__ . '\REST') ) {
 				]
 			);
 			wp_die();
+		}
+
+		/**
+		 * Channel the visitor used (allow-listed). Defaults to WhatsApp, the only channel before 2.16.0.
+		 *
+		 * @since 2.16.0
+		 * @param  mixed $channel Raw value.
+		 * @return string
+		 */
+		private function sanitize_channel( $channel ) {
+			$channel = is_string( $channel ) ? sanitize_key( $channel ) : '';
+
+			return in_array( $channel, \FormyChat\App::CHANNELS, true ) ? $channel : 'whatsapp';
 		}
 
 		/**

@@ -48,32 +48,50 @@ if ( ! class_exists(__NAMESPACE__ . '\Lead') ) {
                 ]
             );
 
-            // Add created_at.
-            $data['created_at'] = current_time('mysql');
+            $channel = isset($data['channel']) && is_string($data['channel']) ? sanitize_key($data['channel']) : 'whatsapp';
+            if ( ! in_array($channel, \FormyChat\App::CHANNELS, true) ) {
+                $channel = 'whatsapp';
+            }
 
-            // Ensure proper JSON encoding with error handling
-         $data['field'] = wp_json_encode( $data['field'], JSON_UNESCAPED_UNICODE ) ?: '{}'; // phpcs:ignore
-         $data['meta']  = wp_json_encode( $data['meta'], JSON_UNESCAPED_UNICODE ) ?: '{}'; // phpcs:ignore
+            // Without the channel column (upgrade not finished), keep the channel inside meta so it is not lost.
+            if ( ! self::has_channel_column() && is_array($data['meta']) ) {
+                $data['meta']['channel'] = $channel;
+            }
 
-            $result = $wpdb->insert(
-                $table_name,
-                $data,
-                [
-					'%d',  // widget_id
-					'%s',  // field
-					'%s',  // meta
-					'%s',  // note
-					'%s',  // form
-					'%d',  // form_id
-					'%s',  // created_at
-                ]
-            ); // db call ok; no-cache ok.
+            // Build the row explicitly so each value is always paired with its own format.
+            $row = [
+				'widget_id'  => absint($data['widget_id']),
+				'field'      => wp_json_encode( $data['field'], JSON_UNESCAPED_UNICODE ) ?: '{}', // phpcs:ignore Universal.Operators.DisallowShortTernary.Found
+				'meta'       => wp_json_encode( $data['meta'], JSON_UNESCAPED_UNICODE ) ?: '{}', // phpcs:ignore Universal.Operators.DisallowShortTernary.Found
+				'note'       => is_string($data['note']) ? $data['note'] : '',
+				'form'       => is_string($data['form']) ? $data['form'] : 'formychat',
+				'form_id'    => absint($data['form_id']),
+				'created_at' => current_time('mysql'),
+            ];
+            $formats = [ '%d', '%s', '%s', '%s', '%s', '%d', '%s' ];
+
+            if ( self::has_channel_column() ) {
+                $row['channel'] = $channel;
+                $formats[]      = '%s';
+            }
+
+            $result = $wpdb->insert($table_name, $row, $formats); // db call ok; no-cache ok.
 
             if ( false === $result ) {
                 return 0;
             }
 
             return $wpdb->insert_id;
+        }
+
+        /**
+         * Whether the leads table has the `channel` column yet.
+         *
+         * @since 2.16.0
+         * @return bool
+         */
+        public static function has_channel_column() {
+            return absint(get_option('formychat_leads_schema', 0)) >= 2;
         }
 
         /**
@@ -96,6 +114,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Lead') ) {
 					'widget_id' => 1,
 					'form' => 'formychat',
 					'form_id' => 0,
+					'channel' => '',
                 ]
             );
 
@@ -131,7 +150,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Lead') ) {
             // Form.
             if ( ! empty($filter['form']) ) {
                 if ( 'formychat' === $filter['form'] ) {
-                    $where[] = $wpdb->prepare('form = %s OR form IS NULL', $filter['form']);
+                    $where[] = $wpdb->prepare('(form = %s OR form IS NULL)', $filter['form']);
                 } else {
                     $where[] = $wpdb->prepare('form = %s', $filter['form']);
                 }
@@ -140,6 +159,15 @@ if ( ! class_exists(__NAMESPACE__ . '\Lead') ) {
             // Form ID.
             if ( ! empty($filter['form_id']) && is_numeric($filter['form_id']) ) {
                 $where[] = $wpdb->prepare('form_id = %d', $filter['form_id']);
+            }
+
+            // Channel. Leads saved before channels existed have no channel and count as WhatsApp.
+            if ( self::has_channel_column() && in_array($filter['channel'], \FormyChat\App::CHANNELS, true) ) {
+                if ( 'whatsapp' === $filter['channel'] ) {
+                    $where[] = "(channel = 'whatsapp' OR channel IS NULL)";
+                } else {
+                    $where[] = $wpdb->prepare('channel = %s', $filter['channel']);
+                }
             }
 
             $where[] = 'deleted_at IS NULL';
@@ -168,6 +196,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Lead') ) {
                     $lead->note = empty($lead->note) ? '' : $lead->note;
                     $lead->form = empty($lead->form) ? 'formychat' : $lead->form;
                     $lead->form_id = empty($lead->form_id) ? 0 : intval($lead->form_id);
+                    $lead->channel = self::channel_of($lead);
                 }
             }
 
@@ -239,9 +268,29 @@ if ( ! class_exists(__NAMESPACE__ . '\Lead') ) {
                 $lead->note      = empty($lead->note) ? '' : $lead->note;
                 $lead->form      = empty($lead->form) ? 'formychat' : $lead->form;
                 $lead->form_id   = empty($lead->form_id) ? 0 : intval($lead->form_id);
+                $lead->channel   = self::channel_of($lead);
             }
 
             return $lead;
+        }
+
+        /**
+         * Channel of a lead row. Older leads (no channel stored) are WhatsApp.
+         *
+         * @since 2.16.0
+         * @param  object $lead Lead row with decoded meta.
+         * @return string
+         */
+        private static function channel_of( $lead ) {
+            if ( ! empty($lead->channel) && in_array($lead->channel, \FormyChat\App::CHANNELS, true) ) {
+                return $lead->channel;
+            }
+
+            if ( isset($lead->meta->channel) && in_array($lead->meta->channel, \FormyChat\App::CHANNELS, true) ) {
+                return $lead->meta->channel;
+            }
+
+            return 'whatsapp';
         }
     }
 

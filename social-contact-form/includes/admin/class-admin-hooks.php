@@ -224,9 +224,11 @@ if ( ! class_exists(__NAMESPACE__ . '\Hooks') ) {
          * @return array
          */
         public function plugin_action_links( $links ) {
-            if ( $this->is_ultimate_active() ) {
-                $links[] = '<a href="' . admin_url('admin.php?page=formychat') . '">' . __('Settings', 'social-contact-form') . '</a>';
-            } else {
+            // Settings link goes first, pointing at the All Widgets list.
+            $settings_link = '<a href="' . esc_url(admin_url('admin.php?page=formychat')) . '">' . esc_html__('Settings', 'social-contact-form') . '</a>';
+            $links         = array_merge([ 'settings' => $settings_link ], $links);
+
+            if ( ! $this->is_ultimate_active() ) {
                 $links[] = '<a href="https://wppool.dev/formychat-pricing/?utm_source=plugin&utm_medium=plugin-list&utm_campaign=formychat&ref=' . rawurlencode(home_url()) . '" target="_blank" rel="noopener noreferrer" style="color: #b32d2e;">' . __('Upgrade', 'social-contact-form') . '</a>';
             }
             return $links;

@@ -684,6 +684,7 @@ if ( ! class_exists(__NAMESPACE__ . '\Rest') ) {
 
 				'form' => $mode,
 				'form_id' => $form_id,
+				'channel' => $request->has_param('channel') ? sanitize_key($request->get_param('channel')) : '',
             ];
 
             $leads = \FormyChat\Models\Lead::get($filter);
