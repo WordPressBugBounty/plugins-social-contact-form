@@ -1334,28 +1334,24 @@ if ( ! class_exists( 'WPPOOL_Plugin' ) ) {
 			}
 
 			// Modify the plugin data to include the campaign image, date range, and button text.
-			add_filter( 'wppool_plugins', function ( $plugins ) use ( $image_url, $to, $from, $button_text, $button_link ) {
+			$repeat = absint( $repeat );
+
+			add_filter( 'wppool_plugins', function ( $plugins ) use ( $image_url, $to, $from, $button_text, $button_link, $repeat, $from_time, $to_time ) {
 				$plugins[ $this->plugin_id ]['background_image'] = $image_url;
 				$plugins[ $this->plugin_id ]['from'] = $from;
 				$plugins[ $this->plugin_id ]['to'] = $to;
 				$plugins[ $this->plugin_id ]['button_text'] = $button_text;
 				$plugins[ $this->plugin_id ]['button_link'] = $button_link;
 
-				return $plugins;
-			} );
-
-			$repeat = absint( $repeat );
-
-			// Recurring countdown: timestamps in ms so JS does not parse date strings.
-			if ( $repeat ) {
-				add_filter( 'wppool_plugins', function ( $plugins ) use ( $repeat, $from_time, $to_time ) {
+				// Recurring countdown: timestamps in ms so JS does not parse date strings.
+				if ( $repeat ) {
 					$plugins[ $this->plugin_id ]['repeat'] = $repeat * 1000;
 					$plugins[ $this->plugin_id ]['from_ms'] = $from_time * 1000;
 					$plugins[ $this->plugin_id ]['to_ms'] = $to_time * 1000;
+				}
 
-					return $plugins;
-				} );
-			}
+				return $plugins;
+			} );
 		}
 	}
 

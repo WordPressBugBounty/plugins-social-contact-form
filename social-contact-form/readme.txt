@@ -4,7 +4,7 @@ Tags: whatsapp chat, woocommerce whatsapp, click to chat, whatsapp business, liv
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 5.6
-Stable tag: 2.16.0
+Stable tag: 2.16.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -310,6 +310,9 @@ To build the assets yourself:
 
 
 == Changelog ==
+
+= 2.16.1 - 11 Nov, 2026 =
+* Maintenance update
 
 = 2.16.0 - 08 Nov, 2026 =
 * **New:** Telegram channel. Add WhatsApp, Telegram or both to a widget; visitors pick a channel and their message opens in that app.
